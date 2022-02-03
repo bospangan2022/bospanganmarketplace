@@ -60,13 +60,20 @@ class AuthController extends Controller
 
     public function proses_registrasi(Request $request)
     {
+        $messages = [
+            'required' => 'Data Ada Yang Belum Diisi !!!',
+            'email' => 'Format Harus Email',
+            'same' => 'Password Tidak Cocok',
+        ];
+
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email|unique:users',
             'no_hp' => 'required',
             'password' => 'required|min:6',
+            'ulangi_password' => 'same:password',
             'role' => 'required',
-        ]);
+        ],$messages);
 
         User::create([
             'name' => $request->nama,

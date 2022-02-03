@@ -16,6 +16,13 @@
         	<div class="row">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
                 	<div class="mb-4">
+                        @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                <b>Opps!</b> {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
                        <form method="POST" action="{{ url('proses_registrasi') }}" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">	
                         @csrf       
                         <div class="row">
@@ -48,6 +55,12 @@
                                     <label for="password">Password</label>
                                     <input type="password" value="" name="password" placeholder="" id="password" class="">
                                     <input type="hidden" name="role" value="pelanggan">                        	
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label for="password">Ulangi Password</label>
+                                    <input type="password" value="" name="ulangi_password" placeholder="" id="password" class="">                    	
                                 </div>
                             </div>
                           </div>
