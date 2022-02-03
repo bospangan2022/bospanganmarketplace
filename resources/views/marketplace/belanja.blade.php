@@ -190,6 +190,11 @@
                                         <div class="product-name">
                                             <a href="{{ url('produkdetail', $b->id_barang) }}">{{ $b->nama_barang }}</a>
                                         </div>
+                                    
+                                        <div class="toko-name">
+                                            <a class="nama_toko" href="">{{ $b->nama_toko }}</a>
+                                        </div>
+                                      
                                         <!-- End product name -->
                                         <!-- product price -->
                                         <div class="product-price">
