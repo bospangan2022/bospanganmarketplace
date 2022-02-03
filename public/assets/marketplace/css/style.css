@@ -1397,6 +1397,12 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
   }
 }
 
+.toko-name .nama_toko{
+  font-family: Poppins;
+  font-weight: 600;
+  color: #027b02;
+}
+
 
 .product-detail .nama-produk{
   font-family: Poppins;
