@@ -621,7 +621,7 @@
         </div>
     </div> 
 
-    <!--edit biasa popup-->
+    <!--edit biasa popuuup-->
     @foreach($profil as $p)
     <div class="modal fade quick-view-popup" id="ubah_alamat{{$p->id_user_detail}}">
     	<div class="modal-dialog modal-lg">
