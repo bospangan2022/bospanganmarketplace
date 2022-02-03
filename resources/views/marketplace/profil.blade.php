@@ -518,7 +518,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                <label for="input-email">Kodepos<span class="required-f">*</span></label>
+                                                <label for="input-email">Kodepossss<span class="required-f">*</span></label>
                                                 <input name="kode_pos" value="" id="input-email" type="text">
                                             </div>
                                         </div>
