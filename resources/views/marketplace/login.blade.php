@@ -16,6 +16,11 @@
         	<div class="row">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 main-col offset-md-3">
                 	<div class="mb-4">
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                <b>Opps!</b> {{session('error')}}
+                            </div>
+                        @endif
                        <form method="POST" action="{{ url('proses_login') }}" id="CustomerLoginForm" accept-charset="UTF-8" class="contact-form">	
                         {{ csrf_field() }}  
                         <div class="row">
