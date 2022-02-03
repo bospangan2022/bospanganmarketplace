@@ -180,17 +180,17 @@
                         <div class="site-love">
                     	    <a href="{{ url('wishlist') }}" class="site-header__love" title="Love">
                             <i class="icon far fa-heart"></i>
-                            <span id="CartCount" class="site-header__love-count" data-cart-render="item_count">0</span>
+                            <span id="CartCount" class="site-header__love-count" data-cart-render="item_count">{{ $count_love }}</span>
                         </a>
                         </div>
                          <div class="site-cart">
                             <a href="#" class="site-header__cart" title="Cart">
                                 <i class="icon anm anm-bag-l"></i>
-                                <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">0</span>
+                                <span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">{{ $count_barang }}</span>
                             </a>
                             
                         <!--Minicart Popup-->
-                        {{-- <div id="header-cart" class="block block-cart">
+                        <div id="header-cart" class="block block-cart">
                         @foreach($keranjang as $krj)
                         	<ul class="mini-products-list">
                                 <li class="item">
@@ -228,7 +228,7 @@
                                     <a href="{{ url('checkout') }}" class="btn btn-secondary btn--small">Checkout</a>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                         <!--End Minicart Popup-->
 
                         <?php } ?>

@@ -37,8 +37,11 @@
                             </div>
 
                             <div class="tombol-toko text-left">
-                                <a href="#" class="tombol1"><span><i class="fab fa-whatsapp mr-3"></i></span>Chat Penjual</a>
+                                <form action="{{ url('tanya_penjual') }}" method="post" target="_blank">
+                                    <input type="hidden" name="no_hp" value="">
+                                    <button type="submit" class="tombol1"><span><i class="fab fa-whatsapp mr-3"></i></span>Chat Penjual</button>
                                 <a href="#" class="tombol2 ml-2" data-toggle="modal" data-target="#detail">Info Toko</a>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -81,8 +84,9 @@
                             <div class="widget-title"><h3>Kategori</h3></div>
                             <div class="widget-content">
                                 <ul class="sidebar_categories">
-                                    <li class="lvl-1"><a href="" class="site-nav">Makanan</a></li>
-                                    <li class="lvl-1"><a href="" class="site-nav">Minuman</a></li>
+                                    @foreach($kat_toko as $kt)
+                                    <li class="lvl-1"><a href="#" class="site-nav">{{ $kt->nama_kategori }} <span>{{ $j_kt }}</span></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -146,10 +150,10 @@
                                         <!-- start product image -->
                                         <a href="{{ url('produkdetail', $b->id_barang) }}">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload" src="./images/post/{{$b->foto}}" alt="image" title="product" />
+                                            <img class="primary blur-up lazyload" src="/images/post/{{$b->foto}}" alt="image" title="product" />
                                             <!-- End image -->
                                             <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" src="./images/post/{{$b->foto}}" alt="image" title="product" />
+                                            <img class="hover blur-up lazyload" src="/images/post/{{$b->foto}}" alt="image" title="product" />
                                             <!-- End hover image -->
                                         </a>
                                         <!-- end product image -->
