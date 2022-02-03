@@ -74,7 +74,20 @@
                        
                         <?php } else { ?>
                             
-                            <li><a href="{{ url('buka_toko') }}">Buka Toko</a></li>
+                            <?php
+                            $cek=DB::table('tb_toko')->where('id_user',Auth::user()->id)->count();
+                            if($cek==0){
+                                   
+                        ?>
+                            
+                        <li><a href="{{ url('buka_toko') }}">Buka Toko</a></li>
+                        <?php
+                            }else{
+                        ?>
+                          <li><a href="{{ url('buka_toko') }}">Kelola Toko</a></li>
+                        <?php
+                            }
+                        ?>
                         <li><a href="{{ url('profil') }}">{{ Auth::user()->name }} </a></li>
                         <li><a href="{{ url('logout') }}">Log Out </a></li>
 

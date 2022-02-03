@@ -60,21 +60,30 @@
                 	<span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
                     <ul class="customer-links list-inline">
                         <?php
+                        use Illuminate\Support\Facades\Auth;
 
-                            use Illuminate\Support\Facades\Auth;
-
-                            if (!Auth::check()) { ?>
+                        if (!Auth::check()) { ?>
 
                         <li><a href="{{ url('login') }}">Login</a></li>
                         <li><a href="{{ url('register') }}">Create Account</a></li>
                        
                         <?php } else { ?>
+                        <?php
+                        $cek = DB::table("tb_toko")
+                            ->where("id_user", Auth::user()->id)
+                            ->count();
+                        if ($cek == 0) { ?>
                             
                         <li><a href="{{ url('buka_toko') }}">Buka Toko</a></li>
+                        <?php } else { ?>
+                          <li><a href="{{ url('buka_toko') }}">Kelola Toko</a></li>
+                        <?php }
+                        ?>
                         <li><a href="{{ url('profil') }}">{{ Auth::user()->name }} </a></li>
                         <li><a href="{{ url('logout') }}">Log Out </a></li>
 
-                        <?php } ?>
+                        <?php }
+                        ?>
                     </ul>
                 </div>
             </div>
@@ -126,11 +135,10 @@
                 <!--Mobile Logo-->
                 
                 <div class="col-4 col-sm-3 col-md-3 col-lg-2">
-                <?php
-                            if (!Auth::check()) { ?>
+                <?php if (!Auth::check()) { ?>
                         
                         <div class="site-love">
-                            <a href="#" class="site-header__love" title="Love">
+                            <a href="#" class="site-header__love2" title="Love">
                                 <i class="icon far fa-heart"></i>
                                 <span id="CartCount" class="site-header__love-count" data-cart-render="item_count">0</span>
                             </a>
