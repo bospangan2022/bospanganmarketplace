@@ -5,7 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Bos Pangan | Belanja</title>
+
+@foreach($toko as $t)
+<title>Bos Pangan | Toko {{ $t->nama_toko }}</title>
+@endforeach
+
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->
@@ -70,19 +74,16 @@
                         <?php } else { ?>
                             
                             <?php
-                            $cek=DB::table('tb_toko')->where('id_user',Auth::user()->id)->count();
-                            if($cek==0){
-                                   
-                        ?>
+                            $cek = DB::table("tb_toko")
+                                ->where("id_user", Auth::user()->id)
+                                ->count();
+                            if ($cek == 0) { ?>
                             
                         <li><a href="{{ url('buka_toko') }}">Buka Toko</a></li>
-                        <?php
-                            }else{
-                        ?>
+                        <?php } else { ?>
                           <li><a href="{{ url('buka_toko') }}">Kelola Toko</a></li>
-                        <?php
-                            }
-                        ?>
+                        <?php }
+                            ?>
                         <li><a href="{{ url('profil') }}">{{ Auth::user()->name }} </a></li>
                         <li><a href="{{ url('logout') }}">Log Out </a></li>
 

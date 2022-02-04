@@ -187,7 +187,7 @@
                                         </div>
 
                                         <div class="toko-name">
-                                            <a class="nama_toko" href="">{{ $b->nama_toko }}</a>
+                                            <a class="nama_toko" href="{{ url('profil_toko' , $b->id_toko) }}">{{ $b->nama_toko }}</a>
                                         </div>
                                         <!-- End product name -->
                                         <!-- product price -->
