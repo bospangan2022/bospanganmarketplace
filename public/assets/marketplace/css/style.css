@@ -1515,6 +1515,32 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
 }
 
 
+/* Wishlist Button */
+.wishlist-btn .wishlist {
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.wishlist:hover{
+  background-color: #111;
+  color: white;
+}
+
+/* Product Remove Wishlist */
+.hapus-wishlist .btn-delete-wishlist{
+  cursor: pointer;
+  border: none;
+}
+
+.btn-delete-wishlist:hover{
+  color: red;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+
+
 /* .modal-dialog{
   height:calc(100% - 100px);
 }

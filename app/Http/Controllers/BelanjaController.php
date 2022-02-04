@@ -65,9 +65,14 @@ class BelanjaController extends Controller
             ->where("id_kategori", $id)
             ->get();
         $kat = DB::table("tb_kategori")->get();
-        $barang_kat = DB::table("tb_barang")
+
+        $barang_kat = DB::table("tb_toko")
+            ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
             ->where("id_kategori", $id)
             ->get();
+
+        // dd($barang_kat);
+
         $jumlah = $barang_kat->count();
         if (!Auth::check()) {
             return view("marketplace.belanja_kat", [
@@ -112,11 +117,12 @@ class BelanjaController extends Controller
     {
         $keyword = $request->cari;
         $kat = DB::table("tb_kategori")->get();
-        $search = DB::table("tb_barang")
+        $search = DB::table("tb_toko")
+            ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
             ->orWhere("nama_barang", "LIKE", "%{$keyword}%")
             ->get();
         $jumlah = $search->count();
-        // dd($kat);
+        // dd($search);
 
         if (!Auth::check()) {
             return view("marketplace.search", [

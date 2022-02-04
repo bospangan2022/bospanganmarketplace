@@ -71,7 +71,8 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("/getDesa", [CartController::class, "getDesa"]);
 
         Route::get("profil", [ProfilController::class, "index"]);
-        Route::get("profil_toko", [ProfilTokoController::class, "index"]);
+        Route::get("profil_toko/{id}", [ProfilTokoController::class, "index"]);
+
         Route::post("tambah_alamat", [
             ProfilController::class,
             "tambah_alamat",

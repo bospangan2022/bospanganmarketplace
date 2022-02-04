@@ -17,12 +17,13 @@
                     </div>
                 </div> --}}
                 <div class="row">
+                    @foreach($toko as $t)
                     <div class="col-md-2 text-center">
                         <img class="profil-toko-photo" src="{{ asset('assets/marketplace/images/toko/logo_toko.jpg') }}" alt="produk">
                     </div>
                     <div class="col-md-5 mt-1">
                         <div class="detail-toko">
-                            <p class="nama-toko">Bos Pangan</p>
+                            <p class="nama-toko">{{ $t->nama_toko }}</p>
 
                             <div class="kota-toko flex">
                                 <i class="marker fa fa-map-marker-alt text-success mr-2"></i>
@@ -31,9 +32,7 @@
                             <div class="alamat-toko flex">
                                 <i class=""></i>
 
-                                <h4 class="alamat mr-2">Jl Cimalaya No.13 ,Kecamatan Kepanjen Kidul ,
-                                Kota Blitar , 66116
-                                </h4>
+                                <h4 class="alamat mr-2">{{ $t->alamat }}</h4>
                             </div>
 
                             <div class="tombol-toko text-left">
@@ -45,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                   
+                    @endforeach
                 </div>
                 <div class="modal fade bd-example-modal-md" id="detail" role="dialog">
                     <div class="modal-dialog modal-dialog-centered modal-md">
