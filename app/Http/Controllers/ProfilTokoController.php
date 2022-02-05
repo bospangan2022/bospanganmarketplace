@@ -10,6 +10,7 @@ class ProfilTokoController extends Controller
 {
     public function index($id)
     {
+<<<<<<< HEAD
         if (!Auth::check()) {
             $barang_toko = DB::table("tb_toko")
                 ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
@@ -48,10 +49,48 @@ class ProfilTokoController extends Controller
             return view("marketplace.profil_toko", [
                 "barang_toko" => $barang_toko,
                 "toko" => $toko,
+=======
+        $toko = DB::table("tb_toko")
+            ->where("id_toko", $id)
+            ->get();
+
+        // $kota = DB::table("regencies")
+        //     ->reorder("nama_kota", "asc")
+        //     ->get();
+
+        $barang_toko = DB::table("tb_toko")
+            ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
+            ->get();
+
+        // dd($barang_toko);
+
+        $kat_toko = DB::table("tb_toko")
+            ->join("tb_kategori", "tb_toko.id_toko", "=", "tb_kategori.id_toko")
+            ->get();
+
+        $j_kt = DB::table("tb_toko")
+            ->join("tb_kategori", "tb_toko.id_toko", "=", "tb_kategori.id_toko")
+            ->join(
+                "tb_barang",
+                "tb_barang.id_kategori",
+                "=",
+                "tb_barang.id_kategori"
+            )
+            ->where("tb_barang.id_barang", "tb_kategori.id_kategori")
+            ->count();
+
+        // dd($kat_toko);
+
+        if (!Auth::check()) {
+            return view("marketplace.profil_toko", [
+                "toko" => $toko,
+                "barang_toko" => $barang_toko,
+>>>>>>> e34d5ce9fab11e6faca06521669605e81db63171
                 "kat_toko" => $kat_toko,
                 "j_kt" => $j_kt,
             ]);
         } else {
+<<<<<<< HEAD
             $barang_toko = DB::table("tb_toko")
                 ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
                 ->where("tb_toko.nama_toko", $id)
@@ -87,6 +126,8 @@ class ProfilTokoController extends Controller
                 ->where("tb_barang.id_barang", "tb_kategori.id_kategori")
                 ->count();
 
+=======
+>>>>>>> e34d5ce9fab11e6faca06521669605e81db63171
             $keranjang = DB::table("tb_keranjang")
                 ->join(
                     "tb_barang",
@@ -109,15 +150,22 @@ class ProfilTokoController extends Controller
 
             return view("marketplace.profil_toko", [
                 "barang_toko" => $barang_toko,
+<<<<<<< HEAD
                 "toko" => $toko,
+=======
+>>>>>>> e34d5ce9fab11e6faca06521669605e81db63171
                 "kat_toko" => $kat_toko,
                 "j_kt" => $j_kt,
                 "keranjang" => $keranjang,
                 "count_barang" => $count_barang,
                 "count_love" => $count_love,
                 "sub_total" => $sub_total,
+<<<<<<< HEAD
 
                 // "toko" => $toko,
+=======
+                "toko" => $toko,
+>>>>>>> e34d5ce9fab11e6faca06521669605e81db63171
             ]);
         }
     }

@@ -5,7 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Bos Pangan | {Produk Detail}</title>
+
+@foreach($barang_kat as $b)
+<title>Bos Pangan | Detail {{ $b->nama_barang }}</title>
+@endforeach
+
 <meta name="description" content="description">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Favicon -->

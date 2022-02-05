@@ -13,6 +13,12 @@ class HomeController extends Controller
         $barang = DB::table("tb_toko")
             ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
             ->get();
+<<<<<<< HEAD
+=======
+
+        // dd($barang);
+
+>>>>>>> e34d5ce9fab11e6faca06521669605e81db63171
         $kategori = DB::table("tb_kategori")->get();
 
         if (!Auth::check()) {

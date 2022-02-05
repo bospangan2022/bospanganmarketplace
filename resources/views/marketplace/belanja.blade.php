@@ -169,11 +169,16 @@
                                             {{-- <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
                                                         <i class="icon anm anm-search-plus-r"></i>
                                                     </a> --}}
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
+                                            <form method="POST" action="{{ url('add_wishlist') }} " enctype="multipart/form-data" >
+                                                @csrf
+                                                <div class="button-set">
+                                                    <input type="hidden" name="id_barang" value="{{ $b->id_barang }}">
+                                                    <div class="wishlist-btn">
+                                                        <button class="wishlist add-to-wishlist" type="submit"><i class="icon anm anm-heart-l"></i></button>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </form>
                                             {{-- <div class="compare-btn">
                                                 <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
                                                     <i class="icon anm anm-random-r"></i>
@@ -192,7 +197,7 @@
                                         </div>
                                     
                                         <div class="toko-name">
-                                            <a class="nama_toko" href="">{{ $b->nama_toko }}</a>
+                                            <a class="nama_toko" href="{{ url('profil_toko' , $b->id_toko) }}">{{ $b->nama_toko }}</a>
                                         </div>
                                       
                                         <!-- End product name -->
@@ -213,147 +218,7 @@
                                     <!-- End product details -->
                                 </div>
                                 @endforeach
-                                {{-- <div class="col-6 col-sm-6 col-md-4 col-lg-3 item">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="{{ url('produkdetail') }}">
-                                            <!-- image -->
-                                            <img class="primary blur-up lazyload" data-src="assets/marketplace/images/product-images/indomiesoto.jpg" src="assets/marketplace/images/product-images/indomiesoto.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="hover blur-up lazyload" data-src="assets/marketplace/images/product-images/indomiesoto.jpg" src="assets/marketplace/images/product-images/indomiesoto.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                            <!-- product label -->
-                                            <div class="product-labels"><span class="lbl on-sale">Sale</span></div>
-                                            <!-- End product label -->
-                                        </a>
-                                        <!-- end product image -->
-
-                                        <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
-                                            <button class="btn btn-addto-cart" type="button">Add To Cart</button>
-                                        </form>
-                                        <div class="button-set">
-                                            <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
-                                                        <i class="icon anm anm-search-plus-r"></i>
-                                                    </a>
-                                            <div class="wishlist-btn">
-                                                <a class="wishlist add-to-wishlist" href="#" title="Add to Wishlist">
-                                                    <i class="icon anm anm-heart-l"></i>
-                                                </a>
-                                            </div>
-                                            <div class="compare-btn">
-                                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                    <i class="icon anm anm-random-r"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <!-- end product button -->
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="{{ url('produkdetail') }}">Indomie Mie Soto <br>( 1 Karton)</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">Rp. 106.000</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item grid-view-item--sold-out">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="{{ url('produkdetail') }}">
-                                            <!-- image -->
-                                            <img class="grid-view-item__image primary blur-up lazyload" data-src="assets/marketplace/images/product-images/luwak.jpg" src="assets/marketplace/images/product-images/luwak.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="grid-view-item__image hover blur-up lazyload" data-src="assets/marketplace/images/product-images/luwak.jpg" src="assets/marketplace/images/product-images/luwak.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                            <span class="sold-out"><span>Sold out</span></span>
-                                        </a>
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="{{ url('produkdetail') }}">Luwak White Coffe <br> ( 10 X 20G )</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">Rp. 13.000</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item grid-view-item--sold-out">
-                                    <!-- start product image -->
-                                    <div class="product-image">
-                                        <!-- start product image -->
-                                        <a href="{{ url('produkdetail') }}">
-                                            <!-- image -->
-                                            <img class="grid-view-item__image primary blur-up lazyload" data-src="assets/marketplace/images/product-images/bawang.jpg" src="assets/marketplace/images/product-images/bawang.jpg" alt="image" title="product" />
-                                            <!-- End image -->
-                                            <!-- Hover image -->
-                                            <img class="grid-view-item__image hover blur-up lazyload" data-src="assets/marketplace/images/product-images/bawang.jpg" src="assets/marketplace/images/product-images/bawang.jpg" alt="image" title="product" />
-                                            <!-- End hover image -->
-                                            <span class="sold-out"><span>Sold out</span></span>
-                                        </a>
-                                    </div>
-                                    <!-- end product image -->
-
-                                    <!--start product details -->
-                                    <div class="product-details text-center">
-                                        <!-- product name -->
-                                        <div class="product-name">
-                                            <a href="{{ url('produkdetail') }}">Bawang Merah Brebes <br>( 1 Kg )</a>
-                                        </div>
-                                        <!-- End product name -->
-                                        <!-- product price -->
-                                        <div class="product-price">
-                                            <span class="price">Rp.36.000</span>
-                                        </div>
-                                        <!-- End product price -->
-                                        
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                            <i class="font-13 fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                    <!-- End product details -->
-                                </div> --}}
+                               
                             </div>
                         </div>
                     </div>

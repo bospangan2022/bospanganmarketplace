@@ -30,7 +30,7 @@
                                     <tr>
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" method="POST" action="{{ url('delete_wishlist', $w->id_wishlist)}}">
                                             @csrf
-                                            <td class="product-remove text-center" valign="middle"><button class="btn-delete-wishlist" type="submit"><i class="icon icon anm anm-times-l"></i></button></td>
+                                            <td class="hapus-wishlist text-center" valign="middle"><button class="btn-delete-wishlist" type="submit"><i class="icon icon anm anm-times-l"></i></button></td>
                                         </form>     
                                     	
                                         <td class="product-thumbnail text-center">
