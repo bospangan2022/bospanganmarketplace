@@ -51,15 +51,9 @@
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <!-- <a href="assets/marketplace/images/product-detail-page/cape-dress-4.jpg" data-size="1462x2048"></a>
-<<<<<<< HEAD
                                                                                         <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
                                                                                         <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
                                                                                         <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
-=======
-                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
-                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
-                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
                                     </div>
 
                                 </div>
@@ -74,7 +68,6 @@
                                     </div>
                                     <div class="prInfoRow">
                                         <div class="product-stock"> <span class="instock ">In Stock</span> <span
-<<<<<<< HEAD
                                                 class="outstock hide">Unavailable</span>
                                         </div>
                                         <div class="product-sku">SKU: <span
@@ -109,34 +102,6 @@
                                         <img src="{{ asset('assets/marketplace/images/order-icon.jpg') }}" alt="" />
                                         <strong class="items">Best Seller</strong>
                                     </div>
-=======
-                                                class="outstock hide">Unavailable</span> </div>
-                                        <div class="product-sku">SKU: <span
-                                                class="variant-sku">{{ $bi->sku }}</span></div>
-                                        <!-- <div class="product-review"><a class="reviewLink" href="#tab2"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><span class="spr-badge-caption">6 reviews</span></a></div> -->
-                                    </div>
-                                    <p class="product-single__price product-single__price-product-template">
-                                        <span class="visually-hidden">Regular price</span>
-                                        <s id="ComparePrice-product-template"><span
-                                                class="money">@currency(110000)</span></s>
-                                        <span
-                                            class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
-                                            <span id="ProductPrice-product-template"><span
-                                                    class="money">@currency($bi->harga)</span></span>
-                                        </span>
-                                        <span class="discount-badge"> <span class="devider">|</span>&nbsp;
-                                            <span>Anda Hemat</span>
-                                            <span id="SaveAmount-product-template" class="product-single__save-amount">
-                                                <span class="money">@currency(4000)</span>
-                                            </span>
-                                            <span class="off">(<span>1</span>%)</span>
-                                        </span>
-                                    </p>
-                                    <div class="orderMsg" data-user="23" data-time="24">
-                                        <img src="{{ asset('assets/marketplace/images/order-icon.jpg') }}" alt="" />
-                                        <strong class="items">Best Seller</strong>
-                                    </div>
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
                                 </div>
                                 <div class="product-single__description rte">
                                     <ul class="deskripsi">
@@ -144,14 +109,8 @@
                                         <li class="desc_li">Satuan : <a class="desc_a"
                                                 href="#">{{ $bi->satuan }}</a> </li>
                                         <li class="desc_li">Kategori : <a class="desc_a"
-<<<<<<< HEAD
                                                 {{-- href="{{ url('belanja_kat', $bi->id_kategori) }}">{{ $bi->nama_kategori }}</a> --}} </li>
                                                 {{-- <li>Berat : {{ $bi->berat }}</li> --}}
-=======
-                                                href="{{ url('belanja_kat', $bi->id_kategori) }}">{{ $bi->nama_kategori }}</a>
-                                        </li>
-                                        {{-- <li>Berat : {{ $bi->berat }}</li> --}}
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
                                     </ul>
                                     <p>{{ $bi->keterangan }}</p>
                                 </div>
@@ -164,10 +123,6 @@
                                     <form action="{{ url('add_cart') }}" method="POST">
                                         @csrf
                                         <input type="hidden" value="{{ $bi->id_barang }}" name="id_barang">
-<<<<<<< HEAD
-=======
-                                        <input type="hidden" value="{{ $bi->id_toko }}" name="id_toko">
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
                                         <input type="hidden" value="{{ $bi->harga }}" name="harga">
                                         <div class="product-form__item--quantity">
                                             <div class="wrapQtyBtn">

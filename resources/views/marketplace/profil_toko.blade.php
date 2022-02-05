@@ -20,12 +20,7 @@
                     <div class="row">
                         @foreach ($toko as $t)
                             <div class="col-md-2 text-center">
-<<<<<<< HEAD
                                 <img class="profil-toko-photo" src="/images/post/{{ $t->foto_toko }}" alt="produk">
-=======
-                                <img class="profil-toko-photo"
-                                    src="{{ asset('assets/marketplace/images/toko/logo_toko.jpg') }}" alt="produk">
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
                             </div>
                             <div class="col-md-5 mt-1">
                                 <div class="detail-toko">
@@ -37,21 +32,12 @@
                                     </div>
                                     <div class="alamat-toko flex">
                                         <i class=""></i>
-<<<<<<< HEAD
 
                                         <h4 class="alamat mr-2">{{ $t->alamat }}</h4>
                                     </div>
 
                                     <div class="tombol-toko text-left">
                                         <form action="{{ url('tanya_penjual') }}" method="get" target="_blank">
-=======
-
-                                        <h4 class="alamat mr-2">{{ $t->alamat }}</h4>
-                                    </div>
-
-                                    <div class="tombol-toko text-left">
-                                        <form action="{{ url('tanya_penjual') }}" method="post" target="_blank">
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
                                             <input type="hidden" name="no_hp" value="">
                                             <button type="submit" class="tombol1"><span><i
                                                         class="fab fa-whatsapp mr-3"></i></span>Chat Penjual</button>
@@ -72,7 +58,6 @@
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-<<<<<<< HEAD
                                 @foreach ($toko as $t)
                                     <div class="row">
                                         <div class="desc col-md-5 text-justify">
@@ -83,17 +68,6 @@
                                             <h4 class="desc_title">Berdiri Sejak</h4>
                                             <h4 class="desc_toko">September 2021</h4>
                                         </div>
-=======
-                                <div class="row">
-                                    <div class="desc col-md-5 text-justify">
-                                        <h4 class="desc_title">Deskripsi Toko</h4>
-                                        <h4 class="desc_toko">Bos Pangan adalah sebuah start-up yang bergerak dibidang
-                                            perpanganan, baik pangan untuk manusia, hewan, bahkan tumbuhan.</h4>
-                                    </div>
-                                    <div class="desc col-md-5">
-                                        <h4 class="desc_title">Berdiri Sejak</h4>
-                                        <h4 class="desc_toko">September 2021</h4>
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
                                     </div>
                                 @endforeach
                             </div>
@@ -118,7 +92,6 @@
                             <div class="widget-content">
                                 <ul class="sidebar_categories">
                                     @foreach ($kat_toko as $kt)
-<<<<<<< HEAD
                                         <?php
                                         $jumlah = DB::table('tb_barang')
                                             ->where('id_kategori', $kt->id_kategori)
@@ -128,11 +101,6 @@
                                         <li class="lvl-1"><a href="{{ url('barangtoko_kat', $kt->id_kategori) }}"
                                                 class="site-nav">{{ $kt->nama_kategori }}
                                                 <span class="j_btk">( {{ $jumlah }} )</span></a></li>
-=======
-                                        <li class="lvl-1"><a href="#"
-                                                class="site-nav">{{ $kt->nama_kategori }}
-                                                <span>{{ $j_kt }}</span></a></li>
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
                                     @endforeach
                                 </ul>
                             </div>
@@ -166,7 +134,6 @@
                                 <div class="row">
                                     <div
                                         class="col-4 col-md-4 col-lg-4 filters-toolbar__item collection-view-as d-flex justify-content-start align-items-center">
-<<<<<<< HEAD
                                         <div class="cari-toko input-group mb-3 ">
                                             <form action="{{ url('cari_brgtoko') }}">
                                                 <input type="text" placeholder="Cari Barang Di Toko Ini...."
@@ -181,18 +148,12 @@
                                             </div>
 
                                         </div>
-=======
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
 
                                     </div>
                                     <div
                                         class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
 
-<<<<<<< HEAD
                                         <span class="filters-toolbar__product-count">Showing: {{ $count }}</span>
-=======
-                                        <span class="filters-toolbar__product-count">Showing: </span>
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
 
                                     </div>
                                     <div class="col-4 col-md-4 col-lg-4 text-right">
@@ -226,13 +187,8 @@
                                             <!-- start product image -->
                                             <a href="{{ url('produkdetail', $b->id_barang) }}">
                                                 <!-- image -->
-<<<<<<< HEAD
                                                 <img class="primary blur-up lazyload"
                                                     src="/images/post/{{ $b->foto }}" alt="image" title="product" />
-=======
-                                                <img class="primary blur-up lazyload" src="/images/post/{{ $b->foto }}"
-                                                    alt="image" title="product" />
->>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
                                                 <!-- End image -->
                                                 <!-- Hover image -->
                                                 <img class="hover blur-up lazyload" src="/images/post/{{ $b->foto }}"
