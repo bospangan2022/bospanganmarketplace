@@ -37,7 +37,7 @@
                                     </div>
 
                                     <div class="tombol-toko text-left">
-                                        <form action="{{ url('tanya_penjual') }}" method="get" target="_blank">
+                                        <form action="{{ url('tanya_penjual') }}" method="post" target="_blank">
                                             <input type="hidden" name="no_hp" value="">
                                             <button type="submit" class="tombol1"><span><i
                                                         class="fab fa-whatsapp mr-3"></i></span>Chat Penjual</button>
@@ -100,7 +100,7 @@
                                         ?>
                                         <li class="lvl-1"><a href="{{ url('barangtoko_kat', $kt->id_kategori) }}"
                                                 class="site-nav">{{ $kt->nama_kategori }}
-                                                <span class="j_btk">( {{ $jumlah }} )</span></a></li>
+                                                <span>{{ $jumlah }}</span></a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -134,13 +134,13 @@
                                 <div class="row">
                                     <div
                                         class="col-4 col-md-4 col-lg-4 filters-toolbar__item collection-view-as d-flex justify-content-start align-items-center">
-                                        <div class="cari-toko input-group mb-3 ">
+                                        <div class="input-group mb-3 border rounded-pill p-0">
                                             <form action="{{ url('cari_brgtoko') }}">
-                                                <input type="text" placeholder="Cari Barang Di Toko Ini...."
+                                                <input type="tetx" placeholder="Cari Barang Di Toko Ini...."
                                                     aria-describedby="button-addon3" name="cari"
-                                                    class="input-barang-toko form-control bg-none border-1">
+                                                    class="form-control bg-none border-0">
                                             </form>
-                                            <div class="input-group-append">
+                                            <div class="input-group-append border-0">
                                                 <button id="button-addon3" type="submit" class="btn btn-link "><i
                                                         class="fa fa-search"></i>
 
@@ -180,7 +180,7 @@
                         <!--End Produk-->
                         <div class="grid-products grid--view-items">
                             <div class="row">
-                                @foreach ($barang_toko as $b)
+                                @foreach ($barang_kat as $b)
                                     <div class="col-6 col-sm-6 col-md-4 col-lg-3 item">
                                         <!-- start product image -->
                                         <div class="product-image">
