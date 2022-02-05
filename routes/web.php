@@ -66,7 +66,10 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::post("add_cart", [CartController::class, "tambah_keranjang"]);
         Route::get("tampil_cart", [CartController::class, "index"]);
         Route::get("remove_cart/{id}", [CartController::class, "hapus"]);
-        Route::get("remove_cartall", [CartController::class, "hapus_semua"]);
+        Route::get("remove_cartall/{id}", [
+            CartController::class,
+            "hapus_semua",
+        ]);
         Route::post("update_cart/{id}", [CartController::class, "update"]);
         Route::get("/getKec", [CartController::class, "getKec"]);
         Route::get("/getDesa", [CartController::class, "getDesa"]);

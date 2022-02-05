@@ -12,7 +12,11 @@
         "format:php": "prettier --config=prettier.config.js --write --parser=php"
     },
     "devDependencies": {
+<<<<<<< HEAD
         "@prettier/plugin-php": "^0.17.6",
+=======
+        "@prettier/plugin-php": "^0.18.0",
+>>>>>>> 78748c52b48ada80c623bc19ed986c67716e604b
         "@shufo/prettier-plugin-blade": "^1.0.3",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
