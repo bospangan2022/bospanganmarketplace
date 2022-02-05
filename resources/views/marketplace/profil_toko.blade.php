@@ -24,11 +24,7 @@
                     </div>
                     <div class="col-md-5 mt-1">
                         <div class="detail-toko">
-<<<<<<< HEAD
-                            <p class="nama-toko">{{$t->nama_toko}}</p>
-=======
                             <p class="nama-toko">{{ $t->nama_toko }}</p>
->>>>>>> e34d5ce9fab11e6faca06521669605e81db63171
 
                             <div class="kota-toko flex">
                                 <i class="marker fa fa-map-marker-alt text-success mr-2"></i>
@@ -37,13 +33,7 @@
                             <div class="alamat-toko flex">
                                 <i class=""></i>
 
-<<<<<<< HEAD
-                                <h4 class="alamat mr-2">
-                                {{$t->alamat}}
-                                </h4>
-=======
                                 <h4 class="alamat mr-2">{{ $t->alamat }}</h4>
->>>>>>> e34d5ce9fab11e6faca06521669605e81db63171
                             </div>
 
                             <div class="tombol-toko text-left">
@@ -55,10 +45,7 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-=======
                     @endforeach
->>>>>>> e34d5ce9fab11e6faca06521669605e81db63171
                 </div>
                 @endforeach
                 <div class="modal fade bd-example-modal-md" id="detail" role="dialog">

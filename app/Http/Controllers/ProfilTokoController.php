@@ -11,8 +11,10 @@ class ProfilTokoController extends Controller
     public function index($id)
     {
         $toko = DB::table("tb_toko")
+            ->join("regencies", "tb_toko.kota", "=", "regencies.id")
             ->where("id_toko", $id)
             ->get();
+        //dd($toko);
 
         // $kota = DB::table("regencies")
         //     ->reorder("nama_kota", "asc")

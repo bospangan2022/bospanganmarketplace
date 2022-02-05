@@ -60,10 +60,6 @@ Route::get("produkdetail/{id}", [ProdukDetailController::class, "index"]);
 Route::get("aboutus", [AboutController::class, "index"]);
 Route::get("search", [BelanjaController::class, "search"])->name("search");
 Route::get("profil_toko/{id}", [ProfilTokoController::class, "index"]);
-<<<<<<< HEAD
-=======
-
->>>>>>> e34d5ce9fab11e6faca06521669605e81db63171
 Route::group(["middleware" => ["auth"]], function () {
     Route::group(["middleware" => ["cek_login:pelanggan"]], function () {
         Route::post("add_cart", [CartController::class, "tambah_keranjang"]);
