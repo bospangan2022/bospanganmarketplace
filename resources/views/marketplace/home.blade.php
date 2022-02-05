@@ -259,6 +259,10 @@
                                 <div class="product-name">
                                     <a href="x.html">{{ $b->nama_barang }}</a>
                                 </div>
+
+                                <div class="toko-name">
+                                    <a href="{{url('profil_toko',$b->nama_toko)}}" class="nama_toko" href="">{{ $b->nama_toko }}</a>
+                                </div>
                                 <!-- End product name -->
                                 <!-- product price -->
                                 <div class="product-price">

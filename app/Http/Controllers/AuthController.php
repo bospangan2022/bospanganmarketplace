@@ -12,89 +12,94 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('marketplace.login');
+        return view("marketplace.login");
     }
 
     public function login_admin()
     {
-        return view('login');
+        return view("login");
     }
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        return view("admin.dashboard");
     }
 
     public function proses_login(Request $request)
     {
         request()->validate([
-            'username' => 'required',
-            'password' => 'required',
+            "username" => "required",
+            "password" => "required",
         ]);
 
-        $credentials = $request->only('username', 'password');
+        $credentials = $request->only("username", "password");
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            if ($user->role == 'pelanggan') {
-                return redirect()->intended('/');
-            } else if ($user->role == 'admin') {
-                return redirect()->intended('dashboard');
+            if ($user->role == "pelanggan") {
+                return redirect()->intended("/");
+            } elseif ($user->role == "admin") {
+                return redirect()->intended("dashboard");
             }
-            return redirect('login');
+            return redirect("login");
         }
-        Session::flash('error', 'Email atau Password Salah');
-        return redirect('login');
+        Session::flash("error", "Email atau Password Salah");
+        return redirect("login");
     }
 
     public function logout(Request $request)
     {
         $request->session()->flush();
         Auth::logout();
-        return redirect('login');
+        return redirect("login");
     }
 
     public function register(Request $request)
     {
-        return view('marketplace.register');
+        return view("marketplace.register");
     }
 
     public function proses_registrasi(Request $request)
     {
         $messages = [
-            'required' => 'Data Ada Yang Belum Diisi !!!',
-            'email' => 'Format Harus Email',
-            'same' => 'Password Tidak Cocok',
+            "required" => "Data Ada Yang Belum Diisi !!!",
+            "email" => "Format Harus Email",
+            "same" => "Password Tidak Cocok",
+            "unique" => "Username Atau Email Sudah Dipakai",
         ];
 
-        $request->validate([
-            'nama' => 'required',
-            'email' => 'required|email|unique:users',
-            'no_hp' => 'required',
-            'password' => 'required|min:6',
-            'ulangi_password' => 'same:password',
-            'role' => 'required',
-        ],$messages);
+        $request->validate(
+            [
+                "nama" => "required",
+                "email" => "required|email|unique:users",
+                "no_hp" => "required",
+                "username" => "required|unique:users",
+                "password" => "required|min:6",
+                "ulangi_password" => "same:password",
+                "role" => "required",
+            ],
+            $messages
+        );
 
         User::create([
-            'name' => $request->nama,
-            'no_hp' => $request->no_hp,
-            'role' => $request->role,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'email' => $request->email,
+            "name" => $request->nama,
+            "no_hp" => $request->no_hp,
+            "role" => $request->role,
+            "username" => $request->username,
+            "password" => bcrypt($request->password),
+            "email" => $request->email,
         ]);
 
-        return redirect()->route('login');
+        return redirect()->route("login");
     }
 
     public function create(array $data)
     {
         return User::create([
-            'name' => $data['nama'],
-            'email' => $data['email'],
-            'no_hp' => $data['no_hp'],
-            'password' => Hash::make($data['password']),
-            'role' => $data['role'],
+            "name" => $data["nama"],
+            "email" => $data["email"],
+            "no_hp" => $data["no_hp"],
+            "password" => Hash::make($data["password"]),
+            "role" => $data["role"],
         ]);
     }
 }
