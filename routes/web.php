@@ -64,17 +64,36 @@ Route::get("produkdetail/{id}", [ProdukDetailController::class, "index"]);
 Route::get("aboutus", [AboutController::class, "index"]);
 Route::get("search", [BelanjaController::class, "search"])->name("search");
 Route::get("profil_toko/{id}", [ProfilTokoController::class, "index"]);
+
 Route::group(["middleware" => ["auth"]], function () {
     Route::group(["middleware" => ["cek_login:pelanggan"]], function () {
         Route::post("add_cart", [CartController::class, "tambah_keranjang"]);
         Route::get("tampil_cart", [CartController::class, "index"]);
         Route::get("remove_cart/{id}", [CartController::class, "hapus"]);
-        Route::get("remove_cartall", [CartController::class, "hapus_semua"]);
+        Route::get("remove_cartall/{id}", [
+            CartController::class,
+            "hapus_semua",
+        ]);
         Route::post("update_cart/{id}", [CartController::class, "update"]);
         Route::get("/getKec", [CartController::class, "getKec"]);
         Route::get("/getDesa", [CartController::class, "getDesa"]);
 
         Route::get("profil", [ProfilController::class, "index"]);
+
+        Route::get("tanya_penjual", [
+            ProfilTokoController::class,
+            "tanya_penjual",
+        ]);
+
+        Route::get("barangtoko_kat/{id}", [
+            ProfilTokoController::class,
+            "barangtoko_kat",
+        ]);
+
+        Route::get("cari_brgtoko", [
+            ProfilTokoController::class,
+            "search",
+        ])->name("search");
 
         Route::post("tambah_alamat", [
             ProfilController::class,

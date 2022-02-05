@@ -2,16 +2,19 @@
 
 @section('content')
 
-<div id="page-content">
-    	<!--Home slider-->
-    	<div class="slideshow slideshow-wrapper pb-section">
-        	<div class="home-slideshow">
-            	<div class="slide">
-                	<div class="blur-up lazyload">
-                        <img class="blur-up lazyload" data-src="{{ asset('assets/marketplace/images/slideshow-banners/slide2.jpg') }}" src="{{ asset('assets/marketplace/images/slideshow-banners/slide2.jpg') }}" alt="Shop Our New Collection" title="Shop Our New Collection" />
+    <div id="page-content">
+        <!--Home slider-->
+        <div class="slideshow slideshow-wrapper pb-section">
+            <div class="home-slideshow">
+                <div class="slide">
+                    <div class="blur-up lazyload">
+                        <img class="blur-up lazyload"
+                            data-src="{{ asset('assets/marketplace/images/slideshow-banners/slide2.jpg') }}"
+                            src="{{ asset('assets/marketplace/images/slideshow-banners/slide2.jpg') }}"
+                            alt="Shop Our New Collection" title="Shop Our New Collection" />
                         <div class="slideshow__text-wrap slideshow__overlay classic middle">
                             <div class="slideshow__text-content middle">
-                            	<div class="container">
+                                <div class="container">
                                     <div class="wrap-caption center">
                                         <h2 class="h1 mega-title slideshow__title">Bos Pangan Marketplace</h2>
                                         <span class="mega-subtitle slideshow__subtitle">Masalah Pangan Beres</span>
@@ -23,14 +26,18 @@
                     </div>
                 </div>
                 <div class="slide">
-                	<div class="blur-up lazyload">
-                        <img class="blur-up lazyload" data-src="{{ asset('assets/marketplace/images/slideshow-banners/slide3.jpg') }}" src="{{ asset('assets/marketplace/images/slideshow-banners/slide3.jpg') }}" alt="Summer Bikini Collection" title="Summer Bikini Collection" />
+                    <div class="blur-up lazyload">
+                        <img class="blur-up lazyload"
+                            data-src="{{ asset('assets/marketplace/images/slideshow-banners/slide3.jpg') }}"
+                            src="{{ asset('assets/marketplace/images/slideshow-banners/slide3.jpg') }}"
+                            alt="Summer Bikini Collection" title="Summer Bikini Collection" />
                         <div class="slideshow__text-wrap slideshow__overlay classic middle">
                             <div class="slideshow__text-content middle">
-                            	<div class="container">
+                                <div class="container">
                                     <div class="wrap-caption center">
                                         <h2 class="h1 mega-title slideshow__title">Kebutuhan Anda Tersedia Disini</h2>
-                                        <span class="mega-subtitle slideshow__subtitle">Tersedia Mulai Dari Sayuran, Buah-Buahan, dan lain-lain</span>
+                                        <span class="mega-subtitle slideshow__subtitle">Tersedia Mulai Dari Sayuran,
+                                            Buah-Buahan, dan lain-lain</span>
                                         <span class="btn"> Shop now</span>
                                     </div>
                                 </div>
@@ -43,49 +50,41 @@
         <!--End Home slider-->
         <!--Weekly Bestseller-->
         <div class="section">
-        	<div class="container">
-            	<div class="row">
-                	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="section-header text-center">
                             <h2 class="h2">Kategori</h2>
                             <p>Kategori barang yang kami sediakan</p>
                         </div>
                     </div>
-            	</div>    
+                </div>
             </div>
         </div>
 
         <!--Collection Box slider-->
         <div class="collection-box section">
-        <div class="container-fluid">
-            <div class="collection-grid">
-                @foreach($kategori as $kat)
-                <div class="collection-grid-item">
-                    <a
-                    href="{{ url('belanja_kat', $kat->id_kategori) }}"
-                    class="collection-grid-item__link"
-                    >
-                    <img
-                        data-src="/images/post/{{ $kat->foto }}"
-                        src="/images/post/{{ $kat->foto }}"
-                        alt="Fashion"
-                        class="blur-up lazyload"
-                    />
-                    <div class="collection-grid-item__title-wrapper">
-                        <h3
-                        class="
+            <div class="container-fluid">
+                <div class="collection-grid">
+                    @foreach ($kategori as $kat)
+                        <div class="collection-grid-item">
+                            <a href="{{ url('belanja_kat', $kat->id_kategori) }}" class="collection-grid-item__link">
+                                <img data-src="/images/post/{{ $kat->foto }}" src="/images/post/{{ $kat->foto }}"
+                                    alt="Fashion" class="blur-up lazyload" />
+                                <div class="collection-grid-item__title-wrapper">
+                                    <h3
+                                        class="
                             collection-grid-item__title
                             btn btn--secondary
                             no-border
-                        "
-                        >
-                        {{ $kat->nama_kategori }}
-                        </h3>
-                    </div>
-                    </a>
-                </div>
-                @endforeach
-                {{-- <div class="collection-grid-item">
+                        ">
+                                        {{ $kat->nama_kategori }}
+                                    </h3>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                    {{-- <div class="collection-grid-item">
                     <a
                     href="collection-page.html"
                     class="collection-grid-item__link"
@@ -205,75 +204,82 @@
                     </div>
                     </a>
                 </div> --}}
+                </div>
             </div>
-        </div>
         </div>
         <!--End Collection Box slider-->
         <!--Weekly Bestseller-->
         <!--New Arrivals-->
         <div class="product-rows section">
-        	<div class="container">
-            	<div class="row">
-                	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        				<div class="section-header text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="section-header text-center">
                             <h2 class="h2">Best Seller</h2>
                             <p>Barang-barang yang banyak dibeli di Bos Pangan Marketplace</p>
                         </div>
-            		</div>
+                    </div>
                 </div>
-	            <div class="grid-products">
+                <div class="grid-products">
                     <div class="row">
-                        @foreach($barang as $b)
-                    	<div class="col-6 col-sm-2 col-md-3 col-lg-3 item">
-                            <div class="product-image">
-                                <!--start product image -->
-                                <a href="{{ url('produkdetail', $b->id_barang) }}" class="grid-view-item__link">
-                                    <!-- image -->
-                                    <img class="primary blur-up lazyload" data-src="images/post/{{$b->foto}}" alt="image" title="product" />
-                                    <!-- End image -->
-                                    <!-- Hover image -->
-                                    <img class="hover blur-up lazyload" data-src="images/post/{{$b->foto}}" src="images/post/{{$b->foto}}" alt="image" title="product" />
-                                    <!-- End hover image -->
-                                </a>
-                                <!-- end product image -->
-                                <!-- product button -->
-                               
-     
-                                <form method="POST" action="{{ url('add_wishlist') }} " enctype="multipart/form-data" >
-                                    @csrf
-                                    <div class="button-set">
-                                        <input type="hidden" name="id_barang" value="{{ $b->id_barang }}">
-                                        <div class="wishlist-btn">
-                                            <button class="wishlist add-to-wishlist" type="submit"><i class="icon anm anm-heart-l"></i></button>
-                                        </div>
-                                        
-                                    </div>
-                                </form>
-                                <!-- End product button -->
-                            </div>
-                            <!--End start product image -->
-                                
-                            <!--start product details -->
-                            <div class="product-details text-center">
-                                <!-- product name -->
-                                <div class="product-name">
-                                    <a href="x.html">{{ $b->nama_barang }}</a>
-                                </div>
+                        @foreach ($barang as $b)
+                            <div class="col-6 col-sm-2 col-md-3 col-lg-3 item">
+                                <div class="product-image">
+                                    <!--start product image -->
+                                    <a href="{{ url('produkdetail', $b->id_barang) }}" class="grid-view-item__link">
+                                        <!-- image -->
+                                        <img class="primary blur-up lazyload" data-src="images/post/{{ $b->foto }}"
+                                            alt="image" title="product" />
+                                        <!-- End image -->
+                                        <!-- Hover image -->
+                                        <img class="hover blur-up lazyload" data-src="images/post/{{ $b->foto }}"
+                                            src="images/post/{{ $b->foto }}" alt="image" title="product" />
+                                        <!-- End hover image -->
+                                    </a>
+                                    <!-- end product image -->
+                                    <!-- product button -->
 
-                                <div class="toko-name">
-                                    <a class="nama_toko" href="{{ url('profil_toko' , $b->id_toko) }}">{{ $b->nama_toko }}</a>
+
+                                    <form method="POST" action="{{ url('add_wishlist') }} "
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="button-set">
+                                            <input type="hidden" name="id_barang" value="{{ $b->id_barang }}">
+                                            <div class="wishlist-btn">
+                                                <button class="wishlist add-to-wishlist" type="submit"><i
+                                                        class="icon anm anm-heart-l"></i></button>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                    <!-- End product button -->
                                 </div>
-                                <!-- End product name -->
-                                <!-- product price -->
-                                <div class="product-price">
-                                    <span class="price">@currency($b->harga)</span>
+                                <!--End start product image -->
+
+                                <!--start product details -->
+                                <div class="product-details text-center">
+                                    <!-- product name -->
+                                    <div class="product-name">
+                                        <a href="x.html">{{ $b->nama_barang }}</a>
+                                    </div>
+
+                                    <div class="toko-name mt-2">
+                                        <img class="pp_toko" src="/images/post/{{ $b->foto_toko }}" alt="">
+                                        <a class="nama_toko"
+                                            href="{{ url('profil_toko', $b->nama_toko) }}">{{ $b->nama_toko }}
+                                        </a>
+                                    </div>
+                                    <!-- End product name -->
+                                    <!-- product price -->
+                                    <div class="product-price">
+                                        <span class="price">@currency($b->harga)</span>
+                                    </div>
+                                    <!-- End product price -->
                                 </div>
-                                <!-- End product price -->
+                                <!-- End product details -->
                             </div>
-                            <!-- End product details -->
-                        </div>
                         @endforeach
-                    	{{-- <div class="col-6 col-sm-2 col-md-3 col-lg-3 item">
+                        {{-- <div class="col-6 col-sm-2 col-md-3 col-lg-3 item">
                             <div class="product-image">
                                 <!--start product image -->
                                 <a href="produk_detail.html" class="grid-view-item__link">
@@ -421,17 +427,17 @@
                             </div>
                             <!-- End product details -->
                         </div> --}}
-                        
-						
+
+
                     </div>
                     <div class="row">
-                    	<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                        	<a href="{{ url('belanja') }}" class="btn">View all</a>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                            <a href="{{ url('belanja') }}" class="btn">View all</a>
                         </div>
                     </div>
                 </div>
-           </div>
-        </div>	
+            </div>
+        </div>
         <!--End Featured Product-->
     </div>
 

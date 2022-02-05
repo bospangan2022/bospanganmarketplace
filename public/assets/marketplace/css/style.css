@@ -1658,12 +1658,71 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
 }
 
 /*---------------------------------------
+  III Produk Detail Correction ---------------
+  ---------------------------------------*/
+
+.product-toko .nama_toko{
+  font-family: Poppins;
+  font-weight: 600;
+  color: #027b02;
+}
+
+/*---------------------------------------
+  III Dropdown Correction ---------------
+  ---------------------------------------*/
+
+
+
+.dropdown-select{
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.dropdown-list{
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+}
+
+.dropdown-list__item{
+  padding: 1rem;
+}
+
+
+/*---------------------------------------
   III Profil Toko ---------------
   ---------------------------------------*/
 .card-profil-toko{
   margin : 1em 2em 3em 2em;
   padding: 1em 0 2em 0;
 }
+
+.product-name .nm_produk{
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 1em;
+  
+}
+
+.toko-name .pp_toko{
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%; 
+  -moz-border-radius: 50%; 
+  -webkit-border-radius: 50%; 
+  -o-border-radius: 50%;
+}
+
 
 .profil-toko-photo { margin-top: 1.3em; width: 100px; height: 100px; border-radius: 50%; -moz-border-radius: 50%; -webkit-border-radius: 50%; -o-border-radius: 50%; margin-left: 1em; }
 

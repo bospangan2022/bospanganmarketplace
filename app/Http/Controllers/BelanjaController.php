@@ -17,6 +17,7 @@ class BelanjaController extends Controller
             ->get();
 
         // dd($barang);
+
         $toko = DB::table("tb_toko")->get();
         $kat = DB::table("tb_kategori")->get();
 
