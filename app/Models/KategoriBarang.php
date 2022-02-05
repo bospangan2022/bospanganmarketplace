@@ -9,12 +9,13 @@ class KategoriBarang extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_kategori';
+    protected $table = "tb_kategori";
 
     protected $fillable = [
-        'nama_kategori',
-        'status_kategori',
-        'foto',
-        'deskripsi',
+        "nama_kategori",
+        "id_toko",
+        "status_kategori",
+        "foto",
+        "deskripsi",
     ];
 }

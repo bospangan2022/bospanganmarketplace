@@ -12,6 +12,6 @@ class BarangModel extends Model
     protected $table = 'tb_barang';
 
     protected $fillable = [
-         'id_kategori' , 'nama_barang', 'sku', 'berat', 'keterangan', 'harga' , 'harga_satuan', 'satuan', 'stok', 'foto' 
+         'id_kategori' , 'id_toko', 'nama_barang', 'sku', 'berat', 'keterangan', 'harga' , 'harga_satuan', 'satuan', 'stok', 'foto' 
     ];
 }

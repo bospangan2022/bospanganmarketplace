@@ -19,6 +19,9 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfilTokoController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TokoAdminController;
+use App\Http\Controllers\KelolaTokoUserController;
+use App\Http\Controllers\ProdukUserController;
+use App\Http\Controllers\KategoriUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,8 +54,9 @@ Route::post(
 Route::get("logout", "App\Http\Controllers\AuthController@logout")->name(
     "logout"
 );
-
+// ------------------------
 // Customer Routes
+// ------------------------
 Route::get("/", [HomeController::class, "index"])->name("kategori");
 Route::get("belanja", [BelanjaController::class, "index"]);
 Route::get("belanja_kat/{id}", [BelanjaController::class, "barang_kat"]);
@@ -108,9 +112,67 @@ Route::group(["middleware" => ["auth"]], function () {
 
         Route::get("buka_toko", [StoreController::class, "index"]);
         Route::post("tambah_toko", [StoreController::class, "tambah_toko"]);
+
+        // ------------------------
+        //Kelola Toko User Routes
+        // ------------------------
+
+        Route::get("kelola_toko", [KelolaTokoUserController::class, "index"]);
+
+        Route::get("produk_user", [ProdukUserController::class, "index"])->name(
+            "produk_user"
+        );
+        Route::get("cari_produk_user", [
+            ProdukUserController::class,
+            "cari_produk",
+        ])->name("cari_produk_user");
+        Route::get("tambah_produk_user", [
+            ProdukUserController::class,
+            "tambah_produk",
+        ]);
+        Route::post("proses_tambah_user", [
+            ProdukUserController::class,
+            "proses_tambah",
+        ])->name("proses_tambah");
+        Route::get("edit_produk_user/{id}", [
+            ProdukUserController::class,
+            "edit_produk",
+        ]);
+        Route::post("edit_produk_user/update/{id}", [
+            ProdukUserController::class,
+            "update",
+        ]);
+        Route::post("delete_produk_user/{id}", [
+            ProdukUserController::class,
+            "destroy",
+        ]);
+
+        Route::get("tambah_kategori_user", [
+            KategoriUserController::class,
+            "index",
+        ])->name("tambah_kategori_user");
+        Route::post("tambah_proses_user", [
+            KategoriUserController::class,
+            "tambah_proses",
+        ])->name("tambah_proses_user");
+        Route::get("kategori_user/{id}", [
+            KategoriUserController::class,
+            "tampil_kategori",
+        ]);
+        Route::get("kategori_usernew/{id}", [
+            KategoriUserController::class,
+            "tampil_kategorinew",
+        ]);
+        Route::post("edit_kategori_user/{id}", [
+            KategoriUserController::class,
+            "update_kategori",
+        ])->name("edit_kategori_user");
     });
 
+    // ------------------------
     // Admin Routes
+    // ------------------------
+
     Route::group(["middleware" => ["cek_login:admin"]], function () {
         Route::get("dashboard", [AuthController::class, "dashboard"]);
         Route::get("produk", [ProdukController::class, "index"])->name(
