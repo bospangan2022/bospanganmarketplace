@@ -67,17 +67,17 @@ class CartController extends Controller
 
     public function getKec(Request $request)
     {
-        $kecamatan = District::where("regency_id", $request->id_kota)
+        $kecamatan = District::where("id_kota", $request->id_kota)
             ->reorder("nama_kecamatan", "asc")
-            ->pluck("id", "nama_kecamatan");
+            ->pluck("id_kecamatan", "nama_kecamatan");
         return response()->json($kecamatan);
     }
 
     public function getDesa(Request $request)
     {
-        $desa = Village::where("district_id", $request->id_kecamatan)
+        $desa = Village::where("id_kecamatan", $request->id_kecamatan)
             ->reorder("nama_desa", "asc")
-            ->pluck("id", "nama_desa");
+            ->pluck("id_desa", "nama_desa");
         return response()->json($desa);
     }
 

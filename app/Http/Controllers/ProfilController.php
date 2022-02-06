@@ -13,52 +13,32 @@ class ProfilController extends Controller
     public function index()
     {
         $utama = DB::table("user_detail")
+            ->leftjoin("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
             ->leftjoin(
-                "regencies",
-                "user_detail.id_regencies",
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
                 "=",
-                "regencies.id"
+                "tb_kecamatan.id_kecamatan"
             )
-            ->leftjoin(
-                "districts",
-                "user_detail.id_districts",
-                "=",
-                "districts.id"
-            )
-            ->leftjoin(
-                "villages",
-                "user_detail.id_villages",
-                "=",
-                "villages.id"
-            )
+            ->leftjoin("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
             ->where("id_user", Auth::user()->id)
             ->where("status", "utama")
             ->get();
 
         $profil = DB::table("user_detail")
+            ->leftjoin("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
             ->leftjoin(
-                "regencies",
-                "user_detail.id_regencies",
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
                 "=",
-                "regencies.id"
+                "tb_kecamatan.id_kecamatan"
             )
-            ->leftjoin(
-                "districts",
-                "user_detail.id_districts",
-                "=",
-                "districts.id"
-            )
-            ->leftjoin(
-                "villages",
-                "user_detail.id_villages",
-                "=",
-                "villages.id"
-            )
+            ->leftjoin("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
             ->where("id_user", Auth::user()->id)
             ->where("status", "Biasa")
             ->get();
 
-        $kota = DB::table("regencies")
+        $kota = DB::table("tb_kota")
             ->reorder("nama_kota", "asc")
             ->get();
 

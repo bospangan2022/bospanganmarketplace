@@ -26,16 +26,14 @@ class District extends Model
      *
      * @var string
      */
-    protected $table = 'districts';
+    protected $table = "tb_kecamatan";
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'regency_id'
-    ];
+    protected $hidden = ["id_kota"];
 
     /**
      * District belongs to Regency.

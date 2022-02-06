@@ -141,7 +141,8 @@
                                                     <h4 class="nama-penerima">{{ $u->nama_penerima }}</h4>
                                                     <h4 class="no-hp">{{ $u->phone }}</h4>
                                                     <h4 class="alamat">{{ $u->alamat }}, {{ $u->nama_desa }},
-                                                        {{ $u->nama_kecamatan }}, {{ $u->nama_kota }} {{ $u->kode_pos }}
+                                                        {{ $u->nama_kecamatan }}, {{ $u->nama_kota }}
+                                                        {{ $u->kode_pos }}
                                                     </h4>
                                                     <h4 class="no-hp">{{ $u->catatan }}</h4>
                                                 </div>
@@ -165,7 +166,8 @@
                                                     <h4 class="nama-penerima">{{ $p->nama_penerima }}</h4>
                                                     <h4 class="no-hp">{{ $p->phone }}</h4>
                                                     <h4 class="alamat">{{ $p->alamat }}, {{ $p->nama_desa }},
-                                                        {{ $p->nama_kecamatan }}, {{ $p->nama_kota }} {{ $p->kode_pos }}
+                                                        {{ $p->nama_kecamatan }}, {{ $p->nama_kota }}
+                                                        {{ $p->kode_pos }}
                                                     </h4>
                                                     <h4 class="no-hp">{{ $p->catatan }}</h4>
                                                 </div>
@@ -562,7 +564,8 @@
                                                     style="width: 100%;" data-show-subtext="true" data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
-                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}</option>
+                                                        <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -652,7 +655,8 @@
                                                     style="width: 100%;" data-show-subtext="true" data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
-                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}</option>
+                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -743,7 +747,8 @@
                                                     style="width: 100%;" data-show-subtext="true" data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
-                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}</option>
+                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
