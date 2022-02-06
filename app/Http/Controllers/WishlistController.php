@@ -22,10 +22,17 @@ class WishlistController extends Controller
             ->where("tb_wishlist.id_user", Auth::user()->id)
             ->get();
 
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
         // dd($wishlist);
 
         if (!Auth::check()) {
-            return view("marketplace.wishlist", ["wishlist" => $wishlist]);
+            return view("marketplace.wishlist", [
+                "wishlist" => $wishlist,
+                "katlimit" => $katlimit,
+            ]);
         } else {
             $keranjang = DB::table("tb_keranjang")
                 ->join(
@@ -53,6 +60,7 @@ class WishlistController extends Controller
                 "count_barang" => $count_barang,
                 "count_love" => $count_love,
                 "sub_total" => $sub_total,
+                "katlimit" => $katlimit,
             ]);
         }
     }

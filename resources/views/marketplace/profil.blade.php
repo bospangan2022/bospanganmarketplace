@@ -564,11 +564,7 @@
                                                     style="width: 100%;" data-show-subtext="true" data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
-<<<<<<< HEAD
-                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}
-=======
                                                         <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}
->>>>>>> 132fdfb81b55cdd694fb0908a84eced0ded76c76
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -751,11 +747,7 @@
                                                     style="width: 100%;" data-show-subtext="true" data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
-<<<<<<< HEAD
-                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}
-=======
                                                         <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}
->>>>>>> 132fdfb81b55cdd694fb0908a84eced0ded76c76
                                                         </option>
                                                     @endforeach
                                                 </select>
