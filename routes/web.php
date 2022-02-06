@@ -116,7 +116,7 @@ Route::group(["middleware" => ["auth"]], function () {
             CheckoutController::class,
             "checkoutperitem",
         ]);
-        Route::get("checkout", [CheckoutController::class, "index"]);
+        Route::get("checkout/{id}", [CheckoutController::class, "index"]);
 
         Route::get("wishlist", [WishlistController::class, "index"]);
         Route::post("add_wishlist", [

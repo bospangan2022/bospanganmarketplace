@@ -126,7 +126,7 @@ use Illuminate\Support\Facades\DB;
                                             class="btn btn-secondary btn--small  small--hide">Clear Cart</a>
                                     </td>
                                     <td colspan="5" class="text-right">
-                                        <a href="{{ url('remove_cartall') }}" type="submit" name="clear"
+                                        <a href="{{ url('checkout', $tk->id_toko) }}" type="submit" name="clear"
                                             class="btn btn-secondary btn--small  small--hide">Checkout</a>
                                     </td>
                                 </tr>

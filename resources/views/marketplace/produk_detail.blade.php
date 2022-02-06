@@ -124,6 +124,7 @@
                                         @csrf
                                         <input type="hidden" value="{{ $bi->id_barang }}" name="id_barang">
                                         <input type="hidden" value="{{ $bi->harga }}" name="harga">
+                                        <input type="hidden" value="{{ $bi->id_toko }}" name="id_toko">
                                         <div class="product-form__item--quantity">
                                             <div class="wrapQtyBtn">
                                                 <div class="qtyField">

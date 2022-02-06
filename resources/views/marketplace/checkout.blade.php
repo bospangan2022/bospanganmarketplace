@@ -108,7 +108,7 @@
                     <div class="create-ac-content bg-light-gray padding-20px-all mb-3">
                         <h2 class="login-title mb-3">Alamat Toko</h2>
                         <div class="row">
-                            @foreach ($user as $us)
+                            @foreach ($alamat_toko as $at)
                                 <div class="form-group col-md-12 col-lg-12 col-xl-12 border-bottom">
                                     <table class="table-borderless ms-5 mb-5">
                                         <tbody>
@@ -121,7 +121,7 @@
                                                     <span>:</span>
                                                 </td>
                                                 <td>
-                                                    <span>{{ $us->nama_penerima }}</span>
+                                                    <span>{{ $at->nama_toko }}</span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -132,7 +132,7 @@
                                                     <span>:</span>
                                                 </td>
                                                 <td>
-                                                    <span>{{ $us->phone }}</span>
+                                                    <span>{{ $at->hp_toko }}</span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -143,24 +143,13 @@
                                                     <span>:</span>
                                                 </td>
                                                 <td>
-                                                    <span>{{ $us->alamat }} </span>
-                                                    <span>{{ $us->nama_kota }}</span>
-                                                    <span>{{ $us->nama_kecamatan }}</span>
-                                                    <span>{{ $us->nama_desa }}</span>
-                                                    <span>{{ $us->kode_pos }}</span>
+                                                    <span>{{ $at->alamat }} </span>
+                                                    <span>{{ $at->nama_kota }}</span>
+                                                    <span>{{ $at->nama_kecamatan }}</span>
+                                                    <span>{{ $at->nama_desa }}</span>
+                                                    <span>{{ $at->kode_pos }}</span>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="col-3">
-                                                    <span>Catatan</span>
-                                                </td>
-                                                <td class="col-1">
-                                                    <span>:</span>
-                                                </td>
-                                                <td>
-                                                    <span>{{ $us->catatan }}</span>
-                                            </tr>
-
                                         </tbody>
                                     </table>
 

@@ -16,8 +16,6 @@ class BelanjaController extends Controller
             ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
             ->get();
 
-        // dd($barang);
-
         $toko = DB::table("tb_toko")->get();
         $kat = DB::table("tb_kategori")->get();
 
