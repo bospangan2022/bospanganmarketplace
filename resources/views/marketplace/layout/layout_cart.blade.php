@@ -304,29 +304,28 @@ use Illuminate\Support\Facades\DB;
                             <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                                 <h4 class="h4">Quick Shop</h4>
                                 <ul>
-                                    <li><a href="#">Sayuran</a></li>
-                                    <li><a href="#">Buah-buahan</a></li>
-                                    <li><a href="#">Mie Instant</a></li>
-                                    <li><a href="#">Snack</a></li>
-                                    <li><a href="#">Minuman</a></li>
+                                    @foreach ($katlimit as $k)
+                                        <li>
+                                            <a href="{{ url('belanja_kat', $k->id_kategori) }}">
+                                                {{ $k->nama_kategori }}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                                 <h4 class="h4">Informations</h4>
                                 <ul>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="{{ url('aboutus') }}">About us</a></li>
                                     <li><a href="#">Privacy policy</a></li>
                                     <li><a href="#">Terms &amp; condition</a></li>
-                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="{{ url('profil') }}">My Account</a></li>
                                 </ul>
                             </div>
                             <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                                 <h4 class="h4">Customer Services</h4>
                                 <ul>
-                                    <li><a href="#">Request Personal Data</a></li>
                                     <li><a href="#">FAQ's</a></li>
-                                    <li><a href="#">Contact Us</a></li>
                                     <li><a href="#">Orders and Returns</a></li>
                                     <li><a href="#">Support Center</a></li>
                                 </ul>
@@ -335,10 +334,11 @@ use Illuminate\Support\Facades\DB;
                                 <h4 class="h4">Contact Us</h4>
                                 <ul class="addressFooter">
                                     <li><i class="icon anm anm-map-marker-al"></i>
-                                        <p>Jl Cimalaya No.13 ,<br>Kecamatan Kepanjen Kidul ,<br> Kota Blitar , 66116</p>
+                                        <p>Jl Cimalaya No.13 ,<br>Kecamatan Kepanjen Kidul ,<br> Kota Blitar , 66116
+                                        </p>
                                     </li>
                                     <li class="phone"><i class="icon anm anm-phone-s"></i>
-                                        <p>083833833833</p>
+                                        <p>+62 813-3817-6731</p>
                                     </li>
                                     <li class="email"><i class="icon anm anm-envelope-l"></i>
                                         <p>bospangan2022@gmail.com</p>

@@ -29,6 +29,10 @@ class ProfilTokoController extends Controller
             ->join("tb_kategori", "tb_toko.id_toko", "=", "tb_kategori.id_toko")
             ->get();
 
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
         // dd($j_kt);
 
         if (!Auth::check()) {
@@ -37,6 +41,7 @@ class ProfilTokoController extends Controller
                 "barang_toko" => $barang_toko,
                 "kat_toko" => $kat_toko,
                 "count" => $count,
+                "katlimit" => $katlimit,
             ]);
         } else {
             $keranjang = DB::table("tb_keranjang")
@@ -68,6 +73,7 @@ class ProfilTokoController extends Controller
                 "sub_total" => $sub_total,
                 "toko" => $toko,
                 "count" => $count,
+                "katlimit" => $katlimit,
             ]);
         }
     }
@@ -111,6 +117,10 @@ class ProfilTokoController extends Controller
             ->join("tb_kategori", "tb_toko.id_toko", "=", "tb_kategori.id_toko")
             ->get();
 
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
         $barang_kat = DB::table("tb_toko")
             ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
             ->where("id_kategori", $id)
@@ -124,6 +134,7 @@ class ProfilTokoController extends Controller
                 "barang_kat" => $barang_kat,
                 "kat_toko" => $kat_toko,
                 "count" => $count,
+                "katlimit" => $katlimit,
             ]);
         } else {
             $keranjang = DB::table("tb_keranjang")
@@ -155,21 +166,27 @@ class ProfilTokoController extends Controller
                 "sub_total" => $sub_total,
                 "toko" => $toko,
                 "count" => $count,
+                "katlimit" => $katlimit,
             ]);
         }
     }
 
     public function search(Request $request)
     {
-        $toko = DB::table("tb_toko")
-            ->join("regencies", "tb_toko.kota", "=", "regencies.id")
-            ->where("nama_toko", $id)
-            ->get();
+        // $toko = DB::table("tb_toko")
+        //     ->join("regencies", "tb_toko.kota", "=", "regencies.id")
+        //     ->where("nama_toko", $id)
+        //     ->get();
 
         $keyword = $request->cari;
         $kat_toko = DB::table("tb_toko")
             ->join("tb_kategori", "tb_toko.id_toko", "=", "tb_kategori.id_toko")
             ->get();
+
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
         $search = DB::table("tb_toko")
             ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
             ->orWhere("nama_barang", "LIKE", "%{$keyword}%")
@@ -179,10 +196,10 @@ class ProfilTokoController extends Controller
 
         if (!Auth::check()) {
             return view("marketplace.barangtoko_search", [
-                "toko" => $toko,
                 "search" => $search,
                 "kat_toko" => $kat_toko,
                 "count" => $count,
+                "katlimit" => $katlimit,
             ]);
         } else {
             $keranjang = DB::table("tb_keranjang")
@@ -212,8 +229,8 @@ class ProfilTokoController extends Controller
                 "count_barang" => $count_barang,
                 "count_love" => $count_love,
                 "sub_total" => $sub_total,
-                "toko" => $toko,
                 "count" => $count,
+                "katlimit" => $katlimit,
             ]);
         }
     }

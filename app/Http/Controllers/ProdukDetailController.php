@@ -11,6 +11,7 @@ class ProdukDetailController extends Controller
     public function index($id)
     {
         $barang = DB::table("tb_barang")->get();
+
         // $barang_id = DB::table('tb_barang')->where('id_barang', $id)->get();
         $barang_kat = DB::table("tb_toko")
             ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
@@ -28,12 +29,17 @@ class ProdukDetailController extends Controller
             ->where("id_barang", $id)
             ->get();
 
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
         // dd($barang_kat);
 
         if (!Auth::check()) {
             return view("marketplace.produk_detail", [
                 "barang" => $barang,
                 "barang_kat" => $barang_kat,
+                "katlimit" => $katlimit,
             ]);
         } else {
             $keranjang = DB::table("tb_keranjang")
@@ -63,6 +69,7 @@ class ProdukDetailController extends Controller
                 "count_barang" => $count_barang,
                 "count_love" => $count_love,
                 "sub_total" => $sub_total,
+                "katlimit" => $katlimit,
             ]);
         }
     }

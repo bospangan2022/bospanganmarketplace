@@ -143,12 +143,9 @@
                                             <div class="input-group-append">
                                                 <button id="button-addon3" type="submit" class="btn btn-link "><i
                                                         class="fa fa-search"></i>
-
                                                 </button>
                                             </div>
-
                                         </div>
-
                                     </div>
                                     <div
                                         class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">

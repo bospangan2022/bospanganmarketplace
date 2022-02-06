@@ -25,18 +25,16 @@ class Village extends Model
      *
      * @var string
      */
-    protected $table = 'villages';
+    protected $table = "tb_desa";
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'district_id'
-    ];
+    protected $hidden = ["id_kecamatan"];
 
-	/**
+    /**
      * Village belongs to District.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

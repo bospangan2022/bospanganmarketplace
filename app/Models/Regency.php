@@ -24,16 +24,14 @@ class Regency extends Model
      *
      * @var string
      */
-    protected $table = 'regencies';
+    protected $table = "tb_kota";
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'province_id'
-    ];
+    protected $hidden = ["id_provinsi"];
 
     /**
      * Regency belongs to Province.

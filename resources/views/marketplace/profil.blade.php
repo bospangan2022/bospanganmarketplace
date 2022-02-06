@@ -132,7 +132,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col md-12 flex">
-                                                        <i class="fa fa-map-marker text-success mr-2"></i>
+                                                        <i class="fas fa-map-marker-alt text-success mr-2"></i>
                                                         <h4 class="head-1 mr-2">Alamat</h4>
                                                         <h4 class="status">{{ $u->status }}</h4>
                                                     </div>
@@ -141,7 +141,8 @@
                                                     <h4 class="nama-penerima">{{ $u->nama_penerima }}</h4>
                                                     <h4 class="no-hp">{{ $u->phone }}</h4>
                                                     <h4 class="alamat">{{ $u->alamat }}, {{ $u->nama_desa }},
-                                                        {{ $u->nama_kecamatan }}, {{ $u->nama_kota }} {{ $u->kode_pos }}
+                                                        {{ $u->nama_kecamatan }}, {{ $u->nama_kota }}
+                                                        {{ $u->kode_pos }}
                                                     </h4>
                                                     <h4 class="no-hp">{{ $u->catatan }}</h4>
                                                 </div>
@@ -157,7 +158,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col md-12 flex">
-                                                        <i class="fa fa-map-marker text-success mr-2"></i>
+                                                        <i class="fas fa-map-marker-alt text-success mr-2"></i>
                                                         <h4 class="head-1 mr-5">Alamat</h4>
                                                     </div>
                                                 </div>
@@ -165,7 +166,8 @@
                                                     <h4 class="nama-penerima">{{ $p->nama_penerima }}</h4>
                                                     <h4 class="no-hp">{{ $p->phone }}</h4>
                                                     <h4 class="alamat">{{ $p->alamat }}, {{ $p->nama_desa }},
-                                                        {{ $p->nama_kecamatan }}, {{ $p->nama_kota }} {{ $p->kode_pos }}
+                                                        {{ $p->nama_kecamatan }}, {{ $p->nama_kota }}
+                                                        {{ $p->kode_pos }}
                                                     </h4>
                                                     <h4 class="no-hp">{{ $p->catatan }}</h4>
                                                 </div>
@@ -562,7 +564,12 @@
                                                     style="width: 100%;" data-show-subtext="true" data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
-                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}</option>
+<<<<<<< HEAD
+                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}
+=======
+                                                        <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}
+>>>>>>> 132fdfb81b55cdd694fb0908a84eced0ded76c76
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -652,7 +659,8 @@
                                                     style="width: 100%;" data-show-subtext="true" data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
-                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}</option>
+                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -743,7 +751,12 @@
                                                     style="width: 100%;" data-show-subtext="true" data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
-                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}</option>
+<<<<<<< HEAD
+                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}
+=======
+                                                        <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}
+>>>>>>> 132fdfb81b55cdd694fb0908a84eced0ded76c76
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>

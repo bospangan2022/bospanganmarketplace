@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -12,7 +13,10 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view("marketplace.login");
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+        return view("marketplace.login", ["katlimit" => $katlimit]);
     }
 
     public function login_admin()
@@ -55,7 +59,10 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        return view("marketplace.register");
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+        return view("marketplace.register", ["katlimit" => $katlimit]);
     }
 
     public function proses_registrasi(Request $request)

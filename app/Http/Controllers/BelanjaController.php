@@ -18,6 +18,9 @@ class BelanjaController extends Controller
 
         $toko = DB::table("tb_toko")->get();
         $kat = DB::table("tb_kategori")->get();
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
 
         if (!Auth::check()) {
             return view("marketplace.belanja", [
@@ -25,6 +28,7 @@ class BelanjaController extends Controller
                 "kat" => $kat,
                 "jumlah" => $jumlah,
                 "toko" => $toko,
+                "katlimit" => $katlimit,
             ]);
         } else {
             $keranjang = DB::table("tb_keranjang")
@@ -54,6 +58,7 @@ class BelanjaController extends Controller
                 "count_love" => $count_love,
                 "sub_total" => $sub_total,
                 "toko" => $toko,
+                "katlimit" => $katlimit,
             ]);
         }
     }
@@ -64,6 +69,9 @@ class BelanjaController extends Controller
             ->where("id_kategori", $id)
             ->get();
         $kat = DB::table("tb_kategori")->get();
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
 
         $barang_kat = DB::table("tb_toko")
             ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
@@ -79,6 +87,7 @@ class BelanjaController extends Controller
                 "kategori" => $kategori,
                 "kat" => $kat,
                 "jumlah" => $jumlah,
+                "katlimit" => $katlimit,
             ]);
         } else {
             $count_barang = DB::table("tb_keranjang")
@@ -108,6 +117,7 @@ class BelanjaController extends Controller
                 "count_love" => $count_love,
                 "keranjang" => $keranjang,
                 "sub_total" => $sub_total,
+                "katlimit" => $katlimit,
             ]);
         }
     }
@@ -121,6 +131,10 @@ class BelanjaController extends Controller
             ->orWhere("nama_barang", "LIKE", "%{$keyword}%")
             ->get();
         $jumlah = $search->count();
+
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
         // dd($search);
 
         if (!Auth::check()) {
@@ -129,6 +143,7 @@ class BelanjaController extends Controller
                 "search" => $search,
                 "keyword" => $keyword,
                 "jumlah" => $jumlah,
+                "katlimit" => $katlimit,
             ]);
         } else {
             $keranjang = DB::table("tb_keranjang")
@@ -160,6 +175,7 @@ class BelanjaController extends Controller
                 "search" => $search,
                 "keyword" => $keyword,
                 "jumlah" => $jumlah,
+                "katlimit" => $katlimit,
             ]);
         }
     }

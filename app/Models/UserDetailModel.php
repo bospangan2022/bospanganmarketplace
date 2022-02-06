@@ -9,9 +9,17 @@ class UserDetailModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'user_detail';
+    protected $table = "user_detail";
 
     protected $fillable = [
-         'id_user' , 'nama_penerima', 'phone', 'alamat', 'id_regencies', 'id_districts', 'id_villages' , 'kode_pos', 'catatan' 
+        "id_user",
+        "nama_penerima",
+        "phone",
+        "alamat",
+        "id_kota",
+        "id_kecamatan",
+        "id_desa",
+        "kode_pos",
+        "catatan",
     ];
 }

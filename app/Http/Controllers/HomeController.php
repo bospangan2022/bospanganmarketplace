@@ -17,11 +17,14 @@ class HomeController extends Controller
         // dd($barang);
 
         $kategori = DB::table("tb_kategori")->get();
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
 
         if (!Auth::check()) {
             return view(
                 "marketplace.home",
-                ["kategori" => $kategori],
+                ["kategori" => $kategori, "katlimit" => $katlimit],
                 ["barang" => $barang]
             );
         } else {
@@ -47,7 +50,7 @@ class HomeController extends Controller
 
             return view(
                 "marketplace.home",
-                ["kategori" => $kategori],
+                ["kategori" => $kategori, "katlimit" => $katlimit],
                 [
                     "barang" => $barang,
                     "keranjang" => $keranjang,

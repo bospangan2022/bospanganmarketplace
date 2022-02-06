@@ -51,9 +51,9 @@
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <!-- <a href="assets/marketplace/images/product-detail-page/cape-dress-4.jpg" data-size="1462x2048"></a>
-                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
-                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
-                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
+                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
                                     </div>
 
                                 </div>
@@ -109,10 +109,10 @@
                                         <li class="desc_li">Satuan : <a class="desc_a"
                                                 href="#">{{ $bi->satuan }}</a> </li>
                                         <li class="desc_li">Kategori : <a class="desc_a"
-                                                {{-- href="{{ url('belanja_kat', $bi->id_kategori) }}">{{ $bi->nama_kategori }}</a> --}} </li>
-                                                {{-- <li>Berat : {{ $bi->berat }}</li> --}}
+                                                href="{{ url('belanja_kat', $bi->id_kategori) }}">{{ $bi->nama_kategori }}</a>
+                                        </li>
+                                        {{-- <li>Berat : {{ $bi->berat }}</li> --}}
                                     </ul>
-                                    <p>{{ $bi->keterangan }}</p>
                                 </div>
                                 <div id="quantity_message">Cepat! Hanya Tinggal <span
                                         class="items">{{ $bi->stok }}</span> Stock.</div>
@@ -166,13 +166,7 @@
                                     </div>
                                 </div>
 
-                                <p id="freeShipMsg" class="freeShipMsg" data-price="199"><i class="fa fa-truck"
-                                        aria-hidden="true"></i> GRATIS ONGKIR <b>SELURUH PULAU JAWA!</b></p>
-                                <p class="shippingMsg"><i class="fa fa-clock-o" aria-hidden="true"></i> ESTIMASI <b
-                                        id="fromDate">Kamis May 1</b> dan <b id="toDate">Rabu May 7</b>.</p>
-                                <div class="userViewMsg" data-user="20" data-time="11000"><i class="fa fa-users"
-                                        aria-hidden="true"></i> <strong class="uersView">14</strong> ORANG SEDANG
-                                    MELIHAT PRODUK INI</div>
+
                             </div>
                         </div>
                     </div>
@@ -216,230 +210,14 @@
                 <div class="tabs-listing">
                     <ul class="product-tabs">
                         <li rel="tab1"><a class="tablink">Product Details</a></li>
-                        {{-- <li rel="tab2"><a class="tablink">Product Reviews</a></li> --}}
-                        <li rel="tab4"><a class="tablink">Shipping &amp; Returns</a></li>
                     </ul>
                     <div class="tab-container">
                         <div id="tab1" class="tab-content">
-                            <div class="product-description rte">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                    printer took a galley of type and scrambled it to make a type specimen book. It has
-                                    survived not only five centuries, but also the leap into electronic typesetting,
-                                    remaining essentially unchanged.</p>
-                                <ul>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-                                    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-                                    <li>Neque porro quisquam est qui dolorem ipsum quia dolor</li>
-                                    <li>Lorem Ipsum is not simply random text.</li>
-                                    <li>Free theme updates</li>
-                                </ul>
-                                <h3>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h3>
-                                <p>You can change the position of any sections such as slider, banner, products, collection
-                                    and so on by just dragging and dropping.&nbsp;</p>
-                                <h3>Lorem Ipsum is not simply random text.</h3>
-                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising
-                                    pain was born and I will give you a complete account of the system, and expound the
-                                    actual teachings of the great explorer of the truth, the master-builder of human
-                                    happiness.</p>
-                                <p>Change colors, fonts, banners, megamenus and more. Preview changes are live before saving
-                                    them.</p>
-                                <h3>1914 translation by H. Rackham</h3>
-                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising
-                                    pain was born and I will give you a complete account of the system, and expound the
-                                    actual teachings of the great explorer of the truth, the master-builder of human
-                                    happiness.</p>
-                                <h3>Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h3>
-                                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                                    occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
-                                    mollitia animi, id est laborum et dolorum fuga.</p>
-                                <h3>The standard Lorem Ipsum passage, used since the 1500s</h3>
-                                <p>You can use variant style from colors, images or variant images. Also available differnt
-                                    type of design styles and size.</p>
-                                <h3>Lorem Ipsum is not simply random text.</h3>
-                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising
-                                    pain was born and I will give you a complete account of the system, and expound the
-                                    actual teachings of the great explorer of the truth, the master-builder of human
-                                    happiness.</p>
-                                <h3>Proin ut lacus eget elit molestie posuere.</h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                    has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                    printer took a galley of type and scrambled.</p>
-                            </div>
-                        </div>
-
-                        <div id="tab2" class="tab-content">
-                            <div id="shopify-product-reviews">
-                                <div class="spr-container">
-                                    <div class="spr-header clearfix">
-                                        <div class="spr-summary">
-                                            <span class="product-review"><a class="reviewLink"><i
-                                                        class="font-13 fa fa-star"></i><i
-                                                        class="font-13 fa fa-star"></i><i
-                                                        class="font-13 fa fa-star"></i><i
-                                                        class="font-13 fa fa-star-o"></i><i
-                                                        class="font-13 fa fa-star-o"></i> </a><span
-                                                    class="spr-summary-actions-togglereviews">Based on 6
-                                                    reviews456</span></span>
-                                            <span class="spr-summary-actions">
-                                                <a href="#" class="spr-summary-actions-newreview btn">Write a review</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="spr-content">
-                                        <div class="spr-form clearfix">
-                                            <form method="post" action="#" id="new-review-form" class="new-review-form">
-                                                <h3 class="spr-form-title">Write a review</h3>
-                                                <fieldset class="spr-form-contact">
-                                                    <div class="spr-form-contact-name">
-                                                        <label class="spr-form-label"
-                                                            for="review_author_10508262282">Name</label>
-                                                        <input class="spr-form-input spr-form-input-text "
-                                                            id="review_author_10508262282" type="text" name="review[author]"
-                                                            value="" placeholder="Enter your name">
-                                                    </div>
-                                                    <div class="spr-form-contact-email">
-                                                        <label class="spr-form-label"
-                                                            for="review_email_10508262282">Email</label>
-                                                        <input class="spr-form-input spr-form-input-email "
-                                                            id="review_email_10508262282" type="email" name="review[email]"
-                                                            value="" placeholder="john.smith@example.com">
-                                                    </div>
-                                                </fieldset>
-                                                <fieldset class="spr-form-review">
-                                                    <div class="spr-form-review-rating">
-                                                        <label class="spr-form-label">Rating</label>
-                                                        <div class="spr-form-input spr-starrating">
-                                                            <div class="product-review"><a class="reviewLink"
-                                                                    href="#"><i class="fa fa-star-o"></i><i
-                                                                        class="font-13 fa fa-star-o"></i><i
-                                                                        class="font-13 fa fa-star-o"></i><i
-                                                                        class="font-13 fa fa-star-o"></i><i
-                                                                        class="font-13 fa fa-star-o"></i></a></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="spr-form-review-title">
-                                                        <label class="spr-form-label" for="review_title_10508262282">Review
-                                                            Title</label>
-                                                        <input class="spr-form-input spr-form-input-text "
-                                                            id="review_title_10508262282" type="text" name="review[title]"
-                                                            value="" placeholder="Give your review a title">
-                                                    </div>
-
-                                                    <div class="spr-form-review-body">
-                                                        <label class="spr-form-label" for="review_body_10508262282">Body of
-                                                            Review <span
-                                                                class="spr-form-review-body-charactersremaining">(1500)</span></label>
-                                                        <div class="spr-form-input">
-                                                            <textarea class="spr-form-input spr-form-input-textarea "
-                                                                id="review_body_10508262282" data-product-id="10508262282"
-                                                                name="review[body]" rows="10"
-                                                                placeholder="Write your comments here"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                                <fieldset class="spr-form-actions">
-                                                    <input type="submit"
-                                                        class="spr-button spr-button-primary button button-primary btn btn-primary"
-                                                        value="Submit Review">
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                        <div class="spr-reviews">
-                                            <div class="spr-review">
-                                                <div class="spr-review-header">
-                                                    <span
-                                                        class="product-review spr-starratings spr-review-header-starratings"><span
-                                                            class="reviewLink"><i class="fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i></span></span>
-                                                    <h3 class="spr-review-header-title">Lorem ipsum dolor sit amet</h3>
-                                                    <span class="spr-review-header-byline"><strong>dsacc</strong> on
-                                                        <strong>Apr 09, 2019</strong></span>
-                                                </div>
-                                                <div class="spr-review-content">
-                                                    <p class="spr-review-content-body">Lorem ipsum dolor sit amet,
-                                                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                        consequat.</p>
-                                                </div>
-                                            </div>
-                                            <div class="spr-review">
-                                                <div class="spr-review-header">
-                                                    <span
-                                                        class="product-review spr-starratings spr-review-header-starratings"><span
-                                                            class="reviewLink"><i class="fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i></span></span>
-                                                    <h3 class="spr-review-header-title">Lorem Ipsum is simply dummy text of
-                                                        the printing</h3>
-                                                    <span class="spr-review-header-byline"><strong>larrydude</strong> on
-                                                        <strong>Dec 30, 2018</strong></span>
-                                                </div>
-
-                                                <div class="spr-review-content">
-                                                    <p class="spr-review-content-body">Sed ut perspiciatis unde omnis iste
-                                                        natus error sit voluptatem accusantium doloremque laudantium, totam
-                                                        rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                                                        architecto beatae vitae dicta sunt explicabo.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="spr-review">
-                                                <div class="spr-review-header">
-                                                    <span
-                                                        class="product-review spr-starratings spr-review-header-starratings"><span
-                                                            class="reviewLink"><i class="fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i><i
-                                                                class="font-13 fa fa-star"></i></span></span>
-                                                    <h3 class="spr-review-header-title">Neque porro quisquam est qui
-                                                        dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-                                                    </h3>
-                                                    <span class="spr-review-header-byline"><strong>quoctri1905</strong> on
-                                                        <strong>Dec 30, 2018</strong></span>
-                                                </div>
-
-                                                <div class="spr-review-content">
-                                                    <p class="spr-review-content-body">Lorem Ipsum is simply dummy text of
-                                                        the printing and typesetting industry. Lorem Ipsum has been the
-                                                        industry's standard dummy text ever since the 1500s, when an unknown
-                                                        printer took a galley of type and scrambled.<br>
-                                                        <br>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                        industry.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            @foreach ($barang_kat as $b)
+                                <div class="product-description rte">
+                                    <p>{{ $b->keterangan }}</p>
                                 </div>
-                            </div>
-                        </div>
-
-
-
-                        <div id="tab4" class="tab-content">
-                            <h4>Returns Policy</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eros justo, accumsan non dui
-                                sit amet. Phasellus semper volutpat mi sed imperdiet. Ut odio lectus, vulputate non ex non,
-                                mattis sollicitudin purus. Mauris consequat justo a enim interdum, in consequat dolor
-                                accumsan. Nulla iaculis diam purus, ut vehicula leo efficitur at.</p>
-                            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. In blandit nunc enim, sit amet
-                                pharetra erat aliquet ac.</p>
-                            <h4>Shipping</h4>
-                            <p>Pellentesque ultrices ut sem sit amet lacinia. Sed nisi dui, ultrices ut turpis pulvinar. Sed
-                                fringilla ex eget lorem consectetur, consectetur blandit lacus varius. Duis vel scelerisque
-                                elit, et vestibulum metus. Integer sit amet tincidunt tortor. Ut lacinia ullamcorper massa,
-                                a fermentum arcu vehicula ut. Ut efficitur faucibus dui Nullam tristique dolor eget turpis
-                                consequat varius. Quisque a interdum augue. Nam ut nibh mauris.</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -448,56 +226,71 @@
 
 
                 <!--Recently Product Slider-->
-                <div class="related-product grid-products">
-                    <header class="section-header">
-                        <h2 class="section-header__title text-center h2"><span>Produk Lainnya</span></h2>
-                        <p class="sub-heading">Produk lain yang ada di toko kami</p>
-                    </header>
-                    <div class="productPageSlider">
-                        @foreach ($barang as $b)
-                            <div class="col-12 item">
-                                <!-- start product image -->
-                                <div class="product-image">
+                @foreach ($barang_kat as $b)
+                    <div class="related-product grid-products">
+                        <header class="section-header">
+                            <h2 class="section-header__title text-center h2"><span>Produk Lainnya</span></h2>
+                            <p class="sub-heading">Produk lain yang ada di toko kami</p>
+                        </header>
+                        <div class="productPageSlider">
+
+                            <?php
+                            $brg = DB::table('tb_barang')
+                                ->where('tb_barang.id_kategori', $b->id_kategori)
+                                ->get();
+                            
+                            // dd($brg);
+                            
+                            ?>
+
+                            @foreach ($brg as $b)
+                                <div class="col-12 item">
                                     <!-- start product image -->
+                                    <div class="product-image">
+                                        <!-- start product image -->
 
-                                    <a href="{{ url('produkdetail', $b->id_barang) }}">
-                                        <!-- image -->
-                                        <img class="primary blur-up lazyload" data-src="/images/post/{{ $b->foto }}"
-                                            src="/images/post/{{ $b->foto }}" alt="image" title="product">
-                                        <!-- End image -->
-                                        <!-- Hover image -->
-                                        <img class="hover blur-up lazyload" data-src="/images/post/{{ $b->foto }}"
-                                            src="/images/post/{{ $b->foto }}" alt="image" title="product">
-                                        <!-- End hover image -->
-                                        <!-- product label -->
-                                        <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span>
-                                            <span class="lbl pr-label1">new</span>
-                                        </div>
-                                        <!-- End product label -->
-                                    </a>
-                                    <!-- end product image -->
-                                </div>
-                                <!-- end product image -->
-
-                                <!--start product details -->
-                                <div class="product-details text-center">
-                                    <!-- product name -->
-                                    <div class="product-name">
-                                        <a href="{{ url('produkdetail', $b->id_barang) }}">{{ $b->nama_barang }}</a>
+                                        <a href="{{ url('produkdetail', $b->id_barang) }}">
+                                            <!-- image -->
+                                            <img class="primary blur-up lazyload"
+                                                data-src="/images/post/{{ $b->foto }}"
+                                                src="/images/post/{{ $b->foto }}" alt="image" title="product">
+                                            <!-- End image -->
+                                            <!-- Hover image -->
+                                            <img class="hover blur-up lazyload"
+                                                data-src="/images/post/{{ $b->foto }}"
+                                                src="/images/post/{{ $b->foto }}" alt="image" title="product">
+                                            <!-- End hover image -->
+                                            <!-- product label -->
+                                            <div class="product-labels rectangular"><span
+                                                    class="lbl on-sale">-16%</span>
+                                                <span class="lbl pr-label1">new</span>
+                                            </div>
+                                            <!-- End product label -->
+                                        </a>
+                                        <!-- end product image -->
                                     </div>
-                                    <!-- End product name -->
-                                </div>
-                                <!-- End product details -->
-                            </div>
-                        @endforeach
+                                    <!-- end product image -->
 
-                    </div>
-                </div>
-                <!--End Recently Product Slider-->
+                                    <!--start product details -->
+                                    <div class="product-details text-center">
+                                        <!-- product name -->
+                                        <div class="product-name">
+                                            <a
+                                                href="{{ url('produkdetail', $b->id_barang) }}">{{ $b->nama_barang }}</a>
+                                        </div>
+                                        <!-- End product name -->
+                                    </div>
+                                    <!-- End product details -->
+                                </div>
+                            @endforeach
+                        </div>
+                @endforeach
             </div>
-            <!--#ProductSection-product-template-->
+            <!--End Recently Product Slider-->
         </div>
-        <!--MainContent-->
+        <!--#ProductSection-product-template-->
+    </div>
+    <!--MainContent-->
     </div>
     <!--End Body Content-->
 

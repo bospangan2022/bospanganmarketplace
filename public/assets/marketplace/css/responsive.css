@@ -519,6 +519,8 @@
 	
 	#footer { margin-top:20px; }
 
+	/* About Us */
+
 	@media only screen and (max-width: 1280px) {
 		.misi-card {
 			width: 30%;
