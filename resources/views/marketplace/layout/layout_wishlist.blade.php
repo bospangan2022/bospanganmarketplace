@@ -83,7 +83,7 @@
 
                             <li><a href="{{ url('buka_toko') }}">Buka Toko</a></li>
                             <?php } else { ?>
-                            <li><a href="{{ url('buka_toko') }}">Kelola Toko</a></li>
+                            <li><a href="{{ url('kelola_toko') }}">Kelola Toko</a></li>
                             <?php }
                             ?>
                             <li><a href="{{ url('profil') }}">{{ Auth::user()->name }} </a></li>

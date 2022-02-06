@@ -96,7 +96,7 @@ use Illuminate\Support\Facades\DB;
                             <?php
                             }else{
                         ?>
-                            <li><a href="{{ url('buka_toko') }}">Kelola Toko</a></li>
+                            <li><a href="{{ url('kelola_toko') }}">Kelola Toko</a></li>
                             <?php
                             }
                         ?>
