@@ -653,7 +653,7 @@
                                                     style="width: 100%;" data-show-subtext="true" data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
-                                                        <option value="{{ $ko->id }}">{{ $ko->nama_kota }}
+                                                        <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}
                                                         </option>
                                                     @endforeach
                                                 </select>
