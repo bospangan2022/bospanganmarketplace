@@ -48,7 +48,7 @@ class CartController extends Controller
             ->where("id_user", Auth::user()->id)
             ->count("id_barang");
 
-        $kota = DB::table("regencies")
+        $kota = DB::table("tb_kota")
             ->reorder("nama_kota", "asc")
             ->get();
 
