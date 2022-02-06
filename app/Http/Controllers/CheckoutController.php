@@ -69,14 +69,11 @@ class CheckoutController extends Controller
             ->leftjoin("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
             ->where("id_toko", $id)
             ->get();
-<<<<<<< HEAD
 
         $katlimit = DB::table("tb_kategori")
             ->limit(5)
             ->get();
 
-=======
->>>>>>> 132fdfb81b55cdd694fb0908a84eced0ded76c76
         //dd($alamat_toko);
 
         return view("marketplace.checkout", [
