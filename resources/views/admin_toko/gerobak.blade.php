@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('admin_toko.layout.layout')
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
@@ -17,8 +17,8 @@
                     <h3 class="my-2"><b>Aktifkan</b></h3>
                 </div>
             </div>
-            <div class="row">/
-                <form action="{{ url('cari_gerobak') }}">
+            <div class="row">
+                <form action="{{ url('cari_gerobak_user') }}">
                     <div class="input-group my-4">
                         <span class="input-group-text" id="basic-addon1"><i class="ti-search"></i></span>
                         <input type="text" name="cari" class="form-control" placeholder="Cari Nama Pelanggan"
@@ -185,8 +185,14 @@
                             </div>
                         </div>
                         <div class="card">
-                            @foreach ($search as $k)
+                            @foreach ($keranjang as $k)
                                 <?php
+                                 $toko = DB::table("tb_toko")
+                                 ->where("id_user", Auth::user()->id)
+                                 ->get();
+                             foreach ($toko as $t) {
+                                 $id_toko = $t->id_toko;
+                             }
                     $check = DB::table("tb_keranjang")
                         ->join(
                             "tb_barang",
@@ -195,7 +201,8 @@
                             "tb_barang.id_barang"
                         )
                         ->where("id_user", $k->id_user)
-                        ->where("status", "t")
+                        ->where("tb_keranjang.id_toko", $id_toko)
+                        ->where("tb_keranjang.status", "t")
                         ->count();
 
                     // $page = $keranjang->paginate(3);
@@ -208,7 +215,8 @@
                             "tb_barang.id_barang"
                         )
                         ->where("id_user", $k->id_user)
-                        ->where("status", "t")
+                        ->where("tb_keranjang.id_toko", $id_toko)
+                        ->where("tb_keranjang.status", "t")
                         ->sum("sub_harga");
 
                     if ($check != 0) { ?>
@@ -241,7 +249,8 @@
                                             </div>
                                             <?php $jumlah = DB::table('tb_keranjang')
                                                 ->where('id_user', $k->id_user)
-                                                ->where('status', 't')
+                                                ->where('tb_keranjang.id_toko', $id_toko)
+                                                ->where('tb_keranjang.status', 't')
                                                 ->count(); ?>
 
                                             <div class="orders mb-1 mt-3 d-flex">
@@ -270,8 +279,6 @@
                                                     <li><a class="dropdown-item" data-toggle="modal"
                                                             data-target="#re-email">Kirim Email</a></li>
                                                     <li><a class="dropdown-item" href="#">Tempatkan Pesanan</a></li>
-                                                    <li><a class="dropdown-item hapus"
-                                                            href="{{ url('hapus_gerobak') }}">Hapus</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -281,9 +288,9 @@
                     ?>
                             @endforeach
                         </div>
-                        {{-- <div class="d-flex justify-content-center mt-5">
-                       {{ $page->links() }}
-                </div> --}}
+                        <div class="d-flex justify-content-center mt-5">
+                            {{ $page->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -292,11 +299,12 @@
     </div>
 
     <!--Modal Details-->
-    @foreach ($search as $k)
+    @foreach ($keranjang as $k)
         <?php $detail = DB::table('tb_keranjang')
             ->join('tb_barang', 'tb_keranjang.id_barang', '=', 'tb_barang.id_barang')
             ->where('id_user', $k->id_user)
-            ->where('status', 't')
+            ->where('tb_keranjang.id_toko', $id_toko)
+            ->where('tb_keranjang.status', 't')
             ->get(); ?>
         <div class="modal fade" id="detail-1{{ $k->id_user }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">

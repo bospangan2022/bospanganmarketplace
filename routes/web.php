@@ -22,6 +22,7 @@ use App\Http\Controllers\TokoAdminController;
 use App\Http\Controllers\KelolaTokoUserController;
 use App\Http\Controllers\ProdukUserController;
 use App\Http\Controllers\KategoriUserController;
+use App\Http\Controllers\GerobakUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,6 +142,20 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("produk_user", [ProdukUserController::class, "index"])->name(
             "produk_user"
         );
+
+        //-----Filter----------------
+        Route::get("produk_display", [
+            ProdukUserController::class,
+            "display",
+        ])->name("produk_display");
+        Route::get("produk_habis", [
+            ProdukUserController::class,
+            "habis",
+        ])->name("produk_habis");
+        Route::get("produk_hide", [ProdukUserController::class, "hide"])->name(
+            "produk_hide"
+        );
+
         Route::get("cari_produk_user", [
             ProdukUserController::class,
             "cari_produk",
@@ -186,6 +201,8 @@ Route::group(["middleware" => ["auth"]], function () {
             KategoriUserController::class,
             "update_kategori",
         ])->name("edit_kategori_user");
+
+        Route::get("gerobak_user", [GerobakUserController::class, "index"]);
     });
 
     // ------------------------

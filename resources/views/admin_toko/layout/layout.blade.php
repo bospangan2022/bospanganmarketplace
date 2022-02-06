@@ -42,10 +42,10 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="{{ url('dashboard') }}">
+                    <a class="navbar-brand brand-logo" href="{{ url('/') }}">
                         <img src="{{ asset('assets/images/logo.png') }}" alt="logo" />
                     </a>
-                    <a class="navbar-brand brand-logo-mini" href="{{ url('dashboard') }}">
+                    <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}">
                         <img src="{{ asset('assets/images/logo_sm.png') }}" alt="logo" />
                     </a>
                 </div>

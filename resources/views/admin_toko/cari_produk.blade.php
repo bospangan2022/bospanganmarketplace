@@ -5,19 +5,18 @@
             <div class="container-fluid">
                 <h2 class="produk-title">Produk</h2>
                 <!--Button-->
-                <div class="button-header col-10 d-flex justify-content-between align-items-stretch my-1">
-
+                <div class="col-10 d-flex justify-content-between align-items-stretch my-1">
                     <a class="btn btn-primary" href="{{ url('tambah_produk_user') }}" role="button"><i
                             class="ti-plus me-2"></i>Produk Baru</a>
                     <button class="btn btn-primary" type="submit">Export Product</button>
                     <form action="" method="" enctype="multipart/form-data">
-
-                        <label for="upload">Import</label>
-                        <input type="file" class="btn btn-primary btn-icon-split ml-3" name="bukti" style="width: 200px;">
-                        <button type="submit" class="btn btn-primary btn-icon">
-                            <i class="ti-download"></i>
-                        </button>
-
+                        <div>
+                            <label for="upload">Import</label>
+                            <input type="file" class="btn btn-primary btn-icon-split ml-3" name="bukti">
+                            <button type="submit" class="btn btn-primary btn-icon">
+                                <i class="ti-download"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
                 <!--Search-->
@@ -77,10 +76,10 @@
                                         <input type="text" class="form-control" placeholder="Nama kategori"
                                             aria-label="Username" aria-describedby="basic-addon1" />
                                     </div>
-                                    @foreach ($kategori as $kat)
+                                    @foreach ($kat as $k)
                                         <div class="form-check d-flex justify-content-between my-3">
                                             <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
-                                                {{ $kat->nama_kategori }}
+                                                {{ $k->nama_kategori }}
                                             </label>
                                             <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked"
                                                 checked>
@@ -157,11 +156,78 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Product Type
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="form-check d-flex justify-content-between my-3">
+                                        <label class="form-check-label ms-0 fs-6" for="flexRadioDefault2">
+                                            Any
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault2" checked>
+                                    </div>
+                                    <div class="form-check d-flex justify-content-between my-3">
+                                        <label class="form-check-label ms-0 fs-6" for="flexRadioDefault2">
+                                            Pay What you want product
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault2">
+                                    </div>
+                                    <div class="form-check d-flex justify-content-between my-3">
+                                        <label class="form-check-label ms-0 fs-6" for="flexRadioDefault2">
+                                            Gift Card Product
+                                        </label>
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Ribbons
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="search d-flex mx-0">
+                                        <span class="input-group-text" id="basic-addon1"><i
+                                                class="ti-search"></i></span>
+                                        <input type="text" class="form-control" placeholder="nama kategori"
+                                            aria-label="Username" aria-describedby="basic-addon1" />
+                                    </div>
+                                    <div class="form-check d-flex justify-content-between my-3">
+                                        <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                            Apa Saja
+                                        </label>
+                                        <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked"
+                                            checked>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!--Filter End-->
                     <!--Main Content-->
                     <div class="col-9 ">
-                        <div class="navigasi my-3 d-flex justify-content-end">
+                        <div class="navigasi my-3 d-flex justify-content-between">
+                            <div class="form-check ms-4">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                    onClick="toggle(this)">
+                                <label class="form-check-label ms-0 fs-6" for="flexCheckChecked">
+                                    Pilih Semua
+                                </label>
+                            </div>
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -180,7 +246,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            @foreach ($page as $b)
+                            @foreach ($search as $b)
                                 <div class=" ps-3 mt-3">
                                     <!--Daftar Produk-->
                                     <div class="row border-bottom m-4">
@@ -188,22 +254,22 @@
                                             <img class="rounded-3 mb-3" style="width:120px;"
                                                 src="images/post/{{ $b->foto }}" />
                                         </div>
-                                        <div class="col-5 ms-2">
+                                        <div class="col-5">
                                             <div class="d-flex">
                                                 <h4 class="title_barang">{{ $b->nama_barang }}</h4>
                                                 <h4 class="title_sku">{{ $b->sku }}</h4>
                                             </div>
-                                            <div class="switch d-flex m-0">
-                                                <h4 class="title_barang">Status Ketersediaan :</h4>
-                                                <?php if ($b->status == "Tampilkan") { ?>
-                                                <h4 class="title_barang text-success">Ditampilkan</h4>
-                                                <?php } else { ?>
-                                                <h4 class="title_barang text-muted">Disembunyikan</h4>
-                                                <?php } ?>
+                                            <div class="switch">
+                                                <div class="form-check form-switch ms-5">
+                                                    <input class="form-check-input " type="checkbox" role="switch"
+                                                        id="flexSwitchCheckChecked" checked>
+                                                    <label class="form-check-label m-0  "
+                                                        for="flexSwitchCheckChecked">Aktifkan Persediaan</label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="aksi col-3">
-                                            <h4 class="title_harga">Rp. {{ $b->harga }}</h4>
+                                            <h4 class="title_harga">@currency($b->harga)</h4>
                                             <div class="delete">
                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" method="POST"
                                                     action="{{ url('delete_produk_user', $b->id_barang) }}">
@@ -226,9 +292,9 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="d-flex justify-content-center mt-5">
-                            {{ $page->links() }}
-                        </div>
+                        {{-- <div class="d-flex justify-content-center mt-5">
+                       {{ $page->links() }}
+                     </div> --}}
                     </div>
                 </div>
 

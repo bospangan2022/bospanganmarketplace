@@ -99,11 +99,13 @@
                                     <div class="card-body">
                                         <label for="formGroupExampleInput" class="form-label">Product
                                             availablity</label>
-                                        <div class="form-check form-switch ms-5">
-                                            <input class="form-check-input " type="checkbox" role="switch"
-                                                id="flexSwitchCheckChecked" checked>
-                                            <label class="form-check-label m-0  " for="flexSwitchCheckChecked">Aktifkan
-                                                Persediaan</label>
+                                        <div class="select mb-4">
+                                            <select name="status" class="form-select form-select-sm"
+                                                aria-label=".form-select-sm example">
+                                                <option selected disabled>{{ $br->status }}</option>
+                                                <option value="Tampilkan">Tampilkan</option>
+                                                <option value="Sembunyikan">Sembunyikan</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput2" class="form-label mb-3">Jumlah Stok</label>
