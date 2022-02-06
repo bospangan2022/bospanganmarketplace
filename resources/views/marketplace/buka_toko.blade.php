@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="form-bukatoko col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="card border-success">
                         <div class="card-body">
                             <form action="{{ url('tambah_toko') }}" method="POST">
