@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\KategoriBarang;
 
+use Illuminate\Support\Facades\Auth;
+
 class KategoriController extends Controller
 {
     public function index()
@@ -40,11 +42,19 @@ class KategoriController extends Controller
             $image_name = $oldfoto;
         }
 
+        $toko = DB::table("tb_toko")
+            ->where("id_user", Auth::user()->id)
+            ->get();
+        foreach ($toko as $t) {
+            $id_toko = $t->id_toko;
+        }
+
         DB::table("tb_kategori")
             ->where("id_kategori", $id)
             ->update([
                 "nama_kategori" => $request->nama_kategori,
                 "deskripsi" => $request->deskripsi,
+                "id_toko" => $id_toko,
                 "foto" => $image_name,
                 "status_kategori" => $request->status_kategori,
             ]);
@@ -79,9 +89,16 @@ class KategoriController extends Controller
         $image = $request->file("foto");
         $name = rand(1000, 9999) . "." . $image->getClientOriginalExtension();
         $image->move("images/post", $name);
+        $toko = DB::table("tb_toko")
+            ->where("id_user", Auth::user()->id)
+            ->get();
+        foreach ($toko as $t) {
+            $id_toko = $t->id_toko;
+        }
 
         $kategori = KategoriBarang::create([
             "nama_kategori" => $request->nama_kategori,
+            "id_toko" => $id_toko,
             "deskripsi" => $request->deskripsi,
             "foto" => $name,
             "status_kategori" => $request->status_kategori,
