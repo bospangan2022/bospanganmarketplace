@@ -15,7 +15,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $kota = DB::table("regencies")
+        $kota = DB::table("tb_kota")
             ->reorder("nama_kota", "asc")
             ->get();
 

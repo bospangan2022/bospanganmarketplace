@@ -46,39 +46,37 @@ class CheckoutController extends Controller
         $grand_total = $sub_total + $ongkir;
 
         $user = DB::table("user_detail")
+            ->leftjoin("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
             ->leftjoin(
-                "regencies",
-                "user_detail.id_regencies",
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
                 "=",
-                "regencies.id"
+                "tb_kecamatan.id_kecamatan"
             )
-            ->leftjoin(
-                "districts",
-                "user_detail.id_districts",
-                "=",
-                "districts.id"
-            )
-            ->leftjoin(
-                "villages",
-                "user_detail.id_villages",
-                "=",
-                "villages.id"
-            )
+            ->leftjoin("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
             ->where("id_user", Auth::user()->id)
             ->where("status", "utama")
             ->get();
 
         $alamat_toko = DB::table("tb_toko")
-            ->leftjoin("regencies", "tb_toko.kota", "=", "regencies.id")
-            ->leftjoin("districts", "tb_toko.kecamatan", "=", "districts.id")
-            ->leftjoin("villages", "tb_toko.desa", "=", "villages.id")
+            ->leftjoin("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->leftjoin(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->leftjoin("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
             ->where("id_toko", $id)
             ->get();
+<<<<<<< HEAD
 
         $katlimit = DB::table("tb_kategori")
             ->limit(5)
             ->get();
 
+=======
+>>>>>>> 132fdfb81b55cdd694fb0908a84eced0ded76c76
         //dd($alamat_toko);
 
         return view("marketplace.checkout", [

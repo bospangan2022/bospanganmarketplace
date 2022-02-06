@@ -13,52 +13,32 @@ class ProfilController extends Controller
     public function index()
     {
         $utama = DB::table("user_detail")
+            ->leftjoin("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
             ->leftjoin(
-                "regencies",
-                "user_detail.id_regencies",
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
                 "=",
-                "regencies.id"
+                "tb_kecamatan.id_kecamatan"
             )
-            ->leftjoin(
-                "districts",
-                "user_detail.id_districts",
-                "=",
-                "districts.id"
-            )
-            ->leftjoin(
-                "villages",
-                "user_detail.id_villages",
-                "=",
-                "villages.id"
-            )
+            ->leftjoin("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
             ->where("id_user", Auth::user()->id)
             ->where("status", "utama")
             ->get();
 
         $profil = DB::table("user_detail")
+            ->leftjoin("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
             ->leftjoin(
-                "regencies",
-                "user_detail.id_regencies",
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
                 "=",
-                "regencies.id"
+                "tb_kecamatan.id_kecamatan"
             )
-            ->leftjoin(
-                "districts",
-                "user_detail.id_districts",
-                "=",
-                "districts.id"
-            )
-            ->leftjoin(
-                "villages",
-                "user_detail.id_villages",
-                "=",
-                "villages.id"
-            )
+            ->leftjoin("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
             ->where("id_user", Auth::user()->id)
             ->where("status", "Biasa")
             ->get();
 
-        $kota = DB::table("regencies")
+        $kota = DB::table("tb_kota")
             ->reorder("nama_kota", "asc")
             ->get();
 
@@ -106,9 +86,9 @@ class ProfilController extends Controller
             "nama_penerima" => $request->nama_penerima,
             "phone" => $request->phone,
             "alamat" => $request->alamat,
-            "id_regencies" => $request->kota,
-            "id_districts" => $request->kecamatan,
-            "id_villages" => $request->desa,
+            "id_kota" => $request->kota,
+            "id_kecamatan" => $request->kecamatan,
+            "id_desa" => $request->desa,
             "kode_pos" => $request->kode_pos,
             "catatan" => $request->catatan,
         ]);
@@ -124,9 +104,9 @@ class ProfilController extends Controller
                 "nama_penerima" => $request->nama_penerima,
                 "phone" => $request->phone,
                 "alamat" => $request->alamat,
-                "id_regencies" => $request->kota,
-                "id_districts" => $request->kecamatan,
-                "id_villages" => $request->desa,
+                "id_kota" => $request->kota,
+                "id_kecamatan" => $request->kecamatan,
+                "id_desa" => $request->desa,
                 "kode_pos" => $request->kode_pos,
                 "catatan" => $request->catatan,
             ]);
