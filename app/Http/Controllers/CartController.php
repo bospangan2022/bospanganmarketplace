@@ -52,6 +52,10 @@ class CartController extends Controller
             ->reorder("nama_kota", "asc")
             ->get();
 
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
         return view("marketplace.cart", [
             "keranjang" => $keranjang,
             "toko" => $toko,
@@ -62,6 +66,7 @@ class CartController extends Controller
             "count_barang" => $count_barang,
             "count_love" => $count_love,
             "kota" => $kota,
+            "katlimit" => $katlimit,
         ]);
     }
 

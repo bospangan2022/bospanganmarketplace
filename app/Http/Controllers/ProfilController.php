@@ -82,6 +82,10 @@ class ProfilController extends Controller
             ->where("id_user", Auth::user()->id)
             ->sum("sub_harga");
 
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
         // dd($utama);
         return view("marketplace.profil", [
             "utama" => $utama,
@@ -91,6 +95,7 @@ class ProfilController extends Controller
             "count_barang" => $count_barang,
             "count_love" => $count_love,
             "sub_total" => $sub_total,
+            "katlimit" => $katlimit,
         ]);
     }
 

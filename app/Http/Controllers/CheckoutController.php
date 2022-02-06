@@ -75,6 +75,10 @@ class CheckoutController extends Controller
             ->where("id_toko", $id)
             ->get();
 
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
         //dd($alamat_toko);
 
         return view("marketplace.checkout", [
@@ -87,6 +91,7 @@ class CheckoutController extends Controller
             "user" => $user,
             "checkout" => $checkout,
             "alamat_toko" => $alamat_toko,
+            "katlimit" => $katlimit,
         ]);
     }
 

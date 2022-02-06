@@ -1668,6 +1668,27 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
 }
 
 /*---------------------------------------
+  III About Us Correction ---------------
+  ---------------------------------------*/
+
+  .jargon {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 2em;
+    margin-top: 1em;
+    color:#239C4C;
+  }
+
+  .pengenalan {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 1.5em;
+    margin-top: 1em;
+    color: black;
+  }
+
+
+/*---------------------------------------
   III Dropdown Correction ---------------
   ---------------------------------------*/
 
@@ -2298,7 +2319,7 @@ body.home15-funiture-template { font-size:14px; }
 ========================================================================*/
 
 .has-dropcap p:first-child:first-letter {
-  color:  #aacc22;
+  color:  #239C4C;
   float: left;
   font-family: Georgia;
   font-size: 75px;
@@ -2308,11 +2329,37 @@ body.home15-funiture-template { font-size:14px; }
   padding-left: 3px;
 }
 
+.visimisi{
+  font-family: Poppins;
+}
+
+.visi{
+  color: #239C4C;
+  font-family: Poppins;
+}
+
+.text-visi{
+  color: black;
+  font-weight: 500;
+  font-size: 1.4em;
+}
+
 .oto {
-  background-color: #f4f4f4;
   height: auto;
   padding: 50px;
-  
+  box-shadow: 4px 3px 8px 1px #969696;
+  -webkit-box-shadow: 4px 3px 8px 1px #969696;
+  border-radius: 1em;
+}
+
+.oto_text {
+  font-family: Poppins;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.oto_title{
+  font-family: Poppins;
 }
 
 .visi-misi {

@@ -37,7 +37,7 @@
                                     </div>
 
                                     <div class="tombol-toko text-left">
-                                        <form action="{{ url('tanya_penjual') }}" method="post" target="_blank">
+                                        <form action="{{ url('tanya_penjual') }}" method="get" target="_blank">
                                             <input type="hidden" name="no_hp" value="">
                                             <button type="submit" class="tombol1"><span><i
                                                         class="fab fa-whatsapp mr-3"></i></span>Chat Penjual</button>
@@ -134,21 +134,18 @@
                                 <div class="row">
                                     <div
                                         class="col-4 col-md-4 col-lg-4 filters-toolbar__item collection-view-as d-flex justify-content-start align-items-center">
-                                        <div class="input-group mb-3 border rounded-pill p-0">
+                                        <div class="cari-toko input-group mb-3 ">
                                             <form action="{{ url('cari_brgtoko') }}">
-                                                <input type="tetx" placeholder="Cari Barang Di Toko Ini...."
+                                                <input type="text" placeholder="Cari Barang Di Toko Ini...."
                                                     aria-describedby="button-addon3" name="cari"
-                                                    class="form-control bg-none border-0">
+                                                    class="input-barang-toko form-control bg-none border-1">
                                             </form>
-                                            <div class="input-group-append border-0">
+                                            <div class="input-group-append">
                                                 <button id="button-addon3" type="submit" class="btn btn-link "><i
                                                         class="fa fa-search"></i>
-
                                                 </button>
                                             </div>
-
                                         </div>
-
                                     </div>
                                     <div
                                         class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
