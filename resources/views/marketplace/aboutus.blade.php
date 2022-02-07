@@ -34,7 +34,8 @@
             <div class="oto mb-5 d-flex justify-content-center">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center">
-                        <img src="{{ asset('assets/marketplace/images/logo.png') }}" style="width: 400px;" alt="">
+                        <img class="img-bospangan" src="{{ asset('assets/marketplace/images/logo.png') }}"
+                            style="width: 400px;" alt="">
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
                         <h2 class="oto_title mb-3">Otobiografi</h2>
@@ -74,20 +75,20 @@
                 </div>
             </div>
 
-            <div class="oto bg-none py-5 my-5 " id="collapseExample">
+            <div class="collapse oto bg-none py-5 my-5 " id="collapseExample">
                 <div class="text-center mb-5">
                     <h2 class="visi mb-3">Visi Bos Pangan</h2>
                     <div class="rte-setting">
-                        <p class="text-visi">Bos Pangan adalah sebuah start-up yang bergerak dibidang perpanganan, baik
-                            pangan untuk manusia,
-                            hewan, bahkan tumbuhan. Bos Pangan didirikan oleh Rafif Irfan, S.T. pada Kamis malam tanggal 23
-                            September 2021.</p>
+                        <p class="text-visi">Menjadi Biosfer-Platform di bidang perpanganan yang berkah dan manfaat
+                            sehingga "Masalah Pangan Beres" dapat terwujud.</p>
                     </div>
                 </div>
-                <div class="row d-flex justify-content-center ">
+                <div class="row justify-content-center ">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mb-4">
                         <h2 class="visi">5 Misi Bos Pangan</h2>
                     </div>
+                </div>
+                <div class="row justify-content-center">
                     <div class="misi-card card">
                         <div class="misi-icon">
                             <img src="assets/marketplace/images/card1.jpg" alt="">

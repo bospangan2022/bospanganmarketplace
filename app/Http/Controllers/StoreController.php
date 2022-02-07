@@ -39,6 +39,10 @@ class StoreController extends Controller
             ->where("id_user", Auth::user()->id)
             ->sum("sub_harga");
 
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
         // dd($utama);
         return view("marketplace.buka_toko", [
             "kota" => $kota,
@@ -46,6 +50,7 @@ class StoreController extends Controller
             "count_barang" => $count_barang,
             "count_love" => $count_love,
             "sub_total" => $sub_total,
+            "katlimit" => $katlimit,
         ]);
     }
 
