@@ -203,6 +203,11 @@ Route::group(["middleware" => ["auth"]], function () {
         ])->name("edit_kategori_user");
 
         Route::get("gerobak_user", [GerobakUserController::class, "index"]);
+
+        Route::post("checkout/barang", [
+            CheckoutController::class,
+            "proses_checkout",
+        ]);
     });
 
     // ------------------------
