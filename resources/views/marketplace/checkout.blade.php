@@ -211,7 +211,7 @@
                                                 </tr>
                                                 <input type="hidden" name="id_keranjang[]"
                                                     value="{{ $co->id_keranjang }}">
-                                                <input type="hidden" name="subtotal" value="{{ $co->sub_harga }}">
+                                                <input type="hidden" name="subtotal" value="{{ $sub_total }}">
                                                 <input type="hidden" name="jumlah" value="{{ $count_barang }}">
                                             @endforeach
                                         </tbody>

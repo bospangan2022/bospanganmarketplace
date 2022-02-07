@@ -91,6 +91,7 @@ class CartController extends Controller
         $check = DB::table("tb_keranjang")
             ->where("id_barang", $request->id_barang)
             ->where("id_user", Auth::user()->id)
+            ->where("status", "t")
             ->count();
         if ($check == 0) {
             CartModel::create([

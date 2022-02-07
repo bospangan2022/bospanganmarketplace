@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\DB;
+?>
 @extends('marketplace.layout.layout_profil')
 
 
@@ -148,7 +151,7 @@
                                                 <div class="status-riwayat text-center">
                                                     <a href=""><i class="status_ic fas fa-wallet fa-4x"></i>
                                                         <span id="CartCount" class="site-header__status-ic"
-                                                            data-cart-render="item_count">1</span>
+                                                            data-cart-render="item_count">{{ $belum_dibayar }}</span>
                                                     </a>
                                                     <br>
                                                     <a class="text_status" href="">Belum Dibayar</a>
@@ -158,7 +161,7 @@
                                                 <div class="status-riwayat text-center">
                                                     <a href=""><i class="status_ic fas fa-archive fa-4x"></i>
                                                         <span id="CartCount" class="site-header__status-ic"
-                                                            data-cart-render="item_count">1</span>
+                                                            data-cart-render="item_count">{{ $dikemas }}</span>
                                                     </a>
                                                     <br>
                                                     <a class="text_status" href="">Dikemas</a>
@@ -168,7 +171,7 @@
                                                 <div class="status-riwayat text-center">
                                                     <a href=""><i class="status_ic fas fa-shipping-fast fa-4x"></i>
                                                         <span id="CartCount" class="site-header__status-ic"
-                                                            data-cart-render="item_count">1</span>
+                                                            data-cart-render="item_count">{{ $dikirim }}</span>
                                                     </a>
                                                     <br>
                                                     <a class="text_status" href="">Dikirim</a>
@@ -176,296 +179,229 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col md-12 flex">
-                                                    <i class="fa fa-shopping-bag text-success mr-2"></i>
-                                                    <h4 class="head-1 mr-5">Belanja</h4>
-                                                    <h4 class="date mr-5">16 Januari 2022</h4>
-                                                    <h4 class="status mr-5">Selesai</h4>
-                                                    <h4 class="invoice">BP00001</h4>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <img class="img-produk"
-                                                        src="{{ asset('assets/marketplace/images/product-images/indomie.jpg') }}"
-                                                        alt="produk">
-                                                </div>
-                                                <div class="col-md-7 mt-3">
-                                                    <div class="product-detail">
-                                                        <a class="nama-produk"
-                                                            href="{{ url('produkdetail') }}">Indomie Goreng Jumbo ( 1
-                                                            Karton )</a>
-                                                        <p class="head-detail">Detail Produk :</p>
-                                                        <p class="isi">1 Karton / 48 Pcs</p>
+                                    @foreach ($checkout as $check)
+                                        <div class="card mb-4">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col md-12 flex">
+                                                        <i class="fa fa-shopping-bag text-success mr-2"></i>
+                                                        <h4 class="head-1 mr-5">Belanja</h4>
+                                                        <h4 class="date mr-5">{{ $check->tanggal }}</h4>
+                                                        <?php
+                                                        if($check->status == "belumdibayar"){
+                                                        ?>
+                                                        <h4 class="status-4 mr-5">Belum Dibayar</h4>
+                                                        <?php }elseif($check->status == "dikemas"){ ?>
+                                                        <h4 class="status-2 mr-5">Dikemas</h4>
+                                                        <?php }elseif($check->status == "dikirim"){ ?>
+                                                        <h4 class="status-3 mr-5">Dikirim</h4>
+                                                        <?php }elseif($check->status == "selesai"){ ?>
+                                                        <h4 class="status mr-5">Selesai</h4>
+                                                        <?php } ?>
+                                                        <h4 class="invoice">{{ $check->id_checkout }}</h4>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3 mt-3">
-                                                    <div class="total-belanja">
-                                                        <h4>Total Belanja</h4>
-                                                        <h3>Rp.112.000</h3>
+                                                <?php
+                                                $pertama = DB::table('tb_detail_checkout')
+                                                    ->join('tb_keranjang', 'tb_detail_checkout.id_keranjang', '=', 'tb_keranjang.id_keranjang')
+                                                    ->join('tb_barang', 'tb_keranjang.id_barang', '=', 'tb_barang.id_barang')
+                                                    ->join('tb_toko', 'tb_keranjang.id_toko', '=', 'tb_toko.id_toko')
+                                                    ->where('id_checkout', $check->id_checkout)
+                                                    ->orderByDesc('id_detail_checkout')
+                                                    ->limit(1)
+                                                    ->get();
+                                                //dd($pertama);
+                                                ?>
+                                                @foreach ($pertama as $ut)
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <img class="img-produk"
+                                                                src="/images/post/{{ $ut->foto }}" alt="produk">
+                                                        </div>
+                                                        <div class="col-md-7 mt-3">
+                                                            <div class="product-detail">
+                                                                <a class="nama-produk"
+                                                                    href="{{ url('produkdetail') }}">{{ $ut->nama_barang }}</a>
+                                                                <p class="head-detail">Nama Toko :</p>
+                                                                <p class="isi"><a
+                                                                        href="{{ url('profil_toko', $ut->nama_toko) }}">{{ $ut->nama_toko }}</a>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 mt-3">
+                                                            <div class="total-belanja">
+                                                                <h4>Total Belanja</h4>
+                                                                <h3>@currency($check->subtotal)</h3>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="tombol text-right">
-                                                <a href="#" class="detail-transaksi mr-3" data-toggle="modal"
-                                                    data-target="#detail">Lihat Detail Transaksi</a>
-                                                <a href="#" class="beli-lagi">Beli Lagi</a>
+
+                                                    <div class="tombol text-right">
+                                                        <a href="#" class="detail-transaksi mr-3" data-toggle="modal"
+                                                            data-target="#detail{{ $check->id_checkout }}">Lihat Detail
+                                                            Transaksi</a>
+                                                        <a href="#" class="beli-lagi">Beli Lagi</a>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col md-12 flex">
-                                                    <i class="fa fa-shopping-bag text-success mr-2"></i>
-                                                    <h4 class="head-1 mr-5">Belanja</h4>
-                                                    <h4 class="date mr-5">16 Januari 2022</h4>
-                                                    <h4 class="status-2 mr-5">Diproses</h4>
-                                                    <h4 class="invoice">BP00002</h4>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <img class="img-produk"
-                                                        src="{{ asset('assets/marketplace/images/product-images/indomie.jpg') }}"
-                                                        alt="produk">
-                                                </div>
-                                                <div class="col-md-7 mt-3">
-                                                    <div class="product-detail">
-                                                        <a class="nama-produk"
-                                                            href="{{ url('produkdetail') }}">Indomie Goreng Jumbo ( 1
-                                                            Karton )</a>
-                                                        <p class="head-detail">Detail Produk :</p>
-                                                        <p class="isi">1 Karton / 48 Pcs</p>
+                                    @endforeach
+                                    @foreach ($checkout as $check)
+                                        <div class="modal fade" id="detail{{ $check->id_checkout }}" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered ">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="title-modal-detail">Lihat Detail Transaksi</h4>
+                                                        <button type="button" class="close"
+                                                            data-dismiss="modal">&times;</button>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-3 mt-3">
-                                                    <div class="total-belanja">
-                                                        <h4>Total Belanja</h4>
-                                                        <h3>Rp.106.000</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tombol text-right">
-                                                <a href="#" class="detail-transaksi mr-3">Lihat Detail Transaksi</a>
-                                                <a href="#" class="beli-lagi">Beli Lagi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col md-12 flex">
-                                                    <i class="fa fa-shopping-bag text-success mr-2"></i>
-                                                    <h4 class="head-1 mr-5">Belanja</h4>
-                                                    <h4 class="date mr-5">16 Januari 2022</h4>
-                                                    <h4 class="status-3 mr-5">Dikirim</h4>
-                                                    <h4 class="invoice">BP00003</h4>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <img class="img-produk"
-                                                        src="{{ asset('assets/marketplace/images/product-images/indomie.jpg') }}"
-                                                        alt="produk">
-                                                </div>
-                                                <div class="col-md-7 mt-3">
-                                                    <div class="product-detail">
-                                                        <a class="nama-produk"
-                                                            href="{{ url('produkdetail') }}">Indomie Goreng Jumbo ( 1
-                                                            Karton )</a>
-                                                        <p class="head-detail">Detail Produk :</p>
-                                                        <p class="isi">1 Karton / 48 Pcs</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 mt-3">
-                                                    <div class="total-belanja">
-                                                        <h4>Total Belanja</h4>
-                                                        <h3>Rp.106.000</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tombol text-right">
-                                                <a href="#" class="detail-transaksi mr-3">Lihat Detail Transaksi</a>
-                                                <a href="#" class="beli-lagi">Beli Lagi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-4">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col md-12 flex">
-                                                    <i class="fa fa-shopping-bag text-success mr-2"></i>
-                                                    <h4 class="head-1 mr-5">Belanja</h4>
-                                                    <h4 class="date mr-5">16 Januari 2022</h4>
-                                                    <h4 class="status-4 mr-5">Tidak Berhasil</h4>
-                                                    <h4 class="invoice">BP00004</h4>
-                                                </div>
-                                            </div>
-                                            <div class="peringatan mt-3 mb-3 text-center">
-                                                <h4 class="text-peringatan"><span><i
-                                                            class="fa fa-credit-card-alt mr-3"></i></span> Anda belum
-                                                    membayar sebelum waktu yang sudah ditentukan!</h4>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <img class="img-produk"
-                                                        src="{{ asset('assets/marketplace/images/product-images/indomiesoto.jpg') }}"
-                                                        alt="produk">
-                                                </div>
-                                                <div class="col-md-7 mt-3">
-                                                    <div class="product-detail">
-                                                        <a class="nama-produk"
-                                                            href="{{ url('produkdetail') }}">Indomie Soto Mie ( 1
-                                                            Karton )</a>
-                                                        <p class="head-detail">Detail Produk :</p>
-                                                        <p class="isi">1 Karton / 48 Pcs</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 mt-3">
-                                                    <div class="total-belanja">
-                                                        <h4>Total Belanja</h4>
-                                                        <h3>Rp.105.000</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tombol text-right ">
-                                                <a href="#" class="detail-transaksi mr-3" data-toggle="modal"
-                                                    data-target="#detail">Lihat Detail Transaksi</a>
-                                                <a href="#" class="beli-lagi">Beli Lagi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="detail" role="dialog">
-                                        <div class="modal-dialog modal-dialog-centered ">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="title-modal-detail">Lihat Detail Transaksi</h4>
-                                                    <button type="button" class="close"
-                                                        data-dismiss="modal">&times;</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="detail-status">
-                                                        <div class="card mb-4">
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                                    <div class="header-modal col md-12 flex">
-                                                                        <i
-                                                                            class="fa fa-shopping-bag text-success mr-2"></i>
-                                                                        <h4 class="head-1 mr-5">Belanja</h4>
-                                                                        <h4 class="date mr-5">16 Januari 2022</h4>
-                                                                        <h4 class="date mr-2">INV :</h4>
-                                                                        <a class="inv_d" href="#">BP00001</a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-md-2">
-                                                                        <img class="img-produk"
-                                                                            src="{{ asset('assets/marketplace/images/product-images/indomie.jpg') }}"
-                                                                            alt="produk">
-                                                                    </div>
-                                                                    <div class="col-md-7 mt-3">
-                                                                        <div class="product-detail">
-                                                                            <a class="nama-produk-modal"
-                                                                                href="{{ url('produkdetail') }}">Indomie
-                                                                                Goreng Jumbo ( 1 Karton )</a>
-                                                                            <p class="head-detail-modal">Detail Produk
-                                                                                :</p>
-                                                                            <p class="isi">1 Karton / 48 Pcs
-                                                                            </p>
+                                                    <div class="modal-body">
+                                                        <div class="detail-status">
+                                                            <div class="card mb-4">
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="header-modal col md-12 flex">
+                                                                            <i
+                                                                                class="fa fa-shopping-bag text-success mr-2"></i>
+                                                                            <h4 class="head-1 mr-5">Belanja</h4>
+                                                                            <h4 class="date mr-5">
+                                                                                {{ $check->tanggal }}</h4>
+                                                                            <h4 class="date mr-2">INV :</h4>
+                                                                            <a class="inv_d"
+                                                                                href="#">{{ $check->id_checkout }}</a>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-3 mt-3">
-                                                                        <div class="total-belanja-modal">
-                                                                            <h4>Total Harga</h4>
-                                                                            <h3>Rp.106.000</h3>
+                                                                    <?php
+                                                                    $detail = DB::table('tb_detail_checkout')
+                                                                        ->join('tb_keranjang', 'tb_detail_checkout.id_keranjang', '=', 'tb_keranjang.id_keranjang')
+                                                                        ->join('tb_barang', 'tb_keranjang.id_barang', '=', 'tb_barang.id_barang')
+                                                                        ->join('tb_toko', 'tb_keranjang.id_toko', '=', 'tb_toko.id_toko')
+                                                                        ->where('id_checkout', $check->id_checkout)
+                                                                        ->get();
+                                                                    $toko = DB::table('tb_detail_checkout')
+                                                                        ->join('tb_keranjang', 'tb_detail_checkout.id_keranjang', '=', 'tb_keranjang.id_keranjang')
+                                                                        ->join('tb_barang', 'tb_keranjang.id_barang', '=', 'tb_barang.id_barang')
+                                                                        ->join('tb_toko', 'tb_keranjang.id_toko', '=', 'tb_toko.id_toko')
+                                                                        ->where('id_checkout', $check->id_checkout)
+                                                                        ->orderByDesc('id_detail_checkout')
+                                                                        ->limit(1)
+                                                                        ->get();
+                                                                    ?>
+                                                                    @foreach ($detail as $dt)
+                                                                        <div class="row">
+                                                                            <div class="col-md-2">
+                                                                                <img class="img-produk"
+                                                                                    src="/images/post/{{ $dt->foto }}"
+                                                                                    alt="produk">
+                                                                            </div>
+                                                                            <div class="col-md-7 mt-3">
+                                                                                <div class="product-detail">
+                                                                                    <a class="nama-produk-modal"
+                                                                                        href="{{ url('produkdetail') }}">{{ $dt->nama_barang }}</a>
+                                                                                    <p class="head-detail-modal">Nama Toko
+                                                                                        :</p>
+                                                                                    <p class="isi">
+                                                                                        {{ $dt->nama_toko }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3 mt-3">
+                                                                                <div class="total-belanja-modal">
+                                                                                    <h4>Total Harga</h4>
+                                                                                    <h3>@currency($dt->sub_harga)</h3>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
+                                                                        <div class="tombol text-right ">
+                                                                            <a href="{{ url('produkdetail', $dt->id_barang) }}"
+                                                                                class="beli-lagi mt-4">Beli
+                                                                                Lagi</a>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?php
+                                                        $info = DB::table('tb_checkout')
+                                                            ->where('id_checkout', $check->id_checkout)
+                                                            ->get();
+                                                        ?>
+                                                        @foreach ($toko as $it)
+                                                            <div class="info-pengiriman">
+                                                                <div class="info-header d-flex">
+                                                                    <i class="fa fa-list-alt text-success mt-1 mr-3"></i>
+                                                                    <h4 class="info-header-text">Info Pengiriman</h4>
+                                                                </div>
+                                                                <div class="info-shipping d-flex">
+                                                                    <p class="shipping-title1">Kurir</p><span>:</span>
+                                                                    <div class="shipping-content">
+                                                                        <p>Kurir BosPangan</p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="tombol text-right ">
-                                                                    <a href="#" class="beli-lagi mt-4">Beli Lagi</a>
+                                                                <div class="info-shipping d-flex">
+                                                                    <p class="shipping-title">Alamat</p><span>:</span>
+                                                                    <div class="shipping-content">
+                                                                        <p>
+                                                                            {{ $it->nama_toko }}
+                                                                            <br>
+                                                                            {{ $it->hp_toko }}
+                                                                            <br>
+                                                                            {{ $it->alamat }}
+                                                                            <br>
+                                                                            Kepanjen Kidul, Kota Blitar
+                                                                            <br>
+                                                                            Jawa Timur, 66115
+                                                                        <p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="info-pengiriman">
-                                                        <div class="info-header d-flex">
-                                                            <i class="fa fa-list-alt text-success mt-1 mr-3"></i>
-                                                            <h4 class="info-header-text">Info Pengiriman</h4>
-                                                        </div>
-                                                        <div class="info-shipping d-flex">
-                                                            <p class="shipping-title1">Kurir</p><span>:</span>
-                                                            <div class="shipping-content">
-                                                                <p>J&T - Express</p>
+                                                        @endforeach
+                                                        @foreach ($info as $i)
+                                                            <div class="info-payment pb-5">
+                                                                <div class="info-header d-flex">
+                                                                    <i class="fa fa-list-alt text-success mt-1 mr-3"></i>
+                                                                    <h4 class="info-header-text">Info Pembayaran</h4>
+                                                                </div>
+                                                                <div class="payment-method mt-3">
+                                                                    <div class="payment-content">
+                                                                        <span class="method">Metode
+                                                                            Pembayaran</span><span
+                                                                            class="value">{{ $i->metode_pembayaran }}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="dash mt-3 mr-3"></div>
+                                                                <div class="payment-method mt-3">
+                                                                    <div class="payment-content">
+                                                                        <span class="method">Total
+                                                                            Harga</span><span
+                                                                            class="value">@currency($i->subtotal)</span>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="payment-method mt-3">
+                                                                    <div class="payment-content">
+                                                                        <span class="method">Total
+                                                                            Ongkir</span><span
+                                                                            class="value">@currency($i->ongkir)</span>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="dash mt-3 mr-3"></div>
+                                                                <div class="payment-total mt-3">
+                                                                    <div class="payment-content">
+                                                                        <span class="method">Total
+                                                                            Belanja</span><span
+                                                                            class="value">@currency($i->total)</span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="info-shipping d-flex">
-                                                            <p class="shipping-title">No Resi</p><span>:</span>
-                                                            <div class="shipping-content">
-                                                                <p>10001217095726</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="info-shipping d-flex">
-                                                            <p class="shipping-title">Alamat</p><span>:</span>
-                                                            <div class="shipping-content">
-                                                                <p>
-                                                                    Oska Aditya
-                                                                    <br>
-                                                                    083833833833
-                                                                    <br>
-                                                                    Jl. Cipunegara, Kec. Kepanjenkidul, Kota Blitar,
-                                                                    Jawa Timur
-                                                                    <br>
-                                                                    Kepanjen Kidul, Kota Blitar
-                                                                    <br>
-                                                                    Jawa Timur, 66115
-                                                                <p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="info-payment pb-5">
-                                                        <div class="info-header d-flex">
-                                                            <i class="fa fa-list-alt text-success mt-1 mr-3"></i>
-                                                            <h4 class="info-header-text">Info Payment</h4>
-                                                        </div>
-                                                        <div class="payment-method mt-3">
-                                                            <div class="payment-content">
-                                                                <span class="method">Metode
-                                                                    Pembayaran</span><span
-                                                                    class="value">VA-BCA</span>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="dash mt-3 mr-3"></div>
-                                                        <div class="payment-method mt-3">
-                                                            <div class="payment-content">
-                                                                <span class="method">Total Harga</span><span
-                                                                    class="value">Rp.106.000</span>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="payment-method mt-3">
-                                                            <div class="payment-content">
-                                                                <span class="method">Total Ongkir</span><span
-                                                                    class="value">Rp.6.000</span>
-                                                            </div>
-                                                        </div>
-                                                        <br>
-                                                        <div class="dash mt-3 mr-3"></div>
-                                                        <div class="payment-total mt-3">
-                                                            <div class="payment-content">
-                                                                <span class="method">Total Belanja</span><span
-                                                                    class="value">Rp.112.000</span>
-                                                            </div>
-                                                        </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
