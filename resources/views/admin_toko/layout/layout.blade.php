@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Admin Bos Pangan's Market Place </title>
+    <title>Bos Pangan | Kelola Toko</title>
     <link rel="stylesheet" href="{{ asset('assets/admin/bootstrap/bootstrap.min.css') }}" />
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
@@ -26,7 +26,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/logo_sm.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/marketplace/images/favicon.png') }}" />
     @yield('css')
 </head>
 
