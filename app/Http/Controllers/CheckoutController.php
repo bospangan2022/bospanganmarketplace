@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CartModel;
+use App\Models\Checkout;
+use App\Models\CheckoutDetail;
 
 class CheckoutController extends Controller
 {
@@ -20,6 +22,7 @@ class CheckoutController extends Controller
             )
             ->where("id_user", Auth::user()->id)
             ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
             ->get();
         $checkout = DB::table("tb_keranjang")
             ->join(
@@ -30,10 +33,12 @@ class CheckoutController extends Controller
             )
             ->where("id_user", Auth::user()->id)
             ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
             ->get();
         $count_barang = DB::table("tb_keranjang")
             ->where("id_user", Auth::user()->id)
             ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
             ->count("id_barang");
         $count_love = DB::table("tb_wishlist")
             ->where("id_user", Auth::user()->id)
@@ -41,6 +46,7 @@ class CheckoutController extends Controller
         $sub_total = DB::table("tb_keranjang")
             ->where("id_user", Auth::user()->id)
             ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
             ->sum("sub_harga");
         $ongkir = 0;
         $grand_total = $sub_total + $ongkir;
@@ -159,5 +165,35 @@ class CheckoutController extends Controller
             "checkout" => $checkout,
             "proses" => $proses,
         ]);
+    }
+
+    public function proses_checkout(Request $request)
+    {
+        $checkout = Checkout::create([
+            "id_user" => Auth::user()->id,
+            "subtotal" => $request->subtotal,
+            "ongkir" => $request->ongkir,
+            "total" => $request->total,
+            "tanggal" => date("Y-m-d"),
+            "metode_pembayaran" => $request->metode_pembayaran,
+        ]);
+
+        $id_checkout = $checkout->id;
+
+        $jumlah = $request->jumlah;
+
+        for ($x = 0; $x < $jumlah; $x++) {
+            CheckoutDetail::create([
+                "id_checkout" => $id_checkout,
+                "id_keranjang" => $request->id_keranjang[$x],
+            ]);
+
+            CartModel::where(
+                "id_keranjang",
+                $request->id_keranjang[$x]
+            )->update(["status" => "c"]);
+        }
+
+        return redirect()->back();
     }
 }
