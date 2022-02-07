@@ -11,7 +11,7 @@ class ProfilTokoController extends Controller
     public function index($id)
     {
         $toko = DB::table("tb_toko")
-            ->join("regencies", "tb_toko.kota", "=", "regencies.id")
+            ->join("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
             ->where("nama_toko", $id)
             ->get();
 
@@ -52,16 +52,19 @@ class ProfilTokoController extends Controller
                     "tb_barang.id_barang"
                 )
                 ->where("id_user", Auth::user()->id)
+                ->where("tb_keranjang.status", "t")
                 ->get();
 
             $count_barang = DB::table("tb_keranjang")
                 ->where("id_user", Auth::user()->id)
+                ->where("tb_keranjang.status", "t")
                 ->count("id_barang");
             $count_love = DB::table("tb_wishlist")
                 ->where("id_user", Auth::user()->id)
                 ->count("id_barang");
             $sub_total = DB::table("tb_keranjang")
                 ->where("id_user", Auth::user()->id)
+                ->where("tb_keranjang.status", "t")
                 ->sum("sub_harga");
 
             return view("marketplace.profil_toko", [

@@ -40947,8 +40947,77 @@ div.tagsinput span.tag a {
         max-width: 1200px;
     }
 }
+.accordion-filter {
+    width: 30%;
+}
 
+.card-content {
+    width: 70%;
+}
 
+@media (max-width: 1190px) {
+    .card-lg {
+        display: none;
+    }
+}
 
+@media (min-width: 1190px) {
+    .card-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .title {
+        text-align: center;
+    }
+    .title-list {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1.5rem;
+    }
+    .content-main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .accordion-filter {
+        width: 100%;
+    }
+
+    .card-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 670px) {
+    .title-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    .list-detail {
+        margin-bottom: 1.5rem;
+    }
+
+    .card-content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .accordion-filter {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    
+}
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

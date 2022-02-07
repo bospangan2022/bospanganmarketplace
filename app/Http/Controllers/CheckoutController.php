@@ -171,14 +171,26 @@ class CheckoutController extends Controller
 
     public function proses_checkout(Request $request)
     {
-        $checkout = Checkout::create([
-            "id_user" => Auth::user()->id,
-            "subtotal" => $request->subtotal,
-            "ongkir" => $request->ongkir,
-            "total" => $request->total,
-            "tanggal" => date("Y-m-d"),
-            "metode_pembayaran" => $request->metode_pembayaran,
-        ]);
+        if ($request->metode_pembayaran == "cod") {
+            $checkout = Checkout::create([
+                "id_user" => Auth::user()->id,
+                "subtotal" => $request->subtotal,
+                "ongkir" => $request->ongkir,
+                "total" => $request->total,
+                "tanggal" => date("Y-m-d"),
+                "metode_pembayaran" => $request->metode_pembayaran,
+                "status" => "dikemas",
+            ]);
+        } else {
+            $checkout = Checkout::create([
+                "id_user" => Auth::user()->id,
+                "subtotal" => $request->subtotal,
+                "ongkir" => $request->ongkir,
+                "total" => $request->total,
+                "tanggal" => date("Y-m-d"),
+                "metode_pembayaran" => $request->metode_pembayaran,
+            ]);
+        }
 
         $id_checkout = $checkout->id;
 

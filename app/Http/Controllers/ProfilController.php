@@ -50,16 +50,19 @@ class ProfilController extends Controller
                 "tb_barang.id_barang"
             )
             ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
             ->get();
 
         $count_barang = DB::table("tb_keranjang")
             ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
             ->count("id_barang");
         $count_love = DB::table("tb_wishlist")
             ->where("id_user", Auth::user()->id)
             ->count("id_barang");
         $sub_total = DB::table("tb_keranjang")
             ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
             ->sum("sub_harga");
 
         $katlimit = DB::table("tb_kategori")
@@ -67,6 +70,23 @@ class ProfilController extends Controller
             ->get();
 
         // dd($utama);
+
+        $belum_dibayar = DB::table("tb_checkout")
+            ->where("id_user", Auth::user()->id)
+            ->where("status", "belumdibayar")
+            ->count();
+        $dikemas = DB::table("tb_checkout")
+            ->where("id_user", Auth::user()->id)
+            ->where("status", "dikemas")
+            ->count();
+        $dikirim = DB::table("tb_checkout")
+            ->where("id_user", Auth::user()->id)
+            ->where("status", "dikirim")
+            ->count();
+        $checkout = DB::table("tb_checkout")
+            ->where("id_user", Auth::user()->id)
+            ->get();
+        //dd($checkout);
         return view("marketplace.profil", [
             "utama" => $utama,
             "profil" => $profil,
@@ -76,6 +96,10 @@ class ProfilController extends Controller
             "count_love" => $count_love,
             "sub_total" => $sub_total,
             "katlimit" => $katlimit,
+            "belum_dibayar" => $belum_dibayar,
+            "dikirim" => $dikirim,
+            "dikemas" => $dikemas,
+            "checkout" => $checkout,
         ]);
     }
 
