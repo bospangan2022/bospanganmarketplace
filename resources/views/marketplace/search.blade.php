@@ -25,7 +25,7 @@
                     <div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
                     <div class="sidebar_tags">
                         <!--Categories-->
-                        <div class="sidebar_widget categories filter-widget">
+                        <div class="sidebar_widget categories filterBox filter-widget">
                             <div class="widget-title">
                                 <h3>Kategori</h3>
                             </div>
@@ -70,6 +70,13 @@
 
                     <div class="productList product-load-more">
                         <!--Toolbar-->
+                        <div class="cari-btn-mobile section-header text-center">
+                            <button type="button" class="btn search-trigger">
+                                <i class="icon anm anm-search-l d-flex">
+                                    <p class="txt_cari-mobile">Cari Produk Disini</p>
+                                </i>
+                            </button>
+                        </div>
                         <button type="button" class="btn btn-filter d-block d-md-none d-lg-none"> Product Filters</button>
                         <div class="toolbar">
                             <div class="filters-toolbar-wrapper">

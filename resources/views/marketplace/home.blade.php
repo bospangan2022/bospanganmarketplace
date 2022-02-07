@@ -53,6 +53,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="cari-btn-mobile section-header text-center">
+                            <button type="button" class="btn search-trigger">
+                                <i class="icon anm anm-search-l d-flex">
+                                    <p class="txt_cari-mobile">Cari Produk Disini</p>
+                                </i>
+                            </button>
+                        </div>
                         <div class="section-header text-center">
                             <h2 class="h2">Kategori</h2>
                             <p>Kategori barang yang kami sediakan</p>

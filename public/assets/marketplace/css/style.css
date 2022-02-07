@@ -1728,6 +1728,99 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
 
 
 /*---------------------------------------
+  III Layout Correction ---------------
+  ---------------------------------------*/
+  .cari-btn-mobile{
+    display: none;
+  }
+
+  @media (max-width: 576px){
+    .site-header__search{
+      display: none;
+    }
+
+    .cari-btn-mobile{
+      display: block;
+    }
+
+    .txt_cari-mobile{
+      font-family: Poppins;
+      font-weight: 600;
+      color: white;
+      margin-left: 10px;
+    }
+}
+
+
+
+/*---------------------------------------
+  III Cart Correction ---------------
+  ---------------------------------------*/
+
+  .mobile-cart{
+    display: none;
+  }
+
+  
+   @media (max-width: 576px){
+    .web-cart{
+      display: none;
+    }
+
+    .mobile-cart{
+    display: flex;
+  }
+
+    .brg_cart{
+      font-size: 14px;
+      font-weight: 600;
+      color: black;
+    }
+
+    .jum_count{
+      display: flex;
+      margin-top: 5px;
+    }
+
+    .tj{
+      margin-top: 6px ;
+    }
+
+    .toko_cart{
+      font-size: 12px;
+      font-weight: 500;
+      color: #090;
+    }
+
+    .harga_cart{
+      font-size: 14px;
+      font-weight: 600;
+      color: black;
+    }
+
+    .sub_harga-cart{
+      margin-top: -15px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #239C4C;
+    }
+
+    .cart-toko {
+      text-decoration: none;
+    }
+    
+    
+    .tko_header{
+      font-family: Poppins;
+      font-size: 1.2em;
+      font-weight: 700;
+      text-decoration: none;
+      color: #239C4C;
+    }
+
+  }
+
+/*---------------------------------------
   III Profil Correction ---------------
   ---------------------------------------*/
 
@@ -1755,7 +1848,7 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
    
   }
 
-  .kota_user .kota_u{
+  .kota_u {
     margin-top: -2px;
     font-weight: 500;
     color: black;
@@ -1770,6 +1863,13 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
 
   .profil-row-mobile{
     display:none;
+  }
+
+  .prf_dt {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
   }
 
   @media (max-width: 576px){
@@ -1794,6 +1894,17 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
   .dtl-user-mbl{
     margin: 0em 0 1em 1em;
   }
+
+  .kota-mobile{
+    margin-top: -10px;
+  }
+
+  .kota_u{
+    margin-top: -1px;
+    font-weight: 500 ;
+    color: black;
+  }
+  
 
 }
 
