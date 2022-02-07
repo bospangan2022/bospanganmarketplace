@@ -1,4 +1,4 @@
-@extends('marketplace.layout.layout_profil')
+@extends('marketplace.layout.layout_bukatoko')
 
 
 @section('content')

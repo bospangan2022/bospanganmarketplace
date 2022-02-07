@@ -3,16 +3,16 @@
     <div class="main-panel">
         <div class="content-wrapper">
             <h2 class="title mb-4"><b>Gerobak Terbengkalai</b></h2>
-            <div class="col-8 d-flex justify-content-between mb-4">
-                <div class="">
+            <div class="title-list col-8 d-flex justify-content-between mb-4">
+                <div class="list-detail">
                     <span>Total Terbengkalai</span>
                     <h3 class="my-2"><b>{{ $total_keranjang }}</b></h3>
                 </div>
-                <div>
+                <div class="list-detail">
                     <span>Total penjualan yang dipulihkan</span>
                     <h3 class="my-2"><b>@currency($total_dana)</b></h3>
                 </div>
-                <div style="color:#37BA32;">
+                <div class="list-detail" style="color:#37BA32;">
                     <span>Automatic recovery emails</span>
                     <h3 class="my-2"><b>Aktifkan</b></h3>
                 </div>
@@ -25,8 +25,8 @@
                             aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
                 </form>
-                <div class="row">
-                    <div class="col-4">
+                <div class="content-main row">
+                    <div class="accordion-filter col-4">
                         <div class="filter-title mb-3">
                             <h4><b>Filter Berdasarkan :</b></h4>
                         </div>
@@ -174,7 +174,7 @@
                         </div>
                     </div>
 
-                    <div class="col-8">
+                    <div class="card-content col-8">
                         <div class="navigasi my-3 d-flex justify-content-between">
                             <div class="form-check ms-4">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
@@ -221,7 +221,7 @@
 
                     if ($check != 0) { ?>
                                 <div class="container justify-content-center p-3 mt-3 border-bottom">
-                                    <div class="row ms-2 mb-3">
+                                    <div class="card-product row ms-2 mb-3">
                                         <input class="form-check-input col-1 p-2" type="checkbox" value=""
                                             id="flexCheckDefault" name="foo">
                                         <div class="col-md-8">
