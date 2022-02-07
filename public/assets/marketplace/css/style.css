@@ -1728,6 +1728,104 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
 
 
 /*---------------------------------------
+  III Profil Correction ---------------
+  ---------------------------------------*/
+
+  .riwayat-transaksi{
+    margin: 1em 1em 3em 1em ;
+  }
+
+  .dtl-user{
+    margin: 1em 0 1em 0;
+  }
+
+  .profil_pp{
+    margin: 10px 10px 10px 20px;
+  }
+
+  .nm_user{
+    font-family: Poppins;
+    font-weight: 600;
+    color: black;
+    font-size: 14px;
+  }
+
+  .kota_user{
+    margin-top: -12px;
+   
+  }
+
+  .kota_user .kota_u{
+    margin-top: -2px;
+    font-weight: 500;
+    color: black;
+    font-size: 13px;
+  }
+
+  .profil_img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .profil-row-mobile{
+    display:none;
+  }
+
+  @media (max-width: 576px){
+  .profil-row{
+    display: none;
+  }
+  
+  .profil-row-mobile{
+    display: flex;
+  }
+
+  .profil_img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .profil_pp{
+    margin: 2em 1em 1em 0;
+  }
+
+  .dtl-user-mbl{
+    margin: 0em 0 1em 1em;
+  }
+
+}
+
+
+  .site-header__status-ic { 
+    font-size:11px;
+    display: inline-block;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 16px;
+    height:16px;
+    line-height: 16px;
+    bottom: 25px;
+    text-align: center;
+    position: absolute;
+  }
+
+  .status_ic{
+    margin-bottom: 10px;
+    color: #66F095;
+  }
+
+  .status-riwayat .text_status{
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+  }
+
+
+/*---------------------------------------
   III Profil Toko ---------------
   ---------------------------------------*/
 .card-profil-toko{

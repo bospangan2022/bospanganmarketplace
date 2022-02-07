@@ -17,85 +17,41 @@
         <div class="container">
 
             <div class="row billing-fields">
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 sm-margin-30px-bottom">
-                    <div class="create-ac-content bg-light-gray padding-20px-all">
-                        <form>
-                            <fieldset>
-                                <h2 class="login-title mb-5 ">Profil</h2>
-                                <div class="profile-photo mb-4">
-                                    <img src="{{ asset('assets/marketplace/images/about2.jpg') }}" alt="">
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12 col-lg-12 col-xl-12 required">
-                                        <label for="input-name">Nama Lengkap </label>
-                                        <input name="nama" value="" id="nama" type="text">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12 col-lg-12 col-xl-12 required">
-                                        <label for="input-email">E-Mail </label>
-                                        <input name="email" value="" id="input-email" type="email">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12 col-lg-12 col-xl-12 required">
-                                        <label for="input-nohp">No. Handphone</label>
-                                        <input name="nohp" value="" id="input-nohp" type="nohp">
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                            <fieldset>
-                                <div class="row">
-                                    <div class="form-group col-md-12 col-lg-12 col-xl-12 required">
-                                        <label for="input-address-1">Alamat </label>
-                                        <textarea class="form-control resize-both" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12 col-lg-12 col-xl-12 required">
-                                        <label for="provinsi">Provinsi </label>
-                                        <select name="country_id" id="input-country">
-                                            <option value=""> --- Please Select --- </option>
-                                            <option value="1">DKI Jakarta</option>
-                                            <option value="2">Banten</option>
-                                            <option value="3">Jawa Barat</option>
-                                            <option value="4">Jawa Tengah</option>
-                                            <option value="5">Jawa Timur</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12 col-lg-12 col-xl-12 required">
-                                        <label for="input-country">Kota </label>
-                                        <select name="country_id" id="input-country">
-                                            <option value=""> --- Please Select --- </option>
-                                            <option value="1">Jakarta</option>
-                                            <option value="2">Tangerang</option>
-                                            <option value="3">Bandung</option>
-                                            <option value="4">Semarang</option>
-                                            <option value="5">Surabaya</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-12 col-lg-12 col-xl-12 required">
-                                        <label for="kodepos">Kode Pos </label>
-                                        <input name="kodepos" value="" id="kodepos" type="text">
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                            <div class="simpanProfile">
-                                <div><input type="button" class="btn btn-secondary btn--small-profile"
-                                        value="Simpan Profil "></div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 sm-margin-30px-bottom">
+                    <div class="profil-card card">
+                        <div class="profil-row row">
+                            <div class="profil_pp col-md-2 col-sm-4">
+                                <img class="profil_img" src="{{ asset('/images/post/01.jpg') }}" alt="">
                             </div>
-                        </form>
+                            <div class="dtl-user col-md-9 col-sm-8">
+                                <p class="nm_user">Oska Aditya Pratama</p>
+                                <div class="kota_user d-flex">
+                                    <i class="fas fa-map-marker-alt text-success mr-2"></i>
+                                    <p class="kota_u">Kota Blitar</p>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- Mobile Profile Card --}}
+                        <div class="profil-row-mobile row ">
+                            <div class="col-md-1">
+                                <div class="profil_pp col-md-12 d-flex">
+                                    <img class="profil_img" src="{{ asset('/images/post/01.jpg') }}" alt="">
+                                    <div class="dtl-user-mbl">
+                                        <p class="nm_user">Oska Aditya Pratama</p>
+                                        <div class="kota-mobile d-flex ">
+                                            <i class="fas fa-map-marker-alt text-success mr-2"></i>
+                                            <p class="kota_u">Kota Blitar</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- Profil Detail --}}
+                        .
                     </div>
                 </div>
 
-                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                     <div class="your-order-payment">
                         <div class="tabs-listing">
                             <ul class="product-tabs">
@@ -187,40 +143,35 @@
                                 </div>
                                 <div id="tab2" class="tab-content">
                                     <div class="filters-toolbar-wrapper">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="input-group mb-3 border rounded-pill p-0">
-                                                    <input type="search" placeholder="Cari transaksimu disini"
-                                                        aria-describedby="button-addon3"
-                                                        class="form-control bg-none border-0">
-                                                    <div class="input-group-append border-0">
-                                                        <button id="button-addon3" type="button" class="btn btn-link "><i
-                                                                class="fa fa-search"></i></button>
-                                                    </div>
+                                        <div class="riwayat-transaksi row">
+                                            <div class="col md-3">
+                                                <div class="status-riwayat text-center">
+                                                    <a href=""><i class="status_ic fas fa-wallet fa-4x"></i>
+                                                        <span id="CartCount" class="site-header__status-ic"
+                                                            data-cart-render="item_count">1</span>
+                                                    </a>
+                                                    <br>
+                                                    <a class="text_status" href="">Belum Dibayar</a>
                                                 </div>
                                             </div>
-
-                                            <div class="col-3 col-md-3 col-lg-3 text-left ml-2 ">
-                                                <div class="filters-toolbar__item mt-1">
-                                                    <label for="SortBy" class="hidden">Status</label>
-                                                    <select name="SortBy" id="SortBy"
-                                                        class="filters-toolbar__input filters-toolbar__input--sort">
-                                                        <option value="title-ascending" selected="selected">Semua
-                                                        </option>
-                                                        <option>Menunggu Konfirmasi</option>
-                                                        <option>Diproses</option>
-                                                        <option>Dikirim</option>
-                                                        <option>Berhasil</option>
-                                                    </select>
-                                                    <input class="collection-header__default-sort" type="hidden"
-                                                        value="manual">
+                                            <div class="col md-3">
+                                                <div class="status-riwayat text-center">
+                                                    <a href=""><i class="status_ic fas fa-archive fa-4x"></i>
+                                                        <span id="CartCount" class="site-header__status-ic"
+                                                            data-cart-render="item_count">1</span>
+                                                    </a>
+                                                    <br>
+                                                    <a class="text_status" href="">Dikemas</a>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-4">
-                                                <div class="datepicker date input-group p-0 shadow-sm">
-                                                    <input type="date" placeholder="Choose a reservation date"
-                                                        class="form-control py-4 px-4" id="reservationDate">
+                                            <div class="col md-3">
+                                                <div class="status-riwayat text-center">
+                                                    <a href=""><i class="status_ic fas fa-shipping-fast fa-4x"></i>
+                                                        <span id="CartCount" class="site-header__status-ic"
+                                                            data-cart-render="item_count">1</span>
+                                                    </a>
+                                                    <br>
+                                                    <a class="text_status" href="">Dikirim</a>
                                                 </div>
                                             </div>
                                         </div>
