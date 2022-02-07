@@ -23,6 +23,7 @@ use App\Http\Controllers\KelolaTokoUserController;
 use App\Http\Controllers\ProdukUserController;
 use App\Http\Controllers\KategoriUserController;
 use App\Http\Controllers\GerobakUserController;
+use App\Http\Controllers\PemesananUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -207,6 +208,11 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::post("checkout/barang", [
             CheckoutController::class,
             "proses_checkout",
+        ]);
+        Route::get("pemesanan_user", [PemesananUserController::class, "index"]);
+        Route::get("pemesanan_detail_user", [
+            PemesananController::class,
+            "pemesanan_detail",
         ]);
     });
 

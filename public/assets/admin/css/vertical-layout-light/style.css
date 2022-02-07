@@ -40955,6 +40955,8 @@ div.tagsinput span.tag a {
     width: 70%;
 }
 
+
+
 @media (max-width: 1190px) {
     .card-lg {
         display: none;
@@ -40963,6 +40965,28 @@ div.tagsinput span.tag a {
 
 @media (min-width: 1190px) {
     .card-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 670px) {
+   .form-input{
+        display: none;
+   }
+   .image-list{
+    display: none;
+        }
+    .button-action .btn-sm{
+        font-size: 10px;
+
+    }
+}
+
+@media (min-width: 670px) {
+    .form-input-mobile {
+        display: none;
+    }
+    .image-list-mobile{
         display: none;
     }
 }
@@ -41015,6 +41039,14 @@ div.tagsinput span.tag a {
     .accordion-filter {
         padding-left: 0;
         padding-right: 0;
+    }
+
+    .content-main{
+        padding-left: 1.5rem;
+    }
+
+    .new-item{
+        width:100%;
     }
 
     
