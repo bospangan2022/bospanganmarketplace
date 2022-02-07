@@ -73,6 +73,7 @@
                             <li><a href="{{ url('login') }}">Login</a></li>
                             <li><a href="{{ url('register') }}">Create Account</a></li>
 
+
                             <?php } else { ?>
                             <?php
                         $cek = DB::table("tb_toko")
@@ -86,6 +87,7 @@
                             <li><a href="{{ url('kelola_toko') }}">Kelola Toko</a></li>
                             <?php }
                         ?>
+
                             <li>
                                 <a href="{{ url('profil') }}">{{ Auth::user()->name }} </a>
                             </li>
@@ -277,8 +279,9 @@
 
                             </div>
                             <div class="site-header__search">
-                                <button type="button" class="search-trigger"><i
-                                        class="icon anm anm-search-l"></i></button>
+                                <button type="button" class="search-trigger">
+                                    <i class="icon anm anm-search-l"></i>
+                                </button>
                             </div>
                         </div>
                     </div>

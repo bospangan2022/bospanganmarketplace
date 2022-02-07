@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
         <!--End Page Title-->
 
         <div class="container">
-            <div class="row">
+            <div class="web-cart row">
                 @foreach ($toko as $tk)
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
                         <table class="cart style2">
@@ -134,6 +134,150 @@ use Illuminate\Support\Facades\DB;
                         </table>
                     </div>
                 @endforeach
+
+
+
+
+
+            </div>
+            <div class="mobile-cart row">
+                @foreach ($toko as $tk)
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                        <div class="cart__toko">
+                            <a class="tko_header"
+                                href="{{ url('profil_toko', $tk->id_toko) }}">{{ $tk->nama_toko }} ></a>
+                        </div>
+                        <table class="cart style2">
+                            <thead class="cart__row cart__header">
+
+                                <tr>
+                                    <th class="text-left">
+                                        <div class="form-check">
+                                            <input class="form-check-input text-" type="checkbox" value=""
+                                                id="flexCheckChecked" onClick="toggle(this)">
+                                            <label class="form-check-label ml-3" for="flexCheckChecked">
+                                                All
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th class="text-center">Detail Produk</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                
+                                $keranjang = DB::table('tb_barang')
+                                    ->join('tb_toko', 'tb_barang.id_toko', '=', 'tb_toko.id_toko')
+                                    ->join('tb_keranjang', 'tb_barang.id_barang', '=', 'tb_keranjang.id_barang')
+                                    ->where('tb_keranjang.id_user', Auth::user()->id)
+                                    ->where('tb_keranjang.id_toko', $tk->id_toko)
+                                    ->where('tb_keranjang.status', 't')
+                                    ->orderBy('tb_keranjang.id_keranjang', 'ASC')
+                                    ->get();
+                                ?>
+                                @foreach ($keranjang as $krj)
+                                    <tr class="cart__row border-bottom  border-top">
+                                        <td class="cart__meta pl-3 text-center">
+                                            <input class="form-check-input" type="checkbox" value="{{ $krj->id_barang }}"
+                                                id="flexCheckDefault" name="foo">
+                                        </td>
+                                        <td class="cart__image-wrapper cart-flex-item">
+                                            <a href="{{ url('produkdetail', $krj->id_barang) }}"><img
+                                                    class="cart__image" src="/images/post/{{ $krj->foto }}" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="cart__meta small--text-left cart-flex-item ml-3">
+                                            <div class="list-view-item__title">
+                                                <a class="brg_cart"
+                                                    href="{{ url('produkdetail', $krj->id_barang) }}">{{ $krj->nama_barang }}
+                                                </a>
+                                            </div>
+
+
+                                            <div class="cart__meta-text">
+                                                <p class="harga_cart"> @currency($krj->harga)
+                                                </p>
+                                            </div>
+                                            <div class="jum_count">
+                                                <p class="tj">Jumlah :</p>
+                                                <form action="{{ url('update_cart', $krj->id_keranjang) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <div class="qtyField text-left ml-3">
+                                                        <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                                class="icon icon-minus"></i></a>
+                                                        <input class="cart__qty-input qty" type="text" name="jumlah"
+                                                            id="qty" value="{{ $krj->jumlah }}" pattern="[0-9]*">
+                                                        <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                                class="icon icon-plus"></i></a>
+                                                    </div>
+                                            </div>
+                                            <div class="total-count">
+                                                <input type="hidden" name="sub_harga" value="{{ $krj->sub_harga }}">
+                                                <input type="hidden" name="harga" value="{{ $krj->harga }}">
+                                                <p>Total :</p>
+                                                <div class="sub_harga-cart"><span
+                                                        class="">@currency($krj->sub_harga)</span></div>
+                                            </div>
+                                            <div class="action-cart">
+                                                <a href="{{ url('remove_cart', $krj->id_keranjang) }}"
+                                                    class="btn btn--secondary cart__remove" title="Remove tem"><i
+                                                        class="icon icon anm anm-times-l"></i></a>
+
+                                                <button type="submit" class="btn btn--secondary cart__remove"><i
+                                                        class="anm anm-edit"></i></button>
+                                            </div>
+                                            </form>
+                                        </td>
+                                        <form action="{{ url('update_cart', $krj->id_keranjang) }}" method="POST">
+                                            @csrf
+                                            <td class="cart__update-wrapper cart-flex-item text-right">
+                                                <div class="cart__qty text-center">
+                                                    <div class="qtyField">
+                                                        <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                                class="icon icon-minus"></i></a>
+                                                        <input class="cart__qty-input qty" type="text" name="jumlah"
+                                                            id="qty" value="{{ $krj->jumlah }}" pattern="[0-9]*">
+                                                        <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                                class="icon icon-plus"></i></a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-right small--hide cart-price">
+                                                <input type="hidden" name="sub_harga" value="{{ $krj->sub_harga }}">
+                                                <input type="hidden" name="harga" value="{{ $krj->harga }}">
+                                                <div><span class="money">@currency($krj->sub_harga)</span></div>
+                                            </td>
+                                            <td class="text-center small--hide" colspan="2"><a
+                                                    href="{{ url('remove_cart', $krj->id_keranjang) }}"
+                                                    class="btn btn--secondary cart__remove" title="Remove tem"><i
+                                                        class="icon icon anm anm-times-l"></i></a>
+
+                                                <button type="submit" class="btn btn--secondary cart__remove"><i
+                                                        class="anm anm-edit"></i></button>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            <a href="{{ url('belanja') }}"
+                                class="btn btn-secondary btn--small cart-continue mr-1">Lanjutkan
+                                Belanja
+                            </a>
+                            <a href="{{ url('remove_cartall', $tk->id_toko) }}" type="submit" name="clear"
+                                class="btn btn-secondary btn--small  small--hide mr-1">Clear Cart
+                            </a>
+                            <a href="{{ url('checkout', $tk->id_toko) }}" type="submit" name="clear"
+                                class="btn btn-secondary btn--small  small--hide mr-1">Checkout
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+
+
 
 
 

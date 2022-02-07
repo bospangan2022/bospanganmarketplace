@@ -47,7 +47,46 @@
                             </div>
                         </div>
                         {{-- Profil Detail --}}
-                        .
+                        <div class="dt">
+                            <table class="table-borderless ms-5 mb-5">
+                                <tbody>
+                                    <tr>
+                                        <td class="t_dt col-1">
+                                            <span class="prf_dt">Email</span>
+                                        </td>
+                                        <td class="t_dt col-1">
+                                            <span class="prf_dt">:</span>
+                                        </td>
+                                        <td class="t_dt">
+                                            <span class="prf_dt">email</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-3">
+                                            <span class="prf_dt">No Hp</span>
+                                        </td>
+                                        <td class="col-1">
+                                            <span class="prf_dt">:</span>
+                                        </td>
+                                        <td>
+                                            <span class="prf_dt">083833833833</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-3">
+                                            <span class="prf_dt">Alamat</span>
+                                        </td>
+                                        <td class="col-1">
+                                            <span class="prf_dt">:</span>
+                                        </td>
+                                        <td>
+                                            <span class="prf_dt">alamat</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
                 </div>
 

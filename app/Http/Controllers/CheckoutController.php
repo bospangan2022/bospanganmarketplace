@@ -64,6 +64,8 @@ class CheckoutController extends Controller
             ->where("status", "utama")
             ->get();
 
+        // dd($user);
+
         $alamat_toko = DB::table("tb_toko")
             ->leftjoin("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
             ->leftjoin(
