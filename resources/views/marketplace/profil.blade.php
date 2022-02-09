@@ -21,76 +21,80 @@ use Illuminate\Support\Facades\DB;
 
             <div class="row billing-fields">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 sm-margin-30px-bottom">
-                    <div class="profil-card card">
-                        <div class="profil-row row">
-                            <div class="profil_pp col-md-2 col-sm-4">
-                                <img class="profil_img" src="{{ asset('/images/post/01.jpg') }}" alt="">
-                            </div>
-                            <div class="dtl-user col-md-9 col-sm-8">
-                                <p class="nm_user">Oska Aditya Pratama</p>
-                                <div class="kota_user d-flex">
-                                    <i class="fas fa-map-marker-alt text-success mr-2"></i>
-                                    <p class="kota_u">Kota Blitar</p>
+                    @foreach ($utama as $u)
+                        <div class="profil-card card">
+                            <div class="profil-row row">
+                                <div class="profil_pp col-md-2 col-sm-4">
+                                    <img class="profil_img" src="{{ asset('/images/post/01.jpg') }}" alt="">
+                                </div>
+                                <div class="dtl-user col-md-9 col-sm-8">
+                                    <p class="nm_user">{{ Auth::user()->name }}</p>
+                                    <div class="kota_user d-flex">
+                                        <i class="fas fa-map-marker-alt text-success mr-2"></i>
+                                        <p class="kota_u">{{ $u->nama_kota }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- Mobile Profile Card --}}
-                        <div class="profil-row-mobile row ">
-                            <div class="col-md-1">
-                                <div class="profil_pp col-md-12 d-flex">
-                                    <img class="profil_img" src="{{ asset('/images/post/01.jpg') }}" alt="">
-                                    <div class="dtl-user-mbl">
-                                        <p class="nm_user">Oska Aditya Pratama</p>
-                                        <div class="kota-mobile d-flex ">
-                                            <i class="fas fa-map-marker-alt text-success mr-2"></i>
-                                            <p class="kota_u">Kota Blitar</p>
+                            {{-- Mobile Profile Card --}}
+                            <div class="profil-row-mobile row ">
+                                <div class="col-md-1">
+                                    <div class="profil_pp col-md-12 d-flex">
+                                        <img class="profil_img" src="{{ asset('/images/post/01.jpg') }}" alt="">
+                                        <div class="dtl-user-mbl">
+                                            <p class="nm_user">{{ Auth::user()->name }}</p>
+                                            <div class="kota-mobile d-flex ">
+                                                <i class="fas fa-map-marker-alt text-success mr-2"></i>
+                                                <p class="kota_u">{{ $u->nama_kota }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- Profil Detail --}}
-                        <div class="dt">
-                            <table class="table-borderless ms-5 mb-5">
-                                <tbody>
-                                    <tr>
-                                        <td class="t_dt col-1">
-                                            <span class="prf_dt">Email</span>
-                                        </td>
-                                        <td class="t_dt col-1">
-                                            <span class="prf_dt">:</span>
-                                        </td>
-                                        <td class="t_dt">
-                                            <span class="prf_dt">email</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-3">
-                                            <span class="prf_dt">No Hp</span>
-                                        </td>
-                                        <td class="col-1">
-                                            <span class="prf_dt">:</span>
-                                        </td>
-                                        <td>
-                                            <span class="prf_dt">083833833833</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-3">
-                                            <span class="prf_dt">Alamat</span>
-                                        </td>
-                                        <td class="col-1">
-                                            <span class="prf_dt">:</span>
-                                        </td>
-                                        <td>
-                                            <span class="prf_dt">alamat</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            {{-- Profil Detail --}}
+                            <div class="dt">
+                                <table class="table-borderless ms-5 mb-5">
+                                    <tbody>
+                                        <tr>
+                                            <td class="t_dt col-1">
+                                                <span class="prf_dt">Email</span>
+                                            </td>
+                                            <td class="t_dt col-1">
+                                                <span class="prf_dt">:</span>
+                                            </td>
+                                            <td class="t_dt">
+                                                <span class="prf_dt">{{ Auth::user()->email }}</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-3">
+                                                <span class="prf_dt">No Hp</span>
+                                            </td>
+                                            <td class="col-1">
+                                                <span class="prf_dt">:</span>
+                                            </td>
+                                            <td>
+                                                <span class="prf_dt">{{ Auth::user()->no_hp }}</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-3">
+                                                <span class="prf_dt">Alamat</span>
+                                            </td>
+                                            <td class="col-1">
+                                                <span class="prf_dt">:</span>
+                                            </td>
+                                            <td>
+                                                <span class="prf_dt">{{ $u->alamat }}</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
 
                         </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
@@ -172,12 +176,12 @@ use Illuminate\Support\Facades\DB;
                                                 <div class="tombol text-left mt-4 mr-5">
                                                     <a data-toggle="modal"
                                                         data-target="#ubah_alamat{{ $p->id_user_detail }}" href="#"
-                                                        class="detail-transaksi mr-3">Ubah Alamat</a> &nbsp; | &nbsp;
+                                                        class="detail-transaksi ">Ubah Alamat</a> &nbsp; | &nbsp;
                                                     <a href="{{ url('alamat_utama', $p->id_user_detail) }}"
-                                                        class="detail-transaksi mr-3">Jadikan Alamat Utama</a> &nbsp; |
+                                                        class="detail-transaksi ">Jadikan Alamat Utama</a> &nbsp; |
                                                     &nbsp;
                                                     <a href="{{ url('hapus_alamat', $p->id_user_detail) }}"
-                                                        class="detail-transaksi mr-3">Hapus</a>
+                                                        class="detail-transaksi ">Hapus</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -188,7 +192,7 @@ use Illuminate\Support\Facades\DB;
                                         <div class="riwayat-transaksi row">
                                             <div class="col md-3">
                                                 <div class="status-riwayat text-center">
-                                                    <a href=""><i class="status_ic fas fa-wallet fa-4x"></i>
+                                                    <a href=""><i class="status_ic fas fa-wallet fa-3x"></i>
                                                         <span id="CartCount" class="site-header__status-ic"
                                                             data-cart-render="item_count">{{ $belum_dibayar }}</span>
                                                     </a>
@@ -198,7 +202,7 @@ use Illuminate\Support\Facades\DB;
                                             </div>
                                             <div class="col md-3">
                                                 <div class="status-riwayat text-center">
-                                                    <a href=""><i class="status_ic fas fa-archive fa-4x"></i>
+                                                    <a href=""><i class="status_ic fas fa-archive fa-3x"></i>
                                                         <span id="CartCount" class="site-header__status-ic"
                                                             data-cart-render="item_count">{{ $dikemas }}</span>
                                                     </a>
@@ -208,7 +212,7 @@ use Illuminate\Support\Facades\DB;
                                             </div>
                                             <div class="col md-3">
                                                 <div class="status-riwayat text-center">
-                                                    <a href=""><i class="status_ic fas fa-shipping-fast fa-4x"></i>
+                                                    <a href=""><i class="status_ic fas fa-shipping-fast fa-3x"></i>
                                                         <span id="CartCount" class="site-header__status-ic"
                                                             data-cart-render="item_count">{{ $dikirim }}</span>
                                                     </a>
@@ -225,17 +229,17 @@ use Illuminate\Support\Facades\DB;
                                                     <div class="col md-12 flex">
                                                         <i class="fa fa-shopping-bag text-success mr-2"></i>
                                                         <h4 class="head-1 mr-5">Belanja</h4>
-                                                        <h4 class="date mr-5">{{ $check->tanggal }}</h4>
+                                                        <h4 class="tgl-tr mr-5">{{ $check->tanggal }}</h4>
                                                         <?php
                                                         if($check->status == "belumdibayar"){
                                                         ?>
-                                                        <h4 class="status-4 mr-5">Belum Dibayar</h4>
+                                                        <h4 class="status-4 mr-3">Belum Dibayar</h4>
                                                         <?php }elseif($check->status == "dikemas"){ ?>
-                                                        <h4 class="status-2 mr-5">Dikemas</h4>
+                                                        <h4 class="status-2 mr-3">Dikemas</h4>
                                                         <?php }elseif($check->status == "dikirim"){ ?>
-                                                        <h4 class="status-3 mr-5">Dikirim</h4>
+                                                        <h4 class="status-3 mr-3">Dikirim</h4>
                                                         <?php }elseif($check->status == "selesai"){ ?>
-                                                        <h4 class="status mr-5">Selesai</h4>
+                                                        <h4 class="status mr-3">Selesai</h4>
                                                         <?php } ?>
                                                         <h4 class="invoice">{{ $check->id_checkout }}</h4>
                                                     </div>
@@ -253,7 +257,7 @@ use Illuminate\Support\Facades\DB;
                                                 ?>
                                                 @foreach ($pertama as $ut)
                                                     <div class="row">
-                                                        <div class="col-md-2">
+                                                        <div class="col-md-2 mt-3 text-center">
                                                             <img class="img-produk"
                                                                 src="/images/post/{{ $ut->foto }}" alt="produk">
                                                         </div>
@@ -316,6 +320,7 @@ use Illuminate\Support\Facades\DB;
                                                                         ->join('tb_barang', 'tb_keranjang.id_barang', '=', 'tb_barang.id_barang')
                                                                         ->join('tb_toko', 'tb_keranjang.id_toko', '=', 'tb_toko.id_toko')
                                                                         ->where('id_checkout', $check->id_checkout)
+                                                                        ->orderBy('id_detail_checkout', 'desc')
                                                                         ->get();
                                                                     $toko = DB::table('tb_detail_checkout')
                                                                         ->join('tb_keranjang', 'tb_detail_checkout.id_keranjang', '=', 'tb_keranjang.id_keranjang')
@@ -328,7 +333,7 @@ use Illuminate\Support\Facades\DB;
                                                                     ?>
                                                                     @foreach ($detail as $dt)
                                                                         <div class="row">
-                                                                            <div class="col-md-2">
+                                                                            <div class="col-md-2 text-center">
                                                                                 <img class="img-produk"
                                                                                     src="/images/post/{{ $dt->foto }}"
                                                                                     alt="produk">

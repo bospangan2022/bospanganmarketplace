@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Bos Pangan | Profil Toko</title>
+    <title>Bos Pangan | Belanja</title>
     <meta name="description" content="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -262,9 +262,8 @@
                                         </div>
                                         <div class="buttonSet text-center">
                                             <a href="{{ url('tampil_cart') }}"
-                                                class="btn btn-secondary btn--small">View Cart</a>
-                                            <a href="{{ url('checkout') }}"
-                                                class="btn btn-secondary btn--small">Checkout</a>
+                                                class="btn btn-secondary btn--small">View Cart
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

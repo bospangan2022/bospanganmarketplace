@@ -19,6 +19,7 @@ class ProfilTokoController extends Controller
 
         $barang_toko = DB::table("tb_toko")
             ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
+            ->where("tb_toko.nama_toko", $id)
             ->get();
 
         $count = $barang_toko->count();
@@ -26,8 +27,17 @@ class ProfilTokoController extends Controller
         // dd($barang_toko);
 
         $kat_toko = DB::table("tb_toko")
-            ->join("tb_kategori", "tb_toko.id_toko", "=", "tb_kategori.id_toko")
+            ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
+            ->join(
+                "tb_kategori",
+                "tb_barang.id_kategori",
+                "=",
+                "tb_kategori.id_kategori"
+            )
+            ->where("tb_toko.nama_toko", $id)
             ->get();
+
+        // dd($kat_toko);
 
         $katlimit = DB::table("tb_kategori")
             ->limit(5)
