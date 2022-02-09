@@ -174,16 +174,17 @@ class CheckoutController extends Controller
         if ($request->metode_pembayaran == "cod") {
             $checkout = Checkout::create([
                 "id_user" => Auth::user()->id,
+                "id_toko" => $request->id_toko,
                 "subtotal" => $request->subtotal,
                 "ongkir" => $request->ongkir,
                 "total" => $request->total,
                 "tanggal" => date("Y-m-d"),
                 "metode_pembayaran" => $request->metode_pembayaran,
-                "status" => "dikemas",
             ]);
         } else {
             $checkout = Checkout::create([
                 "id_user" => Auth::user()->id,
+                "id_toko" => $request->id_toko,
                 "subtotal" => $request->subtotal,
                 "ongkir" => $request->ongkir,
                 "total" => $request->total,

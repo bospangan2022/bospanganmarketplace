@@ -23,6 +23,8 @@ use App\Http\Controllers\KelolaTokoUserController;
 use App\Http\Controllers\ProdukUserController;
 use App\Http\Controllers\KategoriUserController;
 use App\Http\Controllers\GerobakUserController;
+use App\Http\Controllers\PemesananUserController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +67,7 @@ Route::get("produkdetail/{id}", [ProdukDetailController::class, "index"]);
 Route::get("aboutus", [AboutController::class, "index"]);
 Route::get("search", [BelanjaController::class, "search"])->name("search");
 Route::get("profil_toko/{id}", [ProfilTokoController::class, "index"]);
+Route::get("invoice", [InvoiceController::class, "index"]);
 
 Route::group(["middleware" => ["auth"]], function () {
     Route::group(["middleware" => ["cek_login:pelanggan"]], function () {
@@ -216,6 +219,11 @@ Route::group(["middleware" => ["auth"]], function () {
             CheckoutController::class,
             "proses_checkout",
         ]);
+        Route::get("pemesanan_user", [PemesananUserController::class, "index"]);
+        Route::get("pemesanan_detail_user", [
+            PemesananController::class,
+            "pemesanan_detail",
+        ]);
     });
 
     // ------------------------
@@ -278,11 +286,18 @@ Route::group(["middleware" => ["auth"]], function () {
 
         Route::get("pelanggan", [PelangganController::class, "index"]);
 
-        Route::get("pemesanan", [PemesananController::class, "index"]);
-        Route::get("pemesanan_detail", [
+        Route::get("pemesanan", [PemesananController::class, "index"])->name(
+            "pemesanan"
+        );
+        Route::get("pemesanan_detail/{id}", [
             PemesananController::class,
             "pemesanan_detail",
         ]);
+        Route::get("konfirmasi/pesanan/{id}", [
+            PemesananController::class,
+            "konfirmasi_pesanan",
+        ]);
+        Route::get("filter/{id}", [PemesananController::class, "filter"]);
 
         Route::get("gerobak", [GerobakController::class, "index"]);
         Route::post("hapus_gerobak/{id}", [

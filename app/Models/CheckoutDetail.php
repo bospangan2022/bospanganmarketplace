@@ -10,5 +10,5 @@ class CheckoutDetail extends Model
     use HasFactory;
     protected $table = "tb_detail_checkout";
 
-    protected $fillable = ["id_checkout", "id_keranjang"];
+    protected $fillable = ["id_checkout", "id_keranjang", "id_toko"];
 }

@@ -13,7 +13,7 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row d-flex">
-                            <div class="col-8">
+                            <div class="new-item col-8">
                                 <div class="image-list card mb-4">
                                     <div class="card-body d-flex justify-content-around">
 
@@ -23,6 +23,15 @@
                                         </label>
                                         <input type="hidden" class="form-control-file" id="hidden-image" name="hidden_image"
                                             value="{{ $br->foto }}">
+                                    </div>
+                                </div>
+                                <div class="image-list-mobile card mb-4">
+                                    <div class="card-body d-flex flex-column">
+                                        <input type="file" name="foto" id="file" class="mb-2">
+                                        <label class="fotobarang" for="file">
+                                            <i class="ti-plus me-2"></i> Pilih Foto Barang
+                                        </label>
+                                        {{-- <div id="d_foto"></div> --}}
                                     </div>
                                 </div>
                                 <div class="form-input card mb-4">
@@ -60,6 +69,48 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-input-mobile card mb-4">
+                                    <div class="card-body">
+                                        <div class="form-list mb-4">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto">
+                                                    <label for="nama" class="labelitem">Nama Barang</label>
+                                                    <input type="text" id="" name="nama_barang" class="form-control"
+                                                        style="height:30px;" aria-describedby="passwordHelpInline">
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-auto">
+                                                    <label for="SKU" class="labelitem">SKU</label>
+                                                    <input type="text" id="" name="sku" class="form-control"
+                                                        style="height:30px;" aria-describedby="passwordHelpInline">
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-auto">
+                                                    <label for="Berat" class="labelitem">Berat ( Kg )</label>
+                                                    <input type="text" id="" name="berat" class="form-control"
+                                                        style="height:30px;" aria-describedby="passwordHelpInline">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a comment here"
+                                                id="floatingTextarea2" style="height: 100px" name="keterangan"></textarea>
+                                            <label for="floatingTextarea2">Keterangan</label>
+                                        </div>
+                                        <label class="labelitem" for="floatingTextarea2">Kategori</label>
+                                        <div class="form-category d-flex justify-content-around mb-4">
+                                            <select class="form-select" aria-label="Default select example"
+                                                name="id_kategori">
+                                                @foreach ($kategori as $kat)
+                                                    <option value="{{ $kat->id_kategori }}">{{ $kat->nama_kategori }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-input card mb-4">
                                     <div class="card-body">
                                         <label class="labelitem" for="floatingTextarea2">Kategori</label>
@@ -75,8 +126,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="form-input card mb-4">
+                            <div class="new-item col-4">
+                                <div class="price-form card mb-4">
                                     <div class="card-body">
                                         <label for="formGroupExampleInput" class="label-pricing">Pricing</label>
                                         <div class="mb-3 d-flex">
@@ -95,7 +146,7 @@
 
                                     </div>
                                 </div>
-                                <div class="form-input card mb-4">
+                                <div class="form-avail card mb-4">
                                     <div class="card-body">
                                         <label for="formGroupExampleInput" class="form-label">Product
                                             availablity</label>
