@@ -263,15 +263,14 @@ use Illuminate\Support\Facades\DB;
                             </tbody>
                         </table>
                         <div class="text-center">
-                            <a href="{{ url('belanja') }}"
-                                class="btn btn-secondary btn--small cart-continue mr-1">Lanjutkan
+                            <a href="{{ url('belanja') }}" class="btn btn-secondary btn--small-mbl btn-sm mr-1">Lanjut
                                 Belanja
                             </a>
                             <a href="{{ url('remove_cartall', $tk->id_toko) }}" type="submit" name="clear"
-                                class="btn btn-secondary btn--small  small--hide mr-1">Clear Cart
+                                class="btn btn-secondary btn--small-mbl mr-1">Clear Cart
                             </a>
                             <a href="{{ url('checkout', $tk->id_toko) }}" type="submit" name="clear"
-                                class="btn btn-secondary btn--small  small--hide mr-1">Checkout
+                                class="btn btn-secondary btn--small-mbl mr-1">Checkout
                             </a>
                         </div>
                     </div>

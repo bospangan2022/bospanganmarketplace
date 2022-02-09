@@ -210,4 +210,178 @@ class CheckoutController extends Controller
 
         return redirect()->back();
     }
+
+    public function aftercheckout_tf($id)
+    {
+        $keranjang = DB::table("tb_keranjang")
+            ->join(
+                "tb_barang",
+                "tb_keranjang.id_barang",
+                "=",
+                "tb_barang.id_barang"
+            )
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
+            ->get();
+        $checkout = DB::table("tb_keranjang")
+            ->join(
+                "tb_barang",
+                "tb_keranjang.id_barang",
+                "=",
+                "tb_barang.id_barang"
+            )
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
+            ->get();
+        $count_barang = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
+            ->count("id_barang");
+        $count_love = DB::table("tb_wishlist")
+            ->where("id_user", Auth::user()->id)
+            ->count("id_barang");
+        $sub_total = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
+            ->sum("sub_harga");
+        $ongkir = 0;
+        $grand_total = $sub_total + $ongkir;
+
+        $user = DB::table("user_detail")
+            ->leftjoin("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->leftjoin(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->leftjoin("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("id_user", Auth::user()->id)
+            ->where("status", "utama")
+            ->get();
+
+        // dd($user);
+
+        $alamat_toko = DB::table("tb_toko")
+            ->leftjoin("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->leftjoin(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->leftjoin("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
+            ->where("id_toko", $id)
+            ->get();
+
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
+        //dd($alamat_toko);
+
+        return view("marketplace.aftercheckout_tf", [
+            "keranjang" => $keranjang,
+            "count_barang" => $count_barang,
+            "count_love" => $count_love,
+            "sub_total" => $sub_total,
+            "ongkir" => $ongkir,
+            "grand_total" => $grand_total,
+            "user" => $user,
+            "checkout" => $checkout,
+            "alamat_toko" => $alamat_toko,
+            "katlimit" => $katlimit,
+        ]);
+    }
+
+    public function aftercheckout_cod($id)
+    {
+        $keranjang = DB::table("tb_keranjang")
+            ->join(
+                "tb_barang",
+                "tb_keranjang.id_barang",
+                "=",
+                "tb_barang.id_barang"
+            )
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
+            ->get();
+        $checkout = DB::table("tb_keranjang")
+            ->join(
+                "tb_barang",
+                "tb_keranjang.id_barang",
+                "=",
+                "tb_barang.id_barang"
+            )
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
+            ->get();
+        $count_barang = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
+            ->count("id_barang");
+        $count_love = DB::table("tb_wishlist")
+            ->where("id_user", Auth::user()->id)
+            ->count("id_barang");
+        $sub_total = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
+            ->sum("sub_harga");
+        $ongkir = 0;
+        $grand_total = $sub_total + $ongkir;
+
+        $user = DB::table("user_detail")
+            ->leftjoin("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->leftjoin(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->leftjoin("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("id_user", Auth::user()->id)
+            ->where("status", "utama")
+            ->get();
+
+        // dd($user);
+
+        $alamat_toko = DB::table("tb_toko")
+            ->leftjoin("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->leftjoin(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->leftjoin("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
+            ->where("id_toko", $id)
+            ->get();
+
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
+        //dd($alamat_toko);
+
+        return view("marketplace.aftercheckout_cod", [
+            "keranjang" => $keranjang,
+            "count_barang" => $count_barang,
+            "count_love" => $count_love,
+            "sub_total" => $sub_total,
+            "ongkir" => $ongkir,
+            "grand_total" => $grand_total,
+            "user" => $user,
+            "checkout" => $checkout,
+            "alamat_toko" => $alamat_toko,
+            "katlimit" => $katlimit,
+        ]);
+    }
 }
