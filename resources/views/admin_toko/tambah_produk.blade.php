@@ -6,7 +6,7 @@
                 <a class="tinggal" href="{{ url('produk_user') }}"><i class="icon-arrow-left me-2"></i>Kembali</a>
             </div>
             <div class="container-fluid">
-                <h2 class="produk-title">Produk Baru</h2>
+                <h2 class="title">Produk Baru</h2>
                 <!--Button-->
                 <form action="{{ url('proses_tambah_user') }}" method="POST" enctype="multipart/form-data">
                     @csrf

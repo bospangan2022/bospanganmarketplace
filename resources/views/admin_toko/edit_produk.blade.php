@@ -6,7 +6,7 @@
                 <a class="tinggal" href="{{ url('produk_user') }}"><i class="icon-arrow-left me-2"></i>Kembali</a>
             </div>
             <div class="container-fluid">
-                <h2 class="produk-title">Edit Produk</h2>
+                <h2 class="title">Edit Produk</h2>
                 <!--Button-->
                 @foreach ($barang_id as $br)
                     <form action="{{ url('edit_produk_user/update', $br->id_barang) }}" method="POST"
@@ -111,7 +111,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-input card mb-4">
+                                <div class="new-item card mb-4">
                                     <div class="card-body">
                                         <label class="labelitem" for="floatingTextarea2">Kategori</label>
                                         <div class="form-category d-flex justify-content-around my-4">

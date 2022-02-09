@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
                             aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <div class="row">
 
@@ -91,12 +92,155 @@ use Illuminate\Support\Facades\DB;
                                                 </div>
                                                 <button type="button" class="btn btn-outline-dark  mr-2"
                                                     style="width:100%;height:20%">Sepanjang Waktu</button>
+=======
+                <div class="content-main row">
+                    <div class="accordion-filter col-4">
+                        <div class="filter-title mb-3">
+                            <h4><b>Filter Berdasarkan :</b></h4>
+                        </div>
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingZero">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseZero" aria-expanded="true"
+                                        aria-controls="panelsStayOpen-collapseZero">
+                                        Filter Data Pemesanan
+                                    </button>
+                                </h2>
+
+                                <div id="panelsStayOpen-collapseZero" class="accordion-collapse collapse show"
+                                    aria-labelledby="panelsStayOpen-headingZero"
+                                    data-bs-parent="#accordionPanelsStayOpenExample">
+                                    <div class="accordion-body">
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('pemesanan') }}" style="text-decoration: none">Semua
+                                                Pesanan</a>
+                                            <span>{{ $semua }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'belumdibayar') }}"
+                                                style="text-decoration: none">Belum
+                                                Dibayar /
+                                                Dikonfirmasi</a>
+                                            <span>{{ $belum_bayar }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'dikemas') }}"
+                                                style="text-decoration: none">Dikemas</a>
+                                            <span>{{ $dikemas }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'dikirim') }}"
+                                                style="text-decoration: none">Dikirim</a>
+                                            <span>{{ $dikirim }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'selesai') }}"
+                                                style="text-decoration: none">Selesai</a>
+                                            <span>{{ $selesai }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                        <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                                            aria-controls="panelsStayOpen-collapseOne">
+                                            Berdasarkan Tanggal
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headingOne"
+                                        data-bs-parent="#accordionPanelsStayOpenExample">
+                                        <div class="accordion-body">
+                                            <div class="form-group">
+                                                <label for="form-1-1" class="control-label">Tanggal</label>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input class="form-control form-control-solid col-1 mr-2 mb-3"
+                                                            id="namapegawai" type="datetime-local">
+                                                        <button type="button" class="btn btn-outline-dark  mr-2 mb-3"
+                                                            style="width:100%;height:20%  ">Hari Ini</button>
+                                                        <button type="button" class="btn btn-outline-dark  mr-2 mb-3"
+                                                            style="width:100%;height:20%">Minggu Ini</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input class="form-control form-control-solid col-1 mr-2 mb-3"
+                                                            id="namapegawai" type="datetime-local">
+                                                        <button type="button" class="btn btn-outline-dark  mr-2 mb-3"
+                                                            style="width:100%;height:20%">Bulan Ini</button>
+                                                        <button type="button" class="btn btn-outline-dark  mr-2 mb-3"
+                                                            style="width:100%;height:20%">Tahun Ini</button>
+                                                    </div>
+                                                    <button type="button" class="btn btn-outline-dark  mr-2"
+                                                        style="width:100%;height:20%">Sepanjang Waktu</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                            aria-controls="panelsStayOpen-collapseTwo">
+                                            Berdasarkan Status Pembayaran
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="panelsStayOpen-headingTwo"
+                                        data-bs-parent="#accordionPanelsStayOpenExample">
+                                        <div class="accordion-body">
+                                            <div class="form-check d-flex justify-content-between my-3">
+                                                <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                    Apa Saja
+                                                </label>
+                                                <input class="form-check-input " type="checkbox" value=""
+                                                    id="flexCheckChecked" checked>
+                                            </div>
+                                            <div class="form-check d-flex justify-content-between my-3">
+                                                <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                    Telah Dibayar
+                                                </label>
+                                                <input class="form-check-input " type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div class="form-check d-flex justify-content-between my-3">
+                                                <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                    Menunggu Pembayaran
+                                                </label>
+                                                <input class="form-check-input " type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div class="form-check d-flex justify-content-between my-3">
+                                                <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                    Dibatalkan
+                                                </label>
+                                                <input class="form-check-input " type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div class="form-check d-flex justify-content-between my-3">
+                                                <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                    Biaya Telah Dikembalikan
+                                                </label>
+                                                <input class="form-check-input " type="checkbox" value=""
+                                                    id="flexCheckDefault">
+                                            </div>
+                                            <div class="form-check d-flex justify-content-between my-3">
+                                                <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                    Dana Dikembalikan Sebagian
+                                                </label>
+                                                <input class="form-check-input " type="checkbox" value=""
+                                                    id="flexCheckDefault">
+>>>>>>> ed980cee34bc4dd088e5b63b9d7cc230215bb0a3
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
+<<<<<<< HEAD
                                 <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
@@ -106,6 +250,17 @@ use Illuminate\Support\Facades\DB;
                                 </h2>
                                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
                                     aria-labelledby="panelsStayOpen-headingTwo"
+=======
+                                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseThree">
+                                        Berdasarkan Status Pemenuhan
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingThree"
+>>>>>>> ed980cee34bc4dd088e5b63b9d7cc230215bb0a3
                                     data-bs-parent="#accordionPanelsStayOpenExample">
                                     <div class="accordion-body">
                                         <div class="form-check d-flex justify-content-between my-3">
@@ -117,30 +272,47 @@ use Illuminate\Support\Facades\DB;
                                         </div>
                                         <div class="form-check d-flex justify-content-between my-3">
                                             <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+<<<<<<< HEAD
                                                 Telah Dibayar
+=======
+                                                Menunggu Proses
+>>>>>>> ed980cee34bc4dd088e5b63b9d7cc230215bb0a3
                                             </label>
                                             <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
                                         </div>
                                         <div class="form-check d-flex justify-content-between my-3">
                                             <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+<<<<<<< HEAD
                                                 Menunggu Pembayaran
+=======
+                                                Sedang Proses
+>>>>>>> ed980cee34bc4dd088e5b63b9d7cc230215bb0a3
                                             </label>
                                             <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
                                         </div>
                                         <div class="form-check d-flex justify-content-between my-3">
                                             <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+<<<<<<< HEAD
                                                 Dibatalkan
+=======
+                                                Siap Diambil
+>>>>>>> ed980cee34bc4dd088e5b63b9d7cc230215bb0a3
                                             </label>
                                             <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
                                         </div>
                                         <div class="form-check d-flex justify-content-between my-3">
                                             <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+<<<<<<< HEAD
                                                 Biaya Telah Dikembalikan
+=======
+                                                Telah Dikirim
+>>>>>>> ed980cee34bc4dd088e5b63b9d7cc230215bb0a3
                                             </label>
                                             <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
                                         </div>
                                         <div class="form-check d-flex justify-content-between my-3">
                                             <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+<<<<<<< HEAD
                                                 Dana Dikembalikan Sebagian
                                             </label>
                                             <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
@@ -209,6 +381,24 @@ use Illuminate\Support\Facades\DB;
                                             Telah Dikembalikan
                                         </label>
                                         <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+=======
+                                                Sedang Dikirim
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        </div>
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Pengiriman Dibatalkan
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        </div>
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Telah Dikembalikan
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        </div>
+>>>>>>> ed980cee34bc4dd088e5b63b9d7cc230215bb0a3
                                     </div>
                                 </div>
                             </div>
@@ -334,7 +524,11 @@ use Illuminate\Support\Facades\DB;
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <div class="col-8">
+=======
+                    <div class="col-8 card-content">
+>>>>>>> ed980cee34bc4dd088e5b63b9d7cc230215bb0a3
                         <div class="navigasi my-3 d-flex justify-content-between">
                             <div class="form-check ms-4">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
@@ -438,47 +632,42 @@ use Illuminate\Support\Facades\DB;
                                 </div>
                             @endforeach
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <span>Menampilkan </span>
-                            <span>3 </span>
-                            <span>Pesanan. </span>
-                            <span>Total Sales: </span>
-                            <span>Rp. 200.000</span>
+                        <div class="keterangan d-flex justify-content-end">
+                            <p>Menampilkan </p>
+                            <p>3 </p>
+                            <p>Pesanan. </p>
+                            <p>Total Sales: </p>
+                            <p>Rp. 200.000</p>
                         </div>
                     </div>
-                    <div class="container mt-5">
+                    <div class="container-bottom ">
                         <div class="row mb-5">
-                            <div class="col-2 d-flex justify-content-lg-center align-items-lg-center">
+                            <div class="icon-e col-2">
                                 <i class="ti-export fs-1 text-info"></i>
                             </div>
-                            <div class="col-4">
+                            <div class="ekspor col-4">
                                 <h3>Ekspor Pesanan</h3>
+                                <div class="icon-e-mobile col-2">
+                                    <i class="ti-export fs-1 text-info"></i>
+                                </div>
                                 <p>Ekspor pesanan menghasilkan file CSV dengan informasi lengkap semua pesanan yang dipilih
                                     yang Anda dapat lihat dan editi di program spreadsheet mana saja.
                                 <p>
                                     <a href="#" class="btn btn-primary">Ekspor</a>
                             </div>
-                            <div class="col-2 d-flex justify-content-lg-center align-items-lg-center">
+                            <div class="icon-p col-2">
                                 <i class="ti-printer fs-1 text-info"></i>
                             </div>
-                            <div class="col-4">
+                            <div class="print col-4">
                                 <h3>Cetak Pesanan</h3>
+                                <div class="icon-p-mobile col-2">
+                                    <i class="ti-printer fs-1 text-info"></i>
+                                </div>
                                 <p>Pilih pesanan untuk dicetak fakturnya. Anda dapat menyimpan pesanan yang dicetak untuk
                                     catatan Anda sendiri atau menyertakannya dalam paket pengiriman sebagai konfirmasi
                                     pesanan untuk pelanggan Anda.
                                 <p>
                                     <a href="#" class="btn btn-primary">Cetak Pesanan yang Dipilih</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2 d-flex justify-content-lg-center align-items-lg-center">
-                                <i class="ti-trash fs-1 text-info"></i>
-                            </div>
-                            <div class="col-6">
-                                <h3>Hapus Pesanan</h3>
-                                <p>Pilih beberapa pesanan untuk dihapus
-                                <p>
-                                    <a href="#" class="btn btn-danger hapus">Hapus Pesanan</a>
                             </div>
                         </div>
                     </div>
