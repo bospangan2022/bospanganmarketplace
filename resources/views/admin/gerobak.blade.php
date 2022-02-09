@@ -8,21 +8,21 @@ use Illuminate\Support\Facades\DB;
     <div class="main-panel">
         <div class="content-wrapper">
             <h2 class="title mb-4"><b>Gerobak Terbengkalai</b></h2>
-            <div class="col-8 d-flex justify-content-between mb-4">
-                <div class="">
+            <div class="title-list col-8 d-flex justify-content-between mb-4">
+                <div class="list-detail">
                     <span>Total Terbengkalai</span>
                     <h3 class="my-2"><b>{{ $total_keranjang }}</b></h3>
                 </div>
-                <div>
+                <div class="list-detail">
                     <span>Total penjualan yang dipulihkan</span>
                     <h3 class="my-2"><b>@currency($total_dana)</b></h3>
                 </div>
-                <div style="color:#37BA32;">
+                <div class="list-detail" style="color:#37BA32;">
                     <span>Automatic recovery emails</span>
                     <h3 class="my-2"><b>Aktifkan</b></h3>
                 </div>
             </div>
-            <div class="row">/
+            <div class="row">
                 <form action="{{ url('cari_gerobak') }}">
                     <div class="input-group my-4">
                         <span class="input-group-text" id="basic-addon1"><i class="ti-search"></i></span>
@@ -30,8 +30,8 @@ use Illuminate\Support\Facades\DB;
                             aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
                 </form>
-                <div class="row">
-                    <div class="col-4">
+                <div class="content-main row">
+                    <div class="accordion-filter col-4">
                         <div class="filter-title mb-3">
                             <h4><b>Filter Berdasarkan :</b></h4>
                         </div>
@@ -179,7 +179,7 @@ use Illuminate\Support\Facades\DB;
                         </div>
                     </div>
 
-                    <div class="col-8">
+                    <div class="col-8 card-content">
                         <div class="navigasi my-3 d-flex justify-content-between">
                             <div class="form-check ms-4">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"

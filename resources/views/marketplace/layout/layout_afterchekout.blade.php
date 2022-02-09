@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Bos Pangan | Belanja</title>
+    <title>Bos Pangan Marketplace</title>
     <meta name="description" content="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/marketplace/css/responsive.css') }}">
 </head>
 
-<body class="template-collection belle">
+<body class="template-index home2-default">
     <div id="pre-loader">
         <img src="{{ asset('assets/marketplace/images/loader.gif') }}" alt="Loading..." />
     </div>
@@ -73,19 +73,24 @@
                             <li><a href="{{ url('login') }}">Login</a></li>
                             <li><a href="{{ url('register') }}">Create Account</a></li>
 
+
                             <?php } else { ?>
                             <?php
-                            $cek = DB::table("tb_toko")
-                                ->where("id_user", Auth::user()->id)
-                                ->count();
-                            if ($cek == 0) { ?>
+                        $cek = DB::table("tb_toko")
+                            ->where("id_user", Auth::user()->id)
+                            ->count();
+
+                        if ($cek == 0) { ?>
 
                             <li><a href="{{ url('buka_toko') }}">Buka Toko</a></li>
                             <?php } else { ?>
                             <li><a href="{{ url('kelola_toko') }}">Kelola Toko</a></li>
                             <?php }
-                            ?>
-                            <li><a href="{{ url('profil') }}">{{ Auth::user()->name }} </a></li>
+                        ?>
+
+                            <li>
+                                <a href="{{ url('profil') }}">{{ Auth::user()->name }} </a>
+                            </li>
                             <li><a href="{{ url('logout') }}">Log Out </a></li>
 
                             <?php }
@@ -103,8 +108,7 @@
                     <!--Desktop Logo-->
                     <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('assets/marketplace/images/logo.svg') }}"
-                                alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                            <img src="{{ asset('assets/marketplace/images/logo.svg') }}" alt="" title="" />
                         </a>
                     </div>
                     <!--End Desktop Logo-->
@@ -138,7 +142,8 @@
                     <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
                         <div class="logo">
                             <a href="index.html">
-                                <img class="logo-mobile" src="assets/marketplace/images/logo.svg" alt="" />
+                                <img class="logo-mobile" src="{{ asset('assets/marketplace/images/logo.svg') }}"
+                                    alt="" />
                             </a>
                         </div>
                     </div>
@@ -271,10 +276,12 @@
                                 <!--End Minicart Popup-->
 
                                 <?php } ?>
+
                             </div>
                             <div class="site-header__search">
-                                <button type="button" class="search-trigger"><i
-                                        class="icon anm anm-search-l"></i></button>
+                                <button type="button" class="search-trigger">
+                                    <i class="icon anm anm-search-l"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -434,7 +441,7 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                             <div class="product-single__meta">
-                                                <h2 class="product-single__title"></h2>
+                                                <h2 class="product-single__title">Product Quick View Popup</h2>
                                                 <div class="prInfoRow">
                                                     <div class="product-stock"> <span class="instock ">In
                                                             Stock</span> <span
@@ -463,7 +470,80 @@
                                                     id="product_form_10508262282" accept-charset="UTF-8"
                                                     class="product-form product-form-product-template hidedropdown"
                                                     enctype="multipart/form-data">
-
+                                                    <div class="swatch clearfix swatch-0 option1"
+                                                        data-option-index="0">
+                                                        <div class="product-form__item">
+                                                            <label class="header">Color: <span
+                                                                    class="slVariant">Red</span></label>
+                                                            <div data-value="Red"
+                                                                class="swatch-element color red available">
+                                                                <input class="swatchInput" id="swatch-0-red"
+                                                                    type="radio" name="option-0" value="Red">
+                                                                <label class="swatchLbl color medium rectangle"
+                                                                    for="swatch-0-red"
+                                                                    style="background-image:url(assets/marketplace/images/product-detail-page/variant1-1.jpg);"
+                                                                    title="Red"></label>
+                                                            </div>
+                                                            <div data-value="Blue"
+                                                                class="swatch-element color blue available">
+                                                                <input class="swatchInput" id="swatch-0-blue"
+                                                                    type="radio" name="option-0" value="Blue">
+                                                                <label class="swatchLbl color medium rectangle"
+                                                                    for="swatch-0-blue"
+                                                                    style="background-image:url(assets/marketplace/images/product-detail-page/variant1-2.jpg);"
+                                                                    title="Blue"></label>
+                                                            </div>
+                                                            <div data-value="Green"
+                                                                class="swatch-element color green available">
+                                                                <input class="swatchInput" id="swatch-0-green"
+                                                                    type="radio" name="option-0" value="Green">
+                                                                <label class="swatchLbl color medium rectangle"
+                                                                    for="swatch-0-green"
+                                                                    style="background-image:url(assets/marketplace/images/product-detail-page/variant1-3.jpg);"
+                                                                    title="Green"></label>
+                                                            </div>
+                                                            <div data-value="Gray"
+                                                                class="swatch-element color gray available">
+                                                                <input class="swatchInput" id="swatch-0-gray"
+                                                                    type="radio" name="option-0" value="Gray">
+                                                                <label class="swatchLbl color medium rectangle"
+                                                                    for="swatch-0-gray"
+                                                                    style="background-image:url(assets/marketplace/images/product-detail-page/variant1-4.jpg);"
+                                                                    title="Gray"></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="swatch clearfix swatch-1 option2"
+                                                        data-option-index="1">
+                                                        <div class="product-form__item">
+                                                            <label class="header">Size: <span
+                                                                    class="slVariant">XS</span></label>
+                                                            <div data-value="XS" class="swatch-element xs available">
+                                                                <input class="swatchInput" id="swatch-1-xs"
+                                                                    type="radio" name="option-1" value="XS">
+                                                                <label class="swatchLbl medium rectangle"
+                                                                    for="swatch-1-xs" title="XS">XS</label>
+                                                            </div>
+                                                            <div data-value="S" class="swatch-element s available">
+                                                                <input class="swatchInput" id="swatch-1-s"
+                                                                    type="radio" name="option-1" value="S">
+                                                                <label class="swatchLbl medium rectangle"
+                                                                    for="swatch-1-s" title="S">S</label>
+                                                            </div>
+                                                            <div data-value="M" class="swatch-element m available">
+                                                                <input class="swatchInput" id="swatch-1-m"
+                                                                    type="radio" name="option-1" value="M">
+                                                                <label class="swatchLbl medium rectangle"
+                                                                    for="swatch-1-m" title="M">M</label>
+                                                            </div>
+                                                            <div data-value="L" class="swatch-element l available">
+                                                                <input class="swatchInput" id="swatch-1-l"
+                                                                    type="radio" name="option-1" value="L">
+                                                                <label class="swatchLbl medium rectangle"
+                                                                    for="swatch-1-l" title="L">L</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <!-- Product Action -->
                                                     <div class="product-action clearfix">
                                                         <div class="product-form__item--quantity">
