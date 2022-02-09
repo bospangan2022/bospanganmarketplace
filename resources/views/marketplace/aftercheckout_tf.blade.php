@@ -9,34 +9,65 @@
                 <div class="title-checkout">
                     <h4 class="txt_ttl">Checkout</h4>
                 </div>
-                <div class="detail-pembayaran">
-                    <table class="table-borderless">
-                        <tbody>
-                            <tr>
-                                <td class="t_dt col-4">
-                                    <span class="dtl_bayar">Total Pembayaran</span>
-                                </td>
-                                <td class="t_dt col-1">
-                                    <span class="dtl_bayar ">:</span>
-                                </td>
-                                <td class="t_dt">
-                                    <span class="dtl_bayar_v ">@currency(100000)</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-4">
-                                    <span class="dtl_bayar ">Metode Pembayaran</span>
-                                </td>
-                                <td class="col-1">
-                                    <span class="dtl_bayar ">:</span>
-                                </td>
-                                <td>
-                                    <span class="dtl_bayar_v ">Transfer Bank</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                @foreach ($pesanan as $pes)
+                    <div class="detail-pembayaran">
+                        <table class="table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td class="t_dt col-4">
+                                        <span class="dtl_bayar">Nomor Pesanan</span>
+                                    </td>
+                                    <td class="t_dt col-1">
+                                        <span class="dtl_bayar ">:</span>
+                                    </td>
+                                    <td class="t_dt">
+                                        <span class="dtl_bayar_v ">{{ $pes->id_checkout }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="t_dt col-4">
+                                        <span class="dtl_bayar">Total Pembayaran</span>
+                                    </td>
+                                    <td class="t_dt col-1">
+                                        <span class="dtl_bayar ">:</span>
+                                    </td>
+                                    <td class="t_dt">
+                                        <span class="dtl_bayar_v ">@currency($pes->total)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-4">
+                                        <span class="dtl_bayar ">Metode Pembayaran</span>
+                                    </td>
+                                    <td class="col-1">
+                                        <span class="dtl_bayar ">:</span>
+                                    </td>
+                                    <td>
+                                        <span class="dtl_bayar_v ">Transfer Bank</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-4">
+                                        <span class="dtl_bayar ">Nama Toko</span>
+                                    </td>
+                                    <td class="col-1">
+                                        <span class="dtl_bayar ">:</span>
+                                    </td>
+                                    <td>
+                                        <span class="dtl_bayar_v ">{{ $pes->nama_toko }}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                @endforeach
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <b>Opps!</b> {{ $error }}
+                        @endforeach
+                    </div>
+                @endif
                 <div class="inpo-bayar">
                     <div class="title-checkout">
                         <h4 class="txt_tf">Silahkan transfer pada nomor rekening dibawah ini</h4>
@@ -49,18 +80,24 @@
                             upload
                             bukti pembayaran dibawah ini !</h4>
                     </div>
-                    <div class="title-checkout">
-                        <div class="upl-bukti text-center">
-                            <p class="title-upl">Upload Bukti :</p>
-                            <input class="inp_upload" type="file" />
-                        </div>
-                    </div>
-                    <div class="title-checkout">
-                        <button type="submit" class="tombol1"><span>
-                                <i class="fas fa-upload mr-3"></i>
-                            </span>Upload Bukti Pembayaran
-                        </button>
-                    </div>
+                    @foreach ($pesanan as $pes)
+                        <form action="{{ url('upload/bukti', $pes->id_checkout) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <div class="title-checkout">
+                                <div class="upl-bukti text-center">
+                                    <p class="title-upl">Upload Bukti :</p>
+                                    <input class="inp_upload" type="file" name="bukti" />
+                                </div>
+                            </div>
+                            <div class="title-checkout">
+                                <button type="submit" class="tombol1"><span>
+                                        <i class="fas fa-upload mr-3"></i>
+                                    </span>Upload Bukti Pembayaran
+                                </button>
+                            </div>
+                        </form>
+                    @endforeach
                     <div class="title-checkout">
                         <h4 class="txt_tf">atau</h4>
                     </div>

@@ -13,14 +13,6 @@ use Illuminate\Support\Facades\DB;
                     <span>Total Terbengkalai</span>
                     <h3 class="my-2"><b>{{ $total_keranjang }}</b></h3>
                 </div>
-                <div class="list-detail">
-                    <span>Total penjualan yang dipulihkan</span>
-                    <h3 class="my-2"><b>@currency($total_dana)</b></h3>
-                </div>
-                <div class="list-detail" style="color:#37BA32;">
-                    <span>Automatic recovery emails</span>
-                    <h3 class="my-2"><b>Aktifkan</b></h3>
-                </div>
             </div>
             <div class="row">
                 <form action="{{ url('cari_gerobak') }}">
@@ -192,7 +184,7 @@ use Illuminate\Support\Facades\DB;
                         <div class="card">
                             @foreach ($keranjang as $k)
                                 <?php
-                    $check = DB::table("tb_keranjang")
+                            $check = DB::table("tb_keranjang")
                         ->join(
                             "tb_barang",
                             "tb_keranjang.id_barang",

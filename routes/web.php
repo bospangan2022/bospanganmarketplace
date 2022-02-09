@@ -60,7 +60,7 @@ Route::get("logout", "App\Http\Controllers\AuthController@logout")->name(
 // ------------------------
 // Customer Routes
 // ------------------------
-Route::get("/", [HomeController::class, "index"])->name("kategori");
+Route::get("/", [HomeController::class, "index"])->name("home");
 Route::get("belanja", [BelanjaController::class, "index"]);
 Route::get("belanja_kat/{id}", [BelanjaController::class, "barang_kat"]);
 Route::get("produkdetail/{id}", [ProdukDetailController::class, "index"]);
@@ -124,11 +124,15 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("aftercheckout_tf/{id}", [
             CheckoutController::class,
             "aftercheckout_tf",
+        ])->name("aftercheckout_tf");
+        Route::post("upload/bukti/{id}", [
+            CheckoutController::class,
+            "upload_bukti",
         ]);
         Route::get("aftercheckout_cod/{id}", [
             CheckoutController::class,
             "aftercheckout_cod",
-        ]);
+        ])->name("aftercheckout_cod");
 
         Route::get("wishlist", [WishlistController::class, "index"]);
         Route::post("add_wishlist", [

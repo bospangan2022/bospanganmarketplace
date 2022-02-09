@@ -20,5 +20,6 @@ class Checkout extends Model
         "tanggal",
         "metode_pembayaran",
         "status",
+        "bukti",
     ];
 }

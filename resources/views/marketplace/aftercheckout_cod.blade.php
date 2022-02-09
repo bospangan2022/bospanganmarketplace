@@ -9,34 +9,58 @@
                 <div class="title-checkout">
                     <h4 class="txt_ttl">Checkout</h4>
                 </div>
-                <div class="detail-pembayaran">
-                    <table class="table-borderless">
-                        <tbody>
-                            <tr>
-                                <td class="t_dt col-4">
-                                    <span class="dtl_bayar">Total Pembayaran</span>
-                                </td>
-                                <td class="t_dt col-1">
-                                    <span class="dtl_bayar ">:</span>
-                                </td>
-                                <td class="t_dt">
-                                    <span class="dtl_bayar_v ">@currency(100000)</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-4">
-                                    <span class="dtl_bayar ">Metode Pembayaran</span>
-                                </td>
-                                <td class="col-1">
-                                    <span class="dtl_bayar ">:</span>
-                                </td>
-                                <td>
-                                    <span class="dtl_bayar_v ">COD</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                @foreach ($pesanan as $pes)
+                    <div class="detail-pembayaran">
+                        <table class="table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td class="t_dt col-4">
+                                        <span class="dtl_bayar">Nomor Pesanan</span>
+                                    </td>
+                                    <td class="t_dt col-1">
+                                        <span class="dtl_bayar ">:</span>
+                                    </td>
+                                    <td class="t_dt">
+                                        <span class="dtl_bayar_v ">{{ $pes->id_checkout }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="t_dt col-4">
+                                        <span class="dtl_bayar">Total Pembayaran</span>
+                                    </td>
+                                    <td class="t_dt col-1">
+                                        <span class="dtl_bayar ">:</span>
+                                    </td>
+                                    <td class="t_dt">
+                                        <span class="dtl_bayar_v ">@currency($pes->total)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-4">
+                                        <span class="dtl_bayar ">Metode Pembayaran</span>
+                                    </td>
+                                    <td class="col-1">
+                                        <span class="dtl_bayar ">:</span>
+                                    </td>
+                                    <td>
+                                        <span class="dtl_bayar_v ">COD (Bayar Saat Barang Datang)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-4">
+                                        <span class="dtl_bayar ">Nama Toko</span>
+                                    </td>
+                                    <td class="col-1">
+                                        <span class="dtl_bayar ">:</span>
+                                    </td>
+                                    <td>
+                                        <span class="dtl_bayar_v ">{{ $pes->nama_toko }}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                @endforeach
                 <div class="inpo-bayar">
                     <div class="title-checkout">
                         <img class="img-cod" src="{{ asset('assets/marketplace/images/onprocess.jpg') }}" alt="">

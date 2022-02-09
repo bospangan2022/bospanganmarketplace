@@ -37,12 +37,14 @@ class CartController extends Controller
 
         $sub_total = DB::table("tb_keranjang")
             ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
             ->sum("sub_harga");
         $ppn = $sub_total * 0.1;
         $ongkir = 0;
         $grand_total = $sub_total + $ongkir;
         $count_barang = DB::table("tb_keranjang")
             ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
             ->count("id_barang");
         $count_love = DB::table("tb_wishlist")
             ->where("id_user", Auth::user()->id)

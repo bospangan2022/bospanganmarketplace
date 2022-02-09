@@ -638,6 +638,7 @@
             <!-- End Newsletter Popup -->
 
             <!-- Including Jquery -->
+            @yield('js')
             <script src="{{ asset('assets/marketplace/js/vendor/jquery-3.3.1.min.js') }}"></script>
             <script src="{{ asset('assets/marketplace/js/vendor/modernizr-3.6.0.min.js') }}"></script>
             <script src="{{ asset('assets/marketplace/js/vendor/jquery.cookie.js') }}"></script>
