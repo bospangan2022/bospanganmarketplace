@@ -220,9 +220,8 @@ use Illuminate\Support\Facades\DB;
                                     </div>
                                     <div class="buttonSet text-center">
                                         <a href="{{ url('tampil_cart') }}" class="btn btn-secondary btn--small">View
-                                            Cart</a>
-                                        <a href="{{ url('checkout') }}"
-                                            class="btn btn-secondary btn--small">Checkout</a>
+                                            Cart
+                                        </a>
                                     </div>
                                 </div>
                             </div>

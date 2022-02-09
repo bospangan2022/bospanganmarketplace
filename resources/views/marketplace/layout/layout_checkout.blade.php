@@ -112,8 +112,8 @@
                     <!--Desktop Logo-->
                     <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
                         <a href="{{ url('/') }}">
-                            <img src="assets/marketplace/images/logo.svg" alt="Belle Multipurpose Html Template"
-                                title="Belle Multipurpose Html Template" />
+                            <img src="{{ asset('assets/marketplace/images/logo.svg') }}"
+                                alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
                         </a>
                     </div>
                     <!--End Desktop Logo-->
@@ -146,7 +146,8 @@
                     <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
                         <div class="logo">
                             <a href="index.html">
-                                <img class="logo-mobile" src="assets/marketplace/images/logo.svg" alt="" />
+                                <img class="logo-mobile" src="{{ asset('assets/marketplace/images/logo.svg') }}"
+                                    alt="" />
                             </a>
                         </div>
                     </div>
