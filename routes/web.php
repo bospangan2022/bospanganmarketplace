@@ -24,6 +24,7 @@ use App\Http\Controllers\ProdukUserController;
 use App\Http\Controllers\KategoriUserController;
 use App\Http\Controllers\GerobakUserController;
 use App\Http\Controllers\PemesananUserController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,7 @@ Route::get("produkdetail/{id}", [ProdukDetailController::class, "index"]);
 Route::get("aboutus", [AboutController::class, "index"]);
 Route::get("search", [BelanjaController::class, "search"])->name("search");
 Route::get("profil_toko/{id}", [ProfilTokoController::class, "index"]);
+Route::get("invoice", [InvoiceController::class, "index"]);
 
 Route::group(["middleware" => ["auth"]], function () {
     Route::group(["middleware" => ["cek_login:pelanggan"]], function () {
