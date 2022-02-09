@@ -11,9 +11,14 @@ class TokoAdminController extends Controller
     {
         $toko = DB::table("tb_toko")
             ->join("users", "tb_toko.id_user", "=", "users.id")
-            ->join("regencies", "tb_toko.kota", "=", "regencies.id")
-            ->join("districts", "tb_toko.kecamatan", "=", "districts.id")
-            ->join("villages", "tb_toko.desa", "=", "villages.id")
+            ->join("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
             ->get();
         return view("admin.toko", ["toko" => $toko]);
     }

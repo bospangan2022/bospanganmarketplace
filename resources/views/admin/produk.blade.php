@@ -3,8 +3,7 @@
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="container-fluid">
-                <h2 class="produk-title">Produk</h2>
-                <!--Button-->
+                <h2 class="title">Produk</h2>
                 <!--Button-->
                 <div class="title-list col-10 d-flex justify-content-between align-items-stretch">
                     <div class="list-detail">
@@ -16,19 +15,16 @@
                     </div>
                     <div class="list-detail">
                         <form action="" method="" enctype="multipart/form-data">
-
                             <label for="upload">Import</label>
-                            <input type="file" class="btn btn-primary btn-icon-split ml-3" name="bukti"
-                                style="width: 200px;">
-                            <button type="submit" class="btn btn-primary btn-icon">
-                                <i class="ti-download"></i>
-                            </button>
-
+                            <div class="import-box">
+                                <input type="file" class="btn btn-primary btn-icon-split ml-3" name="bukti"
+                                    style="width: 200px;">
+                                <button type="submit" class="btn btn-primary btn-icon">
+                                    <i class="ti-download"></i>
+                                </button>
+                            </div>
                         </form>
                     </div>
-
-
-
                 </div>
                 <!--Search-->
                 <form action="{{ url('cari_produk') }}">
@@ -235,15 +231,8 @@
                     <!--Filter End-->
                     <!--Main Content-->
                     <div class="col-8 card-content">
-                        <div class="navigasi my-3 d-flex justify-content-between">
-                            <div class="form-check ms-4">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                                    onClick="toggle(this)">
-                                <label class="form-check-label ms-0 fs-6" for="flexCheckChecked">
-                                    Pilih Semua
-                                </label>
-                            </div>
-                            <div class="dropdown">
+                        <div class="navigasi my-3 ">
+                            <div class="nav-dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Urutkan
@@ -269,7 +258,7 @@
                                             <img class="rounded-3 mb-3" style="width:120px;"
                                                 src="images/post/{{ $b->foto }}" />
                                         </div>
-                                        <div class="col-5">
+                                        <div class="col-5 ms-3">
                                             <div class="d-flex">
                                                 <h4 class="title_barang">{{ $b->nama_barang }}</h4>
                                                 <h4 class="title_sku">{{ $b->sku }}</h4>
@@ -313,7 +302,7 @@
                                                 <img class="rounded-3 mb-3" style="width:120px;"
                                                     src="images/post/{{ $b->foto }}" />
                                             </div>
-                                            <div class="title-product d-flex justify-content-center mb-2">
+                                            <div class="title-product mb-2">
                                                 <h4 class="title_barang">{{ $b->nama_barang }}</h4>
                                                 <h4 class="title_sku">{{ $b->sku }}</h4>
                                             </div>
@@ -328,7 +317,7 @@
                                             <div class="price-product d-flex flex-column align-items-center mb-2 ">
                                                 <h4 class="title_harga">Rp. {{ $b->harga }}</h4>
                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" method="POST"
-                                                    action="{{ url('delete_produk_user', $b->id_barang) }}">
+                                                    action="{{ url('delete_produk', $b->id_barang) }}">
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger btn-sm  mr-lg-2">
                                                         <span class="icon text-white">
@@ -340,9 +329,8 @@
                                             </div>
                                         </div>
                                         <div class="product-btn col-2 d-flex align-items-center justify-content-center ">
-                                            <a class="btn"
-                                                href="{{ url('edit_produk_user', $b->id_barang) }}" role="button"><i
-                                                    class="ti-angle-right"></i></a>
+                                            <a class="btn" href="{{ url('edit_produk', $b->id_barang) }}"
+                                                role="button"><i class="ti-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
