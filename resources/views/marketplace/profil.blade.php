@@ -193,7 +193,7 @@ use Illuminate\Support\Facades\DB;
                                                             data-cart-render="item_count">{{ $belum_dibayar }}</span>
                                                     </a>
                                                     <br>
-                                                    <a class="text_status" href="">Belum Dibayar</a>
+                                                    <a class="text_status" href="">Belum Dibayar / Belum Dikonfirmasi</a>
                                                 </div>
                                             </div>
                                             <div class="col md-3">

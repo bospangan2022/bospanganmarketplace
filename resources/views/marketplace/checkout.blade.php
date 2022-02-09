@@ -213,6 +213,7 @@
                                                     value="{{ $co->id_keranjang }}">
                                                 <input type="hidden" name="subtotal" value="{{ $sub_total }}">
                                                 <input type="hidden" name="jumlah" value="{{ $count_barang }}">
+                                                <input type="hidden" name="id_toko" value="{{ $co->id_toko }}">
                                             @endforeach
                                         </tbody>
                                         <tfoot class="font-weight-600">
