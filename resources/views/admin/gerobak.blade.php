@@ -1,3 +1,8 @@
+<?php
+
+use Illuminate\Support\Facades\DB;
+
+?>
 @extends('layout.layout')
 @section('content')
     <div class="main-panel">
