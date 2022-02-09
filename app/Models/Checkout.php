@@ -13,6 +13,7 @@ class Checkout extends Model
 
     protected $fillable = [
         "id_user",
+        "id_toko",
         "subtotal",
         "ongkir",
         "total",
