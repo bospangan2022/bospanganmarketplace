@@ -2139,6 +2139,142 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
     color: black;
   }
 
+  .qtyField-co .product-form__input{
+    width: 90px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    color: #239C4C;
+    display: flex;
+    justify-content: center;
+    margin: 0 8em 0.5em 8em;
+    border-radius: 5px;
+    border: 1px solid #239C4C;
+  }
+
+  .ttl_bs{
+    font-size: 1em;
+    margin: 1.2em 0 1.5em 0;
+    font-weight: 600;
+    color: black;
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 768px){
+    .img-produk{
+      width: 80%;
+    }
+
+     .qtyField-co .product-form__input{
+       margin: 0 5em 0.5em 5em;
+     }
+  }
+
+  /* Batal Pesanan */
+  .body-batal{
+    margin: 4em 1.5em 4em 1.5em;
+  }
+
+  .ic-cancel{
+    color: #ff0021;
+    margin-bottom: 1em;
+  }
+
+  .ttl-batal{
+    font-weight: 600;
+    font-size: 1.5em;
+  }
+
+  .tbl-yt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tbl-yt .btl-ya {
+    text-decoration: none;
+    margin: 0 1em 0 0;
+  }
+
+  .tbl-yt .btl-tidak {
+    text-decoration: none;
+  }
+
+  .tbl-yt .btl-fix {
+    text-decoration: none;
+  }
+
+  .btl-ya{
+    background-color: black; 
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  .btl-ya:hover{
+    background-color: #ff0021;
+    color: white;
+  }
+
+  .btl-tidak{
+    background-color: black; 
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  .btl-tidak:hover{
+    background-color: black;
+    color: white;
+  }
+
+  .tbl-fix .btl-fix{
+    text-decoration: none;
+    background-color: #ff0021; 
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: 8px;
+  }
+  
+  .alasann{
+    margin: 2em 0 0 0;
+  }
+
+
+
+  .ttl-alasan{
+    font-weight: 500;
+    font-size: 1.2em;
+    color: black;
+  }
+
+  .tbl-fix{
+    margin: 1em 0 1em 0;
+  }
+
+
+
+
+  /*  */
+
+  
+
+  
+
   @media screen and (max-width: 414px){
   .profil-row{
     display: none;

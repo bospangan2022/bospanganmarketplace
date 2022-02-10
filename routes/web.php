@@ -120,6 +120,12 @@ Route::group(["middleware" => ["auth"]], function () {
             CheckoutController::class,
             "checkoutperitem",
         ]);
+
+        Route::post("checkoutlangsung/barang", [
+            CheckoutController::class,
+            "checkoutlangsung",
+        ]);
+
         Route::get("checkout/{id}", [CheckoutController::class, "index"]);
         Route::get("aftercheckout_tf/{id}", [
             CheckoutController::class,
@@ -133,6 +139,11 @@ Route::group(["middleware" => ["auth"]], function () {
             CheckoutController::class,
             "aftercheckout_cod",
         ])->name("aftercheckout_cod");
+
+        Route::get("batalkan_pesanan/{id}", [
+            CheckoutController::class,
+            "batalkanpesanan",
+        ]);
 
         Route::get("wishlist", [WishlistController::class, "index"]);
         Route::post("add_wishlist", [

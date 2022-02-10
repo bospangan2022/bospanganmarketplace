@@ -100,6 +100,36 @@ class CheckoutController extends Controller
 
     public function checkoutperitem(Request $request, $id)
     {
+        $user = DB::table("user_detail")
+            ->leftjoin("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->leftjoin(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->leftjoin("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("id_user", Auth::user()->id)
+            ->where("status", "utama")
+            ->get();
+
+        // dd($user);
+
+        $alamat_toko = DB::table("tb_toko")
+            ->leftjoin("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->leftjoin(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->leftjoin("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
+            ->where("id_toko", $id)
+            ->get();
+
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
         $keranjang = DB::table("tb_keranjang")
             ->join(
                 "tb_barang",
@@ -108,65 +138,83 @@ class CheckoutController extends Controller
                 "tb_barang.id_barang"
             )
             ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
             ->get();
 
-        $proses = CartModel::create([
-            "id_barang" => $id,
-            "id_user" => Auth::user()->id,
-            "jumlah" => $request->jumlah,
-            "sub_harga" => $request->harga * $request->jumlah,
-        ]);
-
-        $checkout = DB::table("tb_keranjang")
-            ->join(
-                "tb_barang",
-                "tb_keranjang.id_barang",
-                "=",
-                "tb_barang.id_barang"
-            )
-            ->where("id_user", Auth::user()->id)
-            ->where("id_barang", $id)
-            ->get();
         $count_barang = DB::table("tb_keranjang")
             ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
             ->count("id_barang");
-        $ongkir = 0;
-        $grand_total = +$ongkir;
-
-        $user = DB::table("user_detail")
-            ->leftjoin(
-                "regencies",
-                "user_detail.id_regencies",
-                "=",
-                "regencies.id"
-            )
-            ->leftjoin(
-                "districts",
-                "user_detail.id_districts",
-                "=",
-                "districts.id"
-            )
-            ->leftjoin(
-                "villages",
-                "user_detail.id_villages",
-                "=",
-                "villages.id"
-            )
+        $count_love = DB::table("tb_wishlist")
             ->where("id_user", Auth::user()->id)
-            ->where("status", "utama")
-            ->get();
+            ->count("id_barang");
 
-        // dd($user);
+        $sub_total = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.id_toko", $id)
+            ->where("tb_keranjang.status", "t")
+            ->sum("sub_harga");
 
-        return view("marketplace.checkout", [
+        $nama_barang = $request->nama_barang;
+        $harga = $request->harga;
+        $jumlah = $request->jumlah;
+        $sub = $request->harga * $request->jumlah;
+        $id_toko = $id;
+        $id_barang = $request->id_barang;
+        return view("marketplace.checkoutlangsung", [
+            "nama_barang" => $nama_barang,
+            "harga" => $harga,
+            "jumlah" => $jumlah,
+            "sub" => $sub,
+            "id_toko" => $id_toko,
+            "id_barang" => $id_barang,
+            "user" => $user,
+            "alamat_toko" => $alamat_toko,
+            "katlimit" => $katlimit,
             "keranjang" => $keranjang,
             "count_barang" => $count_barang,
-            "ongkir" => $ongkir,
-            "grand_total" => $grand_total,
-            "user" => $user,
-            "checkout" => $checkout,
-            "proses" => $proses,
+            "count_love" => $count_love,
+            "sub_total" => $sub_total,
         ]);
+    }
+
+    public function checkoutlangsung(Request $request)
+    {
+        $keranjang = CartModel::create([
+            "id_user" => Auth::user()->id,
+            "id_barang" => $request->id_barang,
+            "id_toko" => $request->id_toko,
+            "jumlah" => $request->jumlah,
+            "sub_harga" => $request->subtotal,
+            "status" => "c",
+        ]);
+
+        $id_keranjang = $keranjang->id;
+
+        $checkout = Checkout::create([
+            "id_user" => Auth::user()->id,
+            "id_toko" => $request->id_toko,
+            "subtotal" => $request->subtotal,
+            "ongkir" => $request->ongkir,
+            "total" => $request->total,
+            "tanggal" => date("Y-m-d"),
+            "metode_pembayaran" => $request->metode_pembayaran,
+        ]);
+
+        $id_checkout = $checkout->id;
+
+        CheckoutDetail::create([
+            "id_checkout" => $id_checkout,
+            "id_keranjang" => $id_keranjang,
+        ]);
+
+        if ($request->metode_pembayaran == "cod") {
+            return redirect()->route("aftercheckout_cod", $id_checkout);
+        } else {
+            return redirect()->route("aftercheckout_tf", $id_checkout);
+        }
     }
 
     public function proses_checkout(Request $request)
@@ -394,5 +442,14 @@ class CheckoutController extends Controller
             "katlimit" => $katlimit,
             "pesanan" => $pesanan,
         ]);
+    }
+
+    public function batalkanpesanan($id)
+    {
+        Checkout::where("id_checkout", $id)->update([
+            "status" => "dibatalkan",
+        ]);
+
+        return redirect()->back();
     }
 }

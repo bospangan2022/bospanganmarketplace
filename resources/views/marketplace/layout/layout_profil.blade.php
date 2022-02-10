@@ -248,13 +248,13 @@
                                                             <div class="qtyField">
                                                                 <span class="label">Qty:</span>
                                                                 <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                                        class="fa anm anm-minus-r"
+                                                                        class="icon icon-minus"
                                                                         aria-hidden="true"></i></a>
                                                                 <input type="text" id="Quantity" name="jumlah"
                                                                     value="{{ $krj->jumlah }}"
                                                                     class="product-form__input qty">
                                                                 <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                                        class="fa anm anm-plus-r"
+                                                                        class="icon icon-plus"
                                                                         aria-hidden="true"></i></a>
                                                             </div>
                                                         </div>

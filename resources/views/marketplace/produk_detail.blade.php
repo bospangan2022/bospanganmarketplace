@@ -41,8 +41,8 @@ use Illuminate\Support\Facades\DB;
                                                 data-zoom-image="/images/post/{{ $bi->foto }}" alt=""
                                                 src="/images/post/{{ $bi->foto }}" />
                                         </div>
-                                        <div class="product-labels"><span class="lbl on-sale">Sale</span><span
-                                                class="lbl pr-label1">new</span></div>
+                                        {{-- <div class="product-labels"><span class="lbl on-sale">Sale</span><span
+                                                class="lbl pr-label1">new</span></div> --}}
                                         <div class="product-buttons">
                                             <!-- <a href="https://www.youtube.com/watch?v=93A2jOW5Mog" class="btn popup-video" title="View Video"><i class="icon anm anm-play-r" aria-hidden="true"></i></a> -->
                                             <a href="#" class="btn prlightbox" title="Zoom"><i
@@ -54,9 +54,9 @@ use Illuminate\Support\Facades\DB;
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <!-- <a href="assets/marketplace/images/product-detail-page/cape-dress-4.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
                                     </div>
 
                                 </div>
@@ -131,14 +131,8 @@ use Illuminate\Support\Facades\DB;
                                         <div class="product-form__item--quantity">
                                             <div class="wrapQtyBtn">
                                                 <div class="qtyField">
-                                                    <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                            class="icon icon-minus" aria-hidden="true"
-                                                            id="minus"></i></a>
-                                                    <input type="text" id="jumlah" name="jumlah" value="1"
-                                                        class="product-form__input qty" onkeyup="sum();">
-                                                    <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                            class="icon icon-plus" aria-hidden="true"
-                                                            id="plus"></i></a>
+                                                    <input type="number" style="width: 100px;" id="jumlah" name="jumlah"
+                                                        value="1" class="product-form__input qty" onkeyup="sum();">
                                                 </div>
                                             </div>
                                         </div>
@@ -150,16 +144,115 @@ use Illuminate\Support\Facades\DB;
                                     </form>
 
                                     <div class="shopify-payment-button" data-shopify="payment-button">
-                                        <form action="{{ url('checkoutperitem', $bi->id_toko) }}" method="post">
-                                            @csrf
-                                            <input type="hidden" value="{{ $bi->id_barang }}" name="id_barang">
-                                            <input type="hidden" value="{{ $bi->harga }}" name="harga">
-                                            <input type="text" id="jum" name="jum" value="0">
-                                            <button type="submit"
-                                                class="shopify-payment-button__button shopify-payment-button__button--unbranded">Beli
-                                                Sekarang</button>
-                                        </form>
+                                        <button type="button" data-toggle="modal" data-target="#detail-co"
+                                            class="shopify-payment-button__button shopify-payment-button__button--unbranded">Beli
+                                            Sekarang</button>
                                     </div>
+
+
+                                    <div class="modal fade" id="detail-co" role="dialog">
+                                        <div class="modal-dialog modal-dialog-centered ">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="title-modal-detail">Beli Sekarang</h4>
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="detail-status">
+                                                        <div class="card mb-4">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="header-modal col md-12 flex">
+                                                                        <i class="fa fa-shopping-bag text-success mr-2"></i>
+                                                                        <h4 class="head-1 mr-5">Produk Detail</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <?php
+                                                                
+                                                                ?>
+
+                                                                <div class="row">
+                                                                    <div class="col-md-2 mt-3 text-center">
+                                                                        <img class="img-produk"
+                                                                            src="/images/post/{{ $bi->foto }}"
+                                                                            alt="produk">
+                                                                    </div>
+                                                                    <div class="col-md-7 mt-3">
+                                                                        <div class="product-detail">
+                                                                            <a class="nama-produk-modal"
+                                                                                href="{{ url('produkdetail') }}">{{ $bi->nama_barang }}</a>
+                                                                            <p class="head-detail-modal">Nama Toko
+                                                                                :</p>
+                                                                            <p class="isi">
+                                                                                <a
+                                                                                    href="{{ url('profil_toko', $bi->nama_toko) }}">{{ $bi->nama_toko }}
+                                                                                </a>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3 mt-3">
+                                                                        <div class="total-belanja-modal">
+                                                                            <h4>Total Harga</h4>
+                                                                            <h3>@currency($bi->harga)</h3>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="co-sekarang text-center">
+                                                                    <div class="inp-co-jumlah mt-3">
+                                                                        <form
+                                                                            action="{{ url('checkoutperitem', $bi->id_toko) }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            <h4 class="ttl_bs">Masukkan Jumlah
+                                                                                Barang :
+                                                                            </h4>
+                                                                            <div class="inp-jumlahco text-center">
+                                                                                <input type="hidden"
+                                                                                    value="{{ $bi->nama_barang }}"
+                                                                                    name="nama_barang">
+                                                                                <input type="hidden"
+                                                                                    value="{{ $bi->id_barang }}"
+                                                                                    name="id_barang">
+                                                                                <input type="hidden"
+                                                                                    value="{{ $bi->nama_toko }}"
+                                                                                    name="nama_toko">
+                                                                                <input type="hidden"
+                                                                                    value="{{ $bi->harga }}"
+                                                                                    name="harga">
+                                                                                <div class="product-form__item--co">
+                                                                                    <div class="wrapQtyBtn">
+                                                                                        <div class="qtyField-co">
+                                                                                            <input type="number" id="jumlah"
+                                                                                                name="jumlah" value="1"
+                                                                                                class="product-form__input qty">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tbl-beli-sekarang">
+                                                                                <div class="tmbl_soon">
+                                                                                    <button type="submit"
+                                                                                        class="tombol1">
+                                                                                        <span><i
+                                                                                                class="fas fa-money-bill-wave mr-3"></i></span>
+                                                                                        Beli Sekarang
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                 </div>
                                 <!-- End Product Action -->
@@ -245,6 +338,7 @@ use Illuminate\Support\Facades\DB;
                             <?php
                             
                             $brg = DB::table('tb_barang')
+                                ->join('tb_toko', 'tb_barang.id_toko', '=', 'tb_toko.id_toko')
                                 ->where('tb_barang.id_kategori', $b->id_kategori)
                                 ->get();
                             
@@ -269,12 +363,12 @@ use Illuminate\Support\Facades\DB;
                                                 data-src="/images/post/{{ $b->foto }}"
                                                 src="/images/post/{{ $b->foto }}" alt="image" title="product">
                                             <!-- End hover image -->
-                                            <!-- product label -->
+                                            {{-- <!-- product label -->
                                             <div class="product-labels rectangular"><span
                                                     class="lbl on-sale">-16%</span>
                                                 <span class="lbl pr-label1">new</span>
                                             </div>
-                                            <!-- End product label -->
+                                            <!-- End product label --> --}}
                                         </a>
                                         <!-- end product image -->
                                     </div>
@@ -287,8 +381,30 @@ use Illuminate\Support\Facades\DB;
                                             <a
                                                 href="{{ url('produkdetail', $b->id_barang) }}">{{ $b->nama_barang }}</a>
                                         </div>
+
+                                        <div class="toko-name mt-2">
+                                            {{-- <img class="pp_toko" src="/images/post/{{ $b->foto_toko }}" alt=""> --}}
+                                            <a class="nama_toko"
+                                                href="{{ url('profil_toko', $b->nama_toko) }}">{{ $b->nama_toko }}
+                                            </a>
+                                        </div>
+
                                         <!-- End product name -->
+                                        <!-- product price -->
+                                        <div class="product-price">
+                                            <span class="price">@currency($b->harga)</span>
+                                        </div>
+                                        <!-- End product price -->
+
+                                        <div class="product-review">
+                                            <i class="font-13 fa fa-star"></i>
+                                            <i class="font-13 fa fa-star"></i>
+                                            <i class="font-13 fa fa-star"></i>
+                                            <i class="font-13 fa fa-star"></i>
+                                            <i class="font-13 fa fa-star"></i>
+                                        </div>
                                     </div>
+
                                     <!-- End product details -->
                                 </div>
                             @endforeach
@@ -309,7 +425,7 @@ use Illuminate\Support\Facades\DB;
         function sum() {
             var txtFirstNumberValue = document.getElementById('jumlah').value;
             if (!isNaN(txtFirstNumberValue)) {
-                document.getElementById('jum').value =  txtFirstNumberValue;
+                document.getElementById('jum').value = txtFirstNumberValue;
             }
         }
     </script>
