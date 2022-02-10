@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\DB;
                         <h2 class="title bold"># </h2>
                         <h2 class="title bold">{{ $pes->id_checkout }} </h2>
                     </div>
-                    <a class="text-primary" href="" style="text-decoration: none;">Cetak</a>
+                    <a class="text-primary" href="{{ url('invoice', $pes->id_checkout) }}"
+                        style="text-decoration: none;">Cetak</a>
                 </div>
 
                 <!--Button-->

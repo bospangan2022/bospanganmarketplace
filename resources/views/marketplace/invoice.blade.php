@@ -19,301 +19,306 @@
 <body>
     <div class="container bootstrap snippets bootdeys">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="panel panel-default invoice" id="invoice">
-                    <div class="panel-body">
-                        <div class="invoice-ribbon">
-                            <div class="ribbon-inner">Lunas</div>
-                        </div>
-                        <div class="row">
+            @foreach ($checkout as $co)
+                <div class="col-sm-12">
+                    <div class="panel panel-default invoice" id="invoice">
+                        <div class="panel-body">
+                            <div class="invoice-ribbon">
+                                <?php if ($co->status == "belumdibayar") { ?>
+                                <div class="ribbon-inner">Menunggu Pembayaran</div>
+                                <?php } else { ?>
+                                <div class="ribbon-paid-inner">Lunas</div>
+                                <?php } ?>
+                            </div>
+                            <div class="header row">
+                                <div class="col-sm-6 top-left">
+                                    <img src="{{ asset('assets/marketplace/images/bp.png') }}" alt="">
+                                </div>
 
-                            <div class="col-sm-6 top-left">
-                                <img src="{{ asset('assets/marketplace/images/bp.png') }}" alt="">
-                            </div>
-
-                            <div class="col-sm-6 top-right">
-                                <h3>INVOICE-123</h3>
-                                <span>14 April 2014</span>
-                            </div>
-                        </div>
-                        <div class="invoice-content">
-                            <div class="box-invoice">
-                                <div class="head-invoice bg-light">
-                                    <strong>DETAIL PEMBAYARAN</strong>
-                                </div>
-                                <div class="body-invoice my-3 row">
-                                    <div class="items-invoice col-6">
-                                        <p class="invoice-label">Metode</p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Transfer Langsung</p>
-                                    </div>
-                                    <div class="items-invoice col-6">
-                                        <p class="invoice-label">Status Transaksi</p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Lunas</p>
-                                    </div>
+                                <div class="col-sm-6 top-right">
+                                    <h3>INVOICE-{{ $co->id_checkout }}</h3>
+                                    <span>{{ $co->tanggal }}</span>
                                 </div>
                             </div>
-                            <div class="box-invoice row">
-                                <div class="col-6 ">
+                            <div class="invoice-content">
+                                <div class="box-invoice">
                                     <div class="head-invoice bg-light">
-                                        <strong>DATA PEMESAN</strong>
+                                        <strong>DETAIL PEMBAYARAN</strong>
                                     </div>
-                                    <div class="body-invoice  my-3 ">
-                                        <div class="items-invoice">
-                                            <p class="invoice-label">Nama </p>
+                                    <div class="body-invoice my-1 row">
+                                        <div class="items-invoice col-6">
+                                            <p class="invoice-label">Metode</p>
                                             <p>:</p>
-                                            <p class="invoice-text">Sandra Destya</p>
+                                            <?php if ($co->metode_pembayaran == 'tf') {
+                                                echo '<p>Transfer Langsung</p>';
+                                            } else {
+                                                echo '<td >COD</td>';
+                                            } ?>
                                         </div>
-                                        <div class="items-invoice">
-                                            <p class="invoice-label">Email </p>
+                                        <div class="items-invoice col-6">
+                                            <p class="invoice-label">Status Transaksi</p>
                                             <p>:</p>
-                                            <p class="invoice-text">s.sandradestya@gmail.com</p>
-                                        </div>
-                                        <div class="items-invoice">
-                                            <p class="invoice-label">No. Hp </p>
-                                            <p>:</p>
-                                            <p class="invoice-text">081331848908</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="head-invoice bg-light">
-                                        <strong>DETAIL TOKO</strong>
-                                    </div>
-                                    <div class="body-invoice  my-3 ">
-                                        <div class="items-invoice">
-                                            <p class="invoice-label">Nama Toko</p>
-                                            <p>:</p>
-                                            <p class="invoice-text">Berkah Maju Jaya</p>
-                                        </div>
-                                        <div class="items-invoice">
-                                            <p class="invoice-label">Alamat Toko</p>
-                                            <p>:</p>
-                                            <p class="invoice-text">Lorem, ipsum dolor sit amet consectetur
-                                                adipisicing
-                                                elit. Facere repudiandae
-                                                error modi, non deleniti voluptate magni iure natus, dolorem, eaque
-                                                obcaecati in ducimus? Corrupti aperiam reprehenderit voluptate,
-                                                veritatis
-                                                hic doloremque!</p>
+                                            <?php if ($co->status == 'belumdibayar') {
+                                                echo '<p>Menunggu Pembayaran</p>';
+                                            } else {
+                                                echo '<td >Lunas</td>';
+                                            } ?>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="box-invoice row">
-                                <div class="head-invoice bg-light">
-                                    <strong>DETAIL PENGIRIMAN</strong>
-                                </div>
-                                <div class="col-6">
-                                    <div class="body-invoice my-3">
-                                        <div class="items-invoice">
-                                            <p class="invoice-label">Nama Tujuan</p>
-                                            <p>:</p>
-                                            <p class="invoice-text">Sandra Destya</p>
-                                        </div>
-                                        <div class="items-invoice">
-                                            <p class="invoice-label">No. Hp</p>
-                                            <p>:</p>
-                                            <p class="invoice-text">081331848908</p>
-                                        </div>
-                                        <div class="items-invoice">
-                                            <p class="invoice-label">Alamat </p>
-                                            <p>:</p>
-                                            <p class="invoice-text">Lorem ipsum, dolor sit amet consectetur
-                                                adipisicing
-                                                elit. Numquam dolorum
-                                                repudiandae sunt illum assumenda aliquid ipsam natus fugiat ad dolores
-                                                sit,
-                                                adipisci suscipit esse voluptates similique enim quae sed cumque.</p>
-                                        </div>
-                                        <div class="items-invoice">
-                                            <p class="invoice-label">Catatan </p>
-                                            <p>:</p>
-                                            <p class="invoice-text">Depan Indomaret</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            @endforeach
+            @foreach ($user as $u)
+                <div class="box-invoice row">
+                    <div class="col-4 ">
+                        <div class="head-invoice bg-light">
+                            <strong>DATA PEMESAN</strong>
                         </div>
-                        <div class="invoice-content-mobile">
-                            <div class="box-invoice">
-                                <div class="head-invoice bg-light">
-                                    <strong>DETAIL PEMBAYARAN</strong>
-                                </div>
-                                <div class="body-invoice my-3">
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">Pembelian Melalui</p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Transfer Langsung</p>
-                                    </div>
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">Status Transaksi</p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Lunas</p>
-                                    </div>
-                                </div>
+                        <div class="body-invoice  my-1 ">
+                            <div class="items-invoice">
+                                <p class="invoice-label">Nama </p>
+                                <p>:</p>
+                                <p class="invoice-text">{{ $u->name }}</p>
                             </div>
-                            <div class="box-invoice">
-                                <div class="head-invoice bg-light">
-                                    <strong>DATA PEMESAN</strong>
-                                </div>
-                                <div class="body-invoice  my-3 ">
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">Nama </p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Sandra Destya</p>
-                                    </div>
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">Email </p>
-                                        <p>:</p>
-                                        <p class="invoice-text">s.sandradestya@gmail.com</p>
-                                    </div>
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">No. Hp </p>
-                                        <p>:</p>
-                                        <p class="invoice-text">081331848908</p>
-                                    </div>
-                                </div>
+                            <div class="items-invoice">
+                                <p class="invoice-label">Email </p>
+                                <p>:</p>
+                                <p class="invoice-text">{{ $u->email }}</p>
                             </div>
-                            <div class="box-invoice">
-                                <div class="head-invoice bg-light">
-                                    <strong>DETAIL TOKO</strong>
-                                </div>
-                                <div class="body-invoice  my-3 ">
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">Nama Toko</p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Berkah Maju Jaya</p>
-                                    </div>
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">Alamat Toko</p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Lorem, ipsum dolor sit amet consectetur
-                                            adipisicing
-                                            elit. Facere repudiandae
-                                            error modi, non deleniti voluptate magni iure natus, dolorem, eaque
-                                            obcaecati in ducimus? Corrupti aperiam reprehenderit voluptate,
-                                            veritatis
-                                            hic doloremque!</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-invoice">
-                                <div class="head-invoice bg-light">
-                                    <strong>DETAIL PENGIRIMAN</strong>
-                                </div>
-                                <div class="body-invoice my-3">
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">Nama Tujuan</p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Sandra Destya</p>
-                                    </div>
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">No. Hp</p>
-                                        <p>:</p>
-                                        <p class="invoice-text">081331848908</p>
-                                    </div>
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">Alamat </p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Lorem ipsum, dolor sit amet consectetur
-                                            adipisicing
-                                            elit. Numquam dolorum
-                                            repudiandae sunt illum assumenda aliquid ipsam natus fugiat ad dolores
-                                            sit,
-                                            adipisci suscipit esse voluptates similique enim quae sed cumque.</p>
-                                    </div>
-                                    <div class="items-invoice">
-                                        <p class="invoice-label">Catatan </p>
-                                        <p>:</p>
-                                        <p class="invoice-text">Depan Indomaret</p>
-                                    </div>
-                                </div>
+                            <div class="items-invoice">
+                                <p class="invoice-label">No. Hp </p>
+                                <p>:</p>
+                                <p class="invoice-text">{{ $u->no_hp }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="row table-row">
-                        <div class="head-invoice bg-light my-3">
-                            <strong>DETAIL PEMBELIAN</strong>
-                        </div>
-                        <div class="table-responsive mx-2">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center" style="width:5%">#</th>
-                                        <th style="width:50%">Nama Barang</th>
-                                        <th class="text-right" style="width:15%">Jumlah</th>
-                                        <th class="text-right" style="width:15%">Harga Satuan</th>
-                                        <th class="text-right" style="width:15%">Harga Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td>Flatter Theme</td>
-                                        <td class="text-right">10</td>
-                                        <td class="text-right">$18</td>
-                                        <td class="text-right">$180</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td>Flat Icons</td>
-                                        <td class="text-right">6</td>
-                                        <td class="text-right">$59</td>
-                                        <td class="text-right">$254</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">3</td>
-                                        <td>Wordpress version</td>
-                                        <td class="text-right">4</td>
-                                        <td class="text-right">$95</td>
-                                        <td class="text-right">$285</td>
-                                    </tr>
-                                    <tr class="last-row">
-                                        <td class="text-center">4</td>
-                                        <td>Server Deployment</td>
-                                        <td class="text-right">1</td>
-                                        <td class="text-right">$300</td>
-                                        <td class="text-right">$300</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="3" style="background-color:#f2f2f2;"></td>
-                                        <td style="background-color:#f2f2f2;">Total Belanja</td>
-                                        <td>Rp 87000</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" style="background-color:#f2f2f2;"></td>
-                                        <td style="background-color:#f2f2f2;">Ongkir</td>
-                                        <td>Rp 3000</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3" style="background-color:#f2f2f2;"></td>
-                                        <td style="background-color:#f2f2f2;">Grand Total</td>
-                                        <td>Rp 90000</td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+            @endforeach
+
+            @foreach ($toko as $t)
+                <div class="col-4">
+                    <div class="head-invoice bg-light">
+                        <strong>DETAIL TOKO</strong>
                     </div>
-                    <div class="bottom-invoice my-5">
-                        <p class="lead marginbottom text-success text-center"><b>THANK YOU!</b></p>
-                        <div class="button-bottom d-flex justify-content-around">
-                            <button class="btn btn-success" id="invoice-print"><i class="fa fa-print"></i>
-                                Print
-                                Invoice</button>
-                            <button class="btn btn-primary"><i class="fas fa-arrow-left"></i>Back</button>
+                    <div class="body-invoice  my-1 ">
+                        <div class="items-invoice">
+                            <p class="invoice-label">Nama Toko</p>
+                            <p>:</p>
+                            <p class="invoice-text">{{ $t->nama_toko }}</p>
+                        </div>
+                        <div class="items-invoice">
+                            <p class="invoice-label">Alamat Toko</p>
+                            <p>:</p>
+                            @foreach ($alamat as $al)
+                                <p class="invoice-text">{{ $al->alamat }}, {{ $al->nama_desa }},
+                                    {{ $al->nama_kecamatan }},
+                                    {{ $al->nama_kota }} {{ $al->kode_pos }} </p>
+                            @endforeach
                         </div>
                     </div>
                 </div>
+            @endforeach
+            @foreach ($delivery as $d)
+                <div class="col-4">
+                    <div class="head-invoice bg-light">
+                        <strong>DETAIL PENGIRIMAN</strong>
+                    </div>
+                    <div class="body-invoice my-1">
+                        <div class="items-invoice">
+                            <p class="invoice-label">Nama Tujuan</p>
+                            <p>:</p>
+                            <p class="invoice-text">{{ $d->nama_penerima }}</p>
+                        </div>
+                        <div class="items-invoice">
+                            <p class="invoice-label">No. Hp</p>
+                            <p>:</p>
+                            <p class="invoice-text">{{ $d->phone }}</p>
+                        </div>
+                        <div class="items-invoice">
+                            <p class="invoice-label">Alamat </p>
+                            <p>:</p>
+                            <p class="invoice-text">{{ $d->alamat }}, {{ $d->nama_desa }},
+                                {{ $d->nama_kecamatan }},
+                                {{ $d->nama_kota }} {{ $d->kode_pos }}
+                            </p>
+                        </div>
+                        <div class="items-invoice">
+                            <p class="invoice-label">Catatan </p>
+                            <p>:</p>
+                            <p class="invoice-text">{{ $d->catatan }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            <div class="box-invoice row">
+
+            </div>
+        </div>
+    </div>
+    <div class="invoice-content-mobile">
+        <div class="box-invoice">
+            <div class="head-invoice bg-light">
+                <strong>DETAIL PEMBAYARAN</strong>
+            </div>
+            <div class="body-invoice my-1 row">
+                @foreach ($checkout as $co)
+                    <div class="items-invoice col-6">
+                        <p class="invoice-label">Metode</p>
+                        <p>:</p>
+                        <?php if ($co->metode_pembayaran == 'tf') {
+                            echo '<p>Transfer Langsung</p>';
+                        } else {
+                            echo '<td >COD</td>';
+                        } ?>
+                    </div>
+                    <div class="items-invoice col-6">
+                        <p class="invoice-label">Status Transaksi</p>
+                        <p>:</p>
+                        <?php if ($co->status == 'belumdibayar') {
+                            echo '<p>Menunggu Pembayaran</p>';
+                        } else {
+                            echo '<td >Lunas</td>';
+                        } ?>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="box-invoice">
+            <div class="head-invoice bg-light">
+                <strong>DATA PEMESAN</strong>
+            </div>
+            <div class="body-invoice  my-1 ">
+                @foreach ($user as $u)
+                    <div class="items-invoice">
+                        <p class="invoice-label">Nama </p>
+                        <p>:</p>
+                        <p class="invoice-text">{{ $u->name }}</p>
+                    </div>
+                    <div class="items-invoice">
+                        <p class="invoice-label">Email </p>
+                        <p>:</p>
+                        <p class="invoice-text">{{ $u->email }}</p>
+                    </div>
+                    <div class="items-invoice">
+                        <p class="invoice-label">No. Hp </p>
+                        <p>:</p>
+                        <p class="invoice-text">{{ $u->no_hp }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="box-invoice">
+            <div class="head-invoice bg-light">
+                <strong>DETAIL TOKO</strong>
+            </div>
+            <div class="body-invoice  my-1 ">
+                @foreach ($toko as $t)
+                    <div class="items-invoice">
+                        <p class="invoice-label">Nama Toko</p>
+                        <p>:</p>
+                        <p class="invoice-text">{{ $t->nama_toko }}</p>
+                    </div>
+                    <div class="items-invoice">
+                        <p class="invoice-label">Alamat Toko</p>
+                        <p>:</p>
+                        @foreach ($alamat as $al)
+                            <p class="invoice-text">{{ $al->alamat }}, {{ $al->nama_desa }},
+                                {{ $al->nama_kecamatan }},
+                                {{ $al->nama_kota }} {{ $al->kode_pos }} </p>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="box-invoice">
+            <div class="head-invoice bg-light">
+                <strong>DETAIL PENGIRIMAN</strong>
+            </div>
+            <div class="body-invoice my-1">
+                @foreach ($delivery as $d)
+                    <div class="items-invoice">
+                        <p class="invoice-label">Nama Tujuan</p>
+                        <p>:</p>
+                        <p class="invoice-text">{{ $d->nama_penerima }}</p>
+                    </div>
+                    <div class="items-invoice">
+                        <p class="invoice-label">No. Hp</p>
+                        <p>:</p>
+                        <p class="invoice-text">{{ $d->phone }}</p>
+                    </div>
+                    <div class="items-invoice">
+                        <p class="invoice-label">Alamat </p>
+                        <p>:</p>
+                        <p class="invoice-text">{{ $d->alamat }}, {{ $d->nama_desa }},
+                            {{ $d->nama_kecamatan }},
+                            {{ $d->nama_kota }} {{ $d->kode_pos }}
+                        </p>
+                    </div>
+                    <div class="items-invoice">
+                        <p class="invoice-label">Catatan </p>
+                        <p>:</p>
+                        <p class="invoice-text">{{ $d->catatan }}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
     </div>
+    <div class="row table-row">
+        <div class="head-invoice bg-light my-1">
+            <strong>DETAIL PEMBELIAN</strong>
+        </div>
+        <div class="table-responsive mx-2">
+            <table class="table">
+                @foreach ($order as $o)
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width:5%">#</th>
+                            <th style="width:50%">Nama Barang</th>
+                            <th class="text-right" style="width:15%">Jumlah</th>
+                            <th class="text-right" style="width:15%">Harga Satuan</th>
+                            <th class="text-right" style="width:15%">Harga Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">1</td>
+                            <td>{{ $o->nama_barang }}</td>
+                            <td class="text-right">{{ $o->jumlah }}</td>
+                            <td class="text-right">@currency($o->harga)</td>
+                            <td class="text-right">@currency($o->sub_harga)</td>
+                        </tr>
+                    </tbody>
+                @endforeach
+                <tfoot>
+                    @foreach ($checkout as $co)
+                        <tr>
+                            <td colspan="3" style="background-color:#f2f2f2;"></td>
+                            <td style="background-color:#f2f2f2;">Total Belanja</td>
+
+                            <td>@currency($co->subtotal)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="background-color:#f2f2f2;"></td>
+                            <td style="background-color:#f2f2f2;">Ongkir</td>
+                            <td>@currency($co->ongkir)</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="3" style="background-color:#f2f2f2;"></td>
+                            <td style="background-color:#f2f2f2;">Grand Total</td>
+                            <td>@currency($co->total)</td>
+                        </tr>
+                    @endforeach
+                </tfoot>
+            </table>
+        </div>
     </div>
+    <div class="bottom-invoice my-5">
+        <p class="lead marginbottom text-success text-center"><b>TERIMA KASIH!</b></p>
+        <div class="button-bottom d-flex justify-content-around">
+            <a href="{{ url('pemesanan') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i>Kembali</a>
+        </div>
     </div>
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

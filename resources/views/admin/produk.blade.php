@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <h2 class="title">Produk</h2>
                 <!--Button-->
-                <div class="title-list col-10 d-flex justify-content-between align-items-stretch">
+                <div class="title-list-wide col-10 ">
                     <div class="list-detail">
                         <a class="btn btn-primary list-detai" href="{{ url('tambah_produk') }}" role="button"><i
                                 class="ti-plus me-2"></i>Produk Baru</a>

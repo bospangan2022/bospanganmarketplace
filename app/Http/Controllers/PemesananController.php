@@ -126,7 +126,15 @@ class PemesananController extends Controller
             ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
             ->where("id_checkout", $id)
             ->get();
-        return view("admin.pemesanan_detail", ["pesanan" => $pesanan]);
+
+        $checkout = DB::table("tb_checkout")
+            ->where("id_checkout", $id)
+            ->get();
+
+        return view("admin.pemesanan_detail", [
+            "pesanan" => $pesanan,
+            "checkout" => $checkout,
+        ]);
     }
 
     public function konfirmasi_pesanan($id)

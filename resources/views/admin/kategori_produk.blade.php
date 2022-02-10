@@ -27,7 +27,7 @@
                     </div>
                     <!--Filter End-->
                     <!--Main Content-->
-                    <div class="col-9 bg-white border ">
+                    <div class="kategori-container col-9 bg-white border ">
                         <div class="category-header" style="background-color: #f4f5f7;">
                             <div class="judul p-3 m-3">
                                 @foreach ($kategori as $kat)

@@ -67,7 +67,7 @@ Route::get("produkdetail/{id}", [ProdukDetailController::class, "index"]);
 Route::get("aboutus", [AboutController::class, "index"]);
 Route::get("search", [BelanjaController::class, "search"])->name("search");
 Route::get("profil_toko/{id}", [ProfilTokoController::class, "index"]);
-Route::get("invoice", [InvoiceController::class, "index"]);
+Route::get("invoice_user/{id}", [InvoiceController::class, "index"]);
 
 Route::group(["middleware" => ["auth"]], function () {
     Route::group(["middleware" => ["cek_login:pelanggan"]], function () {
@@ -297,6 +297,7 @@ Route::group(["middleware" => ["auth"]], function () {
             PemesananController::class,
             "pemesanan_detail",
         ]);
+        Route::get("invoice/{id}", [InvoiceController::class, "index"]);
         Route::get("konfirmasi/pesanan/{id}", [
             PemesananController::class,
             "konfirmasi_pesanan",

@@ -41014,6 +41014,13 @@ div.tagsinput span.tag a {
     margin-top: 1.5rem;
 }
 
+.title-list-wide {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
 @media (max-width: 992px) {
     .title {
         text-align: center;
@@ -41024,12 +41031,21 @@ div.tagsinput span.tag a {
         justify-content: space-around;
         margin-top: 1.5rem;
     }
+
+    .title-list-wide {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+    }
+
     .content-main {
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
+
     .accordion-filter {
         width: 100%;
     }
@@ -41066,6 +41082,16 @@ div.tagsinput span.tag a {
 
 @media (max-width: 670px) {
     .title-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 3rem;
+    }
+
+    .title-list-wide {
         width: 100%;
         display: flex;
         flex-direction: column;
