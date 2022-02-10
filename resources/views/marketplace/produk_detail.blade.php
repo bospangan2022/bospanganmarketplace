@@ -54,9 +54,9 @@ use Illuminate\Support\Facades\DB;
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <!-- <a href="assets/marketplace/images/product-detail-page/cape-dress-4.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
                                     </div>
 
                                 </div>
@@ -131,12 +131,8 @@ use Illuminate\Support\Facades\DB;
                                         <div class="product-form__item--quantity">
                                             <div class="wrapQtyBtn">
                                                 <div class="qtyField">
-                                                    <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                            class="icon icon-minus" aria-hidden="true" id="minus"></i></a>
-                                                    <input type="text" id="jumlah" name="jumlah" value="1"
-                                                        class="product-form__input qty" onkeyup="sum();">
-                                                    <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                            class="icon icon-plus" aria-hidden="true" id="plus"></i></a>
+                                                    <input type="number" style="width: 100px;" id="jumlah" name="jumlah"
+                                                        value="1" class="product-form__input qty" onkeyup="sum();">
                                                 </div>
                                             </div>
                                         </div>
@@ -148,15 +144,9 @@ use Illuminate\Support\Facades\DB;
                                     </form>
 
                                     <div class="shopify-payment-button" data-shopify="payment-button">
-                                        <form action="{{ url('checkoutperitem', $bi->id_toko) }}" method="post">
-                                            @csrf
-                                            <input type="hidden" value="{{ $bi->id_barang }}" name="id_barang">
-                                            <input type="hidden" value="{{ $bi->harga }}" name="harga">
-                                            <input type="text" id="jum" name="jum" value="0">
-                                            <button type="submit"
-                                                class="shopify-payment-button__button shopify-payment-button__button--unbranded">Beli
-                                                Sekarang</button>
-                                        </form>
+                                        <button type="button"
+                                            class="shopify-payment-button__button shopify-payment-button__button--unbranded">Beli
+                                            Sekarang</button>
                                     </div>
 
                                 </div>
