@@ -285,11 +285,81 @@ use Illuminate\Support\Facades\DB;
                                                         <?php
                                                         if ($check->status == 'belumdibayar') {
                                                         ?>
-                                                        <a href="{{ url('batalkan_pesanan', $check->id_checkout) }}"
-                                                            class="beli-lagi" onclick="konfirmasi()">Batalkan
+                                                        <a href="#" data-toggle="modal" data-target="#batalkanPesanan"
+                                                            class="beli-lagi">Batalkan
                                                             Pesanan</a>
                                                         <?php } else { ?>
                                                         <?php } ?>
+                                                    </div>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="batalkanPesanan" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="body-batal modal-body">
+                                                                    <div class="ic-cancel text-center">
+                                                                        <i class="fas fa-times-circle fa-6x"></i>
+                                                                    </div>
+                                                                    <div class="txt_cancel text-center">
+                                                                        <h4 class="ttl-batal">
+                                                                            Apakah anda yakin untuk membatalkan pesanan anda
+                                                                            ?
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div class="tbl-yt">
+                                                                        <a class="btl-ya" href="#"
+                                                                            data-toggle="collapse" aria-expanded="false"
+                                                                            data-target="#alasanBatal">Ya</a>
+                                                                        <a class="btl-tidak" href="#">Tidak</a>
+                                                                    </div>
+                                                                    <div class="collapse bg-none text-center"
+                                                                        id="alasanBatal">
+                                                                        <div class="alasann">
+                                                                            <h4 class="ttl-alasan">Alasan Pesanan
+                                                                                Dibatalkan ?</h4>
+                                                                            <textarea class="form-control resize-both"
+                                                                                name="alasan"></textarea>
+                                                                            <div class="tbl-fix">
+                                                                                <a class="btl-fix"
+                                                                                    href="{{ url('batalkan_pesanan', $check->id_checkout) }}">
+                                                                                    Batalkan Pesanan
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalCenterTitle"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">
+                                                                        Modal title</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    ...
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save
+                                                                        changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 @endforeach
                                             </div>
