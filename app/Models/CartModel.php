@@ -16,5 +16,6 @@ class CartModel extends Model
         "id_toko",
         "jumlah",
         "sub_harga",
+        "status",
     ];
 }

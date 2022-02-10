@@ -54,9 +54,9 @@ use Illuminate\Support\Facades\DB;
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <!-- <a href="assets/marketplace/images/product-detail-page/cape-dress-4.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
                                     </div>
 
                                 </div>
@@ -200,34 +200,47 @@ use Illuminate\Support\Facades\DB;
                                                                 </div>
                                                                 <div class="co-sekarang text-center">
                                                                     <div class="inp-co-jumlah mt-3">
-
-                                                                        <h4 class="ttl_bs">Masukkan Jumlah Barang :
-                                                                        </h4>
-                                                                        <div class="inp-jumlahco text-center">
-                                                                            <form action="{{ url('add_cart') }}"
-                                                                                method="POST">
+                                                                        <form
+                                                                            action="{{ url('checkoutperitem', $bi->id_toko) }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            <h4 class="ttl_bs">Masukkan Jumlah
+                                                                                Barang :
+                                                                            </h4>
+                                                                            <div class="inp-jumlahco text-center">
+                                                                                <input type="hidden"
+                                                                                    value="{{ $bi->nama_barang }}"
+                                                                                    name="nama_barang">
+                                                                                <input type="hidden"
+                                                                                    value="{{ $bi->id_barang }}"
+                                                                                    name="id_barang">
+                                                                                <input type="hidden"
+                                                                                    value="{{ $bi->nama_toko }}"
+                                                                                    name="nama_toko">
+                                                                                <input type="hidden"
+                                                                                    value="{{ $bi->harga }}"
+                                                                                    name="harga">
                                                                                 <div class="product-form__item--co">
                                                                                     <div class="wrapQtyBtn">
                                                                                         <div class="qtyField-co">
                                                                                             <input type="number" id="jumlah"
                                                                                                 name="jumlah" value="1"
-                                                                                                class="product-form__input qty"
-                                                                                                onkeyup="sum();">
+                                                                                                class="product-form__input qty">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </form>
-                                                                        </div>
-                                                                        <div class="tbl-beli-sekarang">
-                                                                            <div class="tmbl_soon">
-                                                                                <a href="{{ url('/') }}"
-                                                                                    class="tombol1">
-                                                                                    <span><i
-                                                                                            class="fas fa-money-bill-wave mr-3"></i></span>
-                                                                                    Beli Sekarang
-                                                                                </a>
                                                                             </div>
-                                                                        </div>
+                                                                            <div class="tbl-beli-sekarang">
+                                                                                <div class="tmbl_soon">
+                                                                                    <button type="submit"
+                                                                                        class="tombol1">
+                                                                                        <span><i
+                                                                                                class="fas fa-money-bill-wave mr-3"></i></span>
+                                                                                        Beli Sekarang
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
 

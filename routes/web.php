@@ -120,6 +120,12 @@ Route::group(["middleware" => ["auth"]], function () {
             CheckoutController::class,
             "checkoutperitem",
         ]);
+
+        Route::post("checkoutlangsung/barang", [
+            CheckoutController::class,
+            "checkoutlangsung",
+        ]);
+
         Route::get("checkout/{id}", [CheckoutController::class, "index"]);
         Route::get("aftercheckout_tf/{id}", [
             CheckoutController::class,
