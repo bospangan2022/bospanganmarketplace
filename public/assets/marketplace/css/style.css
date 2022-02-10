@@ -2169,6 +2169,108 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
      }
   }
 
+  /* Batal Pesanan */
+  .body-batal{
+    margin: 4em 1.5em 4em 1.5em;
+  }
+
+  .ic-cancel{
+    color: #ff0021;
+    margin-bottom: 1em;
+  }
+
+  .ttl-batal{
+    font-weight: 600;
+    font-size: 1.5em;
+  }
+
+  .tbl-yt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tbl-yt .btl-ya {
+    text-decoration: none;
+    margin: 0 1em 0 0;
+  }
+
+  .tbl-yt .btl-tidak {
+    text-decoration: none;
+  }
+
+  .tbl-yt .btl-fix {
+    text-decoration: none;
+  }
+
+  .btl-ya{
+    background-color: black; 
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  .btl-ya:hover{
+    background-color: #ff0021;
+    color: white;
+  }
+
+  .btl-tidak{
+    background-color: black; 
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  .btl-tidak:hover{
+    background-color: black;
+    color: white;
+  }
+
+  .tbl-fix .btl-fix{
+    text-decoration: none;
+    background-color: #ff0021; 
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: 8px;
+  }
+  
+  .alasann{
+    margin: 2em 0 0 0;
+  }
+
+
+
+  .ttl-alasan{
+    font-weight: 500;
+    font-size: 1.2em;
+    color: black;
+  }
+
+  .tbl-fix{
+    margin: 1em 0 1em 0;
+  }
+
+
+
+
+  /*  */
+
   
 
   
