@@ -41,8 +41,8 @@ use Illuminate\Support\Facades\DB;
                                                 data-zoom-image="/images/post/{{ $bi->foto }}" alt=""
                                                 src="/images/post/{{ $bi->foto }}" />
                                         </div>
-                                        <div class="product-labels"><span class="lbl on-sale">Sale</span><span
-                                                class="lbl pr-label1">new</span></div>
+                                        {{-- <div class="product-labels"><span class="lbl on-sale">Sale</span><span
+                                                class="lbl pr-label1">new</span></div> --}}
                                         <div class="product-buttons">
                                             <!-- <a href="https://www.youtube.com/watch?v=93A2jOW5Mog" class="btn popup-video" title="View Video"><i class="icon anm anm-play-r" aria-hidden="true"></i></a> -->
                                             <a href="#" class="btn prlightbox" title="Zoom"><i
@@ -54,9 +54,9 @@ use Illuminate\Support\Facades\DB;
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <!-- <a href="assets/marketplace/images/product-detail-page/cape-dress-4.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                        <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
+                                                                                                                                                                                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
                                     </div>
 
                                 </div>
@@ -132,13 +132,11 @@ use Illuminate\Support\Facades\DB;
                                             <div class="wrapQtyBtn">
                                                 <div class="qtyField">
                                                     <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                            class="icon icon-minus" aria-hidden="true"
-                                                            id="minus"></i></a>
+                                                            class="icon icon-minus" aria-hidden="true" id="minus"></i></a>
                                                     <input type="text" id="jumlah" name="jumlah" value="1"
                                                         class="product-form__input qty" onkeyup="sum();">
                                                     <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                            class="icon icon-plus" aria-hidden="true"
-                                                            id="plus"></i></a>
+                                                            class="icon icon-plus" aria-hidden="true" id="plus"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,6 +243,7 @@ use Illuminate\Support\Facades\DB;
                             <?php
                             
                             $brg = DB::table('tb_barang')
+                                ->join('tb_toko', 'tb_barang.id_toko', '=', 'tb_toko.id_toko')
                                 ->where('tb_barang.id_kategori', $b->id_kategori)
                                 ->get();
                             
@@ -269,12 +268,12 @@ use Illuminate\Support\Facades\DB;
                                                 data-src="/images/post/{{ $b->foto }}"
                                                 src="/images/post/{{ $b->foto }}" alt="image" title="product">
                                             <!-- End hover image -->
-                                            <!-- product label -->
+                                            {{-- <!-- product label -->
                                             <div class="product-labels rectangular"><span
                                                     class="lbl on-sale">-16%</span>
                                                 <span class="lbl pr-label1">new</span>
                                             </div>
-                                            <!-- End product label -->
+                                            <!-- End product label --> --}}
                                         </a>
                                         <!-- end product image -->
                                     </div>
@@ -287,8 +286,30 @@ use Illuminate\Support\Facades\DB;
                                             <a
                                                 href="{{ url('produkdetail', $b->id_barang) }}">{{ $b->nama_barang }}</a>
                                         </div>
+
+                                        <div class="toko-name mt-2">
+                                            {{-- <img class="pp_toko" src="/images/post/{{ $b->foto_toko }}" alt=""> --}}
+                                            <a class="nama_toko"
+                                                href="{{ url('profil_toko', $b->nama_toko) }}">{{ $b->nama_toko }}
+                                            </a>
+                                        </div>
+
                                         <!-- End product name -->
+                                        <!-- product price -->
+                                        <div class="product-price">
+                                            <span class="price">@currency($b->harga)</span>
+                                        </div>
+                                        <!-- End product price -->
+
+                                        <div class="product-review">
+                                            <i class="font-13 fa fa-star"></i>
+                                            <i class="font-13 fa fa-star"></i>
+                                            <i class="font-13 fa fa-star"></i>
+                                            <i class="font-13 fa fa-star"></i>
+                                            <i class="font-13 fa fa-star"></i>
+                                        </div>
                                     </div>
+
                                     <!-- End product details -->
                                 </div>
                             @endforeach
@@ -309,7 +330,7 @@ use Illuminate\Support\Facades\DB;
         function sum() {
             var txtFirstNumberValue = document.getElementById('jumlah').value;
             if (!isNaN(txtFirstNumberValue)) {
-                document.getElementById('jum').value =  txtFirstNumberValue;
+                document.getElementById('jum').value = txtFirstNumberValue;
             }
         }
     </script>
