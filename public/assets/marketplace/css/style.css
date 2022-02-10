@@ -2159,6 +2159,16 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
     color: black;
   }
 
+  @media screen and (min-width: 300px) and (max-width: 768px){
+    .img-produk{
+      width: 80%;
+    }
+
+     .qtyField-co .product-form__input{
+       margin: 0 5em 0.5em 5em;
+     }
+  }
+
   
 
   
