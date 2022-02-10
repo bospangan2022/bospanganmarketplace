@@ -2139,6 +2139,40 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
     color: black;
   }
 
+  .qtyField-co .product-form__input{
+    width: 90px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    color: #239C4C;
+    display: flex;
+    justify-content: center;
+    margin: 0 8em 0.5em 8em;
+    border-radius: 5px;
+    border: 1px solid #239C4C;
+  }
+
+  .ttl_bs{
+    font-size: 1em;
+    margin: 1.2em 0 1.5em 0;
+    font-weight: 600;
+    color: black;
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 768px){
+    .img-produk{
+      width: 80%;
+    }
+
+     .qtyField-co .product-form__input{
+       margin: 0 5em 0.5em 5em;
+     }
+  }
+
+  
+
+  
+
   @media screen and (max-width: 414px){
   .profil-row{
     display: none;
