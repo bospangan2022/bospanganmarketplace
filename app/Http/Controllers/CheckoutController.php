@@ -395,4 +395,13 @@ class CheckoutController extends Controller
             "pesanan" => $pesanan,
         ]);
     }
+
+    public function batalkanpesanan($id)
+    {
+        Checkout::where("id_checkout", $id)->update([
+            "status" => "dibatalkan",
+        ]);
+
+        return redirect()->back();
+    }
 }

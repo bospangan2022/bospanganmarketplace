@@ -233,7 +233,7 @@ use Illuminate\Support\Facades\DB;
                                                         <?php
                                                         if($check->status == "belumdibayar"){
                                                         ?>
-                                                        <h4 class="status-4 mr-3">Belum Dibayar</h4>
+                                                        <h4 class="status-4 mr-3">Belum Dibayar / Dikonfirmasi</h4>
                                                         <?php }elseif($check->status == "dikemas"){ ?>
                                                         <h4 class="status-2 mr-3">Dikemas</h4>
                                                         <?php }elseif($check->status == "dikirim"){ ?>
@@ -278,12 +278,18 @@ use Illuminate\Support\Facades\DB;
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="tombol text-right">
                                                         <a href="#" class="detail-transaksi mr-3" data-toggle="modal"
                                                             data-target="#detail{{ $check->id_checkout }}">Lihat Detail
                                                             Transaksi</a>
-                                                        <a href="#" class="beli-lagi">Beli Lagi</a>
+                                                        <?php
+                                                        if ($check->status == 'belumdibayar') {
+                                                        ?>
+                                                        <a href="{{ url('batalkan_pesanan', $check->id_checkout) }}"
+                                                            class="beli-lagi" onclick="konfirmasi()">Batalkan
+                                                            Pesanan</a>
+                                                        <?php } else { ?>
+                                                        <?php } ?>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -780,5 +786,9 @@ use Illuminate\Support\Facades\DB;
                     $("#desa").empty();
                 }
             });
+
+            function konfirmasi() {
+                confirm("Press a button!");
+            }
         </script>
     @endsection

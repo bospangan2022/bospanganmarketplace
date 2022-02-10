@@ -134,6 +134,11 @@ Route::group(["middleware" => ["auth"]], function () {
             "aftercheckout_cod",
         ])->name("aftercheckout_cod");
 
+        Route::get("batalkan_pesanan/{id}", [
+            CheckoutController::class,
+            "batalkanpesanan",
+        ]);
+
         Route::get("wishlist", [WishlistController::class, "index"]);
         Route::post("add_wishlist", [
             WishlistController::class,
