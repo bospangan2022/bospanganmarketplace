@@ -119,6 +119,10 @@ class CartController extends Controller
             }
         }
 
+        notify()->success(
+            "Pesanan anda telah ditambahkan ke Keranjang",
+            "Berhasil"
+        );
         return redirect()->back();
     }
 

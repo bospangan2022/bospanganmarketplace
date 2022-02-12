@@ -312,21 +312,27 @@ use Illuminate\Support\Facades\DB;
                                                                         <a class="btl-ya" href="#"
                                                                             data-toggle="collapse" aria-expanded="false"
                                                                             data-target="#alasanBatal">Ya</a>
-                                                                        <a class="btl-tidak" href="#">Tidak</a>
+                                                                        <a class="btl-tidak" data-dismiss="modal"
+                                                                            href="#">Tidak</a>
                                                                     </div>
                                                                     <div class="collapse bg-none text-center"
                                                                         id="alasanBatal">
                                                                         <div class="alasann">
                                                                             <h4 class="ttl-alasan">Alasan Pesanan
                                                                                 Dibatalkan ?</h4>
-                                                                            <textarea class="form-control resize-both"
-                                                                                name="alasan"></textarea>
-                                                                            <div class="tbl-fix">
-                                                                                <a class="btl-fix"
-                                                                                    href="{{ url('batalkan_pesanan', $check->id_checkout) }}">
-                                                                                    Batalkan Pesanan
-                                                                                </a>
-                                                                            </div>
+                                                                            <form action={{ url('batalkan_pesanan') }}
+                                                                                method="POST">
+                                                                                @csrf
+                                                                                <textarea class="form-control resize-both"
+                                                                                    name="alasan"></textarea>
+                                                                                <div class="tbl-fix">
+                                                                                    <input type="hidden" name="id_checkout"
+                                                                                        value="{{ $ut->id_checkout }}">
+                                                                                    <button class="btl-fix"
+                                                                                        type="submit">Batalkan
+                                                                                        Pesanan</button>
+                                                                                </div>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>

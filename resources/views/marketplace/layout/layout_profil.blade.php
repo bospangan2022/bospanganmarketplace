@@ -4,11 +4,13 @@
 <!-- belle/home2-default.html   11 Nov 2019 12:22:28 GMT -->
 
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Bos Pangan | Profil</title>
     <meta name="description" content="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @notifyCss
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/marketplace/images/favicon.png') }}" />
     <!-- Plugins CSS -->
@@ -22,6 +24,7 @@
     <link rel="stylesheet"
         href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 
 
 </head>
@@ -721,6 +724,9 @@
                         return false;
                     });
                 </script>
+
+                <x:notify-messages />
+                @notifyJs
                 <!--End For Newsletter Popup-->
             </div>
             @yield('js')

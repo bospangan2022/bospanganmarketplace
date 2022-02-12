@@ -13,6 +13,7 @@
 
     <meta name="description" content="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @notifyCss
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/marketplace/images/favicon.png') }}" />
     <!-- Plugins CSS -->
@@ -108,8 +109,7 @@
                     <!--Desktop Logo-->
                     <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('assets/marketplace/images/logo.svg') }}"
-                                alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                            <img src="{{ asset('assets/marketplace/images/logo.svg') }}" alt="" title="" />
                         </a>
                     </div>
                     <!--End Desktop Logo-->
@@ -706,8 +706,11 @@
                     return false;
                 });
             </script>
+
             <!--End For Newsletter Popup-->
         </div>
+        <x:notify-messages />
+        @notifyJs
 </body>
 
 <!-- belle/home2-default.html   11 Nov 2019 12:23:42 GMT -->

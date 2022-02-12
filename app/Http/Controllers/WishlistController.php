@@ -96,6 +96,10 @@ class WishlistController extends Controller
             ->where("id_wishlist", $id)
             ->delete();
 
+        notify()->success(
+            "Wishlist yang anda pilih telah berhasil dihapus",
+            "Berhasil"
+        );
         return redirect()->back();
     }
 }

@@ -821,8 +821,8 @@ h1.product-single__title, .product-single__title.h1 { color:#000; font-size:23px
 .discount-badge .product-single__save-amount { font-weight:700; }
 .discount-badge .off, .discount-badge .product-single__save-amount { color:#239C4C; }
 .product-single__price { display:inline-block; margin-right:10px; color:#555; font-size:1.15385em; font-weight:400; margin-bottom:15px; }
-.orderMsg { color:#239C4C ; font-size:15px; margin-bottom:20px; }
-.orderMsg img { margin-right:3px; vertical-align:top; -webkit-animation-name:blinker; -webkit-animation-iteration-count:infinite; -webkit-animation-timing-function:cubic-bezier(.6, 0, 1, 1); -webkit-animation-duration:0.8s; }
+.orderMsg { color:#239C4C ; font-size:15px; margin-bottom:20px; display: flex;}
+.orderMsg img { margin-right:10px; vertical-align:top; -webkit-animation-name:blinker; -webkit-animation-iteration-count:infinite; -webkit-animation-timing-function:cubic-bezier(.6, 0, 1, 1); -webkit-animation-duration:0.8s; }
 @-webkit-keyframes blinker {
   from { opacity: 1.0; }
   to { opacity:0.0; } 
@@ -2227,7 +2227,7 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
     padding: 10px 30px;
     text-align: center;
     font-family: Poppins;
-    font-weight: 600;
+    font-weight: 600; 
     display: inline-block;
     border-radius: 8px;
   }

@@ -112,8 +112,7 @@
                     <!--Desktop Logo-->
                     <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
                         <a href="{{ url('/') }}">
-                            <img src="{{ asset('assets/marketplace/images/logo.svg') }}"
-                                alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                            <img src="{{ asset('assets/marketplace/images/logo.svg') }}" alt="" title="" />
                         </a>
                     </div>
                     <!--End Desktop Logo-->

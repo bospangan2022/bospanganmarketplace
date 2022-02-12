@@ -83,6 +83,10 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("/getDesa", [CartController::class, "getDesa"]);
 
         Route::get("profil", [ProfilController::class, "index"]);
+        Route::post("batalkan_pesanan", [
+            ProfilController::class,
+            "batalPesanan",
+        ]);
 
         Route::get("tanya_penjual", [
             ProfilTokoController::class,

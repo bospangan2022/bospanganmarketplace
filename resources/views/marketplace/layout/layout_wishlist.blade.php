@@ -9,6 +9,7 @@
     <title>Bos Pangan | Wishlist</title>
     <meta name="description" content="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @notifyCss
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/marketplace/images/favicon.png') }}" />
     <!-- Plugins CSS -->
@@ -104,8 +105,7 @@
                     <!--Desktop Logo-->
                     <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
                         <a href="{{ url('/') }}">
-                            <img src="assets/marketplace/images/logo.svg" alt="Belle Multipurpose Html Template"
-                                title="Belle Multipurpose Html Template" />
+                            <img src="assets/marketplace/images/logo.svg" alt="" title="" />
                         </a>
                     </div>
                     <!--End Desktop Logo-->
@@ -633,6 +633,9 @@
                 return false;
             });
         </script>
+
+        <x:notify-messages />
+        @notifyJs
         <!--End For Newsletter Popup-->
     </div>
 </body>

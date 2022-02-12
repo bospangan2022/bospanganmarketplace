@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BatalPesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -117,6 +118,7 @@ class ProfilController extends Controller
             "catatan" => $request->catatan,
         ]);
 
+        notify()->success("Alamat baru anda telah ditambahkan", "Berhasil");
         return redirect()->back();
     }
 
@@ -134,6 +136,8 @@ class ProfilController extends Controller
                 "kode_pos" => $request->kode_pos,
                 "catatan" => $request->catatan,
             ]);
+
+        notify()->success("Alamat yang anda pilih telah di ubah", "Berhasil");
         return redirect()->back();
     }
 
@@ -146,6 +150,10 @@ class ProfilController extends Controller
             ->where("id_user_detail", $id)
             ->update(["status" => "utama"]);
 
+        notify()->success(
+            "Alamat yang anda pilih , sudah dijadikan sebagai alamat utama",
+            "Berhasil"
+        );
         return redirect()->back();
     }
 
@@ -154,6 +162,19 @@ class ProfilController extends Controller
         $profil = DB::table("user_detail")
             ->where("id_user_detail", $id)
             ->delete();
+
+        notify()->success("Alamat yang anda pilih telah dihapus", "Berhasil");
+        return redirect()->back();
+    }
+
+    public function batalPesanan(Request $request)
+    {
+        BatalPesanan::create([
+            "id_checkout" => $request->id_checkout,
+            "alasan" => $request->alasan,
+        ]);
+
+        notify()->success("Pesanan Anda Dibatalkan", "Berhasil");
         return redirect()->back();
     }
 }
