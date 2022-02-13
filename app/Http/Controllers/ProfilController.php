@@ -86,6 +86,7 @@ class ProfilController extends Controller
             ->count();
         $checkout = DB::table("tb_checkout")
             ->where("id_user", Auth::user()->id)
+            ->orderByDesc("id_checkout")
             ->get();
         //dd($checkout);
         return view("marketplace.profil", [

@@ -317,6 +317,14 @@ Route::group(["middleware" => ["auth"]], function () {
             PemesananController::class,
             "konfirmasi_pesanan",
         ]);
+        Route::get("kirim/pesanan/{id}", [
+            PemesananController::class,
+            "kirim_pesanan",
+        ]);
+        Route::get("selesai/pesanan/{id}", [
+            PemesananController::class,
+            "selesai_pesanan",
+        ]);
         Route::get("filter/{id}", [PemesananController::class, "filter"]);
 
         Route::get("gerobak", [GerobakController::class, "index"]);
