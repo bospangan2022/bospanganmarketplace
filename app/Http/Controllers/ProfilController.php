@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\BatalPesanan;
+use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\UserDetailModel;
+use App\Models\Village;
 
 class ProfilController extends Controller
 {
@@ -122,6 +124,54 @@ class ProfilController extends Controller
         return redirect()->back();
     }
 
+    public function updAlamat(Request $request, $id)
+    {
+        $updAlamat = DB::table("user_detail")
+            ->where("id_user_detail", $id)
+            ->get();
+
+        $kota = DB::table("tb_kota")
+            ->reorder("nama_kota", "asc")
+            ->get();
+
+        $keranjang = DB::table("tb_keranjang")
+            ->join(
+                "tb_barang",
+                "tb_keranjang.id_barang",
+                "=",
+                "tb_barang.id_barang"
+            )
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
+            ->get();
+
+        $count_barang = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
+            ->count("id_barang");
+        $count_love = DB::table("tb_wishlist")
+            ->where("id_user", Auth::user()->id)
+            ->count("id_barang");
+        $sub_total = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
+            ->sum("sub_harga");
+
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
+        return view("marketplace.ubahalamat", [
+            "updAlamat" => $updAlamat,
+            "kota" => $kota,
+            "keranjang" => $keranjang,
+            "count_barang" => $count_barang,
+            "count_love" => $count_love,
+            "sub_total" => $sub_total,
+            "katlimit" => $katlimit,
+        ]);
+    }
+
     public function update_alamat(Request $request, $id)
     {
         DB::table("user_detail")
@@ -173,6 +223,13 @@ class ProfilController extends Controller
             "id_checkout" => $request->id_checkout,
             "alasan" => $request->alasan,
         ]);
+
+        $batal = DB::table("tb_checkout")
+            ->where("id_checkout", $request->id_checkout)
+            ->update(["status" => "dibatalkan"]);
+        // ->get();
+
+        // dd($batal);
 
         notify()->success("Pesanan Anda Dibatalkan", "Berhasil");
         return redirect()->back();

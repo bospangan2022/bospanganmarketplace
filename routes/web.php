@@ -93,7 +93,7 @@ Route::group(["middleware" => ["auth"]], function () {
             "tanya_penjual",
         ]);
 
-        Route::get("barangtoko_kat/{id}", [
+        Route::get("barangtoko_kat/{id}/{id2}", [
             ProfilTokoController::class,
             "barangtoko_kat",
         ]);
@@ -111,6 +111,8 @@ Route::group(["middleware" => ["auth"]], function () {
             ProfilController::class,
             "hapus_alamat",
         ]);
+        Route::get("updAlamat/{id}", [ProfilController::class, "updAlamat"]);
+
         Route::post("update_alamat/{id}", [
             ProfilController::class,
             "update_alamat",

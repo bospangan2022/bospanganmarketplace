@@ -87,6 +87,10 @@ class WishlistController extends Controller
                 ->get();
         }
 
+        notify()->success(
+            "Barang yang anda pilih telah ditambahkan ke Wishlist anda",
+            "Berhasil"
+        );
         return redirect()->back();
     }
 
