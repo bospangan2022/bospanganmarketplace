@@ -165,6 +165,7 @@ class PemesananController extends Controller
                 )
                 ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
                 ->where("id_toko", $id_toko)
+                ->where("tb_checkout.status", $id)
                 ->orderByDesc("id_checkout")
                 ->get();
             $semua = DB::table("tb_checkout")

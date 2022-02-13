@@ -173,19 +173,6 @@ Route::group(["middleware" => ["auth"]], function () {
             "produk_user"
         );
 
-        //-----Filter----------------
-        Route::get("produk_display", [
-            ProdukUserController::class,
-            "display",
-        ])->name("produk_display");
-        Route::get("produk_habis", [
-            ProdukUserController::class,
-            "habis",
-        ])->name("produk_habis");
-        Route::get("produk_hide", [ProdukUserController::class, "hide"])->name(
-            "produk_hide"
-        );
-
         Route::get("cari_produk_user", [
             ProdukUserController::class,
             "cari_produk",
@@ -210,6 +197,19 @@ Route::group(["middleware" => ["auth"]], function () {
             ProdukUserController::class,
             "destroy",
         ]);
+        //-----Filter----------------
+        Route::get("produk_display", [
+            ProdukUserController::class,
+            "display",
+        ])->name("produk_display");
+        Route::get("produk_habis", [
+            ProdukUserController::class,
+            "habis",
+        ])->name("produk_habis");
+        Route::get("produk_hide", [ProdukUserController::class, "hide"])->name(
+            "produk_hide"
+        );
+        //--------------------------------------
 
         Route::get("tambah_kategori_user", [
             KategoriUserController::class,
@@ -239,9 +239,17 @@ Route::group(["middleware" => ["auth"]], function () {
             "proses_checkout",
         ]);
         Route::get("pemesanan_user", [PemesananUserController::class, "index"]);
-        Route::get("pemesanan_detail_user", [
-            PemesananController::class,
+        Route::get("pemesanan_detail_user/{id}", [
+            PemesananUserController::class,
             "pemesanan_detail",
+        ]);
+        Route::get("konfirmasi_user/pesanan/{id}", [
+            PemesananUserController::class,
+            "konfirmasi_pesanan",
+        ]);
+        Route::get("filter_user/{id}", [
+            PemesananUserController::class,
+            "filter",
         ]);
     });
 

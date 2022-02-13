@@ -13,10 +13,12 @@ class InvoiceController extends Controller
         $checkout = DB::table("tb_checkout")
             ->where("id_checkout", $id)
             ->get();
+        //dd($checkout);
         $user = DB::table("tb_checkout")
-            ->join("users", "tb_checkout.id_checkout", "=", "users.id")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
             ->where("id_checkout", $id)
             ->get();
+
         foreach ($user as $us) {
             $user_detail = DB::table("user_detail")
                 ->join("users", "user_detail.id_user", "=", "users.id")
@@ -45,65 +47,65 @@ class InvoiceController extends Controller
                 ->where("id_keranjang", $dc->id_keranjang)
                 ->get();
 
-            $total_belanja = DB::table("tb_keranjang")
-                ->where("id_keranjang", $dc->id_keranjang)
-                ->sum("sub_harga");
-        }
-
-        $ongkir = 0;
-        $grand_total = $total_belanja + $ongkir;
-
-        $toko = DB::table("tb_checkout")
-            ->join("tb_toko", "tb_checkout.id_toko", "=", "tb_toko.id_toko")
-            ->where("id_checkout", $id)
-            ->get();
-        foreach ($toko as $t) {
-            $alamat = DB::table("tb_toko")
-                ->leftjoin("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
-                ->leftjoin(
-                    "tb_kecamatan",
-                    "tb_toko.kecamatan",
-                    "=",
-                    "tb_kecamatan.id_kecamatan"
-                )
-                ->leftjoin("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
-                ->where("id_toko", $t->id_toko)
+            $toko = DB::table("tb_checkout")
+                ->join("tb_toko", "tb_checkout.id_toko", "=", "tb_toko.id_toko")
+                ->where("id_checkout", $id)
                 ->get();
-        }
-        foreach ($user_detail as $u) {
-            $delivery = DB::table("user_detail")
-                ->leftjoin(
-                    "tb_kota",
-                    "user_detail.id_kota",
-                    "=",
-                    "tb_kota.id_kota"
-                )
-                ->leftjoin(
-                    "tb_kecamatan",
-                    "user_detail.id_kecamatan",
-                    "=",
-                    "tb_kecamatan.id_kecamatan"
-                )
-                ->leftjoin(
-                    "tb_desa",
-                    "user_detail.id_desa",
-                    "=",
-                    "tb_desa.id_desa"
-                )
-                ->where("id_user_detail", $u->id_user_detail)
-                ->get();
-        }
+            foreach ($toko as $t) {
+                $alamat = DB::table("tb_toko")
+                    ->leftjoin(
+                        "tb_kota",
+                        "tb_toko.kota",
+                        "=",
+                        "tb_kota.id_kota"
+                    )
+                    ->leftjoin(
+                        "tb_kecamatan",
+                        "tb_toko.kecamatan",
+                        "=",
+                        "tb_kecamatan.id_kecamatan"
+                    )
+                    ->leftjoin(
+                        "tb_desa",
+                        "tb_toko.desa",
+                        "=",
+                        "tb_desa.id_desa"
+                    )
+                    ->where("id_toko", $t->id_toko)
+                    ->get();
+            }
+            foreach ($user_detail as $u) {
+                $delivery = DB::table("user_detail")
+                    ->leftjoin(
+                        "tb_kota",
+                        "user_detail.id_kota",
+                        "=",
+                        "tb_kota.id_kota"
+                    )
+                    ->leftjoin(
+                        "tb_kecamatan",
+                        "user_detail.id_kecamatan",
+                        "=",
+                        "tb_kecamatan.id_kecamatan"
+                    )
+                    ->leftjoin(
+                        "tb_desa",
+                        "user_detail.id_desa",
+                        "=",
+                        "tb_desa.id_desa"
+                    )
+                    ->where("id_user_detail", $u->id_user_detail)
+                    ->get();
+            }
 
-        return view("marketplace.invoice", [
-            "checkout" => $checkout,
-            "user" => $user,
-            "alamat" => $alamat,
-            "toko" => $toko,
-            "delivery" => $delivery,
-            "order" => $order,
-            "total_belanja" => $total_belanja,
-            "grand_total" => $grand_total,
-            "ongkir" => $ongkir,
-        ]);
+            return view("marketplace.invoice", [
+                "checkout" => $checkout,
+                "user" => $user,
+                "alamat" => $alamat,
+                "toko" => $toko,
+                "delivery" => $delivery,
+                "order" => $order,
+            ]);
+        }
     }
 }
