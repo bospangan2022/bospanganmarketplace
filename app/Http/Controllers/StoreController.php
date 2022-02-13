@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TokoMasuk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,7 @@ use App\Models\Store;
 use App\Models\Village;
 
 use App\Models\UserDetailModel;
+use Illuminate\Support\Facades\Mail;
 
 class StoreController extends Controller
 {
@@ -85,6 +87,8 @@ class StoreController extends Controller
             "desa" => $request->desa,
             "kode_pos" => $request->kode_pos,
         ]);
+
+        Mail::to("moharif15111998@gmail.com")->send(new TokoMasuk());
 
         return redirect()->back();
     }
