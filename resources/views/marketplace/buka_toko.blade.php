@@ -41,7 +41,8 @@
                                         <div class="form-group col-md-6 col-lg-6 col-xl-6 ">
                                             <label for="input-telephone">Nomer Telephone Toko <span
                                                     class="required-f">*</span></label>
-                                            <input name="phone" value="" id="input-telephone" type="tel">
+                                            <input name="phone" value="" id="input-telephone" type="tel"
+                                                placeholder="contoh: 081234596xxx">
                                         </div>
                                         <div class="form-group col-md-6 col-lg-6 col-xl-6 ">
                                             <label for="input-telephone">Alamat<span class="required-f">*</span></label>
@@ -81,6 +82,23 @@
                                         <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
                                             <label for="input-email">Kodepos<span class="required-f">*</span></label>
                                             <input name="kode_pos" value="" id="input-email" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6 col-lg-6 col-xl-6 ">
+                                            <label for="input-telephone">Bank <span class="required-f">*</span></label>
+                                            <input name="bank" value="" id="input-telephone" type="tel"
+                                                placeholder="contoh: BCA/BNI/BRI">
+                                        </div>
+                                        <div class="form-group col-md-6 col-lg-6 col-xl-6 ">
+                                            <label for="input-telephone">Nomer Rekening <span
+                                                    class="required-f">*</span></label>
+                                            <input name="rekening" value="" id="input-telephone" type="tel">
+                                        </div>
+                                        <div class="form-group col-md-6 col-lg-6 col-xl-6 ">
+                                            <label for="input-telephone">Atas Nama Rekening<span
+                                                    class="required-f">*</span></label>
+                                            <input name="anrekening" value="" id="input-address" type="text">
                                         </div>
                                     </div>
                                     <div class="text-right">

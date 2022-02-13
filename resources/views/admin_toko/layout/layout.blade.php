@@ -396,7 +396,7 @@
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ url('gerobak_user') }}">Gerobak Terbelengkai</a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ url('fixedorder_user') }}">Memperbaiki Pesanan</a></li>
+                                        href="{{ url('edit_toko') }}">Edit Informasi Toko</a></li>
                             </ul>
                         </div>
                     </li>

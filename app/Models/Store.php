@@ -21,5 +21,8 @@ class Store extends Model
         "kecamatan",
         "desa",
         "kode_pos",
+        "bank",
+        "rekening",
+        "anrekening",
     ];
 }

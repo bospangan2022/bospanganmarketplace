@@ -534,6 +534,8 @@ use Illuminate\Support\Facades\DB;
                     </div>
                 </div>
             </div>
+
+
             <!--tambah popup-->
             <div class="modal fade quick-view-popup" id="tambah_alamat">
                 <div class="modal-dialog modal-lg">
@@ -571,8 +573,8 @@ use Illuminate\Support\Facades\DB;
                                         <div class="row">
                                             <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
                                                 <label for="address_country">Kabupaten/Kota</label>
-                                                <select name="kota" id="kota" class="js-example-basic-single"
-                                                    style="width: 100%;" data-show-subtext="true" data-live-search="true">
+                                                <select name="kota" id="kota" style="width: 100%;" data-show-subtext="true"
+                                                    data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
                                                         <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}
@@ -754,8 +756,8 @@ use Illuminate\Support\Facades\DB;
                                         <div class="row">
                                             <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
                                                 <label for="address_country">Kabupaten/Kota</label>
-                                                <select name="kota" id="kota" class="js-example-basic-single"
-                                                    style="width: 100%;" data-show-subtext="true" data-live-search="true">
+                                                <select name="kota" id="kota" style="width: 100%;" data-show-subtext="true"
+                                                    data-live-search="true">
                                                     <option value="">== Pilih Kota/Kabupaten ==</option>
                                                     @foreach ($kota as $ko)
                                                         <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}
@@ -803,6 +805,7 @@ use Illuminate\Support\Facades\DB;
                 </div>
             </div>
         @endforeach
+
 
     @endsection
 

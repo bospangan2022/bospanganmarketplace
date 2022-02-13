@@ -79,8 +79,8 @@ Route::group(["middleware" => ["auth"]], function () {
             "hapus_semua",
         ]);
         Route::post("update_cart/{id}", [CartController::class, "update"]);
-        Route::get("/getKec", [CartController::class, "getKec"]);
-        Route::get("/getDesa", [CartController::class, "getDesa"]);
+        Route::get("/getKec", [ProfilController::class, "getKec"]);
+        Route::get("/getDesa", [ProfilController::class, "getDesa"]);
 
         Route::get("profil", [ProfilController::class, "index"]);
         Route::post("batalkan_pesanan", [
@@ -250,6 +250,11 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("filter_user/{id}", [
             PemesananUserController::class,
             "filter",
+        ]);
+        Route::get("edit_toko", [ProfilTokoController::class, "edit_toko"]);
+        Route::post("update_toko/{id}", [
+            ProfilTokoController::class,
+            "update_toko",
         ]);
     });
 

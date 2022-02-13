@@ -10,6 +10,7 @@ use App\Models\Store;
 use App\Models\Village;
 
 use App\Models\UserDetailModel;
+use Illuminate\Routing\Route;
 
 class StoreController extends Controller
 {
@@ -83,7 +84,10 @@ class StoreController extends Controller
             "kota" => $request->kota,
             "kecamatan" => $request->kecamatan,
             "desa" => $request->desa,
+            "bank" => $request->bank,
             "kode_pos" => $request->kode_pos,
+            "rekening" => $request->rekening,
+            "anrekening" => $request->anrekening,
         ]);
 
         return redirect()->back();
