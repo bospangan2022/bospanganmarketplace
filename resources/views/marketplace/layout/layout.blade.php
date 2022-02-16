@@ -79,12 +79,22 @@
                         $cek = DB::table("tb_toko")
                             ->where("id_user", Auth::user()->id)
                             ->count();
+                        $cek2 = DB::table("tb_toko")
+                            ->where("id_user", Auth::user()->id)
+                            ->where("status","s")
+                            ->count();
 
                         if ($cek == 0) { ?>
 
                             <li><a href="{{ url('buka_toko') }}">Buka Toko</a></li>
+                            <?php
+                         } else { 
+                            if($cek2 == 0){ ?>
+                            <li><a href="#" onclick="return confirm('Toko Belum Disetujui')">Kelola Toko</a></li>
                             <?php } else { ?>
                             <li><a href="{{ url('kelola_toko') }}">Kelola Toko</a></li>
+                            <?php } ?>
+
                             <?php }
                         ?>
 

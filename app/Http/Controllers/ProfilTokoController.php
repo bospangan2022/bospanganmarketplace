@@ -28,16 +28,7 @@ class ProfilTokoController extends Controller
 
         // dd($barang_toko);
 
-        $kat_toko = DB::table("tb_toko")
-            ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
-            ->join(
-                "tb_kategori",
-                "tb_barang.id_kategori",
-                "=",
-                "tb_kategori.id_kategori"
-            )
-            ->where("tb_toko.nama_toko", $id)
-            ->get();
+        $kat_toko = DB::table("tb_kategori")->get();
 
         // dd($kat_toko);
 
@@ -111,26 +102,16 @@ class ProfilTokoController extends Controller
         );
     }
 
-    public function barangtoko_kat($id)
+    public function barangtoko_kat($id, $id2)
     {
-        $mix = DB::table("tb_kategori")
-            ->where("id_kategori", $id)
-            ->get();
-
-        foreach ($mix as $m) {
-            $id_toko = $m->id_toko;
-        }
-
         $toko = DB::table("tb_toko")
             ->join("regencies", "tb_toko.kota", "=", "regencies.id")
-            ->where("id_toko", $id_toko)
+            ->where("id_toko", $id)
             ->get();
 
         // dd($toko);
 
-        $kat_toko = DB::table("tb_toko")
-            ->join("tb_kategori", "tb_toko.id_toko", "=", "tb_kategori.id_toko")
-            ->get();
+        $kat_toko = DB::table("tb_kategori")->get();
 
         $katlimit = DB::table("tb_kategori")
             ->limit(5)
@@ -138,7 +119,8 @@ class ProfilTokoController extends Controller
 
         $barang_kat = DB::table("tb_toko")
             ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
-            ->where("id_kategori", $id)
+            ->where("id_kategori", $id2)
+            ->where("tb_toko.id_toko", $id)
             ->get();
 
         $count = $barang_kat->count();

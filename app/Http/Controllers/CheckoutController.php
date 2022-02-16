@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BospanganEmail;
+use App\Mail\UploadBukti;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CartModel;
 use App\Models\Checkout;
 use App\Models\CheckoutDetail;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -52,6 +55,7 @@ class CheckoutController extends Controller
         $grand_total = $sub_total + $ongkir;
 
         $user = DB::table("user_detail")
+            ->leftjoin("users", "user_detail.id_user", "=", "users.id")
             ->leftjoin("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
             ->leftjoin(
                 "tb_kecamatan",
@@ -68,6 +72,7 @@ class CheckoutController extends Controller
 
         $alamat_toko = DB::table("tb_toko")
             ->leftjoin("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->leftjoin("users", "tb_toko.id_user", "=", "users.id")
             ->leftjoin(
                 "tb_kecamatan",
                 "tb_toko.kecamatan",
@@ -257,6 +262,8 @@ class CheckoutController extends Controller
             )->update(["status" => "c"]);
         }
 
+        Mail::to($request->email)->send(new BospanganEmail());
+
         if ($request->metode_pembayaran == "cod") {
             return redirect()->route("aftercheckout_cod", $id_checkout);
         } else {
@@ -308,6 +315,7 @@ class CheckoutController extends Controller
 
         $pesanan = DB::table("tb_checkout")
             ->join("tb_toko", "tb_checkout.id_toko", "=", "tb_toko.id_toko")
+            ->join("users", "tb_toko.id_user", "=", "users.id")
             ->where("tb_checkout.id_user", Auth::user()->id)
             ->where("tb_checkout.id_checkout", $id)
             ->get();
@@ -350,6 +358,8 @@ class CheckoutController extends Controller
             "bukti" => $name,
             "status" => "dikemas",
         ]);
+
+        Mail::to($request->email)->send(new UploadBukti());
 
         return redirect()->route("home");
     }

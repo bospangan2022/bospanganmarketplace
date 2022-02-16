@@ -84,6 +84,7 @@
                         <form action="{{ url('upload/bukti', $pes->id_checkout) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" value="{{ $pes->email }}" name="email">
                             <div class="title-checkout">
                                 <div class="upl-bukti text-center">
                                     <p class="title-upl">Upload Bukti :</p>

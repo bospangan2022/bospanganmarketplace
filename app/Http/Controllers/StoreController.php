@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TokoMasuk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,11 @@ use App\Models\Store;
 use App\Models\Village;
 
 use App\Models\UserDetailModel;
+<<<<<<< HEAD
 use Illuminate\Routing\Route;
+=======
+use Illuminate\Support\Facades\Mail;
+>>>>>>> 579861dac26fff7f9a035adad7083f2beb39c136
 
 class StoreController extends Controller
 {
@@ -89,6 +94,8 @@ class StoreController extends Controller
             "rekening" => $request->rekening,
             "anrekening" => $request->anrekening,
         ]);
+
+        Mail::to("moharif15111998@gmail.com")->send(new TokoMasuk());
 
         return redirect()->back();
     }

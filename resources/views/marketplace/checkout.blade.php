@@ -228,6 +228,9 @@
                                                 ?>
                                                 <input type="hidden" name="ongkir" value="{{ $ongkir }}">
                                                 <input type="hidden" name="total" value="{{ $total }}">
+                                                @foreach ($alamat_toko as $at)
+                                                    <input type="hidden" name="email" value="{{ $at->email }}">
+                                                @endforeach
                                                 <td>@currency($total)</td>
                                             </tr>
                                         </tfoot>

@@ -93,14 +93,26 @@
                                 <ul class="sidebar_categories">
                                     @foreach ($kat_toko as $kt)
                                         <?php
+                                        $kategori = DB::table('tb_kategori');
+                                        
+                                        foreach ($toko as $t) {
+                                            $id_toko = $t->id_toko;
+                                        }
+                                        
                                         $jumlah = DB::table('tb_barang')
                                             ->where('id_kategori', $kt->id_kategori)
-                                            ->where('id_toko', $kt->id_toko)
+                                            ->where('id_toko', $id_toko)
                                             ->count();
+                                        
+                                        $idk = [$id_toko, $kt->id_kategori];
+                                        
+                                        // dd($idk);
+                                        
                                         ?>
-                                        <li class="lvl-1"><a href="{{ url('barangtoko_kat', $kt->id_kategori) }}"
+
+                                        <li class="lvl-1"><a href="{{ url('barangtoko_kat', $idk) }}"
                                                 class="site-nav">{{ $kt->nama_kategori }}
-                                                <span>{{ $jumlah }}</span></a></li>
+                                                <span class="j_btk">( {{ $jumlah }} )</span></a></li>
                                     @endforeach
                                 </ul>
                             </div>

@@ -93,12 +93,24 @@
                                 <ul class="sidebar_categories">
                                     @foreach ($kat_toko as $kt)
                                         <?php
+                                        $kategori = DB::table('tb_kategori');
+                                        
+                                        foreach ($toko as $t) {
+                                            $id_toko = $t->id_toko;
+                                        }
+                                        
                                         $jumlah = DB::table('tb_barang')
                                             ->where('id_kategori', $kt->id_kategori)
-                                            ->where('id_toko', $kt->id_toko)
+                                            ->where('id_toko', $id_toko)
                                             ->count();
+                                        
+                                        $idk = [$id_toko, $kt->id_kategori];
+                                        
+                                        // dd($idk);
+                                        
                                         ?>
-                                        <li class="lvl-1"><a href="{{ url('barangtoko_kat', $kt->id_kategori) }}"
+
+                                        <li class="lvl-1"><a href="{{ url('barangtoko_kat', $idk) }}"
                                                 class="site-nav">{{ $kt->nama_kategori }}
                                                 <span class="j_btk">( {{ $jumlah }} )</span></a></li>
                                     @endforeach
@@ -134,18 +146,20 @@
                                 <div class="row">
                                     <div
                                         class="col-4 col-md-4 col-lg-4 filters-toolbar__item collection-view-as d-flex justify-content-start align-items-center">
-                                        <div class="cari-toko input-group mb-3 ">
-                                            <form action="{{ url('cari_brgtoko') }}">
-                                                <input type="text" placeholder="Cari Barang Di Toko Ini...."
-                                                    aria-describedby="button-addon3" name="cari"
-                                                    class="input-barang-toko form-control bg-none border-1">
-                                            </form>
-                                            <div class="input-group-append">
-                                                <button id="button-addon3" type="submit" class="btn btn-link "><i
-                                                        class="fa fa-search"></i>
-                                                </button>
+                                        @foreach ($toko as $t)
+                                            <div class="cari-toko input-group mb-3 ">
+                                                <form action="{{ url('cari_brgtoko' }}">
+                                                    <input type="text" placeholder="Cari Barang Di Toko Ini...."
+                                                        aria-describedby="button-addon3" name="cari"
+                                                        class="input-barang-toko form-control bg-none border-1">
+                                                </form>
+                                                <div class="input-group-append">
+                                                    <button id="button-addon3" type="submit" class="btn btn-link "><i
+                                                            class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <div
                                         class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
