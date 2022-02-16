@@ -122,8 +122,19 @@ use Illuminate\Support\Facades\DB;
                                                 <div class="tambahalamat">
                                                     {{-- <span class="product-review"><a class="reviewLink"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i> </a><span class="spr-summary-actions-togglereviews">Based on 6 reviews456</span></span> --}}
                                                     <span class="ta">
+                                                        <?php
+                                                        $ca = DB::table('user_detail')
+                                                            ->where('id_user', Auth::user()->id)
+                                                            ->count();
+                                                        
+                                                        // dd($ca);
+
+                                                        if ($ca == 0) {
+                                                            # code...
+                                                        ?>
                                                         <a class="tambahalamat-btn" href="#" data-toggle="modal"
                                                             data-target="#tambah_alamat">Tambah Alamat Baru</a>
+                                                        <?php } ?>
                                                     </span>
                                                 </div>
                                             </div>
@@ -290,6 +301,15 @@ use Illuminate\Support\Facades\DB;
                                                             data-target="#batalkanPesanan{{ $check->id_checkout }}"
                                                             class="beli-lagi">Batalkan
                                                             Pesanan</a>
+                                                        <?php
+                                                        if($check->metode_pembayaran == 'tf') {
+                                                        ?>
+                                                        <a href="{{ url('aftercheckout_tf', $check->id_checkout) }}"
+                                                            class="beli-lagi">Bayar Sekarang</a>
+                                                        <?php 
+                                                        } else {
+                                                        ?>
+                                                        <?php } ?>
                                                         <?php } else { ?>
                                                         <?php } ?>
                                                     </div>
