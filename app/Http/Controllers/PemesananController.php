@@ -115,6 +115,110 @@ class PemesananController extends Controller
         ]);
     }
 
+    public function pemesanan_all()
+    {
+        $pesanan = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->join("tb_toko", "tb_checkout.id_toko", "=", "tb_toko.id_toko")
+            ->orderByDesc("id_checkout")
+            ->get();
+
+        $toko = DB::table("tb_toko")
+            ->join("users", "tb_toko.id_user", "=", "users.id")
+            ->join("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
+            ->get();
+        $semua = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->count();
+        $belum_bayar = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("tb_checkout.status", "belumdibayar")
+            ->count();
+        $dikemas = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("tb_checkout.status", "dikemas")
+            ->count();
+        $dikirim = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("tb_checkout.status", "dikirim")
+            ->count();
+        $selesai = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("tb_checkout.status", "selesai")
+            ->count();
+
+        return view("admin.pemesanan_all", [
+            "pesanan" => $pesanan,
+            "belum_bayar" => $belum_bayar,
+            "dikemas" => $dikemas,
+            "dikirim" => $dikirim,
+            "selesai" => $selesai,
+            "semua" => $semua,
+            "toko" => $toko,
+        ]);
+    }
+
     public function pemesanan_detail($id)
     {
         $pesanan = DB::table("tb_checkout")
@@ -274,6 +378,111 @@ class PemesananController extends Controller
             "dikirim" => $dikirim,
             "selesai" => $selesai,
             "semua" => $semua,
+        ]);
+    }
+
+    public function filter_all($id)
+    {
+        $pesanan = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("tb_checkout.status", $id)
+            ->join("tb_toko", "tb_checkout.id_toko", "=", "tb_toko.id_toko")
+            ->orderByDesc("id_checkout")
+            ->get();
+
+        $toko = DB::table("tb_toko")
+            ->join("users", "tb_toko.id_user", "=", "users.id")
+            ->join("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
+            ->get();
+        $semua = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->count();
+        $belum_bayar = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("tb_checkout.status", "belumdibayar")
+            ->count();
+        $dikemas = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("tb_checkout.status", "dikemas")
+            ->count();
+        $dikirim = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("tb_checkout.status", "dikirim")
+            ->count();
+        $selesai = DB::table("tb_checkout")
+            ->join("users", "tb_checkout.id_user", "=", "users.id")
+            ->join("user_detail", "users.id", "=", "user_detail.id_user")
+            ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "user_detail.id_kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
+            ->where("tb_checkout.status", "selesai")
+            ->count();
+
+        return view("admin.pemesanan_all", [
+            "pesanan" => $pesanan,
+            "belum_bayar" => $belum_bayar,
+            "dikemas" => $dikemas,
+            "dikirim" => $dikirim,
+            "selesai" => $selesai,
+            "semua" => $semua,
+            "toko" => $toko,
         ]);
     }
 }

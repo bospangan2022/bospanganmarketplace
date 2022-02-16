@@ -11,11 +11,8 @@ use App\Models\Store;
 use App\Models\Village;
 
 use App\Models\UserDetailModel;
-<<<<<<< HEAD
 use Illuminate\Routing\Route;
-=======
 use Illuminate\Support\Facades\Mail;
->>>>>>> 579861dac26fff7f9a035adad7083f2beb39c136
 
 class StoreController extends Controller
 {

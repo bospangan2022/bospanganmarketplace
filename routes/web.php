@@ -323,6 +323,10 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("pemesanan", [PemesananController::class, "index"])->name(
             "pemesanan"
         );
+        Route::get("pemesananall", [
+            PemesananController::class,
+            "pemesanan_all",
+        ])->name("pemesananall");
         Route::get("pemesanan_detail/{id}", [
             PemesananController::class,
             "pemesanan_detail",
@@ -341,6 +345,10 @@ Route::group(["middleware" => ["auth"]], function () {
             "selesai_pesanan",
         ]);
         Route::get("filter/{id}", [PemesananController::class, "filter"]);
+        Route::get("filter_all/{id}", [
+            PemesananController::class,
+            "filter_all",
+        ]);
 
         Route::get("gerobak", [GerobakController::class, "index"]);
         Route::post("hapus_gerobak/{id}", [

@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\BatalPesanan;
-use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
 use App\Models\District;
-use App\Models\Village;
-
 use App\Models\UserDetailModel;
 use App\Models\Village;
 
