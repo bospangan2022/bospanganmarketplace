@@ -149,7 +149,7 @@ use Illuminate\Support\Facades\DB;
                                                     <h4 class="no-hp">{{ $u->catatan }}</h4>
                                                 </div>
                                                 <div class="tombol text-left mt-4 mr-5">
-                                                    <a data-toggle="modal" data-target="#ubah_alamat_utama" href="#"
+                                                    <a href="{{ url('updAlamat', $u->id_user_detail) }}"
                                                         class="detail-transaksi mr-3">Ubah Alamat</a>
                                                 </div>
                                             </div>
@@ -174,8 +174,7 @@ use Illuminate\Support\Facades\DB;
                                                     <h4 class="no-hp">{{ $p->catatan }}</h4>
                                                 </div>
                                                 <div class="tombol text-left mt-4 mr-5">
-                                                    <a data-toggle="modal"
-                                                        data-target="#ubah_alamat{{ $p->id_user_detail }}" href="#"
+                                                    <a href="{{ url('updAlamat', $p->id_user_detail) }}"
                                                         class="detail-transaksi ">Ubah Alamat</a> &nbsp; | &nbsp;
                                                     <a href="{{ url('alamat_utama', $p->id_user_detail) }}"
                                                         class="detail-transaksi ">Jadikan Alamat Utama</a> &nbsp; |
@@ -240,6 +239,8 @@ use Illuminate\Support\Facades\DB;
                                                         <h4 class="status-3 mr-3">Dikirim</h4>
                                                         <?php }elseif($check->status == "selesai"){ ?>
                                                         <h4 class="status mr-3">Selesai</h4>
+                                                        <?php }elseif($check->status == "dibatalkan"){ ?>
+                                                        <h4 class="status-4 mr-3">Dibatalkan</h4>
                                                         <?php } ?>
                                                         <h4 class="invoice">{{ $check->id_checkout }}</h4>
                                                     </div>
@@ -285,7 +286,8 @@ use Illuminate\Support\Facades\DB;
                                                         <?php
                                                         if ($check->status == 'belumdibayar') {
                                                         ?>
-                                                        <a href="#" data-toggle="modal" data-target="#batalkanPesanan"
+                                                        <a href="#" data-toggle="modal"
+                                                            data-target="#batalkanPesanan{{ $check->id_checkout }}"
                                                             class="beli-lagi">Batalkan
                                                             Pesanan</a>
                                                         <?php } else { ?>
@@ -293,7 +295,8 @@ use Illuminate\Support\Facades\DB;
                                                     </div>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="batalkanPesanan" tabindex="-1"
+                                                    <div class="modal fade"
+                                                        id="batalkanPesanan{{ $check->id_checkout }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalCenterTitle"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -311,12 +314,12 @@ use Illuminate\Support\Facades\DB;
                                                                     <div class="tbl-yt">
                                                                         <a class="btl-ya" href="#"
                                                                             data-toggle="collapse" aria-expanded="false"
-                                                                            data-target="#alasanBatal">Ya</a>
+                                                                            data-target="#alasanBatal{{ $check->id_checkout }}">Ya</a>
                                                                         <a class="btl-tidak" data-dismiss="modal"
                                                                             href="#">Tidak</a>
                                                                     </div>
                                                                     <div class="collapse bg-none text-center"
-                                                                        id="alasanBatal">
+                                                                        id="alasanBatal{{ $check->id_checkout }}">
                                                                         <div class="alasann">
                                                                             <h4 class="ttl-alasan">Alasan Pesanan
                                                                                 Dibatalkan ?</h4>
@@ -326,8 +329,8 @@ use Illuminate\Support\Facades\DB;
                                                                                 <textarea class="form-control resize-both"
                                                                                     name="alasan"></textarea>
                                                                                 <div class="tbl-fix">
-                                                                                    <input type="hidden" name="id_checkout"
-                                                                                        value="{{ $ut->id_checkout }}">
+                                                                                    <input type="text" name="id_checkout"
+                                                                                        value="{{ $check->id_checkout }}">
                                                                                     <button class="btl-fix"
                                                                                         type="submit">Batalkan
                                                                                         Pesanan</button>

@@ -9,6 +9,7 @@
     <title>Bos Pangan | Belanja</title>
     <meta name="description" content="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/marketplace/images/favicon.png') }}" />
     <!-- Plugins CSS -->
@@ -640,6 +641,8 @@
                 });
             </script>
             <!--End For Newsletter Popup-->
+            <x:notify-messages />
+            @notifyJs
         </div>
 </body>
 
