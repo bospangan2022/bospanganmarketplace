@@ -1737,6 +1737,18 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
   margin: 2em 0 0 0;
 }
 
+.txt-info-tk{
+  color: #239C4C;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.inpo-tk{
+  margin: 0 1.2em 0 1.2em;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
 
 /*---------------------------------------
   III About Us Correction ---------------
@@ -1835,6 +1847,7 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
   .title-checkout{
     display: flex;
     justify-content: center;
+    text-align: center;
   }
 
   .txt_ttl{
