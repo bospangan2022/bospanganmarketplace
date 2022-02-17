@@ -98,7 +98,7 @@
                             <div class="col-12">
                                 <label for="inputAddress" class="form-label">Alamat Toko</label>
                                 <textarea type="text" class="form-control" style="height: 100px"
-                                    readonly>{{ $t->alamat }}, {{ $t->desa }}, {{ $t->kecamatan }}, {{ $t->kota }} {{ $t->kode_pos }}</textarea>
+                                    readonly>{{ $t->alamat }}, {{ $t->nama_desa }}, {{ $t->nama_kecamatan }}, {{ $t->nama_kota }} {{ $t->kode_pos }}</textarea>
                             </div>
                             <div class="col-12">
                                 <label for="inputAddress" class="form-label">Deskripsi Toko</label>

@@ -11,6 +11,7 @@ use App\Models\Store;
 use App\Models\Village;
 
 use App\Models\UserDetailModel;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Mail;
 
 class StoreController extends Controller
@@ -85,12 +86,48 @@ class StoreController extends Controller
             "kota" => $request->kota,
             "kecamatan" => $request->kecamatan,
             "desa" => $request->desa,
+            "bank" => $request->bank,
             "kode_pos" => $request->kode_pos,
+            "rekening" => $request->rekening,
+            "anrekening" => $request->anrekening,
         ]);
+
+        $keranjang = DB::table("tb_keranjang")
+            ->join(
+                "tb_barang",
+                "tb_keranjang.id_barang",
+                "=",
+                "tb_barang.id_barang"
+            )
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
+            ->get();
+
+        $count_barang = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
+            ->count("id_barang");
+        $count_love = DB::table("tb_wishlist")
+            ->where("id_user", Auth::user()->id)
+            ->count("id_barang");
+        $sub_total = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
+            ->sum("sub_harga");
+
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
 
         Mail::to("moharif15111998@gmail.com")->send(new TokoMasuk());
 
-        return redirect()->back();
+        return view("marketplace.afterdaftartoko", [
+            "keranjang" => $keranjang,
+            "count_barang" => $count_barang,
+            "count_love" => $count_love,
+            "sub_total" => $sub_total,
+            "katlimit" => $katlimit,
+        ]);
     }
 
     public function update_alamat(Request $request, $id)

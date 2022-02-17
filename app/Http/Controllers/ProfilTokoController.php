@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\District;
+use App\Models\Village;
 
 class ProfilTokoController extends Controller
 {
@@ -228,5 +230,69 @@ class ProfilTokoController extends Controller
                 "katlimit" => $katlimit,
             ]);
         }
+    }
+    public function edit_toko()
+    {
+        $toko = DB::table("tb_toko")
+            ->join("users", "tb_toko.id_user", "=", "users.id")
+            ->join("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
+            ->where("id_user", Auth::user()->id)
+            ->get();
+        $kota = DB::table("tb_kota")
+            ->reorder("nama_kota", "asc")
+            ->get();
+        return view("admin_toko.edit_toko", ["toko" => $toko, "kota" => $kota]);
+    }
+
+    public function getKec(Request $request)
+    {
+        $kecamatan = District::where("id_kota", $request->id_kota)
+            ->reorder("nama_kecamatan", "asc")
+            ->pluck("id_kecamatan", "nama_kecamatan");
+        return response()->json($kecamatan);
+    }
+
+    public function getDesa(Request $request)
+    {
+        $desa = Village::where("id_kecamatan", $request->id_kecamatan)
+            ->reorder("nama_desa", "asc")
+            ->pluck("id_desa", "nama_desa");
+        return response()->json($desa);
+    }
+    public function update_toko(Request $request)
+    {
+        $oldfoto = $request->hidden_image;
+        $image = $request->file("foto");
+
+        if ($image != "") {
+            $request->validate([
+                "foto" => "required|image|mimes:jpeg,png,jpg|max:2048",
+            ]);
+            $image_name = $oldfoto;
+            $image->move("images/post", $image_name);
+        } else {
+            $image_name = $oldfoto;
+        }
+
+        DB::table("tb_toko")
+            ->where("id_user", Auth::user()->id)
+            ->update([
+                "no_hp" => $request->no_hp,
+                "alamat" => $request->alamat,
+                "foto" => $image_name,
+                "kode_pos" => $request->kode_pos,
+                "id_kota" => $request->id_kota,
+                "id_kecamatan" => $request->id_kecamatan,
+                "id_kelurahan" => $request->id_kelurahan,
+                "deskripsi" => $request->deskripsi,
+            ]);
+        return redirect()->route("edit_toko");
     }
 }

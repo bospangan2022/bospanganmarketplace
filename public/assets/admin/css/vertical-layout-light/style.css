@@ -41193,64 +41193,62 @@ div.tagsinput span.tag a {
     }
 }
 
-.category-content span, label{
+.category-content span,
+label {
     font-size: 18px;
 }
 
-.judul strong{
+.judul strong {
     font-size: 18px;
 }
 
 @media (max-width: 670px) {
-    .kategori-list{
+    .kategori-list {
         width: 100%;
         display: flex;
-        flex-direction:column;
-        align-items:center;
+        flex-direction: column;
+        align-items: center;
     }
-    .kategori-container{
+    .kategori-container {
         width: 100%;
     }
-   .category-content span, label{
+    .category-content span,
+    label {
         font-size: 14px;
     }
 
-    .kategori-list a{
+    .kategori-list a {
         font-size: 14px;
     }
 
-    .judul{
+    .judul {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .judul strong{
+    .judul strong {
         font-size: 18px;
     }
-    .category-name{
-        width:100%;
+    .category-name {
+        width: 100%;
         margin: 10px;
     }
-    .category-img{
-        width:100%;
+    .category-img {
+        width: 100%;
         margin: 10px;
     }
-    .category-img img{
-        width:90%;
-        
+    .category-img img {
+        width: 90%;
     }
-    .btn-kat{
+    .btn-kat {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
         align-items: stretch;
         align-content: stretch;
-        
     }
-
-
 }
 
 .title-product {
@@ -41269,6 +41267,15 @@ div.tagsinput span.tag a {
 .nav-dropdown {
     display: flex;
     justify-content: end;
+}
+
+.store a {
+    color: #000;
+    text-decoration: none;
+}
+.store a:hover,
+.store a:focus {
+    color: #8d92a8;
 }
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

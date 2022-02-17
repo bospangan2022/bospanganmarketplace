@@ -146,9 +146,9 @@
                                 <div class="row">
                                     <div
                                         class="col-4 col-md-4 col-lg-4 filters-toolbar__item collection-view-as d-flex justify-content-start align-items-center">
-                                        @foreach ($toko as $t)
+                                        {{-- @foreach ($toko as $t)
                                             <div class="cari-toko input-group mb-3 ">
-                                                <form action="{{ url('cari_brgtoko' }}">
+                                                <form action="{{ url('cari_brgtoko') }}">
                                                     <input type="text" placeholder="Cari Barang Di Toko Ini...."
                                                         aria-describedby="button-addon3" name="cari"
                                                         class="input-barang-toko form-control bg-none border-1">
@@ -159,7 +159,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        @endforeach --}}
                                     </div>
                                     <div
                                         class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">

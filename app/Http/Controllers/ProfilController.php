@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\BatalPesanan;
-use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\District;
 use App\Models\UserDetailModel;
 use App\Models\Village;
 
@@ -190,6 +189,22 @@ class ProfilController extends Controller
 
         notify()->success("Alamat yang anda pilih telah di ubah", "Berhasil");
         return redirect()->back();
+    }
+
+    public function getKec(Request $request)
+    {
+        $kecamatan = District::where("id_kota", $request->id_kota)
+            ->reorder("nama_kecamatan", "asc")
+            ->pluck("id_kecamatan", "nama_kecamatan");
+        return response()->json($kecamatan);
+    }
+
+    public function getDesa(Request $request)
+    {
+        $desa = Village::where("id_kecamatan", $request->id_kecamatan)
+            ->reorder("nama_desa", "asc")
+            ->pluck("id_desa", "nama_desa");
+        return response()->json($desa);
     }
 
     public function alamat_utama($id)
