@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\KirimPesanan;
+use App\Mail\KonfirmasiPesanan;
+use App\Mail\SelesaikanPesanan;
 use App\Models\Checkout;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PemesananUserController extends Controller
 {
@@ -135,13 +140,6 @@ class PemesananUserController extends Controller
             "checkout" => $checkout,
         ]);
     }
-    public function konfirmasi_pesanan($id)
-    {
-        $pesanan = Checkout::where("id_checkout", $id)->update([
-            "status" => "dikemas",
-        ]);
-        return redirect()->back();
-    }
     public function filter($id)
     {
         $toko = DB::table("users")
@@ -243,5 +241,38 @@ class PemesananUserController extends Controller
             "selesai" => $selesai,
             "semua" => $semua,
         ]);
+    }
+
+    public function konfirmasi_pesanan(Request $request, $id)
+    {
+        $pesanan = Checkout::where("id_checkout", $id)->update([
+            "status" => "dikemas",
+        ]);
+
+        Mail::to($request->email)->send(new KonfirmasiPesanan());
+
+        return redirect()->back();
+    }
+
+    public function kirim_pesanan(Request $request, $id)
+    {
+        $pesanan = Checkout::where("id_checkout", $id)->update([
+            "status" => "dikirim",
+        ]);
+
+        Mail::to($request->email)->send(new KirimPesanan());
+
+        return redirect()->back();
+    }
+
+    public function selesai_pesanan(Request $request, $id)
+    {
+        $pesanan = Checkout::where("id_checkout", $id)->update([
+            "status" => "selesai",
+        ]);
+
+        Mail::to($request->email)->send(new SelesaikanPesanan());
+
+        return redirect()->back();
     }
 }

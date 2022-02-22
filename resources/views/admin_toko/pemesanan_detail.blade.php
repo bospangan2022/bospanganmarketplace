@@ -187,13 +187,50 @@ use Illuminate\Support\Facades\DB;
                                     @if ($st->status == 'belumdibayar')
                                         <div class="d-flex flex-column border-bottom mt-3">
                                             <strong class="text-muted mb-2">Konfirmasi Pesanan</strong>
-                                            <a href="{{ url('konfirmasi_user/pesanan', $pes->id_checkout) }}"
-                                                class="btn btn-primary">Konfirmasi Pesanan</a>
+                                            <form action="{{ url('konfirmasi_user/pesanan', $pes->id_checkout) }}"
+                                                method="GET" onsubmit="return confirm('Konfirmasi Pesanan ?')">
+                                                <input type="hidden" value="{{ $pes->email }}" name="email">
+                                                <button type="submit" class="btn btn-primary">Konfirmasi
+                                                    Pesanan</button>
+                                            </form>
                                         </div>
-                                    @else
+                                    @elseif($st->status == 'dikemas')
                                         <div class="d-flex flex-column border-bottom mt-3">
                                             <strong class="text-muted mb-2">Konfirmasi Pesanan</strong>
                                             <a href="#" class="btn btn-success disabled">Pesanan Sudah Dikonfirmasi</a>
+                                        </div>
+                                        <div class="d-flex flex-column border-bottom mt-3">
+                                            <form action="{{ url('kirim_user/pesanan', $pes->id_checkout) }}"
+                                                method="GET" onsubmit="return confirm('Konfirmasi Pesanan ?')">
+                                                <input type="hidden" value="{{ $pes->email }}" name="email">
+                                                <button type="submit" class="btn btn-primary">Kirim Pesanan</button>
+                                            </form>
+                                        </div>
+                                    @elseif($st->status == 'dikirim')
+                                        <div class="d-flex flex-column border-bottom mt-3">
+                                            <strong class="text-muted mb-2">Konfirmasi Pesanan</strong>
+                                            <a href="#" class="btn btn-success disabled">Pesanan Sudah Dikonfirmasi</a>
+                                        </div>
+                                        <div class="d-flex flex-column border-bottom mt-3">
+                                            <a href="#" class="btn btn-success disabled">Pesanan Telah Dikirim</a>
+                                        </div>
+                                        <div class="d-flex flex-column border-bottom mt-3">
+                                            <form action="{{ url('selesai_user/pesanan', $pes->id_checkout) }}"
+                                                method="GET" onsubmit="return confirm('Konfirmasi Pesanan ?')">
+                                                <input type="hidden" value="{{ $pes->email }}" name="email">
+                                                <button type="submit" class="btn btn-primary">Selesaikan Pesanan</button>
+                                            </form>
+                                        </div>
+                                    @elseif($st->status == 'selesai')
+                                        <div class="d-flex flex-column border-bottom mt-3">
+                                            <strong class="text-muted mb-2">Konfirmasi Pesanan</strong>
+                                            <a href="#" class="btn btn-success disabled">Pesanan Sudah Dikonfirmasi</a>
+                                        </div>
+                                        <div class="d-flex flex-column border-bottom mt-3">
+                                            <a href="#" class="btn btn-success disabled">Pesanan Telah Dikirim</a>
+                                        </div>
+                                        <div class="d-flex flex-column border-bottom mt-3">
+                                            <a href="#" class="btn btn-success disabled">Pesanan Selesai</a>
                                         </div>
                                     @endif
                                 @endforeach

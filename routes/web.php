@@ -79,8 +79,8 @@ Route::group(["middleware" => ["auth"]], function () {
             "hapus_semua",
         ]);
         Route::post("update_cart/{id}", [CartController::class, "update"]);
-        Route::get("/getKec", [ProfilController::class, "getKec"]);
-        Route::get("/getDesa", [ProfilController::class, "getDesa"]);
+        Route::get("/getKec", [CartController::class, "getKec"]);
+        Route::get("/getDesa", [CartController::class, "getDesa"]);
 
         Route::get("profil", [ProfilController::class, "index"]);
         Route::post("batalkan_pesanan", [
@@ -253,10 +253,17 @@ Route::group(["middleware" => ["auth"]], function () {
             PemesananUserController::class,
             "filter",
         ]);
-        Route::get("edit_toko", [ProfilTokoController::class, "edit_toko"]);
-        Route::post("update_toko/{id}", [
-            ProfilTokoController::class,
-            "update_toko",
+        Route::get("konfirmasi_user/pesanan/{id}", [
+            PemesananUserController::class,
+            "konfirmasi_pesanan",
+        ]);
+        Route::get("kirim_user/pesanan/{id}", [
+            PemesananUserController::class,
+            "kirim_pesanan",
+        ]);
+        Route::get("selesai_user/pesanan/{id}", [
+            PemesananUserController::class,
+            "selesai_pesanan",
         ]);
     });
 
@@ -323,10 +330,6 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("pemesanan", [PemesananController::class, "index"])->name(
             "pemesanan"
         );
-        Route::get("pemesananall", [
-            PemesananController::class,
-            "pemesanan_all",
-        ])->name("pemesananall");
         Route::get("pemesanan_detail/{id}", [
             PemesananController::class,
             "pemesanan_detail",
@@ -345,10 +348,6 @@ Route::group(["middleware" => ["auth"]], function () {
             "selesai_pesanan",
         ]);
         Route::get("filter/{id}", [PemesananController::class, "filter"]);
-        Route::get("filter_all/{id}", [
-            PemesananController::class,
-            "filter_all",
-        ]);
 
         Route::get("gerobak", [GerobakController::class, "index"]);
         Route::post("hapus_gerobak/{id}", [

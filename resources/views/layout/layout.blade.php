@@ -396,13 +396,11 @@
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ url('pemesanan') }}">Pemesanan Toko</a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ url('gerobak') }}">Gerobak Terbelengkai</a></li>
+                                        href="{{ url('gerobak') }}">Gerobak Terbengkalai</a></li>
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ url('pelanggan') }}">Pelanggan</a></li>
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ url('toko') }}">Toko</a></li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ url('fixedorder') }}">Memperbaiki Pesanan</a></li>
                             </ul>
                         </div>
                     </li>
