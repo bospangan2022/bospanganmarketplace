@@ -41285,4 +41285,12 @@ label {
     color: #8d92a8;
 }
 
+.bukti-pelanggan {
+    margin: 1em 0 1em 1.5em;
+}
+
+.img-bukti {
+    width: 400px;
+    height: 400px;
+}
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

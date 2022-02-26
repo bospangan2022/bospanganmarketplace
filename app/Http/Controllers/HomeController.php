@@ -12,6 +12,8 @@ class HomeController extends Controller
     {
         $barang = DB::table("tb_toko")
             ->join("tb_barang", "tb_toko.id_toko", "=", "tb_barang.id_toko")
+            ->orderBy("tb_barang.id_barang", "desc")
+            ->limit(8)
             ->get();
 
         // dd($barang);

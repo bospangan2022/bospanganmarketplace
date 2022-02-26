@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
                 </div>
                 <div class="row">
 
+<<<<<<< HEAD
                     <div class="accordion col-4" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="panelsStayOpen-headingZero">
@@ -53,6 +54,53 @@ use Illuminate\Support\Facades\DB;
                                     <div class="tags d-flex justify-content-between my-2">
                                         <a href="{{ url('filter', 'selesai') }}" style="text-decoration: none">Selesai</a>
                                         <span>{{ $selesai }}</span>
+=======
+                    <div class="accordion-filter col-4">
+                        <div class="filter-title mb-3">
+                            <h4><b>Filter Berdasarkan :</b></h4>
+                        </div>
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingZero">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseZero" aria-expanded="true"
+                                        aria-controls="panelsStayOpen-collapseZero">
+                                        Filter Data Pemesanan
+                                    </button>
+                                </h2>
+
+                                <div id="panelsStayOpen-collapseZero" class="accordion-collapse collapse show"
+                                    aria-labelledby="panelsStayOpen-headingZero"
+                                    data-bs-parent="#accordionPanelsStayOpenExample">
+                                    <div class="accordion-body">
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('pemesanan') }}" style="text-decoration: none">Semua
+                                                Pesanan</a>
+                                            <span>{{ $semua }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'belumdibayar') }}"
+                                                style="text-decoration: none">Belum
+                                                Dibayar /
+                                                Dikonfirmasi</a>
+                                            <span>{{ $belum_bayar }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'dikemas') }}"
+                                                style="text-decoration: none">Dikemas</a>
+                                            <span>{{ $dikemas }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'dikirim') }}"
+                                                style="text-decoration: none">Dikirim</a>
+                                            <span>{{ $dikirim }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'selesai') }}"
+                                                style="text-decoration: none">Selesai</a>
+                                            <span>{{ $selesai }}</span>
+                                        </div>
+>>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
                                     </div>
                                 </div>
                             </div>

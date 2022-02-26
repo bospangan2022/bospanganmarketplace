@@ -83,6 +83,9 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("/getDesa", [CartController::class, "getDesa"]);
 
         Route::get("profil", [ProfilController::class, "index"]);
+        Route::get("edit_user", [ProfilController::class, "edit_user"]);
+        Route::post("upd_user", [ProfilController::class, "upd_user"]);
+
         Route::post("batalkan_pesanan", [
             ProfilController::class,
             "batalPesanan",
@@ -296,6 +299,18 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("produk", [ProdukController::class, "index"])->name(
             "produk"
         );
+        //-----Filter----------------
+        Route::get("produk_display", [
+            ProdukController::class,
+            "display",
+        ])->name("produk_display");
+        Route::get("produk_habis", [ProdukController::class, "habis"])->name(
+            "produk_habis"
+        );
+        Route::get("produk_hide", [ProdukController::class, "hide"])->name(
+            "produk_hide"
+        );
+        //--------------------------------------
         Route::get("cari_produk", [
             ProdukController::class,
             "cari_produk",
@@ -365,11 +380,18 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("pemesanan", [PemesananController::class, "index"])->name(
             "pemesanan"
         );
+<<<<<<< HEAD
 
         Route::get("pemesananall", [
             PemesananController::class,
             "pemesanan_all",
         ])->name("pemesananall");
+=======
+        Route::get("pemesananall", [
+            PemesananController::class,
+            "pemesanan_all",
+        ]);
+>>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
         Route::get("pemesanan_detail/{id}", [
             PemesananController::class,
             "pemesanan_detail",

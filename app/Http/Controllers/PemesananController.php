@@ -34,7 +34,10 @@ class PemesananController extends Controller
                 ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
                 ->where("id_toko", $id_toko)
                 ->orderByDesc("id_checkout")
-                ->get();
+                ->paginate(5);
+            // ->get();
+
+            // dd($pesanan);
             $semua = DB::table("tb_checkout")
                 ->join("users", "tb_checkout.id_user", "=", "users.id")
                 ->join("user_detail", "users.id", "=", "user_detail.id_user")
@@ -119,6 +122,7 @@ class PemesananController extends Controller
     public function pemesanan_all()
     {
         $pesanan = DB::table("tb_checkout")
+            ->join("tb_toko", "tb_checkout.id_toko", "=", "tb_toko.id_toko")
             ->join("users", "tb_checkout.id_user", "=", "users.id")
             ->join("user_detail", "users.id", "=", "user_detail.id_user")
             ->join("tb_kota", "user_detail.id_kota", "=", "tb_kota.id_kota")
@@ -129,9 +133,11 @@ class PemesananController extends Controller
                 "tb_kecamatan.id_kecamatan"
             )
             ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
-            ->join("tb_toko", "tb_checkout.id_toko", "=", "tb_toko.id_toko")
             ->orderByDesc("id_checkout")
-            ->get();
+            ->paginate(5);
+        // ->get();
+
+        // dd($pesanan);
 
         $toko = DB::table("tb_toko")
             ->join("users", "tb_toko.id_user", "=", "users.id")

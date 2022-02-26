@@ -71,7 +71,7 @@ use Illuminate\Support\Facades\DB;
                                                     alt="Elastic Waist Dress - Navy / Small"></a>
                                         </td>
                                         <td class="cart__meta small--text-left cart-flex-item">
-                                            <div class="list-view-item__title">
+                                            <div class="title-cart-brg">
                                                 <a href="{{ url('produkdetail', $krj->id_barang) }}">{{ $krj->nama_barang }}
                                                 </a>
                                             </div>

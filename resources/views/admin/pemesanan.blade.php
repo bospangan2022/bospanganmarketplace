@@ -62,6 +62,7 @@ use Illuminate\Support\Facades\DB;
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="col-8 card-content">
                     <div class="navigasi my-3 d-flex justify-content-between">
                         <div class="form-check ms-4">
@@ -70,6 +71,57 @@ use Illuminate\Support\Facades\DB;
                             <label class="form-check-label ms-0 fs-6" for="flexCheckChecked">
                                 Pilih Semua
                             </label>
+=======
+                <div class="content-main row">
+                    <div class="accordion-filter col-4">
+                        <div class="filter-title mb-3">
+                            <h4><b>Filter Berdasarkan :</b></h4>
+                        </div>
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingZero">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseZero" aria-expanded="true"
+                                        aria-controls="panelsStayOpen-collapseZero">
+                                        Filter Data Pemesanan
+                                    </button>
+                                </h2>
+
+                                <div id="panelsStayOpen-collapseZero" class="accordion-collapse collapse show"
+                                    aria-labelledby="panelsStayOpen-headingZero"
+                                    data-bs-parent="#accordionPanelsStayOpenExample">
+                                    <div class="accordion-body">
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('pemesanan') }}" style="text-decoration: none">Semua
+                                                Pesanan</a>
+                                            <span>{{ $semua }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'belumdibayar') }}"
+                                                style="text-decoration: none">Belum
+                                                Dibayar /
+                                                Dikonfirmasi</a>
+                                            <span>{{ $belum_bayar }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'dikemas') }}"
+                                                style="text-decoration: none">Dikemas</a>
+                                            <span>{{ $dikemas }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'dikirim') }}"
+                                                style="text-decoration: none">Dikirim</a>
+                                            <span>{{ $dikirim }}</span>
+                                        </div>
+                                        <div class="tags d-flex justify-content-between my-2">
+                                            <a href="{{ url('filter', 'selesai') }}"
+                                                style="text-decoration: none">Selesai</a>
+                                            <span>{{ $selesai }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+>>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
                         </div>
                     </div>
                     <div class="card">
@@ -168,6 +220,7 @@ use Illuminate\Support\Facades\DB;
                                     </div>
 
                                 </div>
+<<<<<<< HEAD
                             </div>
                         @endforeach
                     </div>
@@ -177,12 +230,31 @@ use Illuminate\Support\Facades\DB;
                         <p>Pesanan. </p>
                         <p>Total Sales: </p>
                         <p>Rp. 200.000</p>
+=======
+                            @endforeach
+                        </div>
+                        <div class="keterangan d-flex justify-content-end">
+                            <p>Menampilkan </p>
+                            <p>3 </p>
+                            <p>Pesanan. </p>
+                            <p>Total Sales: </p>
+                            <p>Rp. 200.000</p>
+                        </div>
+                        <div class="d-flex justify-content-center mt-5">
+                            {{-- {{ $pesanan->links() }} --}}
+                        </div>
+>>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+    </div>
+
+>>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
     </div>
 
     </div>

@@ -243,11 +243,42 @@ class ProdukUserController extends Controller
         $kategori = KategoriBarang::all();
         return view("admin_toko.tambah_produk", compact("kategori"));
     }
+
     public function proses_tambah(Request $request)
     {
-        $request->validate([
-            "foto" => "required|image|mimes:jpeg,png,jpg|max:2048",
-        ]);
+        $messages = [
+            "required" => "Ada Data Yang Belum Diisi !!!",
+        ];
+
+        $request->validate(
+            [
+                "nama_barang" => "required",
+                "sku" => "required",
+                "berat" => "required",
+                "keterangan" => "required",
+                "id_kategori" => "required",
+                "harga" => "required",
+                "harga_satuan" => "required",
+                "satuan" => "required",
+                "status" => "required",
+                "stok" => "required",
+                "foto" => "required|image|mimes:jpeg,png,jpg|max:2048",
+            ],
+            $messages
+        );
+
+        // dd(
+        //     $request->nama_barang,
+        //     $request->sku,
+        //     $request->berat,
+        //     $request->keterangan,
+        //     $request->id_kategori,
+        //     $request->harga,
+        //     $request->satuan,
+        //     $request->status,
+        //     $request->stok,
+        //     $request->foto
+        // );
 
         // $imageName = time() . ' . ' . $request->image->extension();
         // $request->image->move(public_path('bukti'), $imageName);
@@ -261,6 +292,7 @@ class ProdukUserController extends Controller
         foreach ($toko as $t) {
             $id_toko = $t->id_toko;
         }
+        // dd($name);
         $barang = BarangModel::create([
             "id_kategori" => $request->id_kategori,
             "id_toko" => $id_toko,
@@ -276,6 +308,7 @@ class ProdukUserController extends Controller
             "status" => $request->status,
         ]);
 
+        notify()->success("Barang baru sudah ditambahkan ke Toko ", "Berhasil");
         // dd($request->$id_kategori);
         return redirect()->route("produk_user");
     }

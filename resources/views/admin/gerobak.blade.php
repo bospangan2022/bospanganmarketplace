@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\DB;
                             aria-label="Username" aria-describedby="basic-addon1" />
                     </div>
                 </form>
+<<<<<<< HEAD
                 <div class="col-12 ">
                     <div class="navigasi my-3 d-flex justify-content-between">
                         <div class="form-check ms-4">
@@ -31,6 +32,155 @@ use Illuminate\Support\Facades\DB;
                                 Pilih Semua
                             </label>
                         </div>
+=======
+                <div class="content-main row">
+                    <div class="accordion-filter col-4">
+                        {{-- <div class="filter-title mb-3">
+                            <h4><b>Filter Berdasarkan :</b></h4>
+                        </div>
+                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                    <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseOne">
+                                        Tanggal
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingOne"
+                                    data-bs-parent="#accordionPanelsStayOpenExample">
+                                    <div class="accordion-body">
+                                        <div class="form-group">
+                                            <label for="form-1-1" class="control-label">Tanggal</label>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <input class="form-control form-control-solid col-1 mr-2 mb-3"
+                                                        id="namapegawai" type="datetime-local">
+                                                    <button type="button" class="btn btn-outline-dark  mr-2 mb-3"
+                                                        style="width:100%;height:20%  ">Hari Ini</button>
+                                                    <button type="button" class="btn btn-outline-dark  mr-2 mb-3"
+                                                        style="width:100%;height:20%">Minggu Ini</button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <input class="form-control form-control-solid col-1 mr-2 mb-3"
+                                                        id="namapegawai" type="datetime-local">
+                                                    <button type="button" class="btn btn-outline-dark  mr-2 mb-3"
+                                                        style="width:100%;height:20%">Bulan Ini</button>
+                                                    <button type="button" class="btn btn-outline-dark  mr-2 mb-3"
+                                                        style="width:100%;height:20%">Tahun Ini</button>
+                                                </div>
+                                                <button type="button" class="btn btn-outline-dark  mr-2"
+                                                    style="width:100%;height:20%">Sepanjang Waktu</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseTwo">
+                                        Status Keranjang
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingTwo"
+                                    data-bs-parent="#accordionPanelsStayOpenExample">
+                                    <div class="accordion-body">
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Apa Saja
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckChecked"
+                                                checked>
+                                        </div>
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Ditinggalkan: Pengingat tidak terkirim
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        </div>
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Ditinggalkan: Pengingat terkirim
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        </div>
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Dipulihkan
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseThree">
+                                        Metode Pembayaran
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingThree"
+                                    data-bs-parent="#accordionPanelsStayOpenExample">
+                                    <div class="accordion-body">
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Apa Saja
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault"
+                                                checked>
+                                        </div>
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                COD
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        </div>
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Transfer ke Rekening BCA Pendiri
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseFour">
+                                        Metode Pengiriman
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingFour"
+                                    data-bs-parent="#accordionPanelsStayOpenExample">
+                                    <div class="accordion-body">
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Apa Saja
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault"
+                                                checked>
+                                        </div>
+                                        <div class="form-check d-flex justify-content-between my-3">
+                                            <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
+                                                Pengiriman Daerah: Sanankulon, Garum, Kanigoro, Nglegok
+                                            </label>
+                                            <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+>>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
                     </div>
                     <div class="card">
                         @foreach ($keranjang as $k)

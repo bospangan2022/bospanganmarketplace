@@ -24,6 +24,13 @@
                 <div class="form-bukatoko col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="card border-success">
                         <div class="card-body">
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <b>Opps!</b> {{ $error }}
+                                    @endforeach
+                                </div>
+                            @endif
                             <form action="{{ url('tambah_toko') }}" method="POST">
                                 @csrf
                                 <fieldset>

@@ -204,6 +204,9 @@
                     <!--Footer Links-->
                     <div class="footer-top">
                         <div class="row">
+                            <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
+                                <img src="{{ asset('assets/marketplace/images/aft-checkout.jpg') }}" alt="">
+                            </div>
                             <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                                 <h4 class="h4">Quick Shop</h4>
                                 <ul>
@@ -220,16 +223,7 @@
                                 <h4 class="h4">Informations</h4>
                                 <ul>
                                     <li><a href="{{ url('aboutus') }}">About us</a></li>
-                                    <li><a href="#">Privacy policy</a></li>
-                                    <li><a href="#">Terms &amp; condition</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                                <h4 class="h4">Customer Services</h4>
-                                <ul>
-                                    <li><a href="#">FAQ's</a></li>
-                                    <li><a href="#">Orders and Returns</a></li>
-                                    <li><a href="#">Support Center</a></li>
+                                    <li><a href="{{ url('profil') }}">My Account</a></li>
                                 </ul>
                             </div>
                             <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">

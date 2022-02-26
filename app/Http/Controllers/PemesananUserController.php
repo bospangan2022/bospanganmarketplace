@@ -34,7 +34,7 @@ class PemesananUserController extends Controller
                 ->join("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
                 ->where("id_toko", $id_toko)
                 ->orderByDesc("id_checkout")
-                ->get();
+                ->paginate(5);
             $semua = DB::table("tb_checkout")
                 ->join("users", "tb_checkout.id_user", "=", "users.id")
                 ->join("user_detail", "users.id", "=", "user_detail.id_user")

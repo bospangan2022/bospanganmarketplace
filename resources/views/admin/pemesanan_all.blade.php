@@ -36,29 +36,29 @@ use Illuminate\Support\Facades\DB;
                                     data-bs-parent="#accordionPanelsStayOpenExample">
                                     <div class="accordion-body">
                                         <div class="tags d-flex justify-content-between my-2">
-                                            <a href="{{ url('pemesananall') }}" style="text-decoration: none">Semua
+                                            <a href="{{ url('pemesanan') }}" style="text-decoration: none">Semua
                                                 Pesanan</a>
                                             <span>{{ $semua }}</span>
                                         </div>
                                         <div class="tags d-flex justify-content-between my-2">
-                                            <a href="{{ url('filter_all', 'belumdibayar') }}"
+                                            <a href="{{ url('filter', 'belumdibayar') }}"
                                                 style="text-decoration: none">Belum
                                                 Dibayar /
                                                 Dikonfirmasi</a>
                                             <span>{{ $belum_bayar }}</span>
                                         </div>
                                         <div class="tags d-flex justify-content-between my-2">
-                                            <a href="{{ url('filter_all', 'dikemas') }}"
+                                            <a href="{{ url('filter', 'dikemas') }}"
                                                 style="text-decoration: none">Dikemas</a>
                                             <span>{{ $dikemas }}</span>
                                         </div>
                                         <div class="tags d-flex justify-content-between my-2">
-                                            <a href="{{ url('filter_all', 'dikirim') }}"
+                                            <a href="{{ url('filter', 'dikirim') }}"
                                                 style="text-decoration: none">Dikirim</a>
                                             <span>{{ $dikirim }}</span>
                                         </div>
                                         <div class="tags d-flex justify-content-between my-2">
-                                            <a href="{{ url('filter_all', 'selesai') }}"
+                                            <a href="{{ url('filter', 'selesai') }}"
                                                 style="text-decoration: none">Selesai</a>
                                             <span>{{ $selesai }}</span>
                                         </div>
@@ -190,6 +190,12 @@ use Illuminate\Support\Facades\DB;
                             <p>Total Sales: </p>
                             <p>Rp. 200.000</p>
                         </div>
+<<<<<<< HEAD
+=======
+                        <div class="d-flex justify-content-center mt-5">
+                            {{ $pesanan->links() }}
+                        </div>
+>>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
                     </div>
 
                 </div>

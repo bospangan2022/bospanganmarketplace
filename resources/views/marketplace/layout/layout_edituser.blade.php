@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Bos Pangan | Wishlist</title>
+    <title>Bos Pangan | Edit User</title>
     <meta name="description" content="description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @notifyCss
@@ -67,6 +67,7 @@
                                 aria-hidden="true"></i></span>
                         <ul class="customer-links list-inline">
                             <?php
+
                         use Illuminate\Support\Facades\Auth;
 
                         if (!Auth::check()) { ?>
@@ -76,36 +77,11 @@
 
                             <?php } else { ?>
 
-                            <?php
-                        $cek = DB::table("tb_toko")
-                            ->where("id_user", Auth::user()->id)
-                            ->count();
-                        $cek2 = DB::table("tb_toko")
-                            ->where("id_user", Auth::user()->id)
-                            ->where("status","s")
-                            ->count();
-
-                        if ($cek == 0) { ?>
-
-                            <li><a href="{{ url('buka_toko') }}">Buka Toko</a></li>
-                            <?php
-                         } else { 
-                            if($cek2 == 0){ ?>
-                            <li><a href="#" onclick="return confirm('Toko Belum Disetujui')">Kelola Toko</a></li>
-                            <?php } else { ?>
-                            <li><a href="{{ url('kelola_toko') }}">Kelola Toko</a></li>
-                            <?php } ?>
-
-                            <?php }
-                        ?>
-
-                            <li>
-                                <a href="{{ url('profil') }}">{{ Auth::user()->name }} </a>
-                            </li>
+                            <li><a href="{{ url('wishlist') }}">Wishlist</a></li>
+                            <li><a href="{{ url('profil') }}">{{ Auth::user()->name }} </a></li>
                             <li><a href="{{ url('logout') }}">Log Out </a></li>
 
-                            <?php }
-                        ?>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
@@ -159,77 +135,7 @@
                     </div>
                     <!--Mobile Logo-->
 
-                    <div class="col-4 col-sm-3 col-md-3 col-lg-2">
 
-                        <div class="site-love">
-                            <a href="{{ url('wishlist') }}" class="site-header__love" title="Love">
-                                <i class="icon far fa-heart"></i>
-                                <span id="CartCount" class="site-header__love-count"
-                                    data-cart-render="item_count">{{ $count_love }}</span>
-                            </a>
-                        </div>
-                        <div class="site-cart">
-                            <a href="#" class="site-header__cart" title="Cart">
-                                <i class="icon anm anm-bag-l"></i>
-                                <span id="CartCount" class="site-header__cart-count"
-                                    data-cart-render="item_count">{{ $count_barang }}</span>
-                            </a>
-                            <!--Minicart Popup-->
-                            <div id="header-cart" class="block block-cart">
-                                @foreach ($keranjang as $krj)
-                                    <ul class="mini-products-list">
-                                        <li class="item">
-                                            <a class="product-image" href="#">
-                                                <img src="/images/post/{{ $krj->foto }}" title="" />
-                                            </a>
-                                            <div class="product-details">
-                                                <a href="{{ url('remove_cart', $krj->id_keranjang) }}"
-                                                    class="remove"><i class="anm anm-times-l"
-                                                        aria-hidden="true"></i></a>
-                                                <a href="{{ url('tampil_cart') }}" class="edit-i remove"><i
-                                                        class="anm anm-edit" aria-hidden="true"></i></a>
-                                                <a class="pName"
-                                                    href="{{ url('tampil_cart') }}">{{ $krj->nama_barang }}</a>
-                                                <div class="variant-cart">{{ $krj->keterangan }}</div>
-                                                <div class="wrapQtyBtn">
-                                                    <div class="qtyField">
-                                                        <span class="label">Qty:</span>
-                                                        <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                                class="icon icon-minus" aria-hidden="true"></i></a>
-                                                        <input type="text" id="Quantity" name="jumlah"
-                                                            value="{{ $krj->jumlah }}"
-                                                            class="product-form__input qty">
-                                                        <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                                class="icon icon-plus" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="priceRow">
-                                                    <div class="product-price">
-                                                        <span class="money">@currency($krj->harga)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                @endforeach
-                                <div class="total">
-                                    <div class="total-in">
-                                        <span class="label">Cart Subtotal:</span><span
-                                            class="product-price"><span
-                                                class="money">@currency($sub_total)</span></span>
-                                    </div>
-                                    <div class="buttonSet text-center">
-                                        <a href="{{ url('tampil_cart') }}" class="btn btn-secondary btn--small">View
-                                            Cart
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="site-header__search">
-                            <button type="button" class="search-trigger"><i class="icon anm anm-search-l"></i></button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -325,7 +231,7 @@
                                 <h4 class="h4">Contact Us</h4>
                                 <ul class="addressFooter">
                                     <li><i class="icon anm anm-map-marker-al"></i>
-                                        <p>Jl Ciliwung No.167A ,<br>Kecamatan Kepanjen Kidul ,<br> Kota Blitar , 66116
+                                        <p>Jl Cimalaya No.13 ,<br>Kecamatan Kepanjen Kidul ,<br> Kota Blitar , 66116
                                         </p>
                                     </li>
                                     <li class="phone"><i class="icon anm anm-phone-s"></i>
@@ -527,7 +433,7 @@
         <!--End Quick View popup-->
 
         <!-- Newsletter Popup -->
-        {{--  --}}
+
         <!-- End Newsletter Popup -->
 
         <!-- Including Jquery -->
@@ -541,11 +447,6 @@
         <script src="{{ asset('assets/marketplace/js/popper.min.js') }}"></script>
         <script src="{{ asset('assets/marketplace/js/lazysizes.js') }}"></script>
         <script src="{{ asset('assets/marketplace/js/main.js') }}"></script>
-        <!-- fontawesome -->
-        <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js"
-                integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous">
-        </script>
-
         <!--For Newsletter Popup-->
         <script>
             jQuery(document).ready(function() {
@@ -599,7 +500,6 @@
                 return false;
             });
         </script>
-
         <x:notify-messages />
         @notifyJs
         <!--End For Newsletter Popup-->
