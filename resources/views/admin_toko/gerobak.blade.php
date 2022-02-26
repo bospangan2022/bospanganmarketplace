@@ -26,7 +26,7 @@
                     </div>
                 </form>
                 <div class="content-main row">
-                    <div class="accordion-filter col-4">
+                    {{-- <div class="accordion-filter col-4">
                         <div class="filter-title mb-3">
                             <h4><b>Filter Berdasarkan :</b></h4>
                         </div>
@@ -172,7 +172,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="card-content col-8">
                         <div class="navigasi my-3 d-flex justify-content-between">

@@ -76,8 +76,8 @@
                     @foreach ($kategori as $kat)
                         <div class="collection-grid-item">
                             <a href="{{ url('belanja_kat', $kat->id_kategori) }}" class="collection-grid-item__link">
-                                <img data-src="/images/post/{{ $kat->foto }}" src="/images/post/{{ $kat->foto }}"
-                                    alt="Fashion" class="blur-up lazyload" />
+                                <img class="img-kat" data-src="/images/post/{{ $kat->foto }}"
+                                    src="/images/post/{{ $kat->foto }}" alt="Fashion" class="blur-up lazyload" />
                                 <div class="collection-grid-item__title-wrapper">
                                     <h3
                                         class="
@@ -235,8 +235,8 @@
                                     <!--start product image -->
                                     <a href="{{ url('produkdetail', $b->id_barang) }}" class="grid-view-item__link">
                                         <!-- image -->
-                                        <img class="primary blur-up lazyload" data-src="images/post/{{ $b->foto }}"
-                                            alt="image" title="product" />
+                                        <img class="img-brg-hm primary blur-up lazyload"
+                                            data-src="images/post/{{ $b->foto }}" alt="image" title="product" />
                                         <!-- End image -->
                                         <!-- Hover image -->
                                         <img class="hover blur-up lazyload" data-src="images/post/{{ $b->foto }}"

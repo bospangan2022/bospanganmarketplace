@@ -89,7 +89,12 @@ use Illuminate\Support\Facades\DB;
                                         </tr>
                                     </tbody>
                                 </table>
-
+                                <div class="gti-pass">
+                                    <a href="{{ url('edit_user') }}" class="tombol1 ">
+                                        <span><i class="fas fa-user-edit mr-3"></i></span>
+                                        Ganti Username dan Password
+                                    </a>
+                                </div>
                             </div>
 
 
@@ -108,14 +113,7 @@ use Illuminate\Support\Facades\DB;
                                 <div id="tab1" class="tab-content">
                                     <div class="row mb-3">
                                         <div class="col-md-5">
-                                            <div class="input-group mb-3 border rounded-pill p-0">
-                                                <input type="search" placeholder="Cari alamat atau nama penerima"
-                                                    aria-describedby="button-addon3" class="form-control bg-none border-0">
-                                                <div class="input-group-append border-0">
-                                                    <button id="button-addon3" type="button" class="btn btn-link "><i
-                                                            class="fa fa-search"></i></button>
-                                                </div>
-                                            </div>
+
                                         </div>
                                         <div class="col-md-7">
                                             <div class="spr-header clearfix mt">
@@ -207,7 +205,8 @@ use Illuminate\Support\Facades\DB;
                                                             data-cart-render="item_count">{{ $belum_dibayar }}</span>
                                                     </a>
                                                     <br>
-                                                    <a class="text_status" href="">Belum Dibayar / Belum Dikonfirmasi</a>
+                                                    <a class="text_status" href="">Belum Dibayar / Belum
+                                                        Dikonfirmasi</a>
                                                 </div>
                                             </div>
                                             <div class="col md-3">

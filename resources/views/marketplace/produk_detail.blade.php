@@ -54,9 +54,9 @@ use Illuminate\Support\Facades\DB;
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <a href="/images/post/{{ $bi->foto }}" data-size="1462x2048"></a>
                                         <!-- <a href="assets/marketplace/images/product-detail-page/cape-dress-4.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="assets/marketplace/images/product-detail-page/cape-dress-5.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="assets/marketplace/images/product-detail-page/cape-dress-6.jpg" data-size="1462x2048"></a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <a href="assets/marketplace/images/product-detail-page/cape-dress-7.jpg" data-size="731x1024"></a> -->
                                     </div>
 
                                 </div>
@@ -85,21 +85,13 @@ use Illuminate\Support\Facades\DB;
                                         <!-- <div class="product-review"><a class="reviewLink" href="#tab2"><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star"></i><i class="font-13 fa fa-star-o"></i><i class="font-13 fa fa-star-o"></i><span class="spr-badge-caption">6 reviews</span></a></div> -->
                                     </div>
                                     <p class="product-single__price product-single__price-product-template">
-                                        <span class="visually-hidden">Regular price</span>
-                                        <s id="ComparePrice-product-template"><span
-                                                class="money">@currency(110000)</span></s>
+
                                         <span
                                             class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
                                             <span id="ProductPrice-product-template"><span
                                                     class="money">@currency($bi->harga)</span></span>
                                         </span>
-                                        <span class="discount-badge"> <span class="devider">|</span>&nbsp;
-                                            <span>Anda Hemat</span>
-                                            <span id="SaveAmount-product-template" class="product-single__save-amount">
-                                                <span class="money">@currency(4000)</span>
-                                            </span>
-                                            <span class="off">(<span>1</span>%)</span>
-                                        </span>
+
                                     </p>
                                     <div class="orderMsg" data-user="23" data-time="24">
                                         <img src="{{ asset('assets/marketplace/images/order-icon.jpg') }}" alt="" />
@@ -258,13 +250,19 @@ use Illuminate\Support\Facades\DB;
                                 <!-- End Product Action -->
                                 <!-- </form> -->
                                 <div class="display-table shareRow">
-                                    <div class="display-table-cell medium-up--one-third">
-                                        <div class="wishlist-btn">
-                                            <a class="wishlist add-to-wishlist" href="{{ url('wishlist') }}"
-                                                title="Add to Wishlist"><i class="icon anm anm-heart-l"
-                                                    aria-hidden="true"></i> <span>Add to Wishlist</span></a>
+                                    <form method="POST" action="{{ url('add_wishlist') }} "
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="display-table-cell medium-up--one-third">
+                                            <input type="hidden" name="id_barang" value="{{ $bi->id_barang }}">
+                                            <input type="hidden" name="id_toko" value="{{ $bi->id_toko }}">
+                                            <div class="wishlist-btn">
+                                                <a class="wishlist add-to-wishlist" href="" type="submit"
+                                                    title="Add to Wishlist"><i class="icon anm anm-heart-l"
+                                                        aria-hidden="true"></i> <span>Add to Wishlist</span></a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
 
 
@@ -354,7 +352,7 @@ use Illuminate\Support\Facades\DB;
 
                                         <a href="{{ url('produkdetail', $b->id_barang) }}">
                                             <!-- image -->
-                                            <img class="primary blur-up lazyload"
+                                            <img class="img-blnj primary blur-up lazyload"
                                                 data-src="/images/post/{{ $b->foto }}"
                                                 src="/images/post/{{ $b->foto }}" alt="image" title="product">
                                             <!-- End image -->
@@ -396,13 +394,7 @@ use Illuminate\Support\Facades\DB;
                                         </div>
                                         <!-- End product price -->
 
-                                        <div class="product-review">
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                            <i class="font-13 fa fa-star"></i>
-                                        </div>
+
                                     </div>
 
                                     <!-- End product details -->

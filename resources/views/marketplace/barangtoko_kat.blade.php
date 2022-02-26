@@ -166,7 +166,7 @@
 
                                     </div>
                                     <div class="col-4 col-md-4 col-lg-4 text-right">
-                                        <div class="filters-toolbar__item">
+                                        {{-- <div class="filters-toolbar__item">
                                             <label for="SortBy" class="hidden">Sort</label>
                                             <select name="SortBy" id="SortBy"
                                                 class="filters-toolbar__input filters-toolbar__input--sort">
@@ -180,7 +180,7 @@
                                                 <option>Date, old to new</option>
                                             </select>
                                             <input class="collection-header__default-sort" type="hidden" value="manual">
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                 </div>
@@ -196,7 +196,7 @@
                                             <!-- start product image -->
                                             <a href="{{ url('produkdetail', $b->id_barang) }}">
                                                 <!-- image -->
-                                                <img class="primary blur-up lazyload"
+                                                <img class="img-blnj primary blur-up lazyload"
                                                     src="/images/post/{{ $b->foto }}" alt="image" title="product" />
                                                 <!-- End image -->
                                                 <!-- Hover image -->
@@ -242,13 +242,6 @@
                                             </div>
                                             <!-- End product price -->
 
-                                            <div class="product-review">
-                                                <i class="font-13 fa fa-star"></i>
-                                                <i class="font-13 fa fa-star"></i>
-                                                <i class="font-13 fa fa-star"></i>
-                                                <i class="font-13 fa fa-star"></i>
-                                                <i class="font-13 fa fa-star"></i>
-                                            </div>
                                         </div>
                                         <!-- End product details -->
                                     </div>

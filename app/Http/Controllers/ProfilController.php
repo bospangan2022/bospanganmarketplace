@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\District;
+use App\Models\User;
 use App\Models\UserDetailModel;
 use App\Models\Village;
 
@@ -249,5 +250,80 @@ class ProfilController extends Controller
 
         notify()->success("Pesanan Anda Dibatalkan", "Berhasil");
         return redirect()->back();
+    }
+
+    public function edit_user(Request $request)
+    {
+        $eUser = DB::table("users")
+            ->where("id", Auth::user()->id)
+            ->get();
+
+        $keranjang = DB::table("tb_keranjang")
+            ->join(
+                "tb_barang",
+                "tb_keranjang.id_barang",
+                "=",
+                "tb_barang.id_barang"
+            )
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
+            ->get();
+
+        $count_barang = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
+            ->count("id_barang");
+        $count_love = DB::table("tb_wishlist")
+            ->where("id_user", Auth::user()->id)
+            ->count("id_barang");
+        $sub_total = DB::table("tb_keranjang")
+            ->where("id_user", Auth::user()->id)
+            ->where("tb_keranjang.status", "t")
+            ->sum("sub_harga");
+
+        $katlimit = DB::table("tb_kategori")
+            ->limit(5)
+            ->get();
+
+        return view("marketplace.edit_user", [
+            "eUser" => $eUser,
+            "keranjang" => $keranjang,
+            "count_barang" => $count_barang,
+            "count_love" => $count_love,
+            "sub_total" => $sub_total,
+            "katlimit" => $katlimit,
+        ]);
+    }
+
+    public function upd_user(Request $request)
+    {
+        $credentials = $request->only("username", "password");
+        if (Auth::attempt($credentials)) {
+            $messages = [
+                "required" => "Data Ada Yang Belum Diisi !!!",
+                "same" => "Password Tidak Cocok",
+                "min" => "Password Minimal Harus 6 Karakter !!",
+            ];
+
+            $request->validate(
+                [
+                    "username" => "required",
+                    "password" => "required",
+                    "pass" => "required|min:6",
+                    "ulangi_password" => "same:pass",
+                ],
+                $messages
+            );
+            User::where("id", Auth::user()->id)->update([
+                "username" => $request->username,
+                "password" => bcrypt($request->pass),
+            ]);
+
+            notify()->success("Data User Telah Berhasil Diubah", "Berhasil");
+            return redirect()->back();
+        } else {
+            notify()->error("Password Lama Salah", "Gagal");
+            return redirect()->back();
+        }
     }
 }

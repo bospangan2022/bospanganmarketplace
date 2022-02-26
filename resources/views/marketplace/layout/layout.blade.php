@@ -362,6 +362,9 @@
                         <!--Footer Links-->
                         <div class="footer-top">
                             <div class="row">
+                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
+                                    <img src="{{ asset('assets/marketplace/images/aft-checkout.jpg') }}" alt="">
+                                </div>
                                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
                                     <h4 class="h4">Quick Shop</h4>
                                     <ul>
@@ -378,17 +381,7 @@
                                     <h4 class="h4">Informations</h4>
                                     <ul>
                                         <li><a href="{{ url('aboutus') }}">About us</a></li>
-                                        <li><a href="#">Privacy policy</a></li>
-                                        <li><a href="#">Terms &amp; condition</a></li>
                                         <li><a href="{{ url('profil') }}">My Account</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
-                                    <h4 class="h4">Customer Services</h4>
-                                    <ul>
-                                        <li><a href="#">FAQ's</a></li>
-                                        <li><a href="#">Orders and Returns</a></li>
-                                        <li><a href="#">Support Center</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
@@ -624,56 +617,56 @@
 
             <!--For Newsletter Popup-->
             <script>
-                jQuery(document).ready(function() {
-                    jQuery('.closepopup').on('click', function() {
-                        jQuery('#popup-container').fadeOut();
-                        jQuery('#modalOverly').fadeOut();
-                    });
+                // jQuery(document).ready(function() {
+                //     jQuery('.closepopup').on('click', function() {
+                //         jQuery('#popup-container').fadeOut();
+                //         jQuery('#modalOverly').fadeOut();
+                //     });
 
-                    var visits = jQuery.cookie('visits') || 0;
-                    visits++;
-                    jQuery.cookie('visits', visits, {
-                        expires: 1,
-                        path: '/'
-                    });
-                    console.debug(jQuery.cookie('visits'));
-                    if (jQuery.cookie('visits') > 1) {
-                        jQuery('#modalOverly').hide();
-                        jQuery('#popup-container').hide();
-                    } else {
-                        var pageHeight = jQuery(document).height();
-                        jQuery('<div id="modalOverly"></div>').insertBefore('body');
-                        jQuery('#modalOverly').css("height", pageHeight);
-                        jQuery('#popup-container').show();
-                    }
-                    if (jQuery.cookie('noShowWelcome')) {
-                        jQuery('#popup-container').hide();
-                        jQuery('#active-popup').hide();
-                    }
-                });
+                //     var visits = jQuery.cookie('visits') || 0;
+                //     visits++;
+                //     jQuery.cookie('visits', visits, {
+                //         expires: 1,
+                //         path: '/'
+                //     });
+                //     console.debug(jQuery.cookie('visits'));
+                //     if (jQuery.cookie('visits') > 1) {
+                //         jQuery('#modalOverly').hide();
+                //         jQuery('#popup-container').hide();
+                //     } else {
+                //         var pageHeight = jQuery(document).height();
+                //         jQuery('<div id="modalOverly"></div>').insertBefore('body');
+                //         jQuery('#modalOverly').css("height", pageHeight);
+                //         jQuery('#popup-container').show();
+                //     }
+                //     if (jQuery.cookie('noShowWelcome')) {
+                //         jQuery('#popup-container').hide();
+                //         jQuery('#active-popup').hide();
+                //     }
+                // });
 
-                jQuery(document).mouseup(function(e) {
-                    var container = jQuery('#popup-container');
-                    if (!container.is(e.target) && container.has(e.target).length === 0) {
-                        container.fadeOut();
-                        jQuery('#modalOverly').fadeIn(200);
-                        jQuery('#modalOverly').hide();
-                    }
-                });
+                // jQuery(document).mouseup(function(e) {
+                //     var container = jQuery('#popup-container');
+                //     if (!container.is(e.target) && container.has(e.target).length === 0) {
+                //         container.fadeOut();
+                //         jQuery('#modalOverly').fadeIn(200);
+                //         jQuery('#modalOverly').hide();
+                //     }
+                // });
 
                 /*--------------------------------------
                 	Promotion / Notification Cookie Bar 
                   -------------------------------------- */
-                if (Cookies.get('promotion') != 'true') {
-                    $(".notification-bar").show();
-                }
-                $(".close-announcement").on('click', function() {
-                    $(".notification-bar").slideUp();
-                    Cookies.set('promotion', 'true', {
-                        expires: 1
-                    });
-                    return false;
-                });
+                // if (Cookies.get('promotion') != 'true') {
+                //     $(".notification-bar").show();
+                // }
+                // $(".close-announcement").on('click', function() {
+                //     $(".notification-bar").slideUp();
+                //     Cookies.set('promotion', 'true', {
+                //         expires: 1
+                //     });
+                //     return false;
+                // });
             </script>
             <!--End For Newsletter Popup-->
         </div>

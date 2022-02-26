@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\DB;
                 </form>
                 <div class="content-main row">
                     <div class="accordion-filter col-4">
-                        <div class="filter-title mb-3">
+                        {{-- <div class="filter-title mb-3">
                             <h4><b>Filter Berdasarkan :</b></h4>
                         </div>
                         <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -168,7 +168,7 @@ use Illuminate\Support\Facades\DB;
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="col-8 card-content">

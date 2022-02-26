@@ -394,7 +394,7 @@
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ url('pemesanan_user') }}">Pemesanan</a></li>
                                 <li class="nav-item"> <a class="nav-link"
-                                        href="{{ url('gerobak_user') }}">Gerobak Terbelengkai</a></li>
+                                        href="{{ url('gerobak_user') }}">Gerobak Terbengkalai</a></li>
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ url('edit_toko') }}">Edit Informasi Toko</a></li>
                             </ul>

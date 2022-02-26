@@ -14,33 +14,15 @@
         <!--End Page Title-->
 
         <div class="container">
-            <div class="row">
-
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
-                    <div class="customer-box customer-coupon">
-                        <h3 class="font-15 xs-font-13"><i class="icon anm anm-gift-l"></i> Have a coupon? <a
-                                href="#have-coupon" class="text-white text-decoration-underline"
-                                data-toggle="collapse">Click here to enter your code</a></h3>
-                        <div id="have-coupon" class="collapse coupon-checkout-content">
-                            <div class="discount-coupon">
-                                <div id="coupon" class="coupon-dec tab-pane active">
-                                    <p class="margin-10px-bottom">Enter your coupon code if you have one.</p>
-                                    <label class="required get" for="coupon-code"><span class="required-f">*</span>
-                                        Coupon</label>
-                                    <input id="coupon-code" required="" type="text" class="mb-3">
-                                    <button class="coupon-btn btn" type="submit">Apply Coupon</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="row billing-fields">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
                     <div class="create-ac-content bg-light-gray padding-20px-all mb-3">
                         <h2 class="login-title mb-3">Alamat Penerima</h2>
                         <div class="row">
+                            <?php
+                            // dd(count($user));
+                            if (count($user) != 0) {
+                             ?>
                             @foreach ($user as $us)
                                 <?php
                                 $lat_penerima = $us->lat_desa;
@@ -107,6 +89,10 @@
                                     </div>
                                 </div>
                             @endforeach
+                            <?php } else { 
+                                $lat_penerima = 0;
+                                $lng_penerima = 0;
+                            }?>
                         </div>
                     </div>
                     <div class="create-ac-content bg-light-gray padding-20px-all mb-3">
@@ -131,9 +117,21 @@
                                     }
                                     return round($distance, 2);
                                 }
-                                $jarak = getDistanceBetween($lat_penerima, $lng_penerima, $lat_toko, $lng_toko, 'Km');
-                                $ongkir = $jarak * 1200;
-                                //dd($ongkir);
+                                
+                                if (count($user) != 0) {
+                                    // dd($lat_toko);
+                                    $jarak = getDistanceBetween($lat_penerima, $lng_penerima, $lat_toko, $lng_toko, 'Km');
+                                    // dd($jarak);
+                                    $ong = $jarak * 1200;
+                                    if ($ong == 0) {
+                                        $ongkir = $ong + 2000;
+                                    } else {
+                                        $ongkir = $ong;
+                                    }
+                                } else {
+                                    $ongkir = 0;
+                                }
+                                
                                 ?>
                                 <div class="form-group col-md-12 col-lg-12 col-xl-12 border-bottom">
                                     <table class="table-borderless ms-5 mb-5">
@@ -254,11 +252,22 @@
                                 <?php
                                     if($count_barang != 0){
                                 ?>
+                                <?php if (count($user) != 0) {
+                                    # code...
+                                ?>
                                 <div class="payment-method">
                                     <div class="order-button-payment">
                                         <button class="btn" value="Place order" type="submit">Check Out</button>
                                     </div>
                                 </div>
+                                <?php } else { ?>
+                                <div class="payment-method">
+                                    <div class="order-button-payment">
+                                        <button class="btn" value="Place order" type="button" disabled>Check
+                                            Out</button>
+                                    </div>
+                                </div>
+                                <?php } ?>
                                 <?php } else { ?>
                                 <div class="payment-method">
                                     <div class="order-button-payment">

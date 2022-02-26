@@ -10,24 +10,6 @@
                         <a class="btn btn-primary list-detai" href="{{ url('tambah_produk_user') }}" role="button"><i
                                 class="ti-plus me-2"></i>Produk Baru</a>
                     </div>
-                    <div class="list-detail">
-                        <button class="btn btn-primary" type="submit">Export Product</button>
-                    </div>
-                    <div class="list-detail">
-                        <form action="" method="" enctype="multipart/form-data">
-
-                            <label for="upload">Import</label>
-                            <input type="file" class="btn btn-primary btn-icon-split ml-3" name="bukti"
-                                style="width: 200px;">
-                            <button type="submit" class="btn btn-primary btn-icon">
-                                <i class="ti-download"></i>
-                            </button>
-
-                        </form>
-                    </div>
-
-
-
                 </div>
                 <!--Search-->
                 <form action="{{ url('cari_produk_user') }}">
@@ -77,102 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        Kategori
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <div class="search d-flex mx-0">
-                                            <span class="input-group-text" id="basic-addon1"><i
-                                                    class="ti-search"></i></span>
-                                            <input type="text" class="form-control" placeholder="Nama kategori"
-                                                aria-label="Username" aria-describedby="basic-addon1" />
-                                        </div>
-                                        @foreach ($kategori as $kat)
-                                            <div class="form-check d-flex justify-content-between my-3">
-                                                <label class="form-check-label fs-6 ms-0" for="flexCheckChecked">
-                                                    {{ $kat->nama_kategori }}
-                                                </label>
-                                                <input class="form-check-input " type="checkbox" value=""
-                                                    id="flexCheckChecked" checked>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Tersedianya
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <div class="form-check d-flex justify-content-between my-3">
-                                            <label class="form-check-label ms-0 fs-6" for="flexRadioDefault2">
-                                                Apa Saja
-                                            </label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault2" checked>
-                                        </div>
-                                        <div class="form-check d-flex justify-content-between my-3">
-                                            <label class="form-check-label ms-0 fs-6" for="flexRadioDefault2">
-                                                Nonaktifkan
-                                            </label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault2">
-                                        </div>
-                                        <div class="form-check d-flex justify-content-between my-3">
-                                            <label class="form-check-label ms-0 fs-6" for="flexRadioDefault2">
-                                                Diaktifkan
-                                            </label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault2">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Status Stok
-                                    </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <div class="form-check d-flex justify-content-between my-3">
-                                            <label class="form-check-label ms-0 fs-6" for="flexRadioDefault2">
-                                                Apa Saja
-                                            </label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault2" checked>
-                                        </div>
-                                        <div class="form-check d-flex justify-content-between my-3">
-                                            <label class="form-check-label ms-0 fs-6" for="flexRadioDefault2">
-                                                Stok Habis
-                                            </label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault2">
-                                        </div>
-                                        <div class="form-check d-flex justify-content-between my-3">
-                                            <label class="form-check-label ms-0 fs-6" for="flexRadioDefault2">
-                                                Persediaan
-                                            </label>
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault2">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     </ <!--Filter End-->
@@ -243,9 +130,8 @@
 
                                         <div
                                             class="product-btn col-md-1 d-flex justify-content-lg-center align-items-md-center">
-                                            <a class="btn"
-                                                href="{{ url('edit_produk_user', $b->id_barang) }}" role="button"><i
-                                                    class="ti-angle-right"></i></a>
+                                            <a class="btn" href="{{ url('edit_produk_user', $b->id_barang) }}"
+                                                role="button"><i class="ti-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -285,9 +171,8 @@
                                             </div>
                                         </div>
                                         <div class="product-btn col-2 d-flex align-items-center justify-content-center ">
-                                            <a class="btn"
-                                                href="{{ url('edit_produk_user', $b->id_barang) }}" role="button"><i
-                                                    class="ti-angle-right"></i></a>
+                                            <a class="btn" href="{{ url('edit_produk_user', $b->id_barang) }}"
+                                                role="button"><i class="ti-angle-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

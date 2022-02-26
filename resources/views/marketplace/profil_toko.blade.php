@@ -244,13 +244,7 @@
                                             </div>
                                             <!-- End product price -->
 
-                                            <div class="product-review">
-                                                <i class="font-13 fa fa-star"></i>
-                                                <i class="font-13 fa fa-star"></i>
-                                                <i class="font-13 fa fa-star"></i>
-                                                <i class="font-13 fa fa-star"></i>
-                                                <i class="font-13 fa fa-star"></i>
-                                            </div>
+
                                         </div>
                                         <!-- End product details -->
                                     </div>

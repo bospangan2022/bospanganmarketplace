@@ -82,6 +82,10 @@ use Illuminate\Support\Facades\DB;
                                     @endif
                                 @endforeach
                             </div>
+                            <div class="bukti-pelanggan">
+                                <h4>Bukti Transfer Pelanggan :</h4>
+                                <img src="/images/post/{{ $pes->bukti }}" class="img-bukti" alt="">
+                            </div>
                         </div>
                         <div class="form-input card mb-4">
                             <div class="card-body">

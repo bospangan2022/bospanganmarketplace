@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item">
+                                {{-- <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                         <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
@@ -150,9 +150,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
-                            <div class="accordion-item">
+                            {{-- <div class="accordion-item">
                                 <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
@@ -341,7 +341,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="card-content col-8">
@@ -455,43 +455,8 @@
                             <span>Total Sales: </span>
                             <span>Rp. 200.000</span>
                         </div>
-                    </div>
-                    <div class="container mt-5">
-                        <div class="row mb-5">
-                            <div class="col-2 d-flex justify-content-lg-center align-items-lg-center">
-                                <i class="ti-export fs-1 text-info"></i>
-                            </div>
-                            <div class="col-4">
-                                <h3>Ekspor Pesanan</h3>
-                                <p>Ekspor pesanan menghasilkan file CSV dengan informasi lengkap semua pesanan yang
-                                    dipilih
-                                    yang Anda dapat lihat dan editi di program spreadsheet mana saja.
-                                <p>
-                                    <a href="#" class="btn btn-primary">Ekspor</a>
-                            </div>
-                            <div class="col-2 d-flex justify-content-lg-center align-items-lg-center">
-                                <i class="ti-printer fs-1 text-info"></i>
-                            </div>
-                            <div class="col-4">
-                                <h3>Cetak Pesanan</h3>
-                                <p>Pilih pesanan untuk dicetak fakturnya. Anda dapat menyimpan pesanan yang dicetak
-                                    untuk
-                                    catatan Anda sendiri atau menyertakannya dalam paket pengiriman sebagai konfirmasi
-                                    pesanan untuk pelanggan Anda.
-                                <p>
-                                    <a href="#" class="btn btn-primary">Cetak Pesanan yang Dipilih</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2 d-flex justify-content-lg-center align-items-lg-center">
-                                <i class="ti-trash fs-1 text-info"></i>
-                            </div>
-                            <div class="col-6">
-                                <h3>Hapus Pesanan</h3>
-                                <p>Pilih beberapa pesanan untuk dihapus
-                                <p>
-                                    <a href="#" class="btn btn-danger hapus">Hapus Pesanan</a>
-                            </div>
+                        <div class="d-flex justify-content-center mt-5">
+                            {{ $pesanan->links() }}
                         </div>
                     </div>
                 </div>

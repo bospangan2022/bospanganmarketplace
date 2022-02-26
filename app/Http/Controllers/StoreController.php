@@ -78,6 +78,26 @@ class StoreController extends Controller
 
     public function tambah_toko(Request $request)
     {
+        $messages = [
+            "required" => "Data Buka Toko Ada Yang Belum Diisi !!!",
+        ];
+
+        $request->validate(
+            [
+                "nama_toko" => "required",
+                "alamat" => "required",
+                "phone" => "required",
+                "kota" => "required",
+                "kecamatan" => "required",
+                "desa" => "required",
+                "bank" => "required",
+                "kode_pos" => "required",
+                "rekening" => "required",
+                "anrekening" => "required",
+            ],
+            $messages
+        );
+
         Store::create([
             "id_user" => Auth::user()->id,
             "nama_toko" => $request->nama_toko,
