@@ -3,12 +3,9 @@
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="container-fluid">
-                <h2 class="title bold">Pelanggan</h2>
+                <h2 class="title bold mb-5">Pelanggan</h2>
                 <!--Button-->
-                <div class="box-tombol col-sm-6 d-flex  my-4">
-                    <button class="tombol btn  btn-primary" type="submit"><i class="ti-export me-3"></i>Expor Data
-                        Pelanggan</button>
-                </div>
+
                 <!--Tabel Pelanggan-->
                 <div class="table-responsive">
                     <table class="table table-hover border" id="table-datatables" width="100%" cellspacing="0">

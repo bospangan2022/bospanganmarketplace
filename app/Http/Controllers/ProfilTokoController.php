@@ -268,31 +268,39 @@ class ProfilTokoController extends Controller
     }
     public function update_toko(Request $request)
     {
-        $oldfoto = $request->hidden_image;
-        $image = $request->file("foto");
+        $messages = [
+            "mimes" => "Extensi Salah",
+        ];
 
-        if ($image != "") {
-            $request->validate([
+        $request->validate(
+            [
                 "foto" => "required|image|mimes:jpeg,png,jpg|max:2048",
-            ]);
-            $image_name = $oldfoto;
-            $image->move("images/post", $image_name);
-        } else {
-            $image_name = $oldfoto;
-        }
+                "kota" => "required",
+                "kecamatan" => "required",
+                "desa" => "required",
+            ],
+            $messages
+        );
+
+        // $imageName = time() . ' . ' . $request->image->extension();
+        // $request->image->move(public_path('bukti'), $imageName);
+
+        $image = $request->file("foto");
+        $name = rand(1000, 9999) . "." . $image->getClientOriginalExtension();
+        $image->move("images/post", $name);
 
         DB::table("tb_toko")
             ->where("id_user", Auth::user()->id)
             ->update([
-                "no_hp" => $request->no_hp,
+                "hp_toko" => $request->hp_toko,
                 "alamat" => $request->alamat,
-                "foto" => $image_name,
+                "foto_toko" => $name,
                 "kode_pos" => $request->kode_pos,
-                "id_kota" => $request->id_kota,
-                "id_kecamatan" => $request->id_kecamatan,
-                "id_kelurahan" => $request->id_kelurahan,
+                "kota" => $request->kota,
+                "kecamatan" => $request->kecamatan,
+                "desa" => $request->desa,
                 "deskripsi" => $request->deskripsi,
             ]);
-        return redirect()->route("edit_toko");
+        return redirect()->back();
     }
 }

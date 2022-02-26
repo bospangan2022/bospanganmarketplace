@@ -3,11 +3,9 @@
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="container-fluid">
-                <h2 class="title bold">Toko</h2>
+                <h2 class="title bold mb-5">Toko</h2>
                 <!--Button-->
-                <div class="btn-top col-sm-6 my-4">
-                    <button class="btn btn-primary" type="submit"><i class="ti-export me-3"></i>Expor Data Pelanggan</button>
-                </div>
+
                 <!--Tabel Pelanggan-->
                 <div class="table-responsive" style="overflow-x:auto;">
                     <table class="table table-hover border" id="table-datatables" width="100%" cellspacing="0">

@@ -337,7 +337,7 @@
                                 <h4 class="h4">Contact Us</h4>
                                 <ul class="addressFooter">
                                     <li><i class="icon anm anm-map-marker-al"></i>
-                                        <p>Jl Cimalaya No.13 ,<br>Kecamatan Kepanjen Kidul ,<br> Kota Blitar , 66116
+                                        <p>Jl Ciliwung No.167A ,<br>Kecamatan Kepanjen Kidul ,<br> Kota Blitar , 66116
                                         </p>
                                     </li>
                                     <li class="phone"><i class="icon anm anm-phone-s"></i>

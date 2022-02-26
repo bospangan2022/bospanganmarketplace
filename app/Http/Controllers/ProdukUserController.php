@@ -192,6 +192,51 @@ class ProdukUserController extends Controller
             "kategori" => $kategori,
         ]);
     }
+    public function filter_kategori($id)
+    {
+        $toko = DB::table("tb_toko")
+            ->where("id_user", Auth::user()->id)
+            ->get();
+        foreach ($toko as $t) {
+            $id_toko = $t->id_toko;
+        }
+        $kategori = KategoriBarang::all();
+        $barang = DB::table("tb_barang")
+            ->where("id_toko", $id_toko)
+            ->where("id_kategori", $id)
+            ->get();
+        $jumlah = $barang->count();
+        $page = DB::table("tb_barang")
+            ->where("id_toko", $id_toko)
+            ->where("id_kategori", $id)
+            ->latest()
+            ->paginate(5);
+        $stok = DB::table("tb_barang")
+            ->where("id_toko", $id_toko)
+            ->where("stok", 0)
+            ->get();
+        $habis = $stok->count();
+        $status = DB::table("tb_barang")
+            ->where("id_toko", $id_toko)
+            ->where("status", "Sembunyikan")
+            ->get();
+        $hide = $status->count();
+        $status2 = DB::table("tb_barang")
+            ->where("id_toko", $id_toko)
+            ->where("status", "tampilkan")
+            ->get();
+        $tampil = $status2->count();
+        // $jumlah = DB::table('tb_barang')->count();
+        return view("admin_toko.produk", [
+            "barang" => $barang,
+            "kategori" => $kategori,
+            "jumlah" => $jumlah,
+            "page" => $page,
+            "habis" => $habis,
+            "hide" => $hide,
+            "tampil" => $tampil,
+        ]);
+    }
 
     public function tambah_produk()
     {

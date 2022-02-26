@@ -170,6 +170,11 @@ Route::group(["middleware" => ["auth"]], function () {
         // ------------------------
 
         Route::get("kelola_toko", [KelolaTokoUserController::class, "index"]);
+        Route::get("edit_toko", [ProfilTokoController::class, "edit_toko"]);
+        Route::post("update_toko/{id}", [
+            ProfilTokoController::class,
+            "update_toko",
+        ]);
 
         Route::get("produk_user", [ProdukUserController::class, "index"])->name(
             "produk_user"
@@ -200,17 +205,22 @@ Route::group(["middleware" => ["auth"]], function () {
             "destroy",
         ]);
         //-----Filter----------------
-        Route::get("produk_display", [
+        Route::get("produk_user_display", [
             ProdukUserController::class,
             "display",
         ])->name("produk_display");
-        Route::get("produk_habis", [
+        Route::get("produk_user_habis", [
             ProdukUserController::class,
             "habis",
         ])->name("produk_habis");
-        Route::get("produk_hide", [ProdukUserController::class, "hide"])->name(
-            "produk_hide"
-        );
+        Route::get("produk_user_hide", [
+            ProdukUserController::class,
+            "hide",
+        ])->name("produk_hide");
+        Route::get("filter_kategori_user/{id}", [
+            ProdukUserController::class,
+            "filter_kategori",
+        ])->name("filter_kategori_user");
         //--------------------------------------
 
         Route::get("tambah_kategori_user", [
@@ -273,6 +283,16 @@ Route::group(["middleware" => ["auth"]], function () {
 
     Route::group(["middleware" => ["cek_login:admin"]], function () {
         Route::get("dashboard", [AuthController::class, "dashboard"]);
+        Route::get("edit_toko_utama/{id}", [
+            AuthController::class,
+            "edit_toko",
+        ]);
+        Route::get("/getKec_toko", [AuthController::class, "getKec"]);
+        Route::get("/getDesa_toko", [AuthController::class, "getDesa"]);
+        Route::post("update_toko_utama/{id}", [
+            AuthController::class,
+            "update_toko",
+        ]);
         Route::get("produk", [ProdukController::class, "index"])->name(
             "produk"
         );
@@ -294,6 +314,21 @@ Route::group(["middleware" => ["auth"]], function () {
             "update",
         ]);
         Route::post("delete_produk/{id}", [ProdukController::class, "destroy"]);
+        //-----Filter----------------
+        Route::get("produk_display", [
+            ProdukController::class,
+            "display",
+        ])->name("produk_display");
+        Route::get("filter_kategori/{id}", [
+            ProdukController::class,
+            "filter_kategori",
+        ])->name("filter_kategori");
+        Route::get("produk_habis", [ProdukController::class, "habis"])->name(
+            "produk_habis"
+        );
+        Route::get("produk_hide", [ProdukController::class, "hide"])->name(
+            "produk_hide"
+        );
 
         Route::get("kategori/{id}", [
             KategoriController::class,
@@ -330,6 +365,11 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("pemesanan", [PemesananController::class, "index"])->name(
             "pemesanan"
         );
+
+        Route::get("pemesananall", [
+            PemesananController::class,
+            "pemesanan_all",
+        ])->name("pemesananall");
         Route::get("pemesanan_detail/{id}", [
             PemesananController::class,
             "pemesanan_detail",
@@ -348,6 +388,10 @@ Route::group(["middleware" => ["auth"]], function () {
             "selesai_pesanan",
         ]);
         Route::get("filter/{id}", [PemesananController::class, "filter"]);
+        Route::get("filter_all/{id}", [
+            PemesananController::class,
+            "filter_all",
+        ]);
 
         Route::get("gerobak", [GerobakController::class, "index"]);
         Route::post("hapus_gerobak/{id}", [
@@ -358,6 +402,11 @@ Route::group(["middleware" => ["auth"]], function () {
             GerobakController::class,
             "cari_gerobak",
         ])->name("cari_gerobak");
+
+        Route::get("cari_pesanan_all", [
+            PemesananController::class,
+            "cari_pesanan_all",
+        ])->name("cari_pesanan_all");
 
         Route::get("fixedorder", [FixedorderController::class, "index"]);
         Route::get("fixedorder_detail", [

@@ -1,4 +1,4 @@
-@extends('admin_toko.layout.layout')
+@extends('layout.layout')
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
@@ -9,14 +9,14 @@
                 @foreach ($toko as $t)
                     <div class=" card card-lg ps-3 mt-3">
                         <!--Daftar Produk-->
-                        <form action="{{ url('update_toko', $t->id_toko) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('update_toko_utama', $t->id_toko) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row m-5">
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-center">
                                         <?php if ($t->foto_toko == NULL) { ?>
-                                        <img src="{{ asset('assets/images/barang/kosong.jpg') }}" alt=""
-                                            style="width: 300px;">
+                                        <img src="{{ asset('assets/images/logo.png') }}" alt="" style="width: 300px;">
                                         <?php } else { ?>
                                         <img src="/images/post/{{ $t->foto_toko }}" style="width: 300px;">
                                         <?php } ?>
@@ -123,13 +123,13 @@
                 @endforeach
                 @foreach ($toko as $t)
                     <div class="card-mobile ps-3 mt-3">
-                        <form action="{{ url('update_toko', $t->id_toko) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('update_toko_utama', $t->id_toko) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-6">
                                 <div class="d-flex justify-content-center">
                                     <?php if ($t->foto_toko == NULL) { ?>
-                                    <img src="{{ asset('assets/images/barang/kosong.jpg') }}" alt=""
-                                        style="width: 300px;">
+                                    <img src="{{ asset('assets/images/logo.png') }}" alt="" style="width: 300px;">
                                     <?php } else { ?>
                                     <img src="/images/post/{{ $t->foto_toko }}" style="width: 300px;">
                                     <?php } ?>
@@ -252,7 +252,7 @@
             if (koID) {
                 $.ajax({
                     type: "GET",
-                    url: "/getKec?id_kota=" + koID,
+                    url: "/getKec_toko?id_kota=" + koID,
                     dataType: 'JSON',
                     success: function(res) {
                         if (res) {
@@ -276,7 +276,7 @@
             if (kecID) {
                 $.ajax({
                     type: "GET",
-                    url: "/getDesa?id_kecamatan=" + kecID,
+                    url: "/getDesa_toko?id_kecamatan=" + kecID,
                     dataType: 'JSON',
                     success: function(res) {
                         if (res) {
@@ -302,7 +302,7 @@
             if (koID) {
                 $.ajax({
                     type: "GET",
-                    url: "/getKec?id_kota=" + koID,
+                    url: "/getKec_toko?id_kota=" + koID,
                     dataType: 'JSON',
                     success: function(res) {
                         if (res) {
@@ -327,7 +327,7 @@
             if (kecID) {
                 $.ajax({
                     type: "GET",
-                    url: "/getDesa?id_kecamatan=" + kecID,
+                    url: "/getDesa_toko?id_kecamatan=" + kecID,
                     dataType: 'JSON',
                     success: function(res) {
                         if (res) {

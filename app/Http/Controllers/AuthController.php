@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
+use App\Models\District;
+use App\Models\Village;
+
 class AuthController extends Controller
 {
     public function index()
@@ -26,7 +29,96 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        return view("admin.dashboard");
+        $toko = DB::table("tb_toko")
+            ->join("users", "tb_toko.id_user", "=", "users.id")
+            ->join("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
+            ->where("id_user", Auth::user()->id)
+            ->get();
+        $kota = DB::table("tb_kota")
+            ->reorder("nama_kota", "asc")
+            ->get();
+        return view("admin.dashboard", ["toko" => $toko, "kota" => $kota]);
+    }
+
+    public function edit_toko($id)
+    {
+        $toko = DB::table("tb_toko")
+            ->join("users", "tb_toko.id_user", "=", "users.id")
+            ->join("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
+            ->join(
+                "tb_kecamatan",
+                "tb_toko.kecamatan",
+                "=",
+                "tb_kecamatan.id_kecamatan"
+            )
+            ->join("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
+            ->where("id_user", Auth::user()->id)
+            ->where("id_toko", $id)
+            ->get();
+        $kota = DB::table("tb_kota")
+            ->reorder("nama_kota", "asc")
+            ->get();
+        return view("admin.edit_toko", ["toko" => $toko, "kota" => $kota]);
+    }
+
+    public function getKec(Request $request)
+    {
+        $kecamatan = District::where("id_kota", $request->id_kota)
+            ->reorder("nama_kecamatan", "asc")
+            ->pluck("id_kecamatan", "nama_kecamatan");
+        return response()->json($kecamatan);
+    }
+
+    public function getDesa(Request $request)
+    {
+        $desa = Village::where("id_kecamatan", $request->id_kecamatan)
+            ->reorder("nama_desa", "asc")
+            ->pluck("id_desa", "nama_desa");
+        return response()->json($desa);
+    }
+    public function update_toko(Request $request)
+    {
+        $messages = [
+            "mimes" => "Extensi Salah",
+        ];
+
+        $request->validate(
+            [
+                "foto" => "required|image|mimes:jpeg,png,jpg|max:2048",
+                "kota" => "required",
+                "kecamatan" => "required",
+                "desa" => "required",
+            ],
+            $messages
+        );
+
+        // $imageName = time() . ' . ' . $request->image->extension();
+        // $request->image->move(public_path('bukti'), $imageName);
+
+        $image = $request->file("foto");
+        $name = rand(1000, 9999) . "." . $image->getClientOriginalExtension();
+        $image->move("images/post", $name);
+
+        DB::table("tb_toko")
+            ->where("id_user", Auth::user()->id)
+            ->update([
+                "hp_toko" => $request->hp_toko,
+                "alamat" => $request->alamat,
+                "foto_toko" => $name,
+                "kode_pos" => $request->kode_pos,
+                "kota" => $request->kota,
+                "kecamatan" => $request->kecamatan,
+                "desa" => $request->desa,
+                "deskripsi" => $request->deskripsi,
+            ]);
+        return redirect()->back();
     }
 
     public function proses_login(Request $request)
