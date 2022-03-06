@@ -25,27 +25,47 @@
                                     <h3 class="text-success">Disetujui</h3>
                                     <?php } ?>
                                 </div>
-                                <div class="col-sm-10 mb-3">
+                                <div class="col-sm-12 mb-3">
                                     <label class="form-label">Nama Pengguna</label>
                                     <input type="text" class="form-control" name="name" value="{{ $t->name }}"
                                         readonly>
                                 </div>
-                                <div class="col-sm-10 mb-3">
+                                <div class="col-sm-12 mb-3">
                                     <label class="form-label">Nama Toko</label>
                                     <input type="text" class="form-control" name="nama_toko" value="{{ $t->nama_toko }}"
                                         readonly>
                                 </div>
-                                <div class="col-sm-10 mb-3">
+                                <div class="col-sm-12 mb-3">
                                     <label class="form-label">Nomer Hp Toko</label>
                                     <input type="text" class="form-control" name="hp_toko" value="{{ $t->hp_toko }}"
                                         readonly>
                                 </div>
-                                <div class="col-sm-10 mb-3">
-                                    <label class="form-label">Alamat Toko</label>
-                                    <textarea type="text" class="form-control" name="alamat" style="height: 100px"
-                                        value=""
-                                        readonly>{{ $t->alamat }}, {{ $t->nama_desa }}, {{ $t->nama_kecamatan }}, {{ $t->nama_kota }}  {{ $t->kode_pos }}</textarea>
+                                <div class="col-sm-12 mb-3">
+                                    <label class="form-label">Informasi Rekening Toko</label>
+                                    <div class="row my-3">
+                                        <div class="col-5 ">
+                                            <p class="ms-4 mt-2 px-0 ">Jenis Bank</p>
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control"
+                                                value=" {{ $t->bank }} :: {{ $t->anrekening }} " readonly>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-5 ">
+                                            <p class=" ms-4 mt-2 px-0 ">Nomer Rekening</p>
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" name="hp_toko"
+                                                value="{{ $t->rekening }} " readonly>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">Alamat Toko</label>
+                                <textarea type="text" class="form-control" name="alamat" style="height: 50px" value=""
+                                    readonly>{{ $t->alamat }}, {{ $t->nama_desa }}, {{ $t->nama_kecamatan }}, {{ $t->nama_kota }}  {{ $t->kode_pos }}</textarea>
                             </div>
                             <div class="col-12">
                                 <label for="inputAddress" class="form-label">Deskripsi Toko</label>
@@ -94,11 +114,33 @@
                                 <label class="form-label">Nomer Hp Toko</label>
                                 <input type="text" class="form-control" value="{{ $t->no_hp }}" readonly>
                             </div>
-                            <div class="col-sm-10 mb-3">
-                                <label class="form-label">Alamat Toko</label>
-                                <textarea type="text" class="form-control" name="alamat" style="height: 100px" value=""
-                                    readonly>{{ $t->alamat }}, {{ $t->nama_desa }}, {{ $t->nama_kecamatan }}, {{ $t->nama_kota }}  {{ $t->kode_pos }}</textarea>
+                            <div class="col-sm-12 mb-3">
+                                <label class="form-label">Informasi Rekening Toko</label>
+                                <div class="row my-3">
+                                    <div class="col-5 ">
+                                        <p class="mt-2 px-0 ">Jenis Bank</p>
+                                    </div>
+                                    <div class="col-7">
+                                        <input type="text" class="form-control"
+                                            value=" {{ $t->bank }} :: {{ $t->anrekening }} " readonly>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5 ">
+                                        <p class=" mt-2 px-0 ">No. Rekening</p>
+                                    </div>
+                                    <div class="col-7">
+                                        <input type="text" class="form-control" name="hp_toko"
+                                            value="{{ $t->rekening }} " readonly>
+                                    </div>
+                                </div>
                             </div>
+
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label">Alamat Toko</label>
+                            <textarea type="text" class="form-control" name="alamat" style="height: 100px" value=""
+                                readonly>{{ $t->alamat }}, {{ $t->nama_desa }}, {{ $t->nama_kecamatan }}, {{ $t->nama_kota }}  {{ $t->kode_pos }}</textarea>
                         </div>
                         <div class="col-12">
                             <label for="inputAddress" class="form-label">Deskripsi Toko</label>

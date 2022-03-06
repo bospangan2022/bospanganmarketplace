@@ -380,18 +380,12 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("pemesanan", [PemesananController::class, "index"])->name(
             "pemesanan"
         );
-<<<<<<< HEAD
 
         Route::get("pemesananall", [
             PemesananController::class,
             "pemesanan_all",
         ])->name("pemesananall");
-=======
-        Route::get("pemesananall", [
-            PemesananController::class,
-            "pemesanan_all",
-        ]);
->>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
+
         Route::get("pemesanan_detail/{id}", [
             PemesananController::class,
             "pemesanan_detail",

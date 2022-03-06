@@ -13,7 +13,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row m-5">
-                                <div class="col-md-6">
+                                <div class="col-md-6 mt-5 pt-3">
                                     <div class="d-flex justify-content-center">
                                         <?php if ($t->foto_toko == NULL) { ?>
                                         <img src="{{ asset('assets/images/logo.png') }}" alt="" style="width: 300px;">
@@ -21,7 +21,7 @@
                                         <img src="/images/post/{{ $t->foto_toko }}" style="width: 300px;">
                                         <?php } ?>
                                     </div>
-                                    <div class=" p-3" style="background-color: #f4f5f7; height: 150px;">
+                                    <div class=" p-3 mt-5" style="background-color: #f4f5f7; height: 150px;">
                                         <span>Unggah/Ubah gambar Toko</span>
                                         <div class="row">
                                             <div class="button d-sm-flex align-content-end align-items-end mb-3">
@@ -45,66 +45,95 @@
                                         <h3 class="text-success">Disetujui</h3>
                                         <?php } ?>
                                     </div>
-                                    <div class="col-sm-10 mb-3">
+                                    <div class="col-sm-12 mb-3">
                                         <label class="form-label">Nama Pengguna</label>
                                         <input type="text" class="form-control" name="name" value="{{ $t->name }}"
                                             readonly>
                                     </div>
-                                    <div class="col-sm-10 mb-3">
+                                    <div class="col-sm-12 mb-3">
                                         <label class="form-label">Nama Toko</label>
                                         <input type="text" class="form-control" name="nama_toko"
                                             value="{{ $t->nama_toko }}" readonly>
                                     </div>
-                                    <div class="col-sm-10 mb-3">
+                                    <div class="col-sm-12 mb-3">
                                         <label class="form-label">Nomer Hp Toko</label>
                                         <input type="text" class="form-control" name="hp_toko"
                                             value="{{ $t->hp_toko }}">
                                     </div>
-                                    <div class="col-sm-10 mb-3">
-                                        <label class="form-label">Alamat Toko</label>
-                                        <input type="text" class="form-control" name="alamat" value="{{ $t->alamat }}">
+                                    <div class="col-sm-12 mb-3">
+                                        <label class="form-label">Informasi Rekening Toko</label>
+                                        <div class="row my-3">
+                                            <div class="col-5 ">
+                                                <p class="ms-4 mt-2 px-0 ">Jenis Bank</p>
+                                            </div>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" name="bank"
+                                                    value=" {{ $t->bank }}">
+                                            </div>
+                                        </div>
+                                        <div class="row my-3">
+                                            <div class="col-5 ">
+                                                <p class="ms-4 mt-2 px-0 ">a.n Bank</p>
+                                            </div>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" name="anrekening"
+                                                    value=" {{ $t->anrekening }} ">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-5 ">
+                                                <p class=" ms-4 mt-2 px-0 ">Nomer Rekening</p>
+                                            </div>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" name="rekening"
+                                                    value="{{ $t->rekening }} ">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-10 mb-3">
-                                        <div class="form-group col-md-12 col-lg-12 col-xl-12 d-flex flex-column">
-                                            <label for="address_country">Kabupaten/Kota</label>
-                                            <select name="kota" id="kota" class="js-example-basic-single"
-                                                style="width: 100%;" data-show-subtext="true" data-live-search="true">
-                                                <option value="">{{ $t->nama_kota }}</option>
-                                                @foreach ($kota as $ko)
-                                                    <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}</option>
-                                                @endforeach
-                                            </select>
-                                            @if ($errors->has('kota'))
-                                                <span class="text-danger"> {{ $errors->first('kota') }}</span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group col-md-12 col-lg-12 col-xl-12 d-flex flex-column">
-                                            <label>Kecamatan</label>
-                                            <select select name="kecamatan" id="kecamatan" class="js-example-basic-single"
-                                                style="width: 100%;" data-show-subtext="true" data-live-search="true">
-
-                                            </select>
-                                            @if ($errors->has('kecamatan'))
-                                                <span class="text-danger"> {{ $errors->first('kecamatan') }}</span>
-                                            @endif
-                                        </div>
+                                </div>
+                                <div class="col-sm-12 my-3">
+                                    <label class="form-label">Alamat Toko</label>
+                                    <input type="text" class="form-control" name="alamat" value="{{ $t->alamat }}">
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
+                                        <label for="address_country">Kabupaten/Kota</label>
+                                        <select name="kota" id="kota" class="js-example-basic-single" style="width: 100%;"
+                                            data-show-subtext="true" data-live-search="true">
+                                            <option value="">{{ $t->nama_kota }}</option>
+                                            @foreach ($kota as $ko)
+                                                <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('kota'))
+                                            <span class="text-danger"> {{ $errors->first('kota') }}</span>
+                                        @endif
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
-                                            <label>Kelurahan/Desa</label>
-                                            <select select name="desa" id="desa" class="js-example-basic-single"
-                                                style="width: 100%;" data-show-subtext="true" data-live-search="true">
+                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
+                                        <label>Kecamatan</label>
+                                        <select select name="kecamatan" id="kecamatan" class="js-example-basic-single"
+                                            style="width: 100%;" data-show-subtext="true" data-live-search="true">
 
-                                            </select>
-                                            @if ($errors->has('desa'))
-                                                <span class="text-danger"> {{ $errors->first('desa') }}</span>
-                                            @endif
-                                        </div>
-                                        <div class="form-group col-md-12 col-lg-12 col-xl-12 ">
-                                            <label for="input-email">Kodepos<span class="required-f">*</span></label>
-                                            <input name="kode_pos" value="{{ $t->kode_pos }}" id=" input-email"
-                                                type="text">
-                                        </div>
+                                        </select>
+                                        @if ($errors->has('kecamatan'))
+                                            <span class="text-danger"> {{ $errors->first('kecamatan') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
+                                        <label>Kelurahan/Desa</label>
+                                        <select select name="desa" id="desa" class="js-example-basic-single"
+                                            style="width: 100%;" data-show-subtext="true" data-live-search="true">
+
+                                        </select>
+                                        @if ($errors->has('desa'))
+                                            <span class="text-danger"> {{ $errors->first('desa') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 ">
+                                        <label for="input-email">Kodepos<span class="required-f">*</span></label>
+                                        <input name="kode_pos" value="{{ $t->kode_pos }}" id=" input-email" type="text">
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -171,51 +200,80 @@
                                     <label class="form-label">Nomer Hp Toko</label>
                                     <input type="text" class="form-control" name="hp_toko" value="{{ $t->hp_toko }}">
                                 </div>
-                                <div class="col-sm-10 mb-3">
-                                    <label class="form-label">Alamat Toko</label>
-                                    <input type="text" class="form-control" name="alamat" value="{{ $t->alamat }}">
+                                <div class="col-sm-12 mb-3">
+                                    <label class="form-label">Informasi Rekening Toko</label>
+                                    <div class="row my-3">
+                                        <div class="col-5 ">
+                                            <p class=" mt-2 px-0 ">Jenis Bank</p>
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" name="bank"
+                                                value=" {{ $t->bank }}">
+                                        </div>
+                                    </div>
+                                    <div class="row my-3">
+                                        <div class="col-5 ">
+                                            <p class=" mt-2 px-0 ">a.n Bank</p>
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" name="anrekening"
+                                                value=" {{ $t->anrekening }} ">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-5 ">
+                                            <p class="  mt-2 px-0 ">Nomer Rekening</p>
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" name="rekening"
+                                                value="{{ $t->rekening }} ">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
-                                        <label for="address_country">Kabupaten/Kota</label>
-                                        <select name="kota" id="kota_mobile" class="js-example-basic-single"
-                                            style="width: 100%;" data-show-subtext="true" data-live-search="true">
-                                            <option value="">{{ $t->nama_kota }}</option>
-                                            @foreach ($kota as $ko)
-                                                <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($errors->has('kota'))
-                                            <span class="text-danger"> {{ $errors->first('kota') }}</span>
-                                        @endif
-                                    </div>
-                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
-                                        <label>Kecamatan</label>
-                                        <select select name="kecamatan" id="kecamatan_mobile"
-                                            class="js-example-basic-single" style="width: 100%;" data-show-subtext="true"
-                                            data-live-search="true">
-
-                                        </select>
-                                        @if ($errors->has('kecamatan'))
-                                            <span class="text-danger"> {{ $errors->first('kecamatan') }}</span>
-                                        @endif
-                                    </div>
+                            </div>
+                            <div class="col-sm-10 mb-3">
+                                <label class="form-label">Alamat Toko</label>
+                                <input type="text" class="form-control" name="alamat" value="{{ $t->alamat }}">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
+                                    <label for="address_country">Kabupaten/Kota</label>
+                                    <select name="kota" id="kota_mobile" class="js-example-basic-single"
+                                        style="width: 100%;" data-show-subtext="true" data-live-search="true">
+                                        <option value="">{{ $t->nama_kota }}</option>
+                                        @foreach ($kota as $ko)
+                                            <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('kota'))
+                                        <span class="text-danger"> {{ $errors->first('kota') }}</span>
+                                    @endif
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
-                                        <label>Kelurahan/Desa</label>
-                                        <select select name="desa" id="desa_mobile" class="js-example-basic-single"
-                                            style="width: 100%;" data-show-subtext="true" data-live-search="true">
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
+                                    <label>Kecamatan</label>
+                                    <select select name="kecamatan" id="kecamatan_mobile" class="js-example-basic-single"
+                                        style="width: 100%;" data-show-subtext="true" data-live-search="true">
 
-                                        </select>
-                                        @if ($errors->has('desa'))
-                                            <span class="text-danger"> {{ $errors->first('desa') }}</span>
-                                        @endif
-                                    </div>
-                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 ">
-                                        <label for="input-email">Kodepos</label>
-                                        <input name="kode_pos" value="{{ $t->kode_pos }}" id="input-email" type="text">
-                                    </div>
+                                    </select>
+                                    @if ($errors->has('kecamatan'))
+                                        <span class="text-danger"> {{ $errors->first('kecamatan') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 d-flex flex-column">
+                                    <label>Kelurahan/Desa</label>
+                                    <select select name="desa" id="desa_mobile" class="js-example-basic-single"
+                                        style="width: 100%;" data-show-subtext="true" data-live-search="true">
+
+                                    </select>
+                                    @if ($errors->has('desa'))
+                                        <span class="text-danger"> {{ $errors->first('desa') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 ">
+                                    <label for="input-email">Kodepos</label>
+                                    <input name="kode_pos" value="{{ $t->kode_pos }}" id="input-email" type="text">
                                 </div>
                             </div>
                             <div class="col-12">
