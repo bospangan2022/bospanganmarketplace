@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GerobakController extends Controller
 {
@@ -23,9 +24,25 @@ class GerobakController extends Controller
             ->where("tb_keranjang.status", "t")
             ->paginate(3);
 
-        $total_keranjang = DB::table("users")
-            ->join("user_detail", "users.id", "=", "user_detail.id_user")
-            ->count();
+        $toko = DB::table("tb_toko")
+            ->where("id_user", Auth::user()->id)
+            ->get();
+
+        foreach ($toko as $t) {
+            $total_keranjang = DB::table("users")
+                ->join("tb_toko", "users.id", "=", "tb_toko.id_user")
+                ->join(
+                    "tb_keranjang",
+                    "tb_toko.id_toko",
+                    "=",
+                    "tb_keranjang.id_toko"
+                )
+                ->where("tb_keranjang.status", "t")
+                ->where("tb_keranjang.id_toko", $t->id_toko)
+                ->count();
+
+            // dd($total_keranjang);
+        }
 
         $total_dana = DB::table("tb_keranjang")
             ->join(

@@ -139,7 +139,7 @@ class StoreController extends Controller
             ->limit(5)
             ->get();
 
-        Mail::to("moharif15111998@gmail.com")->send(new TokoMasuk());
+        Mail::to("admbospangan@gmail.com")->send(new TokoMasuk());
 
         return view("marketplace.afterdaftartoko", [
             "keranjang" => $keranjang,

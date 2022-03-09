@@ -628,8 +628,8 @@ use Illuminate\Support\Facades\DB;
                                             <div class="row">
                                                 <div class="form-group col-md-12 col-lg-12 col-xl-12">
                                                     <label for="input-company">Catatan Untuk Kurir (optional)</label>
-                                                    <textarea class="form-control resize-both" name="catatan"
-                                                        rows="3"></textarea>
+                                                    <textarea class="form-control resize-both" name="catatan" rows="3"
+                                                        required></textarea>
                                                 </div>
                                             </div>
                                         </fieldset>

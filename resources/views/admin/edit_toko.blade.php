@@ -69,7 +69,6 @@
                                             <label for="address_country">Kabupaten/Kota</label>
                                             <select name="kota" id="kota" class="js-example-basic-single"
                                                 style="width: 100%;" data-show-subtext="true" data-live-search="true">
-                                                <option value="">{{ $t->nama_kota }}</option>
                                                 @foreach ($kota as $ko)
                                                     <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}</option>
                                                 @endforeach
@@ -180,7 +179,6 @@
                                         <label for="address_country">Kabupaten/Kota</label>
                                         <select name="kota" id="kota_mobile" class="js-example-basic-single"
                                             style="width: 100%;" data-show-subtext="true" data-live-search="true">
-                                            <option value="">{{ $t->nama_kota }}</option>
                                             @foreach ($kota as $ko)
                                                 <option value="{{ $ko->id_kota }}">{{ $ko->nama_kota }}</option>
                                             @endforeach

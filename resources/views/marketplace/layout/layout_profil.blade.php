@@ -634,7 +634,9 @@
                 <!-- Select2 Javascript -->
                 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
                 <!--For Newsletter Popup-->
-                <script>
+
+                
+                {{-- <script>
                     jQuery(document).ready(function() {
                         jQuery('.closepopup').on('click', function() {
                             jQuery('#popup-container').fadeOut();
@@ -685,7 +687,7 @@
                         });
                         return false;
                     });
-                </script>
+                </script> --}}
 
                 <x:notify-messages />
                 @notifyJs

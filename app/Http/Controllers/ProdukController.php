@@ -8,14 +8,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Support\Facades\Auth;
-
 class ProdukController extends Controller
 {
     public function index()
     {
         $kategori = KategoriBarang::all();
-<<<<<<< HEAD
         $barang = DB::table("tb_barang")->get();
         $jumlah = $barang->count();
         $toko = DB::table("tb_toko")
@@ -27,18 +24,6 @@ class ProdukController extends Controller
         $page = DB::table("tb_barang")
             ->latest()
             ->paginate(5);
-=======
-        $toko = DB::table("tb_toko")
-            ->where("id_user", Auth::user()->id)
-            ->get();
-        foreach ($toko as $t) {
-            $id_toko = $t->id_toko;
-        }
-        $barang = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->get();
-        $jumlah = $barang->count();
->>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
         $stok = DB::table("tb_barang")
             ->where("id_toko", $id_toko)
             ->where("stok", 0)
@@ -54,7 +39,6 @@ class ProdukController extends Controller
             ->where("status", "tampilkan")
             ->get();
         $tampil = $status2->count();
-<<<<<<< HEAD
         // $jumlah = DB::table('tb_barang')->count();
         return view("admin.produk", [
             "barang" => $barang,
@@ -99,14 +83,6 @@ class ProdukController extends Controller
             ->get();
         $tampil = $status2->count();
         // $jumlah = DB::table('tb_barang')->count();
-=======
-        $page = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->latest()
-            ->paginate(5);
-
-        // dd($page);
->>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
         return view("admin.produk", [
             "barang" => $barang,
             "kategori" => $kategori,
@@ -114,11 +90,6 @@ class ProdukController extends Controller
             "page" => $page,
             "habis" => $habis,
             "hide" => $hide,
-<<<<<<< HEAD
-=======
-            "status" => $status,
-            "status2" => $status2,
->>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
             "tampil" => $tampil,
         ]);
     }
@@ -127,140 +98,140 @@ class ProdukController extends Controller
     //Fungsi Filter
     //-------------------------
 
-    public function display()
-    {
-        $kategori = KategoriBarang::all();
-        $toko = DB::table("tb_toko")
-            ->where("id_user", Auth::user()->id)
-            ->get();
-        foreach ($toko as $t) {
-            $id_toko = $t->id_toko;
-        }
-        $barang = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->get();
-        $jumlah = $barang->count();
-        $stok = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("stok", 0)
-            ->get();
-        $habis = $stok->count();
-        $status = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("status", "Sembunyikan")
-            ->get();
-        $hide = $status->count();
-        $status2 = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("status", "tampilkan")
-            ->get();
-        $tampil = $status2->count();
-        $page = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("status", "tampilkan")
-            ->latest()
-            ->paginate(5);
+    // public function display()
+    // {
+    //     $kategori = KategoriBarang::all();
+    //     $toko = DB::table("tb_toko")
+    //         ->where("id_user", Auth::user()->id)
+    //         ->get();
+    //     foreach ($toko as $t) {
+    //         $id_toko = $t->id_toko;
+    //     }
+    //     $barang = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->get();
+    //     $jumlah = $barang->count();
+    //     $stok = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("stok", 0)
+    //         ->get();
+    //     $habis = $stok->count();
+    //     $status = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("status", "Sembunyikan")
+    //         ->get();
+    //     $hide = $status->count();
+    //     $status2 = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("status", "tampilkan")
+    //         ->get();
+    //     $tampil = $status2->count();
+    //     $page = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("status", "tampilkan")
+    //         ->latest()
+    //         ->paginate(5);
 
-        return view("admin.produk", [
-            "barang" => $barang,
-            "jumlah" => $jumlah,
-            "page" => $page,
-            "habis" => $habis,
-            "hide" => $hide,
-            "tampil" => $tampil,
-            "kategori" => $kategori,
-        ]);
-    }
+    //     return view("admin.produk", [
+    //         "barang" => $barang,
+    //         "jumlah" => $jumlah,
+    //         "page" => $page,
+    //         "habis" => $habis,
+    //         "hide" => $hide,
+    //         "tampil" => $tampil,
+    //         "kategori" => $kategori,
+    //     ]);
+    // }
 
-    public function habis()
-    {
-        $kategori = KategoriBarang::all();
-        $toko = DB::table("tb_toko")
-            ->where("id_user", Auth::user()->id)
-            ->get();
-        foreach ($toko as $t) {
-            $id_toko = $t->id_toko;
-        }
-        $barang = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->get();
-        $jumlah = $barang->count();
-        $stok = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("stok", 0)
-            ->get();
-        $habis = $stok->count();
-        $status = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("status", "Sembunyikan")
-            ->get();
-        $hide = $status->count();
-        $status2 = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("status", "tampilkan")
-            ->get();
-        $tampil = $status2->count();
-        $page = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("stok", 0)
-            ->latest()
-            ->paginate(5);
+    // public function habis()
+    // {
+    //     $kategori = KategoriBarang::all();
+    //     $toko = DB::table("tb_toko")
+    //         ->where("id_user", Auth::user()->id)
+    //         ->get();
+    //     foreach ($toko as $t) {
+    //         $id_toko = $t->id_toko;
+    //     }
+    //     $barang = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->get();
+    //     $jumlah = $barang->count();
+    //     $stok = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("stok", 0)
+    //         ->get();
+    //     $habis = $stok->count();
+    //     $status = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("status", "Sembunyikan")
+    //         ->get();
+    //     $hide = $status->count();
+    //     $status2 = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("status", "tampilkan")
+    //         ->get();
+    //     $tampil = $status2->count();
+    //     $page = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("stok", 0)
+    //         ->latest()
+    //         ->paginate(5);
 
-        return view("admin.produk", [
-            "barang" => $barang,
-            "jumlah" => $jumlah,
-            "page" => $page,
-            "habis" => $habis,
-            "hide" => $hide,
-            "tampil" => $tampil,
-            "kategori" => $kategori,
-        ]);
-    }
+    //     return view("admin.produk", [
+    //         "barang" => $barang,
+    //         "jumlah" => $jumlah,
+    //         "page" => $page,
+    //         "habis" => $habis,
+    //         "hide" => $hide,
+    //         "tampil" => $tampil,
+    //         "kategori" => $kategori,
+    //     ]);
+    // }
 
-    public function hide()
-    {
-        $kategori = KategoriBarang::all();
-        $toko = DB::table("tb_toko")
-            ->where("id_user", Auth::user()->id)
-            ->get();
-        foreach ($toko as $t) {
-            $id_toko = $t->id_toko;
-        }
-        $barang = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->get();
-        $jumlah = $barang->count();
-        $stok = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("stok", 0)
-            ->get();
-        $habis = $stok->count();
-        $status = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("status", "Sembunyikan")
-            ->get();
-        $hide = $status->count();
-        $status2 = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("status", "tampilkan")
-            ->get();
-        $tampil = $status2->count();
-        $page = DB::table("tb_barang")
-            ->where("id_toko", $id_toko)
-            ->where("status", "Sembunyikan")
-            ->latest()
-            ->paginate(5);
+    // public function hide()
+    // {
+    //     $kategori = KategoriBarang::all();
+    //     $toko = DB::table("tb_toko")
+    //         ->where("id_user", Auth::user()->id)
+    //         ->get();
+    //     foreach ($toko as $t) {
+    //         $id_toko = $t->id_toko;
+    //     }
+    //     $barang = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->get();
+    //     $jumlah = $barang->count();
+    //     $stok = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("stok", 0)
+    //         ->get();
+    //     $habis = $stok->count();
+    //     $status = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("status", "Sembunyikan")
+    //         ->get();
+    //     $hide = $status->count();
+    //     $status2 = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("status", "tampilkan")
+    //         ->get();
+    //     $tampil = $status2->count();
+    //     $page = DB::table("tb_barang")
+    //         ->where("id_toko", $id_toko)
+    //         ->where("status", "Sembunyikan")
+    //         ->latest()
+    //         ->paginate(5);
 
-        return view("admin.produk", [
-            "barang" => $barang,
-            "jumlah" => $jumlah,
-            "page" => $page,
-            "habis" => $habis,
-            "hide" => $hide,
-            "tampil" => $tampil,
-            "kategori" => $kategori,
-        ]);
-    }
+    //     return view("admin.produk", [
+    //         "barang" => $barang,
+    //         "jumlah" => $jumlah,
+    //         "page" => $page,
+    //         "habis" => $habis,
+    //         "hide" => $hide,
+    //         "tampil" => $tampil,
+    //         "kategori" => $kategori,
+    //     ]);
+    // }
 
     public function tambah_produk()
     {
@@ -268,7 +239,6 @@ class ProdukController extends Controller
         return view("admin.tambah_produk", compact("kategori"));
     }
 
-<<<<<<< HEAD
     public function display()
     {
         $kategori = KategoriBarang::all();
@@ -404,8 +374,6 @@ class ProdukController extends Controller
         ]);
     }
 
-=======
->>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
     public function proses_tambah(Request $request)
     {
         $request->validate([
@@ -421,6 +389,7 @@ class ProdukController extends Controller
 
         $barang = BarangModel::create([
             "id_kategori" => $request->id_kategori,
+            "id_toko" => "14",
             "nama_barang" => $request->nama_barang,
             "sku" => $request->sku,
             "berat" => $request->berat,
@@ -453,10 +422,21 @@ class ProdukController extends Controller
         $oldfoto = $request->hidden_image;
         $image = $request->file("foto");
 
-        if ($image != "") {
-            $request->validate([
+        $messages = [
+            "required" => "Data Belum Diisi!!",
+            "images" => "Gambar Tidak Sesuai",
+            "mimes" => "Format Gambar Tidak Sesuai",
+            "max" => "Ukuran Harus Lebih Kecil Dari 2 Mb",
+        ];
+
+        $request->validate(
+            [
                 "foto" => "required|image|mimes:jpeg,png,jpg|max:2048",
-            ]);
+            ],
+            $messages
+        );
+
+        if ($image != "") {
             $image_name = $oldfoto;
             $image->move("images/post", $image_name);
         } else {
@@ -474,18 +454,12 @@ class ProdukController extends Controller
                 "harga" => $request->harga,
                 "harga_satuan" => $request->harga_satuan,
                 "satuan" => $request->satuan,
-<<<<<<< HEAD
                 "status" => $request->status,
                 "stok" => $request->stok,
                 "foto" => $image_name,
             ]);
 
         // dd($barang);
-=======
-                "stok" => $request->stok,
-                "foto" => $image_name,
-            ]);
->>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
 
         return redirect()->route("produk");
     }

@@ -2323,6 +2323,11 @@ input.checkbox { height:auto; vertical-align:middle; padding:0; box-shadow:none;
   }
 
 
+  .gbr-detail {
+    height: 800px;
+    width: 800px;
+  }
+
 
 
   /*  */

@@ -61,7 +61,6 @@
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button  collapsed" type="button" data-bs-toggle="collapse"
@@ -84,9 +83,6 @@
                                     </div>
                                 </div>
                             </div>
-=======
-
->>>>>>> 90dc88ab23132e2d218261b6c44e0777d864ef78
                         </div>
                     </div>
                     </ <!--Filter End-->

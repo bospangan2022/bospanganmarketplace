@@ -133,7 +133,7 @@
             if (koID) {
                 $.ajax({
                     type: "GET",
-                    url: "getKec?id_kota=" + koID,
+                    url: "getKec_toko?id_kota=" + koID,
                     dataType: 'JSON',
                     success: function(res) {
                         if (res) {
@@ -157,7 +157,7 @@
             if (kecID) {
                 $.ajax({
                     type: "GET",
-                    url: "getDesa?id_kecamatan=" + kecID,
+                    url: "getDesa_toko?id_kecamatan=" + kecID,
                     dataType: 'JSON',
                     success: function(res) {
                         if (res) {

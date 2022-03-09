@@ -82,6 +82,10 @@ use Illuminate\Support\Facades\DB;
                                     @endif
                                 @endforeach
                             </div>
+                            <div class="bukti-pelanggan">
+                                <h4>Bukti Transfer Pelanggan :</h4>
+                                <img src="/images/post/{{ $pes->bukti }}" class="img-bukti" alt="">
+                            </div>
                         </div>
                         <div class="image-list-mobile card my-2">
                             <div class="card-body d-flex justify-content-center border-bottom">
@@ -143,6 +147,11 @@ use Illuminate\Support\Facades\DB;
                                         </div>
                                     @endif
                                 @endforeach
+                            </div>
+                            <div class="bukti-pelanggan text-center">
+                                <h4>Bukti Transfer Pelanggan :</h4>
+                                <img style="width:200px; height: 250px;" src="/images/post/{{ $pes->bukti }}"
+                                    class="img-bukti" alt="">
                             </div>
                         </div>
                         <div class="form-input card mb-4">

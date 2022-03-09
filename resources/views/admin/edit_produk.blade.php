@@ -8,6 +8,13 @@
             <div class="container-fluid">
                 <h2 class="title">Edit Produk</h2>
                 <!--Button-->
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <b>Opps!</b> {{ $error }}
+                        @endforeach
+                    </div>
+                @endif
                 @foreach ($barang_id as $br)
                     <form class="form-input" action="{{ url('edit_produk/update', $br->id_barang) }}" method="POST"
                         enctype="multipart/form-data">
@@ -15,24 +22,16 @@
                         <div class="row d-flex">
                             <div class="new-item col-8">
                                 <div class="image-list card mb-4">
-                                    <div class="card-body d-flex justify-content-around">
+                                    <div class="card-body d-flex text-left">
                                         <input type="file" name="foto" id="file">
-                                        <label class="fotobarang" for="file">
+                                        {{-- <label class="fotobarang" for="file">
                                             <i class="ti-plus me-2"></i> Pilih Foto Barang
-                                        </label>
+                                        </label> --}}
                                         <input type="hidden" class="form-control-file" id="hidden-image" name="hidden_image"
                                             value="{{ $br->foto }}">
                                     </div>
                                 </div>
-                                <div class="image-list-mobile card mb-4">
-                                    <div class="card-body d-flex flex-column">
-                                        <input type="file" name="foto" id="file" class="mb-2">
-                                        <label class="fotobarang" for="file">
-                                            <i class="ti-plus me-2"></i> Pilih Foto Barang
-                                        </label>
-                                        {{-- <div id="d_foto"></div> --}}
-                                    </div>
-                                </div>
+
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <div class="form-list d-flex justify-content-around mb-4">
@@ -132,23 +131,14 @@
                         @csrf
                         <div class="row d-flex">
                             <div class="new-item col-8">
-                                <div class="image-list card mb-4">
-                                    <div class="card-body d-flex justify-content-around">
+                                <div class="image-list-mobile card mb-4">
+                                    <div class="card-body d-flex text-left">
                                         <input type="file" name="foto" id="file">
-                                        <label class="fotobarang" for="file">
+                                        {{-- <label class="fotobarang" for="file">
                                             <i class="ti-plus me-2"></i> Pilih Foto Barang
-                                        </label>
+                                        </label> --}}
                                         <input type="hidden" class="form-control-file" id="hidden-image" name="hidden_image"
                                             value="{{ $br->foto }}">
-                                    </div>
-                                </div>
-                                <div class="image-list-mobile card mb-4">
-                                    <div class="card-body d-flex flex-column">
-                                        <input type="file" name="foto" id="file" class="mb-2">
-                                        <label class="fotobarang" for="file">
-                                            <i class="ti-plus me-2"></i> Pilih Foto Barang
-                                        </label>
-                                        {{-- <div id="d_foto"></div> --}}
                                     </div>
                                 </div>
                                 <div class="card mb-4">

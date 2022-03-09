@@ -121,6 +121,7 @@ class CheckoutController extends Controller
         // dd($user);
 
         $alamat_toko = DB::table("tb_toko")
+            ->join("users", "tb_toko.id_user", "=", "users.id")
             ->leftjoin("tb_kota", "tb_toko.kota", "=", "tb_kota.id_kota")
             ->leftjoin(
                 "tb_kecamatan",
@@ -131,6 +132,8 @@ class CheckoutController extends Controller
             ->leftjoin("tb_desa", "tb_toko.desa", "=", "tb_desa.id_desa")
             ->where("id_toko", $id)
             ->get();
+
+        // dd($alamat_toko);
 
         $katlimit = DB::table("tb_kategori")
             ->limit(5)
@@ -214,6 +217,8 @@ class CheckoutController extends Controller
             "id_checkout" => $id_checkout,
             "id_keranjang" => $id_keranjang,
         ]);
+
+        Mail::to($request->email)->send(new BospanganEmail());
 
         if ($request->metode_pembayaran == "cod") {
             return redirect()->route("aftercheckout_cod", $id_checkout);

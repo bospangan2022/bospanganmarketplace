@@ -57,17 +57,19 @@
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input type="password" value="" name="password" placeholder="" id="password"
+                                        <input type="password" value="" name="password" placeholder="" id="myInput"
                                             class="">
                                         <input type="hidden" name="role" value="pelanggan">
                                     </div>
+                                    <input type="checkbox" onclick="myFunction()"> Show Password
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <label for="password">Ulangi Password</label>
-                                        <input type="password" value="" name="ulangi_password" placeholder="" id="password"
+                                        <input type="password" value="" name="ulangi_password" placeholder="" id="myInput2"
                                             class="">
                                     </div>
+                                    <input type="checkbox" onclick="myFunction2()"> Show Password
                                 </div>
                             </div>
                             <div class="row">
