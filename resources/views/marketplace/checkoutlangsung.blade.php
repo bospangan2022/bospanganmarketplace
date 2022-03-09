@@ -20,17 +20,18 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
                     <div class="create-ac-content bg-light-gray padding-20px-all mb-3">
                         <h2 class="login-title mb-3">Alamat Penerima</h2>
-                        <div class="row">
-                            <?php
+
+                        <?php
                                 if(count($user) != 0) {
 
                             ?>
-                            @foreach ($user as $us)
-                                <?php
-                                
-                                $lat_penerima = $us->lat_desa;
-                                $lng_penerima = $us->lng_desa;
-                                ?>
+                        @foreach ($user as $us)
+                            <?php
+                            
+                            $lat_penerima = $us->lat_desa;
+                            $lng_penerima = $us->lng_desa;
+                            ?>
+                            <div class="row">
                                 <div class="form-group col-md-12 col-lg-12 col-xl-12 border-bottom">
                                     <table class="table-borderless ms-5 mb-5">
                                         <tbody>
@@ -91,12 +92,20 @@
 
                                     </div>
                                 </div>
-                            @endforeach
-                            <?php } else { 
+                            </div>
+                        @endforeach
+                        <?php } else { 
                                 $lat_penerima = 0;
-                                $lng_penerima = 0;
-                            }?>
+                                $lng_penerima = 0;?>
+
+                        <div class="row d-flex justify-content-center mt-5">
+
+                            <div class="d-flex ms-5 justify-content-center mb-2 ">
+                                <a class="btn btn-sm btn-seccondary me-5" href="{{ url('profil') }}">Tambah Alamat</a>
+
+                            </div>
                         </div>
+                        <?php  }?>
                     </div>
                     <div class="create-ac-content bg-light-gray padding-20px-all mb-3">
                         <h2 class="login-title mb-3">Alamat Toko</h2>

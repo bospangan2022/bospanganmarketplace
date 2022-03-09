@@ -117,6 +117,9 @@ class AuthController extends Controller
                 "kecamatan" => $request->kecamatan,
                 "desa" => $request->desa,
                 "deskripsi" => $request->deskripsi,
+                "bank" => $request->bank,
+                "anrekening" => $request->anrekening,
+                "rekening" => $request->rekening,
             ]);
         return redirect()->back();
     }

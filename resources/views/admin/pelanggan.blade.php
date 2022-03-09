@@ -13,6 +13,7 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Email</th>
+                                <th>No Hp Pelanggan</th>
                                 <th>Hitung Pesanan</th>
                             </tr>
                         </thead>
@@ -25,6 +26,7 @@
                                 <tr>
                                     <td>{{ $p->name }}</td>
                                     <td>{{ $p->email }}</td>
+                                    <td>{{ $p->no_hp }}</td>
                                     <td>{{ $jumlah }}</td>
                                 </tr>
                             @endforeach
