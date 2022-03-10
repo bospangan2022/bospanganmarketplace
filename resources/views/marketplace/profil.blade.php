@@ -145,7 +145,6 @@ use Illuminate\Support\Facades\DB;
                                                     <div class="col md-12 flex">
                                                         <i class="fas fa-map-marker-alt text-success mr-2"></i>
                                                         <h4 class="head-1 mr-2">Alamat</h4>
-                                                        <h4 class="status">{{ $u->status }}</h4>
                                                     </div>
                                                 </div>
                                                 <div class="penerima">
@@ -160,40 +159,13 @@ use Illuminate\Support\Facades\DB;
                                                 <div class="tombol text-left mt-4 mr-5">
                                                     <a href="{{ url('updAlamat', $u->id_user_detail) }}"
                                                         class="detail-transaksi mr-3">Ubah Alamat</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                    @foreach ($profil as $p)
-                                        <div class="card mb-4">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col md-12 flex">
-                                                        <i class="fas fa-map-marker-alt text-success mr-2"></i>
-                                                        <h4 class="head-1 mr-5">Alamat</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="penerima">
-                                                    <h4 class="nama-penerima">{{ $p->nama_penerima }}</h4>
-                                                    <h4 class="no-hp">{{ $p->phone }}</h4>
-                                                    <h4 class="alamat">{{ $p->alamat }}, {{ $p->nama_desa }},
-                                                        {{ $p->nama_kecamatan }}, {{ $p->nama_kota }}
-                                                        {{ $p->kode_pos }}
-                                                    </h4>
-                                                    <h4 class="no-hp">{{ $p->catatan }}</h4>
-                                                </div>
-                                                <div class="tombol text-left mt-4 mr-5">
-                                                    <a href="{{ url('updAlamat', $p->id_user_detail) }}"
-                                                        class="detail-transaksi ">Ubah Alamat</a> &nbsp; | &nbsp;
-                                                    <a href="{{ url('alamat_utama', $p->id_user_detail) }}"
-                                                        class="detail-transaksi ">Jadikan Alamat Utama</a> &nbsp; |
-                                                    &nbsp;
-                                                    <a href="{{ url('hapus_alamat', $p->id_user_detail) }}"
+                                                    <a href="{{ url('hapus_alamat', $u->id_user_detail) }}"
                                                         class="detail-transaksi ">Hapus</a>
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
+
                                 </div>
                                 <div id="tab2" class="tab-content">
                                     <div class="filters-toolbar-wrapper">

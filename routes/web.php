@@ -16,6 +16,7 @@ use App\Http\Controllers\ProdukDetailController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\ProfilTokoController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TokoAdminController;
@@ -437,6 +438,19 @@ Route::group(["middleware" => ["auth"]], function () {
         Route::get("update_status/{id}", [
             TokoAdminController::class,
             "update",
+        ]);
+        Route::get("bank", [BankController::class, "index"]);
+        Route::post("proses_tambah_bank", [
+            BankController::class,
+            "proses_tambah",
+        ]);
+        Route::post("proses_edit_bank/{id}", [
+            BankController::class,
+            "proses_edit",
+        ]);
+        Route::get("proses_hapus_bank/{id}", [
+            BankController::class,
+            "proses_hapus",
         ]);
     });
 });

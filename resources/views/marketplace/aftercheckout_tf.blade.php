@@ -72,9 +72,18 @@
                     <div class="title-checkout">
                         <h4 class="txt_tf">Silahkan transfer pada nomor rekening dibawah ini</h4>
                     </div>
-                    <div class="title-checkout">
-                        <h4 class="txt_no_rek">090090909090</h4>
-                    </div>
+                    <?php
+                    
+                    use Illuminate\Support\Facades\DB;
+                    
+                    $bank = DB::table('tb_bank')->get();
+                    ?>
+                    @foreach ($bank as $b)
+                        <div class="title-checkout">
+                            <h4 class="txt_no_rek">({{ $b->nama_bank }}){{ $b->no_rek }} A/N {{ $b->atas_nama }}
+                            </h4>
+                        </div>
+                    @endforeach
                     <div class="title-checkout">
                         <h4 class="txt_itf">Apabila anda sudah melakukan pembayaran lewat transfer bank silahkan
                             upload
@@ -88,11 +97,11 @@
                             <div class="title-checkout">
                                 <div class="upl-bukti text-center">
                                     <p class="title-upl">Upload Bukti :</p>
-                                    <input class="inp_upload" type="file" name="bukti" />
+                                    <input class="inp_upload" type="file" name="bukti" required />
                                 </div>
                             </div>
                             <div class="title-checkout">
-                                <button type="submit" class="tombol1"><span>
+                                <button type="submit" class="tombol1" style="background-color: green;"><span>
                                         <i class="fas fa-upload mr-3"></i>
                                     </span>Upload Bukti Pembayaran
                                 </button>
@@ -164,26 +173,37 @@
                     <div class="title-checkout">
                         <h4 class="txt_tf-mbl">Silahkan transfer pada nomor rekening dibawah ini</h4>
                     </div>
-                    <div class="title-checkout">
-                        <h4 class="txt_no_rek-mbl">090090909090</h4>
-                    </div>
+                    @foreach ($bank as $b)
+                        <div class="title-checkout">
+                            <h4 class="txt_no_rek">({{ $b->nama_bank }}){{ $b->no_rek }} A/N
+                                {{ $b->atas_nama }}
+                            </h4>
+                        </div>
+                    @endforeach
                     <div class="title-checkout">
                         <h4 class="txt_itf-mbl">Apabila anda sudah melakukan pembayaran lewat transfer bank silahkan
                             upload
                             bukti pembayaran dibawah ini !</h4>
                     </div>
-                    <div class="title-checkout">
-                        <div class="upl-bukti text-center">
-                            <p class="title-upl">Upload Bukti :</p>
-                            <input class="inp_upload" type="file" />
-                        </div>
-                    </div>
-                    <div class="title-checkout">
-                        <button type="submit" class="tombol1"><span>
-                                <i class="fas fa-upload mr-3"></i>
-                            </span>Upload Bukti Pembayaran
-                        </button>
-                    </div>
+                    @foreach ($pesanan as $pes)
+                        <form action="{{ url('upload/bukti', $pes->id_checkout) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" value="{{ $pes->email }}" name="email">
+                            <div class="title-checkout">
+                                <div class="upl-bukti text-center">
+                                    <p class="title-upl">Upload Bukti :</p>
+                                    <input class="inp_upload" type="file" name="bukti" required />
+                                </div>
+                            </div>
+                            <div class="title-checkout">
+                                <button type="submit" class="tombol1" style="background-color: green;"><span>
+                                        <i class="fas fa-upload mr-3"></i>
+                                    </span>Upload Bukti Pembayaran
+                                </button>
+                            </div>
+                        </form>
+                    @endforeach
                     <div class="title-checkout">
                         <h4 class="txt_tf">atau</h4>
                     </div>

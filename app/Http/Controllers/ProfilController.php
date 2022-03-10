@@ -25,7 +25,6 @@ class ProfilController extends Controller
             )
             ->leftjoin("tb_desa", "user_detail.id_desa", "=", "tb_desa.id_desa")
             ->where("id_user", Auth::user()->id)
-            ->where("status", "utama")
             ->get();
 
         $profil = DB::table("user_detail")

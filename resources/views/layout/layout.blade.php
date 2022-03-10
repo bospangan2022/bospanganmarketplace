@@ -299,6 +299,8 @@
                                         href="{{ url('pelanggan') }}">Pelanggan</a></li>
                                 <li class="nav-item"> <a class="nav-link"
                                         href="{{ url('toko') }}">Toko</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ url('bank') }}">Bank</a></li>
                             </ul>
                         </div>
                     </li>
